@@ -1,0 +1,267 @@
+<!--META
+{
+  "title": "Особистий кабінет — SOCO Ukraine",
+  "description": "Історія замовлень, дані клініки, адреси доставки та персональні умови в особистому кабінеті SOCO Ukraine.",
+  "robots": "noindex, nofollow",
+  "script": "account.js",
+  "breadcrumbs": [
+    { "name": "Головна", "url": "/" },
+    { "name": "Особистий кабінет", "url": "/account.html" }
+  ]
+}
+-->
+
+<section class="container-x py-8 lg:py-12">
+  <nav aria-label="Хлібні крихти" class="mb-6">
+    <ol class="flex flex-wrap items-center gap-2 text-[13px] text-ink-500">
+      <li><a href="index.html" class="transition-colors hover:text-brand-700">Головна</a></li>
+      <li aria-hidden="true" class="text-ink-300">/</li>
+      <li><span class="font-medium text-ink-900">Особистий кабінет</span></li>
+    </ol>
+  </nav>
+
+  <!-- ===== Вхід / реєстрація ===== -->
+  <div class="hidden" data-auth>
+    <div class="mx-auto max-w-5xl overflow-hidden rounded-[2rem] bg-white shadow-lg ring-1 ring-ink-200/80 lg:grid lg:grid-cols-2">
+      <!-- Форма -->
+      <div class="p-8 sm:p-10 lg:p-12">
+        <div class="flex gap-1.5 rounded-full bg-ink-100 p-1.5">
+          <button type="button" class="tab-btn is-active flex-1" data-auth-tab="login">Вхід</button>
+          <button type="button" class="tab-btn flex-1" data-auth-tab="register">Реєстрація</button>
+        </div>
+
+        <!-- Вхід -->
+        <form class="mt-8 space-y-4" data-auth-panel="login" novalidate>
+          <h1 class="text-2xl font-semibold text-ink-900">З поверненням</h1>
+          <p class="!mt-2 text-[14.5px] text-ink-500">Увійдіть, щоб бачити історію замовлень і персональні ціни.</p>
+
+          <div class="!mt-7">
+            <label for="l-email" class="field-label">E-mail</label>
+            <input id="l-email" name="email" type="email" required autocomplete="email" class="field" placeholder="clinic@example.com" />
+          </div>
+          <div>
+            <label for="l-pass" class="field-label">Пароль</label>
+            <input id="l-pass" name="password" type="password" required autocomplete="current-password" class="field" placeholder="••••••••" />
+          </div>
+
+          <div class="flex items-center justify-between !mt-5">
+            <label class="flex cursor-pointer items-center gap-2.5 text-sm text-ink-600">
+              <input type="checkbox" class="filter-box" checked />
+              Запамʼятати мене
+            </label>
+            <a href="contacts.html" class="text-sm text-brand-700 hover:underline">Забули пароль?</a>
+          </div>
+
+          <button type="submit" class="btn-primary btn-lg !mt-7 w-full">Увійти</button>
+
+          <p class="!mt-4 text-center text-[13px] text-ink-500">
+            Ще немає акаунта?
+            <button type="button" class="font-medium text-brand-700 hover:underline" data-auth-tab="register">Зареєструватися</button>
+          </p>
+        </form>
+
+        <!-- Реєстрація -->
+        <form class="mt-8 hidden space-y-4" data-auth-panel="register" novalidate>
+          <h1 class="text-2xl font-semibold text-ink-900">Створити акаунт</h1>
+          <p class="!mt-2 text-[14.5px] text-ink-500">Для клінік і спеціалістів — персональні ціни та відтермінування платежу.</p>
+
+          <div class="!mt-7 grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="r-name" class="field-label">Імʼя та прізвище</label>
+              <input id="r-name" name="name" required autocomplete="name" class="field" placeholder="Олена Коваленко" />
+            </div>
+            <div>
+              <label for="r-phone" class="field-label">Телефон</label>
+              <input id="r-phone" name="phone" type="tel" required autocomplete="tel" class="field" placeholder="+380 __ ___ __ __" />
+            </div>
+          </div>
+          <div>
+            <label for="r-email" class="field-label">E-mail</label>
+            <input id="r-email" name="email" type="email" required autocomplete="email" class="field" placeholder="clinic@example.com" />
+          </div>
+          <div>
+            <label for="r-company" class="field-label">Клініка / ФОП</label>
+            <input id="r-company" name="company" class="field" placeholder="Стоматологія «Дентал Арт»" />
+          </div>
+          <div>
+            <label for="r-pass" class="field-label">Пароль</label>
+            <input id="r-pass" name="password" type="password" required autocomplete="new-password" class="field" placeholder="Мінімум 8 символів" />
+          </div>
+
+          <label class="flex cursor-pointer items-start gap-2.5 !mt-5 text-[13px] leading-relaxed text-ink-600">
+            <input type="checkbox" class="filter-box mt-0.5" required data-agree />
+            <span>
+              Погоджуюся з
+              <a href="privacy.html#offer" class="text-brand-700 hover:underline">умовами оферти</a> та
+              <a href="privacy.html" class="text-brand-700 hover:underline">політикою конфіденційності</a>
+            </span>
+          </label>
+
+          <button type="submit" class="btn-primary btn-lg !mt-7 w-full">Зареєструватися</button>
+        </form>
+      </div>
+
+      <!-- Переваги -->
+      <div class="relative hidden overflow-hidden bg-gradient-to-br from-brand-600 to-brand-800 p-12 text-white lg:block">
+        <div class="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-3xl"></div>
+        <div class="pointer-events-none absolute -bottom-20 -left-10 h-72 w-72 rounded-full bg-white/5 blur-3xl"></div>
+
+        <div class="relative">
+          <p class="inline-flex items-center rounded-full bg-white/15 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] ring-1 ring-white/20">
+            Для клінік
+          </p>
+          <h2 class="mt-6 text-2xl font-semibold leading-snug">Кабінет економить час на кожному замовленні</h2>
+
+          <ul class="mt-8 space-y-5">
+            <li class="flex items-start gap-3.5">
+              <span class="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white/15">
+                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span>
+                <span class="block text-[15px] font-semibold">Повтор замовлення в один клік</span>
+                <span class="mt-1 block text-sm text-brand-100">Історія зберігає склад і кількість — не треба збирати кошик заново.</span>
+              </span>
+            </li>
+            <li class="flex items-start gap-3.5">
+              <span class="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white/15">
+                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span>
+                <span class="block text-[15px] font-semibold">Персональні ціни</span>
+                <span class="mt-1 block text-sm text-brand-100">Накопичувальна знижка до 15 % і окремі умови на оптові обсяги.</span>
+              </span>
+            </li>
+            <li class="flex items-start gap-3.5">
+              <span class="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white/15">
+                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span>
+                <span class="block text-[15px] font-semibold">Документи в одному місці</span>
+                <span class="mt-1 block text-sm text-brand-100">Рахунки, накладні та сертифікати доступні для завантаження будь-коли.</span>
+              </span>
+            </li>
+            <li class="flex items-start gap-3.5">
+              <span class="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white/15">
+                <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span>
+                <span class="block text-[15px] font-semibold">Персональний менеджер</span>
+                <span class="mt-1 block text-sm text-brand-100">Знає ваш профіль і сам нагадає, коли час оновити запас.</span>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Кабінет ===== -->
+  <div class="hidden" data-account>
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div class="flex items-center gap-4">
+        <span class="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 text-xl font-semibold text-white" data-user-initials></span>
+        <div>
+          <h1 class="text-2xl font-semibold tracking-tight text-ink-900 sm:text-3xl" data-user-name></h1>
+          <p class="mt-1 text-[14.5px] text-ink-500" data-user-meta></p>
+        </div>
+      </div>
+      <button type="button" class="btn-secondary" data-logout>
+        <svg viewBox="0 0 24 24" class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M15 8V6.5A1.5 1.5 0 0 0 13.5 5h-7A1.5 1.5 0 0 0 5 6.5v11A1.5 1.5 0 0 0 6.5 19h7a1.5 1.5 0 0 0 1.5-1.5V16" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M11 12h9m0 0-3-3m3 3-3 3" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        Вийти
+      </button>
+    </div>
+
+    <!-- Статистика -->
+    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="rounded-3xl bg-white p-6 ring-1 ring-ink-200/80">
+        <span class="block text-[13px] text-ink-500">Замовлень</span>
+        <span class="mt-2 block text-3xl font-bold tracking-tight text-ink-900" data-stat-orders>0</span>
+      </div>
+      <div class="rounded-3xl bg-white p-6 ring-1 ring-ink-200/80">
+        <span class="block text-[13px] text-ink-500">Куплено на суму</span>
+        <span class="mt-2 block text-3xl font-bold tracking-tight text-ink-900" data-stat-total>0 ₴</span>
+      </div>
+      <div class="rounded-3xl bg-white p-6 ring-1 ring-ink-200/80">
+        <span class="block text-[13px] text-ink-500">Персональна знижка</span>
+        <span class="mt-2 block text-3xl font-bold tracking-tight text-brand-600" data-stat-discount>5 %</span>
+      </div>
+      <div class="rounded-3xl bg-gradient-to-br from-brand-600 to-brand-800 p-6 text-white">
+        <span class="block text-[13px] text-brand-100">Ваш менеджер</span>
+        <span class="mt-2 block text-lg font-semibold">Анна Литвиненко</span>
+        <a href="tel:+380674011590" class="mt-1 block text-sm text-brand-100 hover:text-white">+380 (67) 401-15-90</a>
+      </div>
+    </div>
+
+    <!-- Вкладки -->
+    <div class="mt-10 flex gap-1.5 overflow-x-auto rounded-full bg-ink-100 p-1.5 no-scrollbar" role="tablist" aria-label="Розділи кабінету">
+      <button type="button" class="tab-btn is-active" data-acc-tab="orders" role="tab" aria-selected="true">Замовлення</button>
+      <button type="button" class="tab-btn" data-acc-tab="profile" role="tab" aria-selected="false">Профіль клініки</button>
+      <button type="button" class="tab-btn" data-acc-tab="addresses" role="tab" aria-selected="false">Адреси</button>
+      <button type="button" class="tab-btn" data-acc-tab="viewed" role="tab" aria-selected="false">Переглянуті</button>
+    </div>
+
+    <!-- Замовлення -->
+    <div class="mt-8" data-acc-panel="orders">
+      <div class="space-y-4" data-orders-list></div>
+      <div class="hidden rounded-3xl bg-ink-50 px-6 py-16 text-center" data-orders-empty>
+        <p class="text-lg font-semibold text-ink-900">Замовлень поки немає</p>
+        <p class="mx-auto mt-2 max-w-md text-[15px] text-ink-500">Оформіть перше замовлення — і воно зʼявиться тут з усіма документами.</p>
+        <a href="catalog.html" class="btn-primary mt-6">Перейти до каталогу</a>
+      </div>
+    </div>
+
+    <!-- Профіль -->
+    <div class="mt-8 hidden" data-acc-panel="profile">
+      <form class="max-w-2xl rounded-3xl bg-white p-6 ring-1 ring-ink-200/80 sm:p-8" data-profile-form novalidate>
+        <h2 class="text-lg font-semibold text-ink-900">Дані для документів</h2>
+        <p class="mt-1.5 text-[14px] text-ink-500">Використовуємо для рахунків, накладних і договорів.</p>
+
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          <div>
+            <label for="p-name" class="field-label">Імʼя та прізвище</label>
+            <input id="p-name" name="name" class="field" />
+          </div>
+          <div>
+            <label for="p-phone" class="field-label">Телефон</label>
+            <input id="p-phone" name="phone" type="tel" class="field" />
+          </div>
+          <div>
+            <label for="p-email" class="field-label">E-mail</label>
+            <input id="p-email" name="email" type="email" class="field" />
+          </div>
+          <div>
+            <label for="p-company" class="field-label">Клініка / ФОП</label>
+            <input id="p-company" name="company" class="field" />
+          </div>
+          <div>
+            <label for="p-edrpou" class="field-label">ЄДРПОУ / ІПН</label>
+            <input id="p-edrpou" name="edrpou" inputmode="numeric" class="field" placeholder="12345678" />
+          </div>
+          <div>
+            <label for="p-iban" class="field-label">IBAN</label>
+            <input id="p-iban" name="iban" class="field" placeholder="UA00 0000 0000 0000 0000 0000 000" />
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary mt-7">Зберегти зміни</button>
+      </form>
+    </div>
+
+    <!-- Адреси -->
+    <div class="mt-8 hidden" data-acc-panel="addresses">
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-addresses></div>
+    </div>
+
+    <!-- Переглянуті -->
+    <div class="mt-8 hidden" data-acc-panel="viewed">
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-viewed-grid></div>
+      <div class="hidden rounded-3xl bg-ink-50 px-6 py-16 text-center" data-viewed-empty>
+        <p class="text-lg font-semibold text-ink-900">Ви ще нічого не дивилися</p>
+        <a href="catalog.html" class="btn-primary mt-6">Перейти до каталогу</a>
+      </div>
+    </div>
+  </div>
+</section>

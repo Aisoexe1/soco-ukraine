@@ -1,0 +1,67 @@
+<!-- ================= Повноекранний пошук (мобільний + ⌘K) ================= -->
+<div class="fixed inset-0 z-[80] hidden" data-search-overlay>
+  <div class="absolute inset-0 bg-ink-950/45 opacity-0 backdrop-blur-sm transition-opacity duration-300" data-search-backdrop></div>
+
+  <div
+    class="absolute inset-x-0 top-0 -translate-y-6 opacity-0 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
+    data-search-panel
+    role="dialog"
+    aria-modal="true"
+    aria-label="Пошук по каталогу"
+  >
+    <div class="bg-white shadow-xl">
+      <div class="container-x py-4">
+        <form action="catalog.html" method="get" role="search" class="flex items-center gap-2" data-search-form>
+          <div class="relative flex-1">
+            <label for="overlay-search" class="sr-only">Пошук по каталогу</label>
+            <svg
+              viewBox="0 0 20 20"
+              class="pointer-events-none absolute left-4 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-ink-400"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              aria-hidden="true"
+            >
+              <circle cx="9" cy="9" r="6" />
+              <path d="m14 14 3.5 3.5" stroke-linecap="round" />
+            </svg>
+            <input
+              id="overlay-search"
+              type="search"
+              name="q"
+              autocomplete="off"
+              placeholder="Композит, бори, рукавички…"
+              class="field h-12 rounded-full py-0 pl-11 pr-4 text-[15px]"
+              data-search-input
+            />
+          </div>
+          <button type="button" class="btn-ghost shrink-0 rounded-full" data-close-search>Скасувати</button>
+        </form>
+      </div>
+
+      <div class="max-h-[min(70vh,600px)] overflow-y-auto overscroll-contain border-t border-ink-100">
+        <div class="container-x py-4">
+          <div data-search-results-mobile></div>
+
+          <!-- Популярні запити (показуються за порожнього поля) -->
+          <div data-search-suggestions>
+            <p class="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-400">Часто шукають</p>
+            <div class="flex flex-wrap gap-2">
+              <button type="button" class="chip-suggest" data-suggest="композит">Композит</button>
+              <button type="button" class="chip-suggest" data-suggest="бори">Алмазні бори</button>
+              <button type="button" class="chip-suggest" data-suggest="рукавички">Нітрилові рукавички</button>
+              <button type="button" class="chip-suggest" data-suggest="анестезія">Анестезія</button>
+              <button type="button" class="chip-suggest" data-suggest="силікон">А-силікон</button>
+              <button type="button" class="chip-suggest" data-suggest="лампа">Полімеризаційна лампа</button>
+              <button type="button" class="chip-suggest" data-suggest="ендодонт">Ендодонтія</button>
+              <button type="button" class="chip-suggest" data-suggest="дезінфек">Дезінфекція</button>
+            </div>
+
+            <p class="mb-3 mt-7 text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-400">Категорії</p>
+            <div class="grid gap-2 sm:grid-cols-2" data-search-categories></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,699 @@
+<!--META
+{
+  "title": "SOCO Ukraine — стоматологічні матеріали та обладнання з доставкою по Україні",
+  "description": "Професійні стоматологічні матеріали та обладнання для клінік, лікарів і зуботехнічних лабораторій. Понад 5 000 оригінальних сертифікованих товарів, доставка по Україні за 1–2 дні.",
+  "keywords": "стоматологічні матеріали, стоматологічне обладнання, купити матеріали для стоматології, композит, бори, анестезія, рукавички, відбиткові матеріали, Україна, Київ",
+  "nav": "home",
+  "script": "home.js",
+  "preload": [{ "href": "assets/img/hero-instruments.svg", "as": "image", "type": "image/svg+xml" }],
+  "jsonld": [
+    {
+      "@type": "ItemList",
+      "name": "Популярні товари SOCO Ukraine",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Filtek Ultimate — універсальний нанокомпозит", "url": "https://soco.ua/product.html?id=flt-ultimate-a2" },
+        { "@type": "ListItem", "position": 2, "name": "Single Bond Universal — адгезив універсальний", "url": "https://soco.ua/product.html?id=single-bond-universal" },
+        { "@type": "ListItem", "position": 3, "name": "Komet — набір алмазних борів", "url": "https://soco.ua/product.html?id=komet-diamond-set" },
+        { "@type": "ListItem", "position": 4, "name": "Рукавички нітрилові оглядові", "url": "https://soco.ua/product.html?id=nitrile-gloves" }
+      ]
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://soco.ua/#rating",
+      "itemReviewed": { "@id": "https://soco.ua/#organization" },
+      "ratingValue": "4.9",
+      "bestRating": "5",
+      "reviewCount": "1284"
+    }
+  ]
+}
+-->
+
+<!-- ======================================================================
+     1. HERO
+     ====================================================================== -->
+<section class="relative overflow-hidden" aria-labelledby="hero-title">
+  <!-- Фон -->
+  <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+    <div class="absolute inset-0 bg-gradient-to-b from-brand-50/70 via-white to-white"></div>
+    <div class="absolute -right-40 -top-40 h-[36rem] w-[36rem] rounded-full bg-brand-200/35 blur-[120px]"></div>
+    <div class="absolute -left-32 top-40 h-96 w-96 rounded-full bg-brand-100/50 blur-[100px]"></div>
+    <div class="absolute inset-x-0 top-0 h-[520px] bg-dots opacity-[0.55] mask-fade-b"></div>
+  </div>
+
+  <div class="container-x pb-16 pt-12 lg:pb-24 lg:pt-20">
+    <div class="grid items-center gap-12 lg:grid-cols-[1.02fr_1fr] lg:gap-16">
+      <!-- Текст -->
+      <div class="max-w-2xl">
+        <p class="eyebrow reveal is-visible">
+          <span class="relative flex h-1.5 w-1.5">
+            <span class="absolute inline-flex h-full w-full animate-pulse-ring rounded-full bg-brand-500"></span>
+            <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand-600"></span>
+          </span>
+          Офіційний постачальник з 2009 року
+        </p>
+
+        <h1 id="hero-title" class="reveal reveal-d1 is-visible mt-6 text-[2.5rem] font-semibold leading-[1.08] tracking-tight text-ink-900 sm:text-6xl lg:text-[4rem]">
+          Професійні
+          <span class="text-gradient">стоматологічні</span>
+          матеріали та обладнання
+        </h1>
+
+        <p class="reveal reveal-d2 is-visible mt-6 max-w-xl text-lg leading-relaxed text-ink-500">
+          Усе необхідне для стоматологічних клінік і спеціалістів зі швидкою доставкою по Україні.
+        </p>
+
+        <div class="reveal reveal-d3 is-visible mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <a href="catalog.html" class="btn-primary btn-lg group">
+            Каталог
+            <svg viewBox="0 0 20 20" class="h-[18px] w-[18px] transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+              <path d="M4 10h11m0 0-4.5-4.5M15 10l-4.5 4.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+          <a href="contacts.html" class="btn-secondary btn-lg">
+            <svg viewBox="0 0 24 24" class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M6.5 4h3l1.5 3.8-2 1.4a11.5 11.5 0 0 0 5.3 5.3l1.4-2L19.5 14v3a2 2 0 0 1-2.2 2A15.5 15.5 0 0 1 4.5 6.2 2 2 0 0 1 6.5 4Z" stroke-linejoin="round" />
+            </svg>
+            Звʼязатися
+          </a>
+        </div>
+
+        <!-- Швидкі факти -->
+        <dl class="reveal reveal-d4 is-visible mt-12 grid grid-cols-3 gap-6 border-t border-ink-100 pt-8 sm:gap-10">
+          <div>
+            <dt class="sr-only">Товарів у каталозі</dt>
+            <dd>
+              <span class="block text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl" data-counter="5000">5 000</span>
+              <span class="mt-1 block text-[13px] leading-snug text-ink-500">товарів<br class="hidden sm:block" /> у наявності</span>
+            </dd>
+          </div>
+          <div>
+            <dt class="sr-only">Клінік-партнерів</dt>
+            <dd>
+              <span class="block text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl" data-counter="1200">1 200</span>
+              <span class="mt-1 block text-[13px] leading-snug text-ink-500">клінік<br class="hidden sm:block" /> довіряють нам</span>
+            </dd>
+          </div>
+          <div>
+            <dt class="sr-only">Термін доставки</dt>
+            <dd>
+              <span class="block text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl">1–2</span>
+              <span class="mt-1 block text-[13px] leading-snug text-ink-500">дні<br class="hidden sm:block" /> доставка</span>
+            </dd>
+          </div>
+        </dl>
+      </div>
+
+      <!-- Зображення -->
+      <div class="relative">
+        <div class="reveal reveal-d2 is-visible relative">
+          <!-- Підкладка -->
+          <div class="absolute inset-0 -z-10 translate-y-6 scale-95 rounded-[2.5rem] bg-gradient-to-br from-brand-600/12 to-brand-400/5 blur-2xl" aria-hidden="true"></div>
+
+          <div class="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-white to-brand-50 p-2 shadow-xl ring-1 ring-ink-200/70">
+            <img
+              src="assets/img/hero-instruments.svg"
+              alt="Набір стоматологічних інструментів: дзеркало, зонд, пінцет і турбінний наконечник на стерильному лотку"
+              width="900"
+              height="760"
+              fetchpriority="high"
+              decoding="async"
+              class="w-full rounded-[2rem]"
+            />
+          </div>
+
+          <!-- Плашка «у наявності» -->
+          <div class="absolute -left-3 top-8 hidden animate-float rounded-2xl bg-white p-3.5 shadow-lg ring-1 ring-ink-100 sm:block lg:-left-8">
+            <div class="flex items-center gap-3">
+              <span class="grid h-10 w-10 place-items-center rounded-xl bg-mint-500/10 text-emerald-600">
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+              <span>
+                <span class="block text-sm font-semibold text-ink-900">Оригінал</span>
+                <span class="block text-xs text-ink-500">із сертифікатами</span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Плашка «доставка» -->
+          <div class="absolute -bottom-5 -right-2 hidden rounded-2xl bg-white p-3.5 shadow-lg ring-1 ring-ink-100 sm:block lg:-right-6" style="animation: float 7s ease-in-out 1.2s infinite">
+            <div class="flex items-center gap-3">
+              <span class="grid h-10 w-10 place-items-center rounded-xl bg-brand-50 text-brand-600">
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M3 7.5h9v9H3zM12 10.5h4.4l2.6 3v3h-7z" stroke-linejoin="round" />
+                  <circle cx="7" cy="18" r="1.8" />
+                  <circle cx="16" cy="18" r="1.8" />
+                </svg>
+              </span>
+              <span>
+                <span class="block text-sm font-semibold text-ink-900">Доставка 1–2 дні</span>
+                <span class="block text-xs text-ink-500">по всій Україні</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Стрічка брендів -->
+  <div id="brands" class="border-y border-ink-100 bg-white/60 py-7 backdrop-blur">
+    <div class="container-x">
+      <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:gap-10">
+        <p class="shrink-0 text-[13px] font-medium text-ink-400">
+          Офіційний дистрибʼютор<br class="hidden lg:block" /> провідних виробників
+        </p>
+        <div class="relative flex-1 overflow-hidden" style="mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent)">
+          <div class="flex w-max animate-marquee items-center gap-12 pr-12">
+            <!-- Дублюється для безшовної прокрутки -->
+            <span class="brand-word">3M ESPE</span><span class="brand-word">Ivoclar Vivadent</span><span class="brand-word">Dentsply Sirona</span>
+            <span class="brand-word">Kerr</span><span class="brand-word">VOCO</span><span class="brand-word">Coltene</span>
+            <span class="brand-word">Komet</span><span class="brand-word">Mani</span><span class="brand-word">Septodont</span>
+            <span class="brand-word">Zhermack</span><span class="brand-word">GC</span><span class="brand-word">NSK</span>
+            <span class="brand-word">MELAG</span><span class="brand-word">Tokuyama</span>
+            <span class="brand-word" aria-hidden="true">3M ESPE</span><span class="brand-word" aria-hidden="true">Ivoclar Vivadent</span><span class="brand-word" aria-hidden="true">Dentsply Sirona</span>
+            <span class="brand-word" aria-hidden="true">Kerr</span><span class="brand-word" aria-hidden="true">VOCO</span><span class="brand-word" aria-hidden="true">Coltene</span>
+            <span class="brand-word" aria-hidden="true">Komet</span><span class="brand-word" aria-hidden="true">Mani</span><span class="brand-word" aria-hidden="true">Septodont</span>
+            <span class="brand-word" aria-hidden="true">Zhermack</span><span class="brand-word" aria-hidden="true">GC</span><span class="brand-word" aria-hidden="true">NSK</span>
+            <span class="brand-word" aria-hidden="true">MELAG</span><span class="brand-word" aria-hidden="true">Tokuyama</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     2. КАТЕГОРІЇ
+     ====================================================================== -->
+<section id="categories" class="container-x scroll-mt-28 py-20 lg:py-28" aria-labelledby="cat-title">
+  <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+    <div class="reveal">
+      <p class="eyebrow">Каталог</p>
+      <h2 id="cat-title" class="section-title mt-5">Категорії товарів</h2>
+      <p class="section-sub">
+        Вісім напрямів, що закривають повний цикл роботи клініки — від витратних матеріалів до обладнання.
+      </p>
+    </div>
+    <a href="catalog.html" class="reveal reveal-d1 btn-secondary shrink-0">
+      Увесь каталог
+      <svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <path d="M4 10h11m0 0-4-4m4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </a>
+  </div>
+
+  <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <!-- Пломбувальні матеріали -->
+    <article class="group cat-card reveal">
+      <span class="cat-icon">
+        <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M7 3.5h10l-1 5.2a3 3 0 0 0 .3 2l1.6 3a5.5 5.5 0 0 1-4.9 8.1h-2A5.5 5.5 0 0 1 6.1 13.7l1.6-3a3 3 0 0 0 .3-2L7 3.5Z" stroke-linejoin="round" />
+          <path d="M6.6 14.5h10.8" stroke-linecap="round" />
+          <circle cx="10.4" cy="17.8" r="1.1" fill="currentColor" stroke="none" />
+          <circle cx="13.8" cy="19.2" r=".8" fill="currentColor" stroke="none" />
+        </svg>
+      </span>
+      <h3 class="cat-title">Пломбувальні матеріали</h3>
+      <p class="cat-desc">Композити, компомери, СІЦ та адгезивні системи</p>
+      <span class="cat-count">486 товарів</span>
+      <a href="catalog.html?cat=filling" class="cat-link">
+        Перейти
+        <svg viewBox="0 0 20 20" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+          <path d="M4 10h11m0 0-4-4m4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </article>
+
+    <!-- Бори -->
+    <article class="group cat-card reveal reveal-d1">
+      <span class="cat-icon">
+        <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M12 2.6v6.2M12 21.4v-3.1" stroke-linecap="round" />
+          <path d="M9.4 8.8h5.2l1.5 4.3a4.3 4.3 0 0 1-8.2 0l1.5-4.3Z" stroke-linejoin="round" />
+          <path d="M8.4 11.6h7.2M9 14.2h6" stroke-linecap="round" />
+        </svg>
+      </span>
+      <h3 class="cat-title">Бори</h3>
+      <p class="cat-desc">Алмазні, твердосплавні, поліри та фініри</p>
+      <span class="cat-count">742 товари</span>
+      <a href="catalog.html?cat=burs" class="cat-link">
+        Перейти
+        <svg viewBox="0 0 20 20" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+          <path d="M4 10h11m0 0-4-4m4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </article>
+
+    <!-- Інструменти -->
+    <article class="group cat-card reveal reveal-d2">
+      <span class="cat-icon">
+        <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M6.6 3.2a2.6 2.6 0 0 1 2.2 3.9l-.6 1 8.4 8.4a2 2 0 1 1-2.8 2.8L5.4 11l1-.6a2.6 2.6 0 0 1 .2-7.2Z" stroke-linejoin="round" />
+          <path d="M17.8 3.4 12.6 8.6M19.9 5.5l-3.4 3.4" stroke-linecap="round" />
+        </svg>
+      </span>
+      <h3 class="cat-title">Інструменти</h3>
+      <p class="cat-desc">Терапія, ендодонтія, хірургія та ортопедія</p>
+      <span class="cat-count">918 товарів</span>
+      <a href="catalog.html?cat=instruments" class="cat-link">
+        Перейти
+        <svg viewBox="0 0 20 20" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+          <path d="M4 10h11m0 0-4-4m4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </article>
+
+    <!-- Рукавички -->
+    <article class="group cat-card reveal reveal-d3">
+      <span class="cat-icon">
+        <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M8.2 21.2v-4.6l-1.9-2.3a2.1 2.1 0 0 1 3.1-2.7V6.1a1.4 1.4 0 0 1 2.8 0V4.2a1.4 1.4 0 1 1 2.8 0v1.9a1.4 1.4 0 1 1 2.8 0v8.3a6.6 6.6 0 0 1-1.7 4.4l-1 1.2a2 2 0 0 0-.5 1.2" stroke-linejoin="round" stroke-linecap="round" />
+        </svg>
+      </span>
+      <h3 class="cat-title">Рукавички</h3>
+      <p class="cat-desc">Нітрил, латекс та одноразові витратні матеріали</p>
+      <span class="cat-count">264 товари</span>
+      <a href="catalog.html?cat=gloves" class="cat-link">
+        Перейти
+        <svg viewBox="0 0 20 20" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+          <path d="M4 10h11m0 0-4-4m4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </article>
+
+    <!-- Анестезія -->
+    <article class="group cat-card reveal">
+      <span class="cat-icon">
+        <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="m14.6 3.6 5.8 5.8" stroke-linecap="round" />
+          <path d="m16.9 5.9-9.2 9.2-2.4 5.4 5.4-2.4 9.2-9.2" stroke-linejoin="round" />
+          <path d="m10.6 8.6 4.8 4.8M8.2 11l4.8 4.8" stroke-linecap="round" />
+        </svg>
+      </span>
+      <h3 class="cat-title">Анестезія</h3>
+      <p class="cat-desc">Карпульні анестетики, голки та шприци</p>
+      <span class="cat-count">173 товари</span>
+      <a href="catalog.html?cat=anesthesia" class="cat-link">
+        Перейти
+        <svg viewBox="0 0 20 20" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+          <path d="M4 10h11m0 0-4-4m4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </article>
+
+    <!-- Відбиткові матеріали -->
+    <article class="group cat-card reveal reveal-d1">
+      <span class="cat-icon">
+        <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M4.4 8.6C4.4 5.6 7.8 3.4 12 3.4s7.6 2.2 7.6 5.2c0 2.2-.7 3-1.6 4.6-.8 1.4-1.1 2.8-1.3 4.4-.2 1.6-1 2.6-2.3 2.6-1.1 0-1.7-.7-1.9-2l-.3-1.9c-.1-.6-.2-.9-.2-.9s-.1.3-.2.9l-.3 1.9c-.2 1.3-.8 2-1.9 2-1.3 0-2.1-1-2.3-2.6-.2-1.6-.5-3-1.3-4.4-.9-1.6-1.6-2.4-1.6-4.6Z" stroke-linejoin="round" />
+        </svg>
+      </span>
+      <h3 class="cat-title">Відбиткові матеріали</h3>
+      <p class="cat-desc">А-силікони, С-силікони, альгінати та ложки</p>
+      <span class="cat-count">321 товар</span>
+      <a href="catalog.html?cat=impression" class="cat-link">
+        Перейти
+        <svg viewBox="0 0 20 20" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+          <path d="M4 10h11m0 0-4-4m4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </article>
+
+    <!-- Дезінфекція -->
+    <article class="group cat-card reveal reveal-d2">
+      <span class="cat-icon">
+        <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M9.4 3.4h5.2v2.4H9.4z" stroke-linejoin="round" />
+          <path d="M8.6 5.8h6.8l1.4 3.4v9.4a2 2 0 0 1-2 2H9.2a2 2 0 0 1-2-2V9.2l1.4-3.4Z" stroke-linejoin="round" />
+          <path d="M7.4 11.4h9.2" stroke-linecap="round" />
+          <path d="M12 13.6v3.4M10.3 15.3h3.4" stroke-linecap="round" />
+        </svg>
+      </span>
+      <h3 class="cat-title">Дезінфекція</h3>
+      <p class="cat-desc">Засоби для інструментів, поверхонь і рук</p>
+      <span class="cat-count">208 товарів</span>
+      <a href="catalog.html?cat=disinfection" class="cat-link">
+        Перейти
+        <svg viewBox="0 0 20 20" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+          <path d="M4 10h11m0 0-4-4m4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </article>
+
+    <!-- Обладнання -->
+    <article class="group cat-card reveal reveal-d3">
+      <span class="cat-icon">
+        <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <rect x="3.2" y="5.4" width="17.6" height="12" rx="2.4" />
+          <path d="M8.4 20.6h7.2M12 17.4v3.2" stroke-linecap="round" />
+          <path d="M6.8 11.4h2.6l1.4-2.6 2 5.2 1.4-2.6h2.9" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </span>
+      <h3 class="cat-title">Обладнання</h3>
+      <p class="cat-desc">Наконечники, лампи, скалери та стерилізація</p>
+      <span class="cat-count">397 товарів</span>
+      <a href="catalog.html?cat=equipment" class="cat-link">
+        Перейти
+        <svg viewBox="0 0 20 20" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+          <path d="M4 10h11m0 0-4-4m4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </article>
+  </div>
+</section>
+
+<!-- ======================================================================
+     3. ПОПУЛЯРНІ ТОВАРИ
+     ====================================================================== -->
+<section class="relative py-20 lg:py-28" aria-labelledby="popular-title">
+  <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-ink-50/70 to-white" aria-hidden="true"></div>
+
+  <div class="container-x">
+    <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+      <div class="reveal">
+        <p class="eyebrow">Вітрина</p>
+        <h2 id="popular-title" class="section-title mt-5">Популярні товари</h2>
+        <p class="section-sub">Позиції, які найчастіше замовляють клініки — завжди на складі в Києві.</p>
+      </div>
+
+      <!-- Таби -->
+      <div class="reveal reveal-d1 flex gap-1.5 overflow-x-auto rounded-full bg-ink-100 p-1.5 no-scrollbar" role="tablist" aria-label="Добірки товарів">
+        <button type="button" class="tab-btn is-active" data-tab="hit" role="tab" aria-selected="true">Хіти</button>
+        <button type="button" class="tab-btn" data-tab="new" role="tab" aria-selected="false">Новинки</button>
+        <button type="button" class="tab-btn" data-tab="sale" role="tab" aria-selected="false">Зі знижкою</button>
+      </div>
+    </div>
+
+    <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-popular-grid>
+      <!-- Наповнюється home.js -->
+    </div>
+
+    <div class="mt-12 text-center">
+      <a href="catalog.html" class="btn-secondary btn-lg group">
+        Дивитися всі 5 000 товарів
+        <svg viewBox="0 0 20 20" class="h-[18px] w-[18px] transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+          <path d="M4 10h11m0 0-4.5-4.5M15 10l-4.5 4.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     4. ЧОМУ ОБИРАЮТЬ НАС
+     ====================================================================== -->
+<section id="why" class="container-x scroll-mt-28 py-20 lg:py-28" aria-labelledby="why-title">
+  <div class="mx-auto max-w-3xl text-center">
+    <p class="eyebrow reveal">Переваги</p>
+    <h2 id="why-title" class="section-title reveal reveal-d1 mt-5">Чому обирають нас</h2>
+    <p class="section-sub reveal reveal-d2 mx-auto text-center">
+      1 200 клінік по Україні працюють з нами роками. Ось що вони отримують разом із кожним замовленням.
+    </p>
+  </div>
+
+  <div class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <!-- 1 -->
+    <article class="group why-card reveal">
+      <span class="why-icon">
+        <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M12 3 4.5 6.2v5.1c0 4.7 3.2 9.1 7.5 10.4 4.3-1.3 7.5-5.7 7.5-10.4V6.2L12 3Z" stroke-linejoin="round" />
+          <path d="m8.8 11.9 2.3 2.4 4.1-4.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </span>
+      <h3 class="why-title">Оригінальна продукція</h3>
+      <p class="why-desc">
+        Прямі контракти з виробниками та офіційними дистрибʼюторами. Кожну партію можна перевірити за номером
+        накладної у вендора — підробки виключені на рівні ланцюга постачання.
+      </p>
+    </article>
+
+    <!-- 2 -->
+    <article class="group why-card reveal reveal-d1">
+      <span class="why-icon">
+        <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M6 3.5h9l4 4v13a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 20.5v-15A2 2 0 0 1 6 3.5Z" stroke-linejoin="round" />
+          <path d="M14.5 3.6V8h4.4" stroke-linejoin="round" />
+          <circle cx="12" cy="14" r="2.6" />
+          <path d="M10.2 16.2 9.4 19.6l2.6-1.3 2.6 1.3-.8-3.4" stroke-linejoin="round" />
+        </svg>
+      </span>
+      <h3 class="why-title">Сертифіковані товари</h3>
+      <p class="why-desc">
+        Усі позиції внесено до реєстру МОЗ України та мають декларації відповідності, CE-маркування та ISO 13485.
+        Повний пакет документів надсилаємо разом із замовленням або на першу вимогу.
+      </p>
+    </article>
+
+    <!-- 3 -->
+    <article class="group why-card reveal reveal-d2">
+      <span class="why-icon">
+        <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M2.5 8h9.5v9H2.5zM12 11h4.6l2.9 3.3V17H12z" stroke-linejoin="round" />
+          <circle cx="6.6" cy="18.6" r="1.9" />
+          <circle cx="16.4" cy="18.6" r="1.9" />
+          <path d="M2.5 5.5h6" stroke-linecap="round" />
+        </svg>
+      </span>
+      <h3 class="why-title">Швидка доставка</h3>
+      <p class="why-desc">
+        Замовлення, оформлені до 15:00, вирушають зі складу того ж дня. Нова Пошта та Укрпошта по всій Україні за
+        1–2 дні, по Києву — курʼєр день у день. Від 3 000 ₴ доставка безкоштовна.
+      </p>
+    </article>
+
+    <!-- 4 -->
+    <article class="group why-card reveal">
+      <span class="why-icon">
+        <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <circle cx="12" cy="12" r="8.5" />
+          <path d="M12 7.2v5.2l3.2 2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </span>
+      <h3 class="why-title">Гарантія якості</h3>
+      <p class="why-desc">
+        На обладнання — від 12 до 24 місяців з авторизованим сервісом у Києві. Заводський брак міняємо власним
+        коштом без експертиз і суперечок. Повернення матеріалів — 14 днів, якщо упаковку не розкрито.
+      </p>
+    </article>
+
+    <!-- 5 -->
+    <article class="group why-card reveal reveal-d1">
+      <span class="why-icon">
+        <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M4 7.2 12 3.4l8 3.8-8 3.8-8-3.8Z" stroke-linejoin="round" />
+          <path d="m4 12 8 3.8L20 12M4 16.8l8 3.8 8-3.8" stroke-linejoin="round" />
+        </svg>
+      </span>
+      <h3 class="why-title">Понад 5 000 товарів</h3>
+      <p class="why-desc">
+        Один постачальник замість пʼяти: витратні матеріали, інструменти та обладнання в одному замовленні й одній
+        накладній. Рідкісні позиції під замовлення привозимо за 5–10 днів.
+      </p>
+    </article>
+
+    <!-- 6 -->
+    <article class="group why-card reveal reveal-d2">
+      <span class="why-icon">
+        <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M20 12a7.6 7.6 0 0 1-11.2 6.7L4 20.2l1.5-4.6A7.6 7.6 0 1 1 20 12Z" stroke-linejoin="round" />
+          <path d="M9 10.8h6M9 14h4" stroke-linecap="round" />
+        </svg>
+      </span>
+      <h3 class="why-title">Підтримка спеціалістів</h3>
+      <p class="why-desc">
+        Менеджери з профільною освітою: підберуть аналог під ваш протокол, розрахують витрати на місяць і
+        чесно скажуть, якщо дешевша позиція вирішить задачу не гірше.
+      </p>
+    </article>
+  </div>
+</section>
+
+<!-- ======================================================================
+     5. ПРО КОМПАНІЮ
+     ====================================================================== -->
+<section id="about" class="scroll-mt-28 py-20 lg:py-28" aria-labelledby="about-title">
+  <div class="container-x">
+    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <!-- Зображення -->
+      <div class="reveal relative order-2 lg:order-1">
+        <div class="overflow-hidden rounded-[2.5rem] shadow-lg ring-1 ring-ink-200/70">
+          <img
+            src="assets/img/clinic.svg"
+            alt="Інтерʼєр сучасного стоматологічного кабінету: крісло, світильник, шафа з матеріалами"
+            width="960"
+            height="700"
+            loading="lazy"
+            decoding="async"
+            class="w-full"
+          />
+        </div>
+
+        <!-- Плашка зі статистикою -->
+        <div class="absolute -bottom-8 left-6 hidden rounded-3xl bg-white p-6 shadow-xl ring-1 ring-ink-100 sm:block lg:-right-8 lg:left-auto">
+          <div class="flex items-center gap-5">
+            <div>
+              <span class="block text-3xl font-bold tracking-tight text-brand-600">17</span>
+              <span class="mt-0.5 block text-xs leading-snug text-ink-500">років на ринку</span>
+            </div>
+            <span class="h-12 w-px bg-ink-100"></span>
+            <div>
+              <span class="block text-3xl font-bold tracking-tight text-brand-600">1 200</span>
+              <span class="mt-0.5 block text-xs leading-snug text-ink-500">клінік-партнерів</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Текст -->
+      <div class="order-1 lg:order-2">
+        <p class="eyebrow reveal">Про компанію</p>
+        <h2 id="about-title" class="section-title reveal reveal-d1 mt-5">
+          Забезпечуємо стоматологію України з 2009 року
+        </h2>
+
+        <div class="reveal reveal-d2 mt-6 space-y-4 text-base leading-relaxed text-ink-500">
+          <p>
+            <strong class="font-semibold text-ink-800">SOCO Ukraine</strong> починалася як невеликий склад у Києві,
+            звідки ми возили матеріали двом десяткам знайомих лікарів. Сьогодні це 1 200 клінік-партнерів по всій
+            країні, власний склад площею 900 м² і команда з 34 людей — але підхід залишився тим самим.
+          </p>
+          <p>
+            Ми не продаємо те, чим не користувалися б самі. Кожну нову позицію спочатку тестують практикуючі
+            лікарі з нашої консультативної ради, і лише потім вона потрапляє до каталогу. Саме тому в асортименті
+            немає «сірих» брендів і позицій сумнівного походження.
+          </p>
+          <p>
+            Працюємо з приватними кабінетами, мережевими клініками, зуботехнічними лабораторіями та навчальними
+            закладами. Для постійних клієнтів — персональний менеджер, відтермінування платежу й резерв ключових
+            позицій на складі.
+          </p>
+        </div>
+
+        <!-- Досягнення -->
+        <ul class="reveal reveal-d3 mt-9 grid gap-3 sm:grid-cols-2">
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600">
+              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true">
+                <path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="text-[15px] text-ink-700">Власний склад 900 м² у Києві</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600">
+              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true">
+                <path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="text-[15px] text-ink-700">Авторизований сервісний центр</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600">
+              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true">
+                <path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="text-[15px] text-ink-700">Відтермінування платежу для клінік</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600">
+              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true">
+                <path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="text-[15px] text-ink-700">Навчальні вебінари для лікарів</span>
+          </li>
+        </ul>
+
+        <div class="reveal reveal-d4 mt-9 flex flex-wrap gap-3">
+          <a href="catalog.html" class="btn-primary">Перейти до каталогу</a>
+          <a href="contacts.html" class="btn-secondary">Стати партнером</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     6. ВІДГУКИ
+     ====================================================================== -->
+<section id="reviews" class="scroll-mt-28 overflow-hidden py-20 lg:py-28" aria-labelledby="reviews-title">
+  <div class="container-x">
+    <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+      <div class="reveal">
+        <p class="eyebrow">Відгуки</p>
+        <h2 id="reviews-title" class="section-title mt-5">Що кажуть клієнти</h2>
+        <div class="mt-5 flex items-center gap-3">
+          <span class="flex" data-rating-stars></span>
+          <span class="text-sm text-ink-500">
+            <b class="font-semibold text-ink-900">4.9 з 5</b> · 1 284 відгуки
+          </span>
+        </div>
+      </div>
+
+      <!-- Стрілки -->
+      <div class="reveal reveal-d1 flex gap-2">
+        <button type="button" class="carousel-arrow" data-rev-prev aria-label="Попередній відгук">
+          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+            <path d="M14.5 5.5 8 12l6.5 6.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <button type="button" class="carousel-arrow" data-rev-next aria-label="Наступний відгук">
+          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+            <path d="M9.5 5.5 16 12l-6.5 6.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Карусель -->
+  <div class="reveal reveal-d2 mt-12">
+    <div class="container-x">
+      <div class="flex snap-x-mandatory gap-4 overflow-x-auto pb-4 no-scrollbar" data-rev-track></div>
+    </div>
+  </div>
+
+  <!-- Крапки -->
+  <div class="container-x mt-6 flex justify-center gap-2" data-rev-dots></div>
+</section>
+
+<!-- ======================================================================
+     7. CTA перед контактами
+     ====================================================================== -->
+<section class="container-x py-4 lg:py-10">
+  <div class="reveal relative overflow-hidden rounded-[2.5rem] bg-ink-950 px-6 py-14 text-center sm:px-12 lg:py-20">
+    <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+      <div class="absolute -left-20 top-0 h-80 w-80 rounded-full bg-brand-600/25 blur-[100px]"></div>
+      <div class="absolute -bottom-24 right-0 h-96 w-96 rounded-full bg-brand-500/15 blur-[110px]"></div>
+      <div class="absolute inset-0 opacity-[0.05] bg-grid"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-2xl">
+      <p class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-brand-300 ring-1 ring-white/15">
+        Персональні умови
+      </p>
+      <h2 class="mt-6 text-3xl font-semibold text-white sm:text-4xl lg:text-[2.75rem] lg:leading-[1.14]">
+        Забезпечуємо клініку під ключ
+      </h2>
+      <p class="mx-auto mt-5 max-w-xl text-base leading-relaxed text-ink-400">
+        Розкажіть про свою клініку — підготуємо індивідуальний прайс, розрахуємо місячну потребу
+        та закріпимо персонального менеджера. Консультація безкоштовна.
+      </p>
+      <div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+        <a href="contacts.html" class="btn bg-white px-8 py-4 font-semibold text-ink-900 hover:-translate-y-0.5 hover:bg-brand-50">
+          Отримати пропозицію
+        </a>
+        <a href="tel:+380445012280" class="btn border border-white/20 px-8 py-4 font-medium text-white hover:-translate-y-0.5 hover:bg-white/10">
+          <svg viewBox="0 0 24 24" class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M6.5 4h3l1.5 3.8-2 1.4a11.5 11.5 0 0 0 5.3 5.3l1.4-2L19.5 14v3a2 2 0 0 1-2.2 2A15.5 15.5 0 0 1 4.5 6.2 2 2 0 0 1 6.5 4Z" stroke-linejoin="round" />
+          </svg>
+          +380 (44) 501-22-80
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

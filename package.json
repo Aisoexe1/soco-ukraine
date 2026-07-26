@@ -1,0 +1,20 @@
+{
+  "name": "soco-ukraine",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SOCO Ukraine — премиальный интернет-магазин стоматологических материалов и оборудования",
+  "type": "module",
+  "scripts": {
+    "build:html": "node build.mjs",
+    "build:css": "tailwindcss -i ./src/input.css -o ./assets/css/style.css --minify",
+    "build": "npm run build:html && npm run build:css",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./assets/css/style.css --watch",
+    "dev": "node build.mjs --watch",
+    "serve": "node server.mjs"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "@tailwindcss/cli": "^4.3.3",
+    "tailwindcss": "^4.3.3"
+  }
+}

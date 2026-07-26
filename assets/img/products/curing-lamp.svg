@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="640" height="640" role="img">
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".55" stop-color="#f5f9ff"/>
+      <stop offset="1" stop-color="#e6efff"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".42" r=".62">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="shadow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#0a3f8f" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#0a3f8f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8fa3bd"/>
+      <stop offset=".18" stop-color="#e8eef7"/>
+      <stop offset=".42" stop-color="#ffffff"/>
+      <stop offset=".68" stop-color="#dde5f0"/>
+      <stop offset="1" stop-color="#93a6bf"/>
+    </linearGradient>
+    <linearGradient id="metalV" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4f7fc"/>
+      <stop offset=".5" stop-color="#dbe3ee"/>
+      <stop offset="1" stop-color="#a9b8cd"/>
+    </linearGradient>
+    <linearGradient id="blueG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5f97ff"/>
+      <stop offset=".5" stop-color="#0d6efd"/>
+      <stop offset="1" stop-color="#0a3f8f"/>
+    </linearGradient>
+    <linearGradient id="blueSoft" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eaf2ff"/>
+      <stop offset="1" stop-color="#c9dcff"/>
+    </linearGradient>
+    <linearGradient id="whiteG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".62" stop-color="#f2f6fc"/>
+      <stop offset="1" stop-color="#dde5f1"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".15"/>
+      <stop offset=".28" stop-color="#ffffff" stop-opacity=".72"/>
+      <stop offset=".55" stop-color="#ffffff" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#9fb4cf" stop-opacity=".35"/>
+    </linearGradient>
+    <linearGradient id="darkG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#33415c"/>
+      <stop offset="1" stop-color="#111a2e"/>
+    </linearGradient>
+    
+  </defs>
+  <rect width="640" height="640" fill="url(#bg)"/>
+  <circle cx="320" cy="288" r="248" fill="url(#glow)"/>
+  <ellipse cx="320" cy="566" rx="175" ry="26" fill="url(#shadow)"/>
+
+  <g transform="rotate(-26 320 330)">
+    <!-- рукоять -->
+    <rect x="284" y="242" width="72" height="266" rx="34" fill="url(#whiteG)" stroke="#cbd5e5" stroke-width="2.5"/>
+    <rect x="284" y="242" width="72" height="72" rx="34" fill="url(#blueG)"/>
+    <!-- дисплей -->
+    <rect x="298" y="336" width="44" height="60" rx="12" fill="url(#darkG)"/>
+    <rect x="306" y="346" width="28" height="8" rx="4" fill="#10b981"/>
+    <rect x="306" y="360" width="20" height="6" rx="3" fill="#64748b"/>
+    <rect x="306" y="372" width="28" height="6" rx="3" fill="#64748b"/>
+    <!-- кнопки -->
+    <circle cx="320" cy="418" r="14" fill="#0d6efd"/>
+    <circle cx="320" cy="452" r="10" fill="#e2e8f2"/>
+    <rect x="292" y="486" width="56" height="10" rx="5" fill="#e2e8f2"/>
+    <!-- световод -->
+    <path d="M300 242c-4-40-2-66 8-84 6-12 22-12 28 0 10 18 12 44 8 84z" fill="url(#metalV)" stroke="#cbd5e5" stroke-width="2"/>
+    <path d="M312 150c-6-18-2-32 8-42 10 10 14 24 8 42z" fill="#dbe8ff" stroke="#cbd5e5" stroke-width="2"/>
+    <!-- луч -->
+    <path d="M320 96c-40-16-64-44-70-84h140c-6 40-30 68-70 84z" fill="url(#blueG)" opacity=".22"/>
+    <circle cx="320" cy="112" r="20" fill="#5f97ff" opacity=".55"/>
+    <circle cx="320" cy="112" r="10" fill="#fff"/>
+    <rect x="292" y="250" width="14" height="240" rx="7" fill="#fff" opacity=".7"/>
+  </g>
+
+</svg>

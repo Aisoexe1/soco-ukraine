@@ -1,0 +1,57 @@
+<!--META
+{
+  "title": "Порівняння товарів — SOCO Ukraine",
+  "description": "Порівняйте характеристики, ціни та наявність стоматологічних матеріалів і обладнання поруч у зручній таблиці.",
+  "robots": "noindex, follow",
+  "script": "compare.js",
+  "breadcrumbs": [
+    { "name": "Головна", "url": "/" },
+    { "name": "Порівняння", "url": "/compare.html" }
+  ]
+}
+-->
+
+<section class="container-x py-8 lg:py-12">
+  <nav aria-label="Хлібні крихти" class="mb-6">
+    <ol class="flex flex-wrap items-center gap-2 text-[13px] text-ink-500">
+      <li><a href="index.html" class="transition-colors hover:text-brand-700">Головна</a></li>
+      <li aria-hidden="true" class="text-ink-300">/</li>
+      <li><span class="font-medium text-ink-900">Порівняння</span></li>
+    </ol>
+  </nav>
+
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <h1 class="text-3xl font-semibold tracking-tight text-ink-900 sm:text-4xl">Порівняння товарів</h1>
+      <p class="mt-3 text-[15px] text-ink-500">До чотирьох позицій поруч — щоб вибрати за характеристиками, а не навмання.</p>
+    </div>
+    <div class="flex flex-wrap gap-2" data-cmp-actions>
+      <label class="flex cursor-pointer items-center gap-2.5 rounded-full bg-white px-4 py-2.5 text-sm font-medium text-ink-600 ring-1 ring-ink-200 transition-colors hover:ring-brand-300">
+        <input type="checkbox" class="filter-box" data-cmp-diff />
+        Лише відмінності
+      </label>
+      <button type="button" class="btn-secondary" data-cmp-clear>Очистити</button>
+    </div>
+  </div>
+
+  <!-- Таблиця -->
+  <div class="mt-10 overflow-x-auto rounded-3xl ring-1 ring-ink-200/80" data-cmp-wrap>
+    <table class="w-full min-w-[720px] border-collapse bg-white text-left" data-cmp-table>
+      <caption class="sr-only">Порівняння характеристик обраних товарів</caption>
+    </table>
+  </div>
+
+  <!-- Порожньо -->
+  <div class="hidden py-16 text-center" data-cmp-empty>
+    <span class="mx-auto mb-6 grid h-24 w-24 place-items-center rounded-[2rem] bg-ink-50 text-ink-300">
+      <svg viewBox="0 0 24 24" class="h-12 w-12" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
+        <path d="M9 20V9m6 11V4M4 20v-6m16 6V12" stroke-linecap="round" />
+      </svg>
+    </span>
+    <h2 class="text-2xl font-semibold text-ink-900">Список порівняння порожній</h2>
+    <p class="mx-auto mt-3 max-w-md text-[15px] leading-relaxed text-ink-500">
+      Додайте до чотирьох товарів однієї категорії — і побачите всі характеристики поруч.
+    </p>
+    <a href="catalog.html" class="btn-primary btn-lg mt-8">Перейти до каталогу</a>
+  </div>
+</section>

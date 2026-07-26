@@ -1,0 +1,225 @@
+<!--META
+{
+  "title": "Товар — SOCO Ukraine",
+  "description": "Характеристики, ціна та наявність товару в каталозі SOCO Ukraine. Оригінальна продукція із сертифікатами, доставка по Україні за 1–2 дні.",
+  "nav": "catalog",
+  "script": "product.js",
+  "ogType": "product",
+  "breadcrumbs": [
+    { "name": "Головна", "url": "/" },
+    { "name": "Каталог", "url": "/catalog.html" }
+  ]
+}
+-->
+
+<!-- Хлібні крихти -->
+<div class="border-b border-ink-100 bg-ink-50/50">
+  <div class="container-x py-4">
+    <nav aria-label="Хлібні крихти">
+      <ol class="flex flex-wrap items-center gap-2 text-[13px] text-ink-500" data-breadcrumbs>
+        <li><a href="index.html" class="transition-colors hover:text-brand-700">Головна</a></li>
+        <li aria-hidden="true" class="text-ink-300">/</li>
+        <li><a href="catalog.html" class="transition-colors hover:text-brand-700">Каталог</a></li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<!-- Картка товару -->
+<article class="container-x py-8 lg:py-12" data-product-root>
+  <!-- Скелетон / помилка підставляються скриптом -->
+  <div class="grid gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-20">
+    <!-- ===== Галерея ===== -->
+    <div class="lg:sticky lg:top-[140px] lg:h-fit lg:self-start">
+      <div class="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-ink-50 to-brand-50/60 ring-1 ring-ink-200/70">
+        <div class="absolute left-5 top-5 z-10 flex flex-col items-start gap-2" data-p-badges></div>
+
+        <button type="button" class="absolute right-5 top-5 z-10 quick-btn h-10 w-10" data-p-fav aria-label="До обраного">
+          <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+            <path d="M12 20.5s-7.5-4.7-7.5-10A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.5 2.9c0 5.3-7.5 10-7.5 10Z" stroke-linejoin="round" />
+          </svg>
+        </button>
+
+        <img src="" alt="" width="640" height="640" class="aspect-square w-full object-cover transition-opacity duration-300" data-p-image />
+      </div>
+
+      <!-- Мініатюри -->
+      <div class="mt-3 grid grid-cols-4 gap-3" data-p-thumbs></div>
+
+      <!-- Довіра -->
+      <ul class="mt-6 grid gap-3 sm:grid-cols-3">
+        <li class="flex items-center gap-2.5 rounded-2xl bg-ink-50 px-3.5 py-3">
+          <svg viewBox="0 0 24 24" class="h-5 w-5 shrink-0 text-brand-600" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+            <path d="M12 3.5 5 6.4v4.4c0 4.2 2.8 8 7 9.2 4.2-1.2 7-5 7-9.2V6.4l-7-2.9Z" stroke-linejoin="round" />
+            <path d="m9.2 12 2 2 3.6-3.8" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span class="text-[12.5px] font-medium leading-tight text-ink-700">Оригінал<br />із сертифікатом</span>
+        </li>
+        <li class="flex items-center gap-2.5 rounded-2xl bg-ink-50 px-3.5 py-3">
+          <svg viewBox="0 0 24 24" class="h-5 w-5 shrink-0 text-brand-600" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+            <path d="M2.5 8h9.5v9H2.5zM12 11h4.6l2.9 3.3V17H12z" stroke-linejoin="round" />
+            <circle cx="6.6" cy="18.6" r="1.9" /><circle cx="16.4" cy="18.6" r="1.9" />
+          </svg>
+          <span class="text-[12.5px] font-medium leading-tight text-ink-700">Доставка<br />1–2 дні</span>
+        </li>
+        <li class="flex items-center gap-2.5 rounded-2xl bg-ink-50 px-3.5 py-3">
+          <svg viewBox="0 0 24 24" class="h-5 w-5 shrink-0 text-brand-600" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+            <path d="M19 12a7 7 0 1 1-2.4-5.3M19 4.5V9h-4.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span class="text-[12.5px] font-medium leading-tight text-ink-700">Повернення<br />14 днів</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ===== Інформація ===== -->
+    <div>
+      <div class="flex flex-wrap items-center gap-3">
+        <a href="#" class="text-[12px] font-semibold uppercase tracking-[0.12em] text-brand-600 hover:underline" data-p-brand></a>
+        <span class="text-ink-200">·</span>
+        <span class="text-[13px] text-ink-400">Артикул: <span data-p-sku class="font-medium text-ink-600"></span></span>
+      </div>
+
+      <h1 class="mt-3 text-2xl font-semibold leading-snug tracking-tight text-ink-900 sm:text-3xl lg:text-[2.1rem] lg:leading-[1.2]" data-p-name></h1>
+
+      <div class="mt-4 flex flex-wrap items-center gap-4">
+        <span class="flex items-center gap-1.5">
+          <span class="flex" data-p-stars></span>
+          <span class="text-sm font-semibold text-ink-900" data-p-rating></span>
+        </span>
+        <a href="#reviews" class="text-sm text-ink-500 underline underline-offset-2 transition-colors hover:text-brand-700" data-p-reviews></a>
+        <span data-p-stock></span>
+      </div>
+
+      <p class="mt-5 text-[15px] leading-relaxed text-ink-600" data-p-short></p>
+
+      <!-- Ціна та кошик -->
+      <div class="mt-7 rounded-3xl bg-gradient-to-br from-ink-50 to-brand-50/50 p-5 ring-1 ring-ink-200/70 sm:p-6">
+        <div class="flex flex-wrap items-end gap-x-4 gap-y-2">
+          <span class="text-4xl font-bold tracking-tight text-ink-900" data-p-price></span>
+          <span class="text-lg text-ink-400 line-through" data-p-old></span>
+          <span data-p-save></span>
+        </div>
+        <p class="mt-1.5 text-[13px] text-ink-500">Ціна за <span data-p-unit></span> · з ПДВ</p>
+
+        <div class="mt-5 flex flex-col gap-3 sm:flex-row">
+          <!-- Кількість -->
+          <div class="flex h-14 shrink-0 items-center rounded-full bg-white ring-1 ring-ink-200">
+            <button type="button" class="grid h-14 w-12 place-items-center rounded-l-full text-ink-600 transition-colors hover:text-brand-700 active:scale-90" data-qty-minus aria-label="Зменшити кількість">
+              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 12h12" stroke-linecap="round" /></svg>
+            </button>
+            <label for="qty" class="sr-only">Кількість</label>
+            <input id="qty" type="number" min="1" max="99" value="1" class="h-14 w-12 border-0 bg-transparent p-0 text-center text-base font-semibold text-ink-900 focus:outline-none" data-qty />
+            <button type="button" class="grid h-14 w-12 place-items-center rounded-r-full text-ink-600 transition-colors hover:text-brand-700 active:scale-90" data-qty-plus aria-label="Збільшити кількість">
+              <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 6v12M6 12h12" stroke-linecap="round" /></svg>
+            </button>
+          </div>
+
+          <button type="button" class="btn-primary h-14 flex-1 text-base" data-p-add>
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M3 4h2.2l2 11.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.5L20.5 8H6" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="10" cy="20" r="1.4" fill="currentColor" stroke="none" /><circle cx="17" cy="20" r="1.4" fill="currentColor" stroke="none" />
+            </svg>
+            Додати в кошик
+          </button>
+
+          <button type="button" class="btn-secondary h-14 w-14 shrink-0 !px-0" data-p-compare aria-label="До порівняння">
+            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+              <path d="M9 20V9m6 11V4M4 20v-6m16 6V12" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+
+        <p class="mt-4 flex items-center gap-2 text-[13px] text-ink-500">
+          <svg viewBox="0 0 24 24" class="h-4 w-4 shrink-0 text-mint-500" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          Безкоштовна доставка від 3 000 ₴ · виставляємо рахунок для клінік
+        </p>
+      </div>
+
+      <!-- Ключові переваги -->
+      <ul class="mt-7 grid gap-2.5" data-p-features></ul>
+
+      <!-- Вкладки -->
+      <div class="mt-9">
+        <div class="flex gap-1.5 overflow-x-auto rounded-full bg-ink-100 p-1.5 no-scrollbar" role="tablist" aria-label="Інформація про товар">
+          <button type="button" class="tab-btn is-active" data-ptab="desc" role="tab" aria-selected="true">Опис</button>
+          <button type="button" class="tab-btn" data-ptab="specs" role="tab" aria-selected="false">Характеристики</button>
+          <button type="button" class="tab-btn" data-ptab="delivery" role="tab" aria-selected="false">Доставка й оплата</button>
+        </div>
+
+        <div class="mt-6" data-ptab-panel="desc">
+          <p class="text-[15px] leading-relaxed text-ink-600" data-p-desc></p>
+        </div>
+
+        <div class="mt-6 hidden" data-ptab-panel="specs">
+          <dl class="overflow-hidden rounded-2xl ring-1 ring-ink-200" data-p-specs></dl>
+        </div>
+
+        <div class="mt-6 hidden space-y-4 text-[15px] leading-relaxed text-ink-600" data-ptab-panel="delivery">
+          <p>
+            <b class="font-semibold text-ink-900">Доставка.</b> Замовлення, оформлені до 15:00, вирушають зі складу
+            того ж дня. Нова Пошта та Укрпошта по всій Україні — 1–2 дні. По Києву працює курʼєр із доставкою день
+            у день. Від 3 000 ₴ доставка безкоштовна.
+          </p>
+          <p>
+            <b class="font-semibold text-ink-900">Оплата.</b> Картка Visa/Mastercard, Apple Pay, Google Pay, накладений
+            платіж або безготівковий розрахунок для ФОП і юридичних осіб. Для клінік доступне відтермінування платежу
+            до 30 днів.
+          </p>
+          <p>
+            <b class="font-semibold text-ink-900">Документи.</b> Разом із замовленням надсилаємо видаткову накладну,
+            за потреби — рахунок-фактуру, договір і сертифікати відповідності на партію.
+          </p>
+          <a href="delivery.html" class="link-arrow">
+            Детальні умови доставки
+            <svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10h11m0 0-4-4m4 4-4 4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Схожі товари ===== -->
+  <section class="mt-20 lg:mt-28" aria-labelledby="related-title">
+    <div class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <p class="eyebrow">З цієї категорії</p>
+        <h2 id="related-title" class="section-title mt-4 !text-3xl">Схожі товари</h2>
+      </div>
+      <a href="catalog.html" class="btn-secondary shrink-0" data-related-all>
+        Уся категорія
+        <svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10h11m0 0-4-4m4 4-4 4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </a>
+    </div>
+    <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-related-grid></div>
+  </section>
+
+  <!-- ===== Відгуки ===== -->
+  <section id="reviews" class="mt-20 scroll-mt-32 lg:mt-28" aria-labelledby="p-reviews-title">
+    <div class="rounded-[2rem] bg-ink-50 p-7 lg:p-12">
+      <div class="grid gap-10 lg:grid-cols-[300px_1fr] lg:gap-14">
+        <!-- Зведення -->
+        <div>
+          <p class="eyebrow">Відгуки</p>
+          <h2 id="p-reviews-title" class="mt-4 text-2xl font-semibold text-ink-900">Оцінки лікарів</h2>
+
+          <div class="mt-6 flex items-end gap-3">
+            <span class="text-5xl font-bold tracking-tight text-ink-900" data-p-rating-big></span>
+            <span class="pb-2">
+              <span class="flex" data-p-stars-big></span>
+              <span class="mt-1 block text-[13px] text-ink-500" data-p-reviews-count></span>
+            </span>
+          </div>
+
+          <div class="mt-6 space-y-2" data-p-rating-bars></div>
+
+          <a href="contacts.html" class="btn-secondary mt-7 w-full">Залишити відгук</a>
+        </div>
+
+        <!-- Список -->
+        <div class="space-y-4" data-p-review-list></div>
+      </div>
+    </div>
+  </section>
+</article>

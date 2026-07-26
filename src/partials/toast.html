@@ -1,0 +1,38 @@
+<!-- ================= Спливні сповіщення ================= -->
+<div
+  class="pointer-events-none fixed inset-x-4 bottom-24 z-[90] flex flex-col items-center gap-2.5 sm:inset-x-auto sm:right-6 sm:top-24 sm:bottom-auto sm:items-end"
+  data-toast-root
+  role="status"
+  aria-live="polite"
+></div>
+
+<!-- ================= Cookie-банер ================= -->
+<div
+  class="pointer-events-none fixed inset-x-4 bottom-5 z-[85] translate-y-6 opacity-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] sm:inset-x-auto sm:left-6 sm:max-w-md"
+  data-cookie-banner
+  hidden
+>
+  <div class="pointer-events-auto rounded-3xl bg-white p-5 shadow-xl ring-1 ring-ink-200">
+    <div class="flex items-start gap-3.5">
+      <span class="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-brand-50 text-brand-600">
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+          <path d="M12 3.5a8.5 8.5 0 1 0 8.5 8.5 3.4 3.4 0 0 1-4.3-4.3A3.4 3.4 0 0 1 12 3.5Z" stroke-linejoin="round" />
+          <circle cx="9.5" cy="12.5" r="1" fill="currentColor" stroke="none" />
+          <circle cx="13.5" cy="15.5" r="1" fill="currentColor" stroke="none" />
+          <circle cx="9" cy="8.5" r="1" fill="currentColor" stroke="none" />
+        </svg>
+      </span>
+      <div class="min-w-0">
+        <p class="text-sm font-semibold text-ink-900">Ми використовуємо cookie</p>
+        <p class="mt-1 text-[13px] leading-relaxed text-ink-500">
+          Лише необхідні файли для роботи кошика та обраного. Докладніше — у
+          <a href="privacy.html#cookies" class="font-medium text-brand-600 hover:underline">політиці конфіденційності</a>.
+        </p>
+        <div class="mt-3.5 flex gap-2">
+          <button type="button" class="btn-primary btn-sm" data-cookie-accept>Добре</button>
+          <a href="privacy.html#cookies" class="btn-ghost btn-sm rounded-full">Налаштувати</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
