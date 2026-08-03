@@ -1,7 +1,7 @@
 <!--META
 {
-  "title": "Товар — SOCO Ukraine",
-  "description": "Характеристики, ціна та наявність товару в каталозі SOCO Ukraine. Оригінальна продукція із сертифікатами, доставка по Україні за 1–2 дні.",
+  "title": "Товар — {{SITE_NAME}}",
+  "description": "Характеристики, ціна та наявність товару в каталозі {{SITE_NAME}}. Офіційна гарантія виробника, доставка по Україні за 1–3 дні.",
   "nav": "catalog",
   "script": "product.js",
   "ogType": "product",
@@ -53,14 +53,14 @@
             <path d="M12 3.5 5 6.4v4.4c0 4.2 2.8 8 7 9.2 4.2-1.2 7-5 7-9.2V6.4l-7-2.9Z" stroke-linejoin="round" />
             <path d="m9.2 12 2 2 3.6-3.8" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
-          <span class="text-[12.5px] font-medium leading-tight text-ink-700">Оригінал<br />із сертифікатом</span>
+          <span class="text-[12.5px] font-medium leading-tight text-ink-700">Гарантія<br />виробника</span>
         </li>
         <li class="flex items-center gap-2.5 rounded-2xl bg-ink-50 px-3.5 py-3">
           <svg viewBox="0 0 24 24" class="h-5 w-5 shrink-0 text-brand-600" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
             <path d="M2.5 8h9.5v9H2.5zM12 11h4.6l2.9 3.3V17H12z" stroke-linejoin="round" />
             <circle cx="6.6" cy="18.6" r="1.9" /><circle cx="16.4" cy="18.6" r="1.9" />
           </svg>
-          <span class="text-[12.5px] font-medium leading-tight text-ink-700">Доставка<br />1–2 дні</span>
+          <span class="text-[12.5px] font-medium leading-tight text-ink-700">Доставка<br />1–3 дні</span>
         </li>
         <li class="flex items-center gap-2.5 rounded-2xl bg-ink-50 px-3.5 py-3">
           <svg viewBox="0 0 24 24" class="h-5 w-5 shrink-0 text-brand-600" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
@@ -99,7 +99,7 @@
           <span class="text-lg text-ink-400 line-through" data-p-old></span>
           <span data-p-save></span>
         </div>
-        <p class="mt-1.5 text-[13px] text-ink-500">Ціна за <span data-p-unit></span> · з ПДВ</p>
+        <p class="mt-1.5 text-[13px] text-ink-500">Ціна за <span data-p-unit></span></p>
 
         <div class="mt-5 flex flex-col gap-3 sm:flex-row">
           <!-- Кількість -->
@@ -133,7 +133,7 @@
           <svg viewBox="0 0 24 24" class="h-4 w-4 shrink-0 text-mint-500" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
-          Безкоштовна доставка від 3 000 ₴ · виставляємо рахунок для клінік
+          Нова Пошта від 50 ₴ · 1–3 дні · самовивіз у Києві
         </p>
       </div>
 
@@ -158,18 +158,18 @@
 
         <div class="mt-6 hidden space-y-4 text-[15px] leading-relaxed text-ink-600" data-ptab-panel="delivery">
           <p>
-            <b class="font-semibold text-ink-900">Доставка.</b> Замовлення, оформлені до 15:00, вирушають зі складу
-            того ж дня. Нова Пошта та Укрпошта по всій Україні — 1–2 дні. По Києву працює курʼєр із доставкою день
-            у день. Від 3 000 ₴ доставка безкоштовна.
+            <b class="font-semibold text-ink-900">Доставка.</b> Нова Пошта до відділення — від 50 ₴,
+            1–3 дні. Адресна доставка курʼєром Нової Пошти по Україні — від 85 ₴, 1–3 дні.
+            У Києві доступний самовивіз за адресою {{ADDRESS}}.
           </p>
           <p>
-            <b class="font-semibold text-ink-900">Оплата.</b> Картка Visa/Mastercard, Apple Pay, Google Pay, накладений
-            платіж або безготівковий розрахунок для ФОП і юридичних осіб. Для клінік доступне відтермінування платежу
-            до 30 днів.
+            <b class="font-semibold text-ink-900">Оплата.</b> На картку або реквізити ФОП, готівкою
+            при самовивозі, післяплата. Доставка здійснюється тільки по передоплаті — усі
+            відправлення на сайті виконуються з передоплатою 200 ₴.
           </p>
           <p>
-            <b class="font-semibold text-ink-900">Документи.</b> Разом із замовленням надсилаємо видаткову накладну,
-            за потреби — рахунок-фактуру, договір і сертифікати відповідності на партію.
+            <b class="font-semibold text-ink-900">Гарантія.</b> Термін залежить від сервісної політики
+            виробника й вказаний в описі товару. Повернення та обмін — протягом 14 днів після отримання.
           </p>
           <a href="delivery.html" class="link-arrow">
             Детальні умови доставки

@@ -1,7 +1,7 @@
 <!--META
 {
-  "title": "Особистий кабінет — SOCO Ukraine",
-  "description": "Історія замовлень, дані клініки, адреси доставки та персональні умови в особистому кабінеті SOCO Ukraine.",
+  "title": "Особистий кабінет — {{SITE_NAME}}",
+  "description": "Історія замовлень, дані клініки, адреси доставки та персональні умови в особистому кабінеті {{SITE_NAME}}.",
   "robots": "noindex, nofollow",
   "script": "account.js",
   "breadcrumbs": [
@@ -63,7 +63,7 @@
         <!-- Реєстрація -->
         <form class="mt-8 hidden space-y-4" data-auth-panel="register" novalidate>
           <h1 class="text-2xl font-semibold text-ink-900">Створити акаунт</h1>
-          <p class="!mt-2 text-[14.5px] text-ink-500">Для клінік і спеціалістів — персональні ціни та відтермінування платежу.</p>
+          <p class="!mt-2 text-[14.5px] text-ink-500">Історія замовлень, обране та порівняння — в одному місці.</p>
 
           <div class="!mt-7 grid gap-4 sm:grid-cols-2">
             <div>
@@ -81,7 +81,7 @@
           </div>
           <div>
             <label for="r-company" class="field-label">Клініка / ФОП</label>
-            <input id="r-company" name="company" class="field" placeholder="Стоматологія «Дентал Арт»" />
+            <input id="r-company" name="company" class="field" placeholder="Назва клініки або ФОП" />
           </div>
           <div>
             <label for="r-pass" class="field-label">Пароль</label>
@@ -127,8 +127,8 @@
                 <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
               <span>
-                <span class="block text-[15px] font-semibold">Персональні ціни</span>
-                <span class="mt-1 block text-sm text-brand-100">Накопичувальна знижка до 15 % і окремі умови на оптові обсяги.</span>
+                <span class="block text-[15px] font-semibold">Обране та порівняння</span>
+                <span class="mt-1 block text-sm text-brand-100">Збережені позиції завжди під рукою — не треба шукати їх заново.</span>
               </span>
             </li>
             <li class="flex items-start gap-3.5">
@@ -136,8 +136,8 @@
                 <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
               <span>
-                <span class="block text-[15px] font-semibold">Документи в одному місці</span>
-                <span class="mt-1 block text-sm text-brand-100">Рахунки, накладні та сертифікати доступні для завантаження будь-коли.</span>
+                <span class="block text-[15px] font-semibold">Історія замовлень</span>
+                <span class="mt-1 block text-sm text-brand-100">Склад і статус кожного замовлення видно в одному списку.</span>
               </span>
             </li>
             <li class="flex items-start gap-3.5">
@@ -145,8 +145,8 @@
                 <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
               <span>
-                <span class="block text-[15px] font-semibold">Персональний менеджер</span>
-                <span class="mt-1 block text-sm text-brand-100">Знає ваш профіль і сам нагадає, коли час оновити запас.</span>
+                <span class="block text-[15px] font-semibold">Швидкий звʼязок</span>
+                <span class="mt-1 block text-sm text-brand-100">Контакти менеджера завжди під рукою — телефон, Viber, пошта.</span>
               </span>
             </li>
           </ul>
@@ -184,14 +184,10 @@
         <span class="block text-[13px] text-ink-500">Куплено на суму</span>
         <span class="mt-2 block text-3xl font-bold tracking-tight text-ink-900" data-stat-total>0 ₴</span>
       </div>
-      <div class="rounded-3xl bg-white p-6 ring-1 ring-ink-200/80">
-        <span class="block text-[13px] text-ink-500">Персональна знижка</span>
-        <span class="mt-2 block text-3xl font-bold tracking-tight text-brand-600" data-stat-discount>5 %</span>
-      </div>
       <div class="rounded-3xl bg-gradient-to-br from-brand-600 to-brand-800 p-6 text-white">
         <span class="block text-[13px] text-brand-100">Ваш менеджер</span>
-        <span class="mt-2 block text-lg font-semibold">Анна Литвиненко</span>
-        <a href="tel:+380674011590" class="mt-1 block text-sm text-brand-100 hover:text-white">+380 (67) 401-15-90</a>
+        <span class="mt-2 block text-lg font-semibold">{{CONTACT_PERSON}}</span>
+        <a href="tel:{{PHONE_HREF}}" class="mt-1 block text-sm text-brand-100 hover:text-white">{{PHONE}}</a>
       </div>
     </div>
 

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="640" height="640" role="img">
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".55" stop-color="#f5f9ff"/>
+      <stop offset="1" stop-color="#e6efff"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".42" r=".62">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="shadow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#0a3f8f" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#0a3f8f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8fa3bd"/>
+      <stop offset=".18" stop-color="#e8eef7"/>
+      <stop offset=".42" stop-color="#ffffff"/>
+      <stop offset=".68" stop-color="#dde5f0"/>
+      <stop offset="1" stop-color="#93a6bf"/>
+    </linearGradient>
+    <linearGradient id="metalV" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4f7fc"/>
+      <stop offset=".5" stop-color="#dbe3ee"/>
+      <stop offset="1" stop-color="#a9b8cd"/>
+    </linearGradient>
+    <linearGradient id="blueG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5f97ff"/>
+      <stop offset=".5" stop-color="#0d6efd"/>
+      <stop offset="1" stop-color="#0a3f8f"/>
+    </linearGradient>
+    <linearGradient id="blueSoft" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eaf2ff"/>
+      <stop offset="1" stop-color="#c9dcff"/>
+    </linearGradient>
+    <linearGradient id="whiteG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".62" stop-color="#f2f6fc"/>
+      <stop offset="1" stop-color="#dde5f1"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".15"/>
+      <stop offset=".28" stop-color="#ffffff" stop-opacity=".72"/>
+      <stop offset=".55" stop-color="#ffffff" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#9fb4cf" stop-opacity=".35"/>
+    </linearGradient>
+    <linearGradient id="darkG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#33415c"/>
+      <stop offset="1" stop-color="#111a2e"/>
+    </linearGradient>
+    
+  </defs>
+  <rect width="640" height="640" fill="url(#bg)"/>
+  <circle cx="320" cy="288" r="248" fill="url(#glow)"/>
+  <ellipse cx="320" cy="566" rx="175" ry="26" fill="url(#shadow)"/>
+
+  <!-- крышка -->
+  <ellipse cx="320" cy="176" rx="112" ry="30" fill="#0b5ed7"/>
+  <rect x="208" y="176" width="224" height="40" fill="url(#blueG)"/>
+  <ellipse cx="320" cy="216" rx="112" ry="30" fill="#0d6efd" opacity=".9"/>
+  <ellipse cx="320" cy="174" rx="46" ry="14" fill="#0a3f8f" opacity=".6"/>
+  <!-- вытянутая салфетка -->
+  <path d="M292 172c-6-38-4-66 10-92 6-10 22-6 20 6-6 30-8 54-2 84z" fill="#fff" stroke="#cbd5e5" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M300 96c8-14 22-22 40-24" stroke="#e2e8f2" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <!-- корпус -->
+  <path d="M208 210h224v272a30 30 0 0 1-30 30H238a30 30 0 0 1-30-30z" fill="url(#whiteG)" stroke="#cbd5e5" stroke-width="2.5"/>
+  <ellipse cx="320" cy="482" rx="112" ry="28" fill="#eef3fa"/>
+  <rect x="208" y="268" width="224" height="150" fill="#f7fafe" stroke="#e2e8f2" stroke-width="2"/>
+  <rect x="238" y="292" width="140" height="16" rx="8" fill="url(#blueG)"/>
+  <rect x="238" y="320" width="96" height="11" rx="5.5" fill="#e2e8f2"/>
+  <rect x="238" y="344" width="118" height="11" rx="5.5" fill="#e2e8f2"/>
+  <rect x="238" y="376" width="86" height="28" rx="14" fill="#eff5ff"/>
+  <text x="281" y="395" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#0d6efd" text-anchor="middle">200</text>
+  <rect x="222" y="226" width="18" height="270" rx="9" fill="#fff" opacity=".8"/>
+
+</svg>

@@ -1,7 +1,7 @@
 <!--META
 {
-  "title": "Кошик — SOCO Ukraine",
-  "description": "Ваше замовлення в SOCO Ukraine: перевірте склад, оберіть спосіб доставки й оплати. Безкоштовна доставка від 3 000 ₴.",
+  "title": "Кошик — {{SITE_NAME}}",
+  "description": "Ваше замовлення в {{SITE_NAME}}: перевірте склад, оберіть спосіб доставки й оплати.",
   "robots": "noindex, follow",
   "script": "cart.js",
   "breadcrumbs": [
@@ -116,29 +116,20 @@
 
           <div class="grid gap-3 sm:grid-cols-2">
             <label class="radio-card">
-              <input type="radio" name="delivery" value="np" data-delivery data-price="0" checked class="peer sr-only" />
+              <input type="radio" name="delivery" value="np" data-delivery data-price="50" checked class="peer sr-only" />
               <span class="radio-dot"></span>
               <span class="min-w-0 flex-1">
                 <span class="block text-sm font-semibold text-ink-900">Нова Пошта, відділення</span>
-                <span class="mt-0.5 block text-xs text-ink-500">1–2 дні · за тарифами перевізника</span>
+                <span class="mt-0.5 block text-xs text-ink-500">1–3 дні · від 50 ₴</span>
               </span>
             </label>
 
             <label class="radio-card">
-              <input type="radio" name="delivery" value="np-courier" data-delivery data-price="90" class="peer sr-only" />
+              <input type="radio" name="delivery" value="np-courier" data-delivery data-price="85" class="peer sr-only" />
               <span class="radio-dot"></span>
               <span class="min-w-0 flex-1">
-                <span class="block text-sm font-semibold text-ink-900">Нова Пошта, курʼєр</span>
-                <span class="mt-0.5 block text-xs text-ink-500">1–2 дні · +90 ₴</span>
-              </span>
-            </label>
-
-            <label class="radio-card">
-              <input type="radio" name="delivery" value="kyiv" data-delivery data-price="120" class="peer sr-only" />
-              <span class="radio-dot"></span>
-              <span class="min-w-0 flex-1">
-                <span class="block text-sm font-semibold text-ink-900">Курʼєр по Києву</span>
-                <span class="mt-0.5 block text-xs text-ink-500">День у день · +120 ₴</span>
+                <span class="block text-sm font-semibold text-ink-900">Курʼєр Нової Пошти</span>
+                <span class="mt-0.5 block text-xs text-ink-500">1–3 дні · від 85 ₴</span>
               </span>
             </label>
 
@@ -146,8 +137,8 @@
               <input type="radio" name="delivery" value="pickup" data-delivery data-price="0" class="peer sr-only" />
               <span class="radio-dot"></span>
               <span class="min-w-0 flex-1">
-                <span class="block text-sm font-semibold text-ink-900">Самовивіз зі складу</span>
-                <span class="mt-0.5 block text-xs text-ink-500">вул. Антоновича, 44 · безкоштовно</span>
+                <span class="block text-sm font-semibold text-ink-900">Самовивіз</span>
+                <span class="mt-0.5 block text-xs text-ink-500">{{ADDRESS_SHORT}} · безкоштовно</span>
               </span>
             </label>
           </div>
@@ -177,7 +168,7 @@
               <span class="radio-dot"></span>
               <span class="min-w-0 flex-1">
                 <span class="block text-sm font-semibold text-ink-900">Картка онлайн</span>
-                <span class="mt-0.5 block text-xs text-ink-500">Visa · Mastercard · Apple Pay</span>
+                <span class="mt-0.5 block text-xs text-ink-500">На картку або реквізити ФОП</span>
               </span>
             </label>
             <label class="radio-card">
@@ -192,16 +183,8 @@
               <input type="radio" name="payment" value="invoice" class="peer sr-only" />
               <span class="radio-dot"></span>
               <span class="min-w-0 flex-1">
-                <span class="block text-sm font-semibold text-ink-900">Рахунок для ФОП / ТОВ</span>
-                <span class="mt-0.5 block text-xs text-ink-500">Безготівковий розрахунок з ПДВ</span>
-              </span>
-            </label>
-            <label class="radio-card">
-              <input type="radio" name="payment" value="parts" class="peer sr-only" />
-              <span class="radio-dot"></span>
-              <span class="min-w-0 flex-1">
-                <span class="block text-sm font-semibold text-ink-900">Оплата частинами</span>
-                <span class="mt-0.5 block text-xs text-ink-500">до 6 платежів, monobank</span>
+                <span class="block text-sm font-semibold text-ink-900">Готівкою</span>
+                <span class="mt-0.5 block text-xs text-ink-500">Готівкою при самовивозі</span>
               </span>
             </label>
           </div>
@@ -219,15 +202,6 @@
       <div class="rounded-3xl bg-white p-6 shadow-lg ring-1 ring-ink-200/80">
         <h2 class="text-lg font-semibold text-ink-900">Разом</h2>
 
-        <!-- Промокод -->
-        <div class="mt-5">
-          <label for="promo" class="field-label">Промокод</label>
-          <div class="flex gap-2">
-            <input id="promo" class="field py-2.5 text-sm uppercase" placeholder="SOCO10" data-promo />
-            <button type="button" class="btn-secondary shrink-0 px-5 py-2.5 text-sm" data-promo-apply>Застосувати</button>
-          </div>
-          <p class="mt-2 hidden text-xs" data-promo-msg></p>
-        </div>
 
         <dl class="mt-6 space-y-3 border-t border-ink-100 pt-5 text-[14.5px]">
           <div class="flex justify-between">
@@ -238,22 +212,16 @@
             <dt class="text-ink-500">Знижка на товари</dt>
             <dd class="font-medium text-rose-600" data-sum-savings>0 ₴</dd>
           </div>
-          <div class="hidden justify-between" data-sum-promo-row>
-            <dt class="text-ink-500">Промокод <span class="font-medium text-brand-700" data-sum-promo-code></span></dt>
-            <dd class="font-medium text-rose-600" data-sum-promo>0 ₴</dd>
-          </div>
           <div class="flex justify-between">
             <dt class="text-ink-500">Доставка</dt>
             <dd class="font-medium text-ink-900" data-sum-delivery>Безкоштовно</dd>
           </div>
         </dl>
 
-        <!-- Прогрес до безкоштовної доставки -->
-        <div class="mt-5 rounded-2xl bg-brand-50 p-4" data-free-progress>
-          <p class="text-[13px] leading-relaxed text-brand-800" data-free-text></p>
-          <div class="mt-2.5 h-1.5 overflow-hidden rounded-full bg-white">
-            <div class="h-full rounded-full bg-brand-600 transition-all duration-500" data-free-bar style="width:0%"></div>
-          </div>
+        <p class="mt-5 rounded-2xl bg-ink-50 p-4 text-[13px] leading-relaxed text-ink-500">
+          Доставка здійснюється тільки по передоплаті. Усі відправлення на сайті виконуються
+          з передоплатою 200&nbsp;₴.
+        </p>
         </div>
 
         <div class="mt-5 flex items-end justify-between border-t border-ink-100 pt-5">
@@ -275,11 +243,11 @@
         <ul class="mt-6 space-y-2.5 border-t border-ink-100 pt-5">
           <li class="flex items-center gap-2.5 text-[13px] text-ink-500">
             <svg viewBox="0 0 24 24" class="h-4 w-4 shrink-0 text-mint-500" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Менеджер підтвердить замовлення за 15 хвилин
+            Менеджер підтвердить замовлення
           </li>
           <li class="flex items-center gap-2.5 text-[13px] text-ink-500">
             <svg viewBox="0 0 24 24" class="h-4 w-4 shrink-0 text-mint-500" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Повний пакет документів для клініки
+            Офіційна гарантія виробника
           </li>
           <li class="flex items-center gap-2.5 text-[13px] text-ink-500">
             <svg viewBox="0 0 24 24" class="h-4 w-4 shrink-0 text-mint-500" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -300,7 +268,7 @@
     <h2 class="text-3xl font-semibold text-ink-900">Замовлення прийнято</h2>
     <p class="mx-auto mt-3 max-w-lg text-[15px] leading-relaxed text-ink-500">
       Номер вашого замовлення — <b class="font-semibold text-ink-900" data-order-number></b>.
-      Менеджер зателефонує протягом 15 хвилин, щоб підтвердити склад і термін доставки.
+      Менеджер зателефонує, щоб підтвердити склад замовлення й термін доставки.
       Копію відправили на вказану пошту.
     </p>
     <div class="mt-8 flex flex-wrap justify-center gap-3">

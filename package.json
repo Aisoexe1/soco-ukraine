@@ -8,6 +8,10 @@
     "build:html": "node build.mjs",
     "build:css": "tailwindcss -i ./src/input.css -o ./assets/css/style.css --minify",
     "build": "npm run build:html && npm run build:css",
+    "build:themes": "node build.mjs --themes",
+    "build:theme-one": "node build.mjs --theme=premium-black",
+    "build:theme-two": "node build.mjs --theme=dental-future",
+    "build:all": "npm run build && npm run build:themes",
     "watch:css": "tailwindcss -i ./src/input.css -o ./assets/css/style.css --watch",
     "dev": "node build.mjs --watch",
     "serve": "node server.mjs"

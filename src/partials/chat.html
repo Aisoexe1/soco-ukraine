@@ -1,5 +1,5 @@
 <!-- ================= Онлайн-чат ================= -->
-<div class="fixed bottom-5 right-5 z-[60] flex flex-col items-end gap-3 lg:bottom-7 lg:right-7">
+<div class="pointer-events-none fixed bottom-5 right-5 z-[60] flex flex-col items-end gap-3 lg:bottom-7">
   <!-- Панель чату -->
   <section
     class="pointer-events-none invisible w-[min(384px,calc(100vw-2.5rem))] translate-y-4 scale-95 overflow-hidden rounded-3xl bg-white opacity-0 shadow-xl ring-1 ring-ink-200 transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)]"
@@ -19,7 +19,7 @@
           <span class="absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-full bg-mint-500 ring-2 ring-brand-700"></span>
         </span>
         <div class="min-w-0 flex-1">
-          <p class="text-[15px] font-semibold leading-tight">Анна · SOCO Ukraine</p>
+          <p class="text-[15px] font-semibold leading-tight">Анна · {{SITE_NAME}}</p>
           <p class="mt-0.5 flex items-center gap-1.5 text-xs text-brand-100">
             <span class="h-1.5 w-1.5 rounded-full bg-mint-500"></span>
             Онлайн · відповідаємо за ~2 хв
@@ -45,6 +45,25 @@
       <button type="button" class="chip-suggest shrink-0" data-chat-preset="Допоможіть підібрати аналог">Підбір аналога</button>
     </div>
 
+    <!-- Контакти для відповіді менеджера -->
+    <form class="hidden border-t border-ink-100 bg-white px-4 py-3" data-chat-contact-form novalidate aria-hidden="true">
+      <p class="text-[12px] leading-relaxed text-ink-500">Щоб менеджер міг відповісти, залиште контакти.</p>
+      <input type="text" name="website" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <div class="mt-2 grid grid-cols-2 gap-2">
+        <label for="chat-name" class="sr-only">Імʼя</label>
+        <input id="chat-name" name="name" required autocomplete="name" class="field h-10 py-0 text-[13px]" placeholder="Імʼя" />
+        <label for="chat-phone" class="sr-only">Телефон</label>
+        <input id="chat-phone" name="phone" type="tel" required autocomplete="tel" class="field h-10 py-0 text-[13px]" placeholder="Телефон" />
+        <label for="chat-email" class="sr-only">E-mail</label>
+        <input id="chat-email" name="email" type="email" required autocomplete="email" class="field col-span-2 h-10 py-0 text-[13px]" placeholder="E-mail" />
+      </div>
+      <label class="mt-2 flex cursor-pointer items-start gap-2 text-[11px] leading-snug text-ink-500">
+        <input type="checkbox" name="consent" class="filter-box mt-0.5" required />
+        <span>Погоджуюся на обробку даних за <a href="privacy.html" class="text-brand-700 hover:underline">політикою конфіденційності</a>.</span>
+      </label>
+      <button type="submit" class="btn-primary mt-2 h-10 w-full px-4 py-0 text-[13px]" data-chat-contact-submit>Передати менеджеру</button>
+    </form>
+
     <!-- Введення -->
     <form class="flex items-center gap-2 border-t border-ink-100 px-4 py-3" data-chat-form>
       <label for="chat-input" class="sr-only">Повідомлення</label>
@@ -52,6 +71,7 @@
         id="chat-input"
         name="message"
         autocomplete="off"
+        maxlength="1000"
         placeholder="Напишіть повідомлення…"
         class="field h-11 flex-1 rounded-full py-0 text-[15px]"
         data-chat-input
@@ -65,7 +85,7 @@
 
     <p class="border-t border-ink-100 bg-white px-4 pb-3 pt-2.5 text-center text-[11px] text-ink-400">
       Також доступні
-      <a href="https://t.me/socoukraine" target="_blank" rel="noopener noreferrer" class="font-medium text-brand-600 hover:underline">Telegram</a>
+      <a href="viber://chat?number=%2B380987555588" class="font-medium text-brand-600 hover:underline">Viber</a>
       и
       <a href="viber://chat?number=%2B380674011590" class="font-medium text-brand-600 hover:underline">Viber</a>
     </p>
@@ -74,7 +94,7 @@
   <!-- Кнопка чату -->
   <button
     type="button"
-    class="group relative grid h-14 w-14 place-items-center rounded-full bg-brand-600 text-white shadow-brand transition-all duration-350 hover:scale-105 hover:bg-brand-700 active:scale-95"
+    class="pointer-events-auto group relative grid h-14 w-14 place-items-center rounded-full bg-brand-600 text-white shadow-brand transition-all duration-350 hover:scale-105 hover:bg-brand-700 active:scale-95"
     data-chat-toggle
     aria-label="Відкрити онлайн-чат"
     aria-expanded="false"

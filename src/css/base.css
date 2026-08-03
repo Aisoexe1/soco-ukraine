@@ -1,0 +1,75 @@
+/* ==========================================================================
+   Базовые стили
+   ========================================================================== */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6.5rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-white text-ink-800 font-sans antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    @apply text-ink-900 font-semibold tracking-tight;
+    text-wrap: balance;
+  }
+
+  p { text-wrap: pretty; }
+
+  ::selection {
+    background-color: var(--color-brand-600);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-600);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Аккуратный скроллбар */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-ink-300) transparent;
+  }
+  *::-webkit-scrollbar { width: 10px; height: 10px; }
+  *::-webkit-scrollbar-track { background: transparent; }
+  *::-webkit-scrollbar-thumb {
+    background: var(--color-ink-300);
+    border-radius: 999px;
+    border: 3px solid #fff;
+  }
+  *::-webkit-scrollbar-thumb:hover { background: var(--color-ink-400); }
+
+  /* Браузер за замовчуванням малює <legend> поверх рамки fieldset — на темних
+     темах лінія перекреслює текст заголовка фільтра. Повертаємо legend
+     у звичайний потік всередині padding-box. */
+  fieldset > legend {
+    float: left;
+    width: 100%;
+  }
+  fieldset > legend + * {
+    clear: both;
+  }
+
+  img, svg { @apply max-w-full; }
+
+  input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+}

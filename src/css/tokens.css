@@ -1,0 +1,62 @@
+/* ==========================================================================
+   SOCO Ukraine — дизайн-система
+   Премиальный медицинский стиль: белый фон, синие акценты, много воздуха.
+   ========================================================================== */
+
+@theme {
+  /* ---- Шрифты ---- */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* ---- Фирменный синий ---- */
+  --color-brand-50: #eff5ff;
+  --color-brand-100: #dbe8ff;
+  --color-brand-200: #bfd7ff;
+  --color-brand-300: #93bcff;
+  --color-brand-400: #5f97ff;
+  --color-brand-500: #3b7dff;
+  --color-brand-600: #0d6efd;
+  --color-brand-700: #0b5ed7;
+  --color-brand-800: #0a4bab;
+  --color-brand-900: #0b3d85;
+  --color-brand-950: #072454;
+
+  /* ---- Нейтральные (холодный синеватый серый) ---- */
+  --color-ink-50: #f7f9fc;
+  --color-ink-100: #eef2f8;
+  --color-ink-200: #e2e8f2;
+  --color-ink-300: #cbd5e5;
+  --color-ink-400: #94a3b8;
+  --color-ink-500: #64748b;
+  --color-ink-600: #475569;
+  --color-ink-700: #334155;
+  --color-ink-800: #1c2941;
+  --color-ink-900: #0f1c33;
+  --color-ink-950: #08111f;
+
+  /* ---- Служебные ---- */
+  --color-mint-500: #10b981;
+  --color-amber-500: #f59e0b;
+  --color-rose-500: #f43f5e;
+
+  /* ---- Тени: мягкие, «дорогие» ---- */
+  --shadow-xs: 0 1px 2px 0 rgb(15 28 51 / 0.04);
+  --shadow-sm: 0 1px 3px 0 rgb(15 28 51 / 0.05), 0 1px 2px -1px rgb(15 28 51 / 0.04);
+  --shadow-md: 0 6px 18px -6px rgb(15 28 51 / 0.1), 0 2px 6px -2px rgb(15 28 51 / 0.05);
+  --shadow-lg: 0 18px 40px -12px rgb(15 28 51 / 0.14), 0 6px 14px -8px rgb(15 28 51 / 0.06);
+  --shadow-xl: 0 32px 64px -24px rgb(15 28 51 / 0.2), 0 10px 24px -12px rgb(15 28 51 / 0.08);
+  --shadow-brand: 0 12px 28px -10px rgb(13 110 253 / 0.45);
+
+  /* ---- Радиусы ---- */
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.75rem;
+  --radius-4xl: 2.25rem;
+
+  /* ---- Анимации ---- */
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-pulse-ring: pulse-ring 2.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-shimmer: shimmer 2.2s linear infinite;
+  --animate-pop: pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}

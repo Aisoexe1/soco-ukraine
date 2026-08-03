@@ -1,7 +1,7 @@
 <!--META
 {
-  "title": "Оплата — SOCO Ukraine",
-  "description": "Способи оплати SOCO Ukraine: картка онлайн, накладений платіж, безготівковий розрахунок для ФОП і юридичних осіб, оплата частинами.",
+  "title": "Оплата — {{SITE_NAME}}",
+  "description": "Способи оплати {{SITE_NAME}}: оплата на картку або реквізити ФОП, готівкою, післяплата. Доставка тільки по передоплаті.",
   "nav": "payment",
   "breadcrumbs": [
     { "name": "Головна", "url": "/" },
@@ -22,37 +22,45 @@
   <div class="max-w-2xl">
     <p class="eyebrow">Доставка та оплата</p>
     <h1 class="mt-5 text-3xl font-semibold tracking-tight text-ink-900 sm:text-4xl lg:text-[2.75rem]">
-      Зручні способи оплати
+      Способи оплати
     </h1>
     <p class="mt-4 text-[17px] leading-relaxed text-ink-500">
-      Оплачуйте карткою, при отриманні або безготівковим розрахунком — оберемо варіант, зручний для вас або вашої клініки.
+      Доставка здійснюється тільки по передоплаті. Усі відправлення на сайті виконуються
+      з передоплатою 200&nbsp;₴.
     </p>
   </div>
 
-  <div class="mt-12 grid gap-4 sm:grid-cols-2">
+  <div class="mt-12 grid gap-4 sm:grid-cols-3">
     <div class="card p-7">
-      <h2 class="text-lg font-semibold text-ink-900">Картка онлайн</h2>
-      <p class="mt-2 text-[14.5px] leading-relaxed text-ink-500">Visa, Mastercard, Apple Pay, Google Pay. Оплата на захищеній сторінці банку одразу після оформлення.</p>
+      <h2 class="text-lg font-semibold text-ink-900">Оплата на картку або реквізити ФОП</h2>
+      <p class="mt-2 text-[14.5px] leading-relaxed text-ink-500">
+        Реквізити для оплати надає менеджер після підтвердження замовлення.
+      </p>
     </div>
     <div class="card p-7">
-      <h2 class="text-lg font-semibold text-ink-900">Накладений платіж</h2>
-      <p class="mt-2 text-[14.5px] leading-relaxed text-ink-500">Оплата готівкою або карткою при отриманні у відділенні Нової Пошти.</p>
+      <h2 class="text-lg font-semibold text-ink-900">Готівкою</h2>
+      <p class="mt-2 text-[14.5px] leading-relaxed text-ink-500">
+        Під час самовивозу за адресою м. {{CITY}}, {{ADDRESS}}.
+      </p>
     </div>
     <div class="card p-7">
-      <h2 class="text-lg font-semibold text-ink-900">Рахунок для ФОП / ТОВ</h2>
-      <p class="mt-2 text-[14.5px] leading-relaxed text-ink-500">Безготівковий розрахунок з ПДВ. Договір і повний пакет закривальних документів. Відтермінування платежу до 30 днів для постійних клієнтів.</p>
-    </div>
-    <div class="card p-7">
-      <h2 class="text-lg font-semibold text-ink-900">Оплата частинами</h2>
-      <p class="mt-2 text-[14.5px] leading-relaxed text-ink-500">До 6 платежів без переплат через monobank для замовлень від 2 000 ₴.</p>
+      <h2 class="text-lg font-semibold text-ink-900">Післяплата</h2>
+      <p class="mt-2 text-[14.5px] leading-relaxed text-ink-500">
+        Оплата решти суми при отриманні у відділенні Нової Пошти.
+      </p>
     </div>
   </div>
 
   <div class="mt-14 rounded-3xl bg-ink-50 p-7 lg:p-9">
-    <h2 class="text-xl font-semibold text-ink-900">Документи для юридичних осіб</h2>
-    <p class="mt-3 max-w-3xl text-[15px] leading-relaxed text-ink-500">
-      Разом із замовленням надсилаємо видаткову накладну. За запитом готуємо рахунок-фактуру, договір поставки та
-      сертифікати відповідності на кожну партію товару. Документи можна отримати в паперовому вигляді або на пошту.
+    <h2 class="text-xl font-semibold text-ink-900">Умови доставки</h2>
+    <dl class="mt-4 grid gap-x-8 gap-y-3 text-[15px] sm:grid-cols-2">
+      <div class="flex justify-between gap-4 border-b border-ink-200 pb-3"><dt class="text-ink-500">Нова Пошта, відділення</dt><dd class="font-medium text-ink-900">від 50 ₴ · 1–3 дні</dd></div>
+      <div class="flex justify-between gap-4 border-b border-ink-200 pb-3"><dt class="text-ink-500">Курʼєр Нової Пошти</dt><dd class="font-medium text-ink-900">від 85 ₴ · 1–3 дні</dd></div>
+      <div class="flex justify-between gap-4 border-b border-ink-200 pb-3"><dt class="text-ink-500">Самовивіз, {{CITY}}</dt><dd class="font-medium text-ink-900">безкоштовно</dd></div>
+      <div class="flex justify-between gap-4 border-b border-ink-200 pb-3"><dt class="text-ink-500">Передоплата</dt><dd class="font-medium text-ink-900">200 ₴</dd></div>
+    </dl>
+    <p class="mt-5 text-[14px] leading-relaxed text-ink-500">
+      Докладніше — на сторінці <a href="delivery.html" class="font-medium text-brand-700 hover:underline">доставки та оплати</a>.
     </p>
   </div>
 </section>

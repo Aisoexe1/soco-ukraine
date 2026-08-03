@@ -1,0 +1,544 @@
+/* ==========================================================================
+   SOCO Ukraine — тема «Premium Black»
+   Візуальний референс: макет Premium Black Dental.
+
+   Графіт + тепла слонова кістка + електричний периwinkle-синій.
+   Гострі кути, волосяні лінії, широкі відступи, монотипні мікро-мітки,
+   великі щільно трековані заголовки, скляні панелі.
+
+   Файл НЕ містить розмітки й контенту: тільки токени та оформлення.
+   Контент, дані та логіка спільні для всіх версій (src/, assets/js/).
+   ========================================================================== */
+
+@import "tailwindcss";
+
+@import "../css/tokens.css";
+@import "../css/keyframes.css";
+@import "../css/base.css";
+@import "../css/components.css";
+@import "../css/utilities.css";
+
+@source "../../*.html";
+@source "../../assets/js/*.js";
+@source "../../src/**/*.html";
+
+/* ==========================================================================
+   1. Токени теми
+   ========================================================================== */
+@theme {
+  /* ---- Нейтральні: шкала перевернута (50 — найтемніша поверхня, 900 — текст) ---- */
+  --color-ink-50: #1a1c1c;
+  --color-ink-100: #242726;
+  --color-ink-200: #3a3d3b;
+  --color-ink-300: #8b8983;
+  --color-ink-400: #a3a099;
+  --color-ink-500: #b9b6ae;
+  --color-ink-600: #ccc9c1;
+  --color-ink-700: #dedbd3;
+  --color-ink-800: #ebe8e0;
+  --color-ink-900: #f4f1e9;
+  --color-ink-950: #080909;
+
+  /* ---- Акцент: електричний периwinkle ---- */
+  --color-brand-50: #1a2338;
+  --color-brand-100: #22304f;
+  --color-brand-200: #2c3f68;
+  --color-brand-300: #7d9dff;
+  --color-brand-400: #8fb0ff;
+  --color-brand-500: #6996ff;
+  --color-brand-600: #6996ff;
+  --color-brand-700: #8fb2ff;
+  --color-brand-800: #3457a8;
+  --color-brand-900: #253c72;
+  --color-brand-950: #17253f;
+
+  /* ---- Службові ---- */
+  --color-mint-500: #34d9a2;
+  --color-amber-500: #f5b93c;
+  --color-rose-500: #ff6b81;
+
+  /* Вбудовані кольори Tailwind, які використовує розмітка та JS
+     (статуси наявності, зірки, помилки форм) — на темному тлі
+     стокові значення нечитабельні, тому переоголошуємо їх тут. */
+  --color-emerald-600: #3ddba4;
+  --color-emerald-700: #5ee3b5;
+  --color-rose-400: #ff8296;
+  --color-rose-600: #ff7c90;
+  --color-amber-400: #f7c24f;
+  --color-amber-600: #f3b53a;
+  --color-amber-700: #f0c466;
+
+  /* ---- Тіні: на темному працює глибина, а не м'якість ---- */
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.45);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.5), 0 1px 2px -1px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 8px 22px -8px rgb(0 0 0 / 0.7), 0 2px 6px -2px rgb(0 0 0 / 0.5);
+  --shadow-lg: 0 22px 48px -16px rgb(0 0 0 / 0.8), 0 8px 18px -10px rgb(0 0 0 / 0.55);
+  --shadow-xl: 0 38px 76px -28px rgb(0 0 0 / 0.85), 0 12px 28px -14px rgb(0 0 0 / 0.6);
+  --shadow-2xl: 0 44px 88px -32px rgb(0 0 0 / 0.9), 0 16px 36px -18px rgb(0 0 0 / 0.65);
+  --shadow-brand: 0 14px 34px -14px rgb(105 150 255 / 0.55);
+
+  /* ---- Радіуси: журнальна геометрія, майже прямі кути ---- */
+  --radius-xl: 0.2rem;
+  --radius-2xl: 0.25rem;
+  --radius-3xl: 0.3rem;
+  --radius-4xl: 0.35rem;
+}
+
+/* ==========================================================================
+   2. Оформлення (skin).
+   Шар utilities + префікс [data-theme] дає специфічність 0,2,x —
+   цього достатньо, щоб перекрити одноклассові утиліти без !important.
+   ========================================================================== */
+@layer utilities {
+  :root[data-theme="premium-black"] {
+    /* Робочі змінні теми */
+    --pb-page: #111313;
+    --pb-panel: #181a1a;
+    --pb-panel-2: #1e2020;
+    --pb-deep: #0c0d0d;
+    --pb-line: #353836;
+    --pb-line-soft: #262928;
+    --pb-accent: #6996ff;
+    --pb-ivory: #f4f1e9;
+    --pb-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", "Inter", monospace;
+
+    /* Поверхня, яку віддає утиліта bg-white */
+    --srf: var(--pb-panel);
+    --srf-ink: var(--pb-ivory);
+
+    scrollbar-color: #3a3d3c transparent;
+  }
+
+  /* ---------- Документ ---------- */
+  [data-theme="premium-black"] body,
+  [data-theme="premium-black"] body.bg-white {
+    background-color: var(--pb-page);
+    color: var(--color-ink-800);
+  }
+  [data-theme="premium-black"] ::selection {
+    background-color: var(--pb-accent);
+    color: #0a1020;
+  }
+  [data-theme="premium-black"] :focus-visible {
+    outline-color: var(--pb-accent);
+  }
+  [data-theme="premium-black"] *::-webkit-scrollbar-thumb {
+    background: #3a3d3c;
+    border-color: var(--pb-page);
+  }
+  [data-theme="premium-black"] *::-webkit-scrollbar-thumb:hover {
+    background: #4d514f;
+  }
+
+  /* ---------- Головна заміна: bg-white → панель теми ---------- */
+  [data-theme="premium-black"] .bg-white,
+  [data-theme="premium-black"] .hover\:bg-white:hover,
+  [data-theme="premium-black"] .focus\:bg-white:focus,
+  [data-theme="premium-black"] .group:hover .group-hover\:bg-white {
+    background-color: var(--srf);
+    color: var(--srf-ink);
+  }
+  [data-theme="premium-black"] .bg-white\/85 {
+    background-color: color-mix(in oklab, var(--pb-page) 82%, transparent);
+  }
+  [data-theme="premium-black"] .bg-white\/60 {
+    background-color: color-mix(in oklab, var(--pb-panel) 70%, transparent);
+  }
+  /* Градієнтні заливки, що «згасають у білий», згасають у фон сторінки */
+  [data-theme="premium-black"] .from-white {
+    --tw-gradient-from: var(--pb-page);
+  }
+  [data-theme="premium-black"] .via-white {
+    --tw-gradient-via: var(--pb-page);
+  }
+  [data-theme="premium-black"] .to-white {
+    --tw-gradient-to: var(--pb-page);
+  }
+
+  /* ---------- Типографіка ---------- */
+  [data-theme="premium-black"] h1,
+  [data-theme="premium-black"] h2,
+  [data-theme="premium-black"] h3 {
+    letter-spacing: -0.045em;
+    font-weight: 700;
+  }
+  [data-theme="premium-black"] h1 {
+    letter-spacing: -0.055em;
+  }
+  [data-theme="premium-black"] .section-title {
+    letter-spacing: -0.05em;
+    font-weight: 700;
+  }
+  [data-theme="premium-black"] .text-gradient {
+    background-image: linear-gradient(100deg, var(--pb-ivory), var(--pb-accent) 70%);
+  }
+
+  /* Мікро-мітка замість «таблетки» */
+  [data-theme="premium-black"] .eyebrow {
+    background: transparent;
+    color: var(--pb-accent);
+    font-family: var(--pb-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    border-radius: 0;
+    padding: 0 0 0 14px;
+    position: relative;
+  }
+  [data-theme="premium-black"] .eyebrow::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 8px;
+    height: 1px;
+    background: currentColor;
+  }
+
+  /* ---------- Геометрія: гострі кути на «текстових» контролах ---------- */
+  [data-theme="premium-black"] :is(
+      .btn, .btn-primary, .btn-secondary, .btn-ghost, .btn-soft,
+      .field, .chip-suggest, .quick-cat, .page-btn, .tab-btn, .badge,
+      .mobile-link, .radio-card, .faq-item, .card, .card-hover,
+      .cat-card, .why-card, .thumb-btn, .pay-chip, .nav-link
+    ) {
+    border-radius: 3px;
+  }
+  [data-theme="premium-black"] :is(.filter-box, .price-slider) {
+    border-radius: 2px;
+  }
+  [data-theme="premium-black"] .rounded-\[2rem\],
+  [data-theme="premium-black"] .rounded-\[2\.5rem\] {
+    border-radius: 4px;
+  }
+  /* Поле пошуку та кнопка кошика в шапці — теж прямокутні */
+  [data-theme="premium-black"] #site-header .rounded-full:is(input, a, button, form),
+  [data-theme="premium-black"] #site-header .field {
+    border-radius: 3px;
+  }
+  /* Іконкові кнопки лишаються круглими — так у макеті */
+  [data-theme="premium-black"] :is(.icon-btn, .quick-btn, .carousel-arrow, .view-btn, .social-btn) {
+    border-radius: 999px;
+  }
+
+  /* ---------- Шапка ---------- */
+  [data-theme="premium-black"] #site-header {
+    border-bottom-color: var(--pb-line-soft);
+    background-color: color-mix(in oklab, var(--pb-page) 84%, transparent);
+  }
+  [data-theme="premium-black"] #site-header[data-stuck],
+  [data-theme="premium-black"] #site-header.is-stuck {
+    border-bottom-color: var(--pb-line);
+  }
+  [data-theme="premium-black"] .nav-link {
+    color: var(--color-ink-600);
+  }
+  [data-theme="premium-black"] .nav-link:hover,
+  [data-theme="premium-black"] .nav-link[data-active] {
+    color: var(--pb-ivory);
+  }
+  [data-theme="premium-black"] .nav-link::after {
+    background-color: var(--pb-accent);
+  }
+  /* Верхня службова смуга */
+  [data-theme="premium-black"] .bg-ink-50\/70 {
+    background-color: var(--pb-deep);
+  }
+
+  /* Кнопка кошика в шапці: у світлій версії — темна «пігулка»,
+     у темній її роль виконує світла */
+  [data-theme="premium-black"] #site-header .bg-ink-900 {
+    background-color: var(--pb-ivory);
+    color: #111313;
+  }
+  [data-theme="premium-black"] #site-header .bg-ink-900:hover {
+    background-color: var(--pb-accent);
+    color: #0a1020;
+  }
+  /* Інші темні «пігулки» (бейдж «Новинка») */
+  [data-theme="premium-black"] .bg-ink-900 {
+    --color-ink-900: #2f3231;
+  }
+
+  /* ---------- Кнопки ---------- */
+  [data-theme="premium-black"] .btn-primary {
+    background-color: var(--pb-ivory);
+    color: #111313;
+    box-shadow: none;
+  }
+  [data-theme="premium-black"] .btn-primary:hover {
+    background-color: #fff;
+    color: #111313;
+    box-shadow: 0 12px 30px -14px rgb(244 241 233 / 0.4);
+  }
+  [data-theme="premium-black"] .btn-secondary {
+    background-color: transparent;
+    color: var(--color-ink-800);
+    --tw-ring-color: var(--pb-line);
+  }
+  [data-theme="premium-black"] .btn-secondary:hover {
+    color: var(--pb-accent);
+    --tw-ring-color: color-mix(in oklab, var(--pb-accent) 55%, transparent);
+    box-shadow: none;
+  }
+  [data-theme="premium-black"] .btn-ghost:hover {
+    background-color: var(--pb-panel-2);
+    color: var(--pb-ivory);
+  }
+  [data-theme="premium-black"] .btn-soft {
+    background-color: rgb(105 150 255 / 0.12);
+    color: var(--color-brand-400);
+  }
+  [data-theme="premium-black"] .btn-soft:hover {
+    background-color: rgb(105 150 255 / 0.2);
+  }
+
+  /* Акцентні заливки: білий текст на периwinkle читається погано —
+     локально перевизначаємо «білий» на майже чорний */
+  [data-theme="premium-black"] [class*="bg-brand-6"],
+  [data-theme="premium-black"] [class*="bg-brand-7"],
+  [data-theme="premium-black"] [class*="bg-mint-5"],
+  [data-theme="premium-black"] [class*="bg-rose-5"],
+  [data-theme="premium-black"] [class*="bg-amber-5"] {
+    --color-white: #0a1018;
+  }
+
+  /* ---------- Картки та поверхні ---------- */
+  [data-theme="premium-black"] :is(.card, .card-hover, .cat-card, .why-card, .faq-item, .radio-card) {
+    background-color: var(--pb-panel);
+    --tw-ring-color: var(--pb-line);
+  }
+  [data-theme="premium-black"] :is(.card-hover, .cat-card, .why-card):hover {
+    --tw-ring-color: color-mix(in oklab, var(--pb-accent) 45%, transparent);
+    background-color: var(--pb-panel-2);
+  }
+  [data-theme="premium-black"] .cat-card::before {
+    background-image: linear-gradient(to bottom, rgb(105 150 255 / 0.14), transparent);
+  }
+  [data-theme="premium-black"] .cat-icon {
+    background-color: rgb(105 150 255 / 0.12);
+    color: var(--color-brand-400);
+  }
+  [data-theme="premium-black"] .why-icon {
+    background-color: rgb(105 150 255 / 0.12);
+    color: var(--color-brand-400);
+  }
+
+  /* Товарні зображення намальовані під світлу підкладку —
+     у макеті вони теж лежать на світлій «плашці», лише теплішій.
+     Самі файли не змінюємо: лише тонуємо шаром теми. */
+  [data-theme="premium-black"] img[src*="assets/img/products/"] {
+    filter: saturate(0.55) sepia(0.14) brightness(0.99);
+  }
+  [data-theme="premium-black"] .bg-ink-50\/60 {
+    background-color: #e4e2db;
+  }
+  /* Сюжетні ілюстрації — журнальна монохромна подача, як у макеті */
+  [data-theme="premium-black"] img[src*="hero-instruments"],
+  [data-theme="premium-black"] img[src*="clinic"] {
+    filter: grayscale(0.85) contrast(1.06) brightness(0.93) sepia(0.1);
+  }
+
+  /* ---------- Форми ---------- */
+  [data-theme="premium-black"] .field {
+    background-color: var(--pb-deep);
+    color: var(--pb-ivory);
+    --tw-ring-color: var(--pb-line);
+  }
+  [data-theme="premium-black"] .field:focus {
+    background-color: var(--pb-deep);
+    --tw-ring-color: var(--pb-accent);
+  }
+  [data-theme="premium-black"] .field::placeholder,
+  [data-theme="premium-black"] input::placeholder,
+  [data-theme="premium-black"] textarea::placeholder {
+    color: #807f79;
+  }
+  [data-theme="premium-black"] .filter-box {
+    border-color: #4a4d4b;
+    background-color: transparent;
+  }
+  [data-theme="premium-black"] .filter-box:checked {
+    border-color: var(--pb-accent);
+    background-color: var(--pb-accent);
+  }
+  [data-theme="premium-black"] .filter-row:hover {
+    background-color: var(--pb-panel-2);
+  }
+  [data-theme="premium-black"] .price-slider {
+    background-color: #343836;
+  }
+  [data-theme="premium-black"] .price-slider::-webkit-slider-thumb {
+    background-color: var(--pb-accent);
+    border-color: var(--pb-page);
+  }
+  [data-theme="premium-black"] .price-slider::-moz-range-thumb {
+    background-color: var(--pb-accent);
+    border-color: var(--pb-page);
+  }
+
+  /* ---------- Дрібні елементи ---------- */
+  [data-theme="premium-black"] .chip-suggest,
+  [data-theme="premium-black"] .quick-cat {
+    background-color: var(--pb-panel);
+    color: var(--color-ink-500);
+    --tw-ring-color: var(--pb-line);
+  }
+  [data-theme="premium-black"] :is(.chip-suggest, .quick-cat):hover {
+    background-color: var(--pb-panel-2);
+    color: var(--pb-ivory);
+    --tw-ring-color: color-mix(in oklab, var(--pb-accent) 45%, transparent);
+  }
+  [data-theme="premium-black"] .quick-cat.is-active {
+    background-color: var(--pb-ivory);
+    color: #111313;
+    --tw-ring-color: var(--pb-ivory);
+    box-shadow: none;
+  }
+  [data-theme="premium-black"] .page-btn {
+    --tw-ring-color: var(--pb-line);
+    color: var(--color-ink-500);
+  }
+  [data-theme="premium-black"] .page-btn:hover {
+    background-color: var(--pb-panel-2);
+    color: var(--pb-ivory);
+    --tw-ring-color: var(--pb-line);
+  }
+  [data-theme="premium-black"] .page-btn.is-active {
+    background-color: var(--pb-ivory);
+    color: #111313;
+    --tw-ring-color: var(--pb-ivory);
+    box-shadow: none;
+  }
+  [data-theme="premium-black"] .tab-btn.is-active,
+  [data-theme="premium-black"] .view-btn.is-active {
+    background-color: var(--pb-panel-2);
+    color: var(--pb-ivory);
+  }
+  [data-theme="premium-black"] .icon-btn:hover {
+    background-color: var(--pb-panel-2);
+    color: var(--pb-ivory);
+  }
+  [data-theme="premium-black"] .quick-btn {
+    background-color: rgb(17 19 19 / 0.82);
+    color: var(--color-ink-600);
+    --tw-ring-color: rgb(244 241 233 / 0.22);
+  }
+  [data-theme="premium-black"] .quick-btn:hover,
+  [data-theme="premium-black"] .quick-btn.is-active {
+    background-color: var(--pb-accent);
+    color: #0a1018;
+    --tw-ring-color: var(--pb-accent);
+  }
+  [data-theme="premium-black"] .carousel-arrow {
+    background-color: transparent;
+    color: var(--color-ink-500);
+    --tw-ring-color: var(--pb-line);
+  }
+  [data-theme="premium-black"] .carousel-arrow:hover {
+    background-color: var(--pb-ivory);
+    color: #111313;
+    --tw-ring-color: var(--pb-ivory);
+  }
+  [data-theme="premium-black"] .thumb-btn {
+    background-color: var(--pb-panel);
+    --tw-ring-color: var(--pb-line);
+  }
+  /* Тонований блок «до безкоштовної доставки»: у світлій версії темно-синій
+     текст на світло-синьому, у темній — навпаки */
+  [data-theme="premium-black"] [data-free-progress] {
+    --color-brand-800: var(--color-brand-300);
+  }
+  [data-theme="premium-black"] [data-free-progress] .bg-white {
+    background-color: #2b3654;
+  }
+  [data-theme="premium-black"] .badge-brand {
+    background-color: rgb(35 53 87 / 0.9);
+    color: #a7c1ff;
+  }
+  [data-theme="premium-black"] .faq-icon {
+    background-color: var(--pb-panel-2);
+    color: var(--color-ink-500);
+  }
+  [data-theme="premium-black"] .brand-word:hover {
+    color: var(--pb-accent);
+  }
+  [data-theme="premium-black"] .skeleton {
+    background-color: var(--pb-panel-2);
+    background-image: linear-gradient(90deg, transparent, rgb(244 241 233 / 0.06), transparent);
+  }
+  [data-theme="premium-black"] .mobile-link:hover,
+  [data-theme="premium-black"] .mobile-link[data-active] {
+    background-color: var(--pb-panel-2);
+    color: var(--pb-ivory);
+  }
+
+  /* ---------- Фонові текстури ---------- */
+  [data-theme="premium-black"] .bg-dots {
+    background-image: radial-gradient(circle at 1px 1px, rgb(244 241 233 / 0.09) 1px, transparent 0);
+  }
+  [data-theme="premium-black"] .bg-grid {
+    background-image:
+      linear-gradient(to right, rgb(244 241 233 / 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(244 241 233 / 0.1) 1px, transparent 1px);
+  }
+
+  /* ==========================================================================
+     3. Контекстні перевизначення токенів.
+        CSS-змінні успадковуються, тому «острів» перевизначає всю палітру
+        всередині себе — це зберігає світлий текст на темних блоках і навпаки.
+     ========================================================================== */
+
+  /* Затемнення під модальними шарами: на темній сторінці 40 % замало */
+  [data-theme="premium-black"] .bg-ink-950\/40,
+  [data-theme="premium-black"] .bg-ink-950\/45 {
+    background-color: rgb(0 0 0 / 0.72);
+  }
+
+  /* Темні острови вихідного сайта: підвал, CTA-панель, накладки */
+  [data-theme="premium-black"] footer,
+  [data-theme="premium-black"] [class*="bg-ink-950"] {
+    --color-ink-950: #08090a;
+    --srf: #f4f1e9;
+    --srf-ink: #111313;
+  }
+  [data-theme="premium-black"] footer {
+    border-top: 1px solid var(--pb-line-soft);
+  }
+
+  /* Світлий острів усередині темного (кнопки bg-white на CTA,
+     у підвалі та на брендових градієнтних панелях) */
+  [data-theme="premium-black"] [class*="from-brand-6"],
+  [data-theme="premium-black"] [class*="from-brand-7"] {
+    --srf: #f4f1e9;
+    --srf-ink: #111313;
+  }
+  [data-theme="premium-black"] footer .bg-white,
+  [data-theme="premium-black"] [class*="bg-ink-950"] .bg-white,
+  [data-theme="premium-black"] [class*="from-brand-6"] .bg-white,
+  [data-theme="premium-black"] [class*="from-brand-7"] .bg-white {
+    --color-ink-900: #111313;
+    --color-ink-800: #1b1d1d;
+    --color-brand-700: #2c56c8;
+    --color-brand-50: #eef3ff;
+  }
+  [data-theme="premium-black"] footer .bg-white:hover,
+  [data-theme="premium-black"] [class*="bg-ink-950"] .bg-white:hover,
+  [data-theme="premium-black"] [class*="from-brand-6"] .bg-white:hover,
+  [data-theme="premium-black"] [class*="from-brand-7"] .bg-white:hover {
+    background-color: #fff;
+  }
+
+  /* Панель підписки: у макеті — глибокий синій прямокутник */
+  [data-theme="premium-black"] footer div.bg-gradient-to-br:has(form[data-subscribe]) {
+    background-image: none;
+    background-color: #25365e;
+    border: 1px solid #33477a;
+    --color-brand-100: #c3d2f4;
+  }
+
+  /* Плаваючий чат: шапка на градієнті бренду */
+  [data-theme="premium-black"] [class*="from-brand-6"] {
+    --color-brand-100: #c3d2f4;
+  }
+}

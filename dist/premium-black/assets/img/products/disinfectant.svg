@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="640" height="640" role="img">
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".55" stop-color="#f5f9ff"/>
+      <stop offset="1" stop-color="#e6efff"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".42" r=".62">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="shadow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#0a3f8f" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#0a3f8f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8fa3bd"/>
+      <stop offset=".18" stop-color="#e8eef7"/>
+      <stop offset=".42" stop-color="#ffffff"/>
+      <stop offset=".68" stop-color="#dde5f0"/>
+      <stop offset="1" stop-color="#93a6bf"/>
+    </linearGradient>
+    <linearGradient id="metalV" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4f7fc"/>
+      <stop offset=".5" stop-color="#dbe3ee"/>
+      <stop offset="1" stop-color="#a9b8cd"/>
+    </linearGradient>
+    <linearGradient id="blueG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5f97ff"/>
+      <stop offset=".5" stop-color="#0d6efd"/>
+      <stop offset="1" stop-color="#0a3f8f"/>
+    </linearGradient>
+    <linearGradient id="blueSoft" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eaf2ff"/>
+      <stop offset="1" stop-color="#c9dcff"/>
+    </linearGradient>
+    <linearGradient id="whiteG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".62" stop-color="#f2f6fc"/>
+      <stop offset="1" stop-color="#dde5f1"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".15"/>
+      <stop offset=".28" stop-color="#ffffff" stop-opacity=".72"/>
+      <stop offset=".55" stop-color="#ffffff" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#9fb4cf" stop-opacity=".35"/>
+    </linearGradient>
+    <linearGradient id="darkG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#33415c"/>
+      <stop offset="1" stop-color="#111a2e"/>
+    </linearGradient>
+    
+  </defs>
+  <rect width="640" height="640" fill="url(#bg)"/>
+  <circle cx="320" cy="288" r="248" fill="url(#glow)"/>
+  <ellipse cx="320" cy="566" rx="175" ry="26" fill="url(#shadow)"/>
+
+  <!-- триггер -->
+  <g>
+    <path d="M282 118h76v40h-76z" fill="url(#darkG)"/>
+    <path d="M262 138h116a14 14 0 0 1 14 14v26a14 14 0 0 1-14 14H262a14 14 0 0 1-14-14v-26a14 14 0 0 1 14-14z" fill="#334155"/>
+    <path d="M248 158h-58a10 10 0 0 0-10 10v6a10 10 0 0 0 10 10h58z" fill="#475569"/>
+    <path d="M276 192c-6 22-18 34-40 40 20 12 34 8 44-6z" fill="#334155"/>
+  </g>
+  <!-- горловина -->
+  <rect x="284" y="192" width="72" height="34" rx="8" fill="#94a3b8"/>
+  <!-- корпус -->
+  <path d="M242 226h156a34 34 0 0 1 34 34v220a34 34 0 0 1-34 34H242a34 34 0 0 1-34-34V260a34 34 0 0 1 34-34z" fill="url(#whiteG)" stroke="#cbd5e5" stroke-width="2.5"/>
+  <path d="M208 380h224v100a34 34 0 0 1-34 34H242a34 34 0 0 1-34-34z" fill="#5f97ff" opacity=".26"/>
+  <!-- этикетка -->
+  <rect x="222" y="272" width="196" height="150" rx="16" fill="url(#blueG)"/>
+  <rect x="244" y="296" width="140" height="15" rx="7.5" fill="#fff" opacity=".95"/>
+  <rect x="244" y="322" width="96" height="10" rx="5" fill="#fff" opacity=".6"/>
+  <g transform="translate(244 348)">
+    <circle cx="26" cy="26" r="26" fill="#fff" opacity=".2"/>
+    <path d="M26 10 8 17v13c0 11 8 21 18 24 10-3 18-13 18-24V17z" fill="#fff" opacity=".92"/>
+    <path d="m19 27 5 6 11-12" stroke="#0d6efd" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <rect x="308" y="360" width="90" height="10" rx="5" fill="#fff" opacity=".5"/>
+  <rect x="308" y="380" width="72" height="10" rx="5" fill="#fff" opacity=".35"/>
+  <rect x="308" y="400" width="84" height="10" rx="5" fill="#fff" opacity=".35"/>
+  <rect x="228" y="244" width="18" height="256" rx="9" fill="#fff" opacity=".75"/>
+  <!-- брызги -->
+  <g fill="#5f97ff" opacity=".45">
+    <circle cx="150" cy="168" r="7"/><circle cx="122" cy="192" r="5"/><circle cx="158" cy="206" r="4"/>
+    <circle cx="112" cy="150" r="4"/><circle cx="134" cy="222" r="3"/>
+  </g>
+
+</svg>

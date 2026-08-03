@@ -1,7 +1,7 @@
 <!--META
 {
-  "title": "Доставка — SOCO Ukraine",
-  "description": "Умови доставки SOCO Ukraine: Нова Пошта, Укрпошта, курʼєр по Києву. Терміни, вартість, повернення та гарантія.",
+  "title": "Доставка — {{SITE_NAME}}",
+  "description": "Умови доставки та оплати {{SITE_NAME}}: Нова Пошта від 50 ₴, адресна доставка курʼєром Нової Пошти від 85 ₴, самовивіз у Києві. Терміни, оплата, гарантія та повернення.",
   "nav": "delivery",
   "breadcrumbs": [
     { "name": "Головна", "url": "/" },
@@ -22,31 +22,41 @@
   <div class="max-w-2xl">
     <p class="eyebrow">Доставка та оплата</p>
     <h1 class="mt-5 text-3xl font-semibold tracking-tight text-ink-900 sm:text-4xl lg:text-[2.75rem]">
-      Доставка по всій Україні за 1–2 дні
+      Доставка по всій Україні за 1–3 дні
     </h1>
     <p class="mt-4 text-[17px] leading-relaxed text-ink-500">
-      Замовлення, оформлені до 15:00, вирушають зі складу того ж дня. Безкоштовно від 3 000 ₴.
+      Доставка здійснюється тільки по передоплаті. Усі відправлення на сайті виконуються
+      з передоплатою 200&nbsp;₴.
     </p>
   </div>
 
-  <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    <div class="card p-6">
-      <span class="grid h-12 w-12 place-items-center rounded-2xl bg-brand-50 text-brand-600">
-        <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-          <path d="M3 7.5h9v9H3zM12 10.5h4.4l2.6 3v3h-7z" stroke-linejoin="round" /><circle cx="7" cy="19" r="1.8" /><circle cx="16" cy="19" r="1.8" />
-        </svg>
-      </span>
-      <h2 class="mt-5 text-lg font-semibold text-ink-900">Нова Пошта</h2>
-      <p class="mt-2 text-[14.5px] leading-relaxed text-ink-500">Відділення або поштомат. 1–2 дні по всій Україні. Вартість — за тарифами перевізника.</p>
-    </div>
+  <h2 class="mt-12 text-xl font-semibold text-ink-900">Способи доставки</h2>
+  <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
     <div class="card p-6">
       <span class="grid h-12 w-12 place-items-center rounded-2xl bg-brand-50 text-brand-600">
         <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
           <rect x="3" y="5.5" width="18" height="13" rx="2.5" /><path d="m4 8 8 5 8-5" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </span>
-      <h2 class="mt-5 text-lg font-semibold text-ink-900">Укрпошта</h2>
-      <p class="mt-2 text-[14.5px] leading-relaxed text-ink-500">До відділення в будь-якому населеному пункті. 2–4 дні залежно від регіону.</p>
+      <h3 class="mt-5 text-lg font-semibold text-ink-900">Нова Пошта</h3>
+      <p class="mt-2 text-[14.5px] leading-relaxed text-ink-500">До відділення.</p>
+      <dl class="mt-4 space-y-1.5 text-[14px]">
+        <div class="flex justify-between gap-4"><dt class="text-ink-500">Вартість</dt><dd class="font-medium text-ink-900">від 50 ₴</dd></div>
+        <div class="flex justify-between gap-4"><dt class="text-ink-500">Термін</dt><dd class="font-medium text-ink-900">1–3 дні</dd></div>
+      </dl>
+    </div>
+    <div class="card p-6">
+      <span class="grid h-12 w-12 place-items-center rounded-2xl bg-brand-50 text-brand-600">
+        <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M3 7.5h9v9H3zM12 10.5h4.4l2.6 3v3h-7z" stroke-linejoin="round" /><circle cx="7" cy="19" r="1.8" /><circle cx="16" cy="19" r="1.8" />
+        </svg>
+      </span>
+      <h3 class="mt-5 text-lg font-semibold text-ink-900">Адресна доставка курʼєром Нової Пошти</h3>
+      <p class="mt-2 text-[14.5px] leading-relaxed text-ink-500">По всій Україні, на вказану адресу.</p>
+      <dl class="mt-4 space-y-1.5 text-[14px]">
+        <div class="flex justify-between gap-4"><dt class="text-ink-500">Вартість</dt><dd class="font-medium text-ink-900">від 85 ₴</dd></div>
+        <div class="flex justify-between gap-4"><dt class="text-ink-500">Термін</dt><dd class="font-medium text-ink-900">1–3 дні</dd></div>
+      </dl>
     </div>
     <div class="card p-6">
       <span class="grid h-12 w-12 place-items-center rounded-2xl bg-brand-50 text-brand-600">
@@ -54,25 +64,109 @@
           <path d="M12 21s6.5-5.5 6.5-10a6.5 6.5 0 1 0-13 0c0 4.5 6.5 10 6.5 10Z" stroke-linejoin="round" /><circle cx="12" cy="11" r="2.4" />
         </svg>
       </span>
-      <h2 class="mt-5 text-lg font-semibold text-ink-900">Курʼєр по Києву</h2>
-      <p class="mt-2 text-[14.5px] leading-relaxed text-ink-500">Доставка день у день при замовленні до 15:00. Вартість — 120 ₴, безкоштовно від 3 000 ₴.</p>
+      <h3 class="mt-5 text-lg font-semibold text-ink-900">Самовивіз</h3>
+      <p class="mt-2 text-[14.5px] leading-relaxed text-ink-500">м. {{CITY}}, {{ADDRESS}}.</p>
+      <dl class="mt-4 space-y-1.5 text-[14px]">
+        <div class="flex justify-between gap-4"><dt class="text-ink-500">Вартість</dt><dd class="font-medium text-ink-900">безкоштовно</dd></div>
+      </dl>
     </div>
   </div>
 
-  <div id="returns" class="mt-16 scroll-mt-28 grid gap-8 lg:grid-cols-2">
-    <div class="rounded-3xl bg-ink-50 p-7 lg:p-9">
-      <h2 class="text-xl font-semibold text-ink-900">Повернення та обмін</h2>
-      <p class="mt-3 text-[15px] leading-relaxed text-ink-500">
-        Повернення можливе протягом 14 днів, якщо упаковку не розкрито й товар не втратив товарного вигляду.
-        Заводський брак міняємо власним коштом без експертиз — достатньо надіслати фото дефекту менеджеру.
-      </p>
+  <h2 class="mt-14 text-xl font-semibold text-ink-900">Способи оплати</h2>
+  <ul class="mt-5 grid gap-3 sm:grid-cols-3">
+    <li class="card flex items-center gap-3 p-5 text-[15px] font-medium text-ink-900">
+      <svg viewBox="0 0 24 24" class="h-5 w-5 shrink-0 text-brand-600" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      Оплата на картку або реквізити ФОП
+    </li>
+    <li class="card flex items-center gap-3 p-5 text-[15px] font-medium text-ink-900">
+      <svg viewBox="0 0 24 24" class="h-5 w-5 shrink-0 text-brand-600" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      Готівкою
+    </li>
+    <li class="card flex items-center gap-3 p-5 text-[15px] font-medium text-ink-900">
+      <svg viewBox="0 0 24 24" class="h-5 w-5 shrink-0 text-brand-600" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      Післяплата
+    </li>
+  </ul>
+
+  <div id="warranty" class="mt-16 scroll-mt-28">
+    <h2 class="text-xl font-semibold text-ink-900">Гарантія</h2>
+    <div class="mt-5 grid gap-4 lg:grid-cols-2">
+      <div class="rounded-3xl bg-ink-50 p-7 lg:p-9">
+        <h3 class="text-[15px] font-semibold text-ink-900">Що покриває гарантія</h3>
+        <p class="mt-3 text-[15px] leading-relaxed text-ink-500">
+          На товари в нашому магазині надається гарантія, що підтверджує зобовʼязання щодо відсутності
+          у товарі заводських дефектів. Гарантія надається терміном залежно від сервісної політики
+          виробника, термін вказано в описі товару. Гарантійним обслуговуванням займаються сервісні
+          центри, авторизовані виробниками; адреси та телефони вказані в гарантійному талоні або на
+          сайтах виробників.
+        </p>
+        <p class="mt-3 text-[15px] leading-relaxed text-ink-500">
+          Будь ласка, перевіряйте комплектність та відсутність дефектів у товарі при його отриманні.
+        </p>
+      </div>
+      <div class="rounded-3xl bg-ink-50 p-7 lg:p-9">
+        <h3 class="text-[15px] font-semibold text-ink-900">Коли гарантія не надається</h3>
+        <ul class="mt-3 space-y-2 text-[14.5px] leading-relaxed text-ink-500">
+          <li>· порушено збереження гарантійних пломб;</li>
+          <li>· є механічні чи інші ушкодження внаслідок навмисних або необережних дій покупця чи третіх осіб;</li>
+          <li>· порушено правила використання, викладені в експлуатаційних документах;</li>
+          <li>· зроблено несанкціоноване розкриття, ремонт, змінено внутрішні компоненти, конструкцію або схему товару;</li>
+          <li>· природне зношування або вичерпання ресурсу;</li>
+          <li>· вплив рідини, запиленості, потрапляння сторонніх предметів усередину корпусу;</li>
+          <li>· ушкодження внаслідок стихійних лих;</li>
+          <li>· стрибки напруги в електромережі або неправильне підключення;</li>
+          <li>· дефекти системи, у якій використовувався товар, або наслідки зʼєднання з іншими виробами;</li>
+          <li>· використання товару не за призначенням або з порушенням правил експлуатації.</li>
+        </ul>
+      </div>
     </div>
-    <div id="warranty" class="scroll-mt-28 rounded-3xl bg-ink-50 p-7 lg:p-9">
-      <h2 class="text-xl font-semibold text-ink-900">Гарантія</h2>
-      <p class="mt-3 text-[15px] leading-relaxed text-ink-500">
-        На обладнання — від 12 до 24 місяців з авторизованим сервісом у Києві. На матеріали діє гарантія
-        виробника, зазначена на упаковці. Термін придатності на момент відвантаження — не менше 70 %.
-      </p>
+  </div>
+
+  <div id="returns" class="mt-16 scroll-mt-28">
+    <h2 class="text-xl font-semibold text-ink-900">Повернення та обмін</h2>
+    <p class="mt-3 max-w-3xl text-[15px] leading-relaxed text-ink-500">
+      Компанія здійснює повернення і обмін товарів належної якості згідно Закону «Про захист прав
+      споживачів». Повернення та обмін можливі протягом 14 днів після отримання товару покупцем.
+      Зворотна доставка товарів здійснюється за домовленістю.
+    </p>
+    <div class="mt-5 grid gap-4 lg:grid-cols-2">
+      <div class="rounded-3xl bg-ink-50 p-7 lg:p-9">
+        <h3 class="text-[15px] font-semibold text-ink-900">Умови для товару належної якості</h3>
+        <ul class="mt-3 space-y-2 text-[14.5px] leading-relaxed text-ink-500">
+          <li>· збереження товарного вигляду виробу, без слідів використання та експлуатації;</li>
+          <li>· цілісність оригінальної упаковки зі збереженням усіх ярликів і бірок;</li>
+          <li>· наявність документів, що підтверджують купівлю (транспортна накладна, чек).</li>
+        </ul>
+        <p class="mt-3 text-[14.5px] leading-relaxed text-ink-500">
+          Повернення коштів здійснюється протягом 3 робочих днів із моменту отримання товару продавцем.
+          Вартість транспортування товару належної якості — за рахунок покупця, неналежної якості — за
+          рахунок продавця.
+        </p>
+      </div>
+      <div class="rounded-3xl bg-ink-50 p-7 lg:p-9">
+        <h3 class="text-[15px] font-semibold text-ink-900">Як оформити повернення або обмін</h3>
+        <ol class="mt-3 space-y-2 text-[14.5px] leading-relaxed text-ink-500">
+          <li>
+            1. Написати на <a href="mailto:{{EMAIL}}" class="font-medium text-brand-700 hover:underline">{{EMAIL}}</a>
+            або зателефонувати за номером
+            <a href="tel:{{PHONE_HREF}}" class="font-medium text-brand-700 hover:underline">{{PHONE}}</a>.
+            У темі листа вказати «Обмін» або «Повернення», номер замовлення, номер картки для повернення
+            коштів і причину повернення.
+          </li>
+          <li>
+            2. Надіслати товар «Новою поштою» за адресою: м. Харків, відділення Нової пошти №121,
+            Костюк Владислав, +380&nbsp;67&nbsp;784&nbsp;86&nbsp;55.
+          </li>
+        </ol>
+        <p class="mt-3 text-[14.5px] leading-relaxed text-ink-500">
+          У разі обміну після отримання та перевірки товару ми відправляємо заміну протягом 3 робочих днів.
+        </p>
+      </div>
     </div>
+    <p class="mt-5 max-w-3xl text-[13px] leading-relaxed text-ink-400">
+      Відповідно до Закону «Про захист прав споживачів» компанія може відмовити в обміні та поверненні
+      товарів належної якості, якщо вони належать до категорій, зазначених у чинному Переліку
+      непродовольчих товарів належної якості, що не підлягають поверненню та обміну.
+    </p>
   </div>
 </section>

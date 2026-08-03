@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="uk" class="ax">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0b0b0d" />
+<meta name="color-scheme" content="dark" />
+<title>SOCO — Curated · преміальні стоматологічні матеріали</title>
+<meta name="description" content="SOCO Ukraine — професійні стоматологічні матеріали, інструмент та обладнання. Оригінал із сертифікатом, доставка по Україні. Точність, піднесена до стандарту." />
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml" />
+
+<!-- Body: self-hosted Inter (кирилиця + ₴) -->
+<link rel="stylesheet" href="../../assets/css/fonts.css" />
+<!-- Display-серіф із курсивом: Playfair Display (кирилиця) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet" />
+
+<style>
+/* ==========================================================================
+   SOCO — Curated · варіант у стилі AXIS DENTAL
+   Майже-чорний монохром · серіфний курсив як єдиний акцент · синя «іскра»
+   ========================================================================== */
+:root{
+  --bg:#0b0b0d;          /* майже чорний */
+  --bg-2:#141416;        /* панелі */
+  --bg-3:#1a1a1d;        /* картки */
+  --plate:#e9e7e2;       /* світла «фото»-плита */
+  --line:rgba(255,255,255,.11);
+  --line-2:rgba(255,255,255,.18);
+  --ink:#f6f5f3;
+  --ink-2:#a5a5aa;
+  --ink-3:#6c6c72;
+  --accent:#6f7dff;      /* синя іскра ✦ */
+  --accent-2:#8a95ff;
+  --serif-ink:#efe9df;   /* теплий off-white для курсиву */
+  --font-serif:"Playfair Display",Georgia,"Times New Roman",serif;
+  --font-sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --maxw:1240px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--font-sans);font-size:16px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
+}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.02em;line-height:1.04}
+::selection{background:var(--accent);color:#fff}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(18px,4vw,44px)}
+.label{font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-3)}
+.label.blue{color:var(--accent)}
+.serif-i{font-family:var(--font-serif);font-style:italic;font-weight:500;letter-spacing:0;color:var(--serif-ink)}
+.spark{color:var(--accent)}
+
+/* ---------- Хедер (мінімальний) ---------- */
+.ax-header{position:sticky;top:0;z-index:50;background:rgba(11,11,13,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.ax-header .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
+.ax-logo{display:inline-flex;align-items:baseline;gap:3px;font-weight:800;font-size:21px;letter-spacing:-.02em}
+.ax-logo .spark{font-size:16px;transform:translateY(-1px)}
+.ax-nav{display:flex;align-items:center;gap:34px}
+.ax-nav a{font-size:13px;font-weight:600;letter-spacing:.04em;color:var(--ink-2);transition:color .2s}
+.ax-nav a:hover{color:var(--ink)}
+.ax-menu{display:none;width:46px;height:46px;border:1px solid var(--line-2);border-radius:0;align-items:center;justify-content:center;color:var(--ink)}
+.ax-menu svg{width:22px;height:22px}
+@media(max-width:760px){.ax-nav{display:none}.ax-menu{display:inline-flex}}
+.ax-mnav{display:none;border-top:1px solid var(--line);background:var(--bg-2)}
+.ax-mnav.open{display:block}
+.ax-mnav a{display:block;padding:15px clamp(18px,4vw,44px);border-bottom:1px solid var(--line);font-weight:600}
+
+/* ---------- Hero ---------- */
+.ax-hero{padding-top:clamp(30px,5vw,58px)}
+.ax-hero .meta{display:flex;justify-content:space-between;gap:20px;padding-bottom:clamp(30px,5vw,54px)}
+.ax-hero .meta .r{color:var(--ink-3);text-align:right}
+@media(max-width:620px){.ax-hero .meta .r{display:none}}
+.ax-h1{font-size:clamp(38px,8.2vw,104px);letter-spacing:-.035em;max-width:14ch}
+.ax-h1 .serif-i{font-size:.98em;font-weight:500}
+.ax-hero .kicker{margin-bottom:22px}
+.ax-media{position:relative;margin-top:clamp(30px,4vw,44px)}
+.ax-plate{position:relative;aspect-ratio:16/8.6;border-radius:2px;overflow:hidden;border:1px solid var(--line);
+  background:radial-gradient(120% 140% at 30% 20%,#f3f1ec,#d9d6cf 70%,#c7c3ba)}
+.ax-plate img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:2% 0;filter:grayscale(1) contrast(1.04)}
+.ax-cta{position:absolute;left:0;top:0;transform:translate(-4px,-46%)}
+@media(max-width:760px){.ax-cta{position:static;transform:none;margin-bottom:18px}}
+.btn-pill{display:inline-flex;align-items:center;gap:12px;height:60px;padding:0 30px;border-radius:999px;background:var(--ink);color:#0b0b0d;font-weight:700;font-size:15px;letter-spacing:.01em;transition:transform .2s,box-shadow .2s}
+.btn-pill:hover{transform:translateY(-2px);box-shadow:0 18px 40px -18px rgba(255,255,255,.4)}
+.btn-pill svg{width:16px;height:16px}
+.ax-sig{position:absolute;right:16px;bottom:16px;width:min(280px,64%);padding:22px;background:rgba(11,11,13,.72);backdrop-filter:blur(10px);border:1px solid var(--line-2)}
+.ax-sig .label{color:var(--accent);margin-bottom:14px;display:block}
+.ax-sig h3{font-family:var(--font-serif);font-style:normal;font-weight:600;font-size:24px;letter-spacing:-.01em;line-height:1.1}
+.ax-sig a{margin-top:14px;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+.ax-sig a:hover{color:var(--ink)}
+@media(max-width:520px){.ax-sig{position:static;width:auto;margin-top:-1px;border-top:0}}
+
+/* смуга-довіра */
+.ax-trust{border-block:1px solid var(--line);margin-top:clamp(40px,6vw,72px)}
+.ax-trust .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.ax-trust div{padding:24px 6px;text-align:center;border-left:1px solid var(--line)}
+.ax-trust div:first-child{border-left:0}
+.ax-trust b{display:block;font-family:var(--font-serif);font-weight:600;font-size:clamp(22px,3vw,32px);letter-spacing:-.01em}
+.ax-trust span{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+@media(max-width:640px){.ax-trust .wrap{grid-template-columns:1fr 1fr}.ax-trust div:nth-child(3){border-left:0}.ax-trust div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
+/* ---------- Секції ---------- */
+.sec{padding:clamp(64px,9vw,120px) 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:44px}
+.sec-title{font-size:clamp(30px,5.2vw,58px);letter-spacing:-.03em}
+.sec-title .serif-i{font-weight:500}
+.arrow-link{font-size:13px;font-weight:700;letter-spacing:.02em;color:var(--ink-2);display:inline-flex;align-items:center;gap:9px;white-space:nowrap;transition:gap .2s,color .2s}
+.arrow-link:hover{gap:14px;color:var(--ink)}
+
+/* товари */
+.ax-prods{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.ax-prod{display:flex;flex-direction:column;background:var(--bg);transition:background .25s}
+.ax-prod:hover{background:var(--bg-2)}
+.ax-prod .img{position:relative;aspect-ratio:16/10;background:var(--plate);overflow:hidden}
+.ax-prod .img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.03)}
+.ax-chips{position:absolute;top:14px;left:14px;display:flex;gap:6px}
+.ax-chip{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 9px;background:#0b0b0d;color:#fff}
+.ax-chip.sale{background:var(--accent);color:#fff}
+.ax-fav{position:absolute;top:12px;right:12px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.86);color:#0b0b0d;display:grid;place-items:center}
+.ax-fav svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6}
+.ax-prod .body{display:flex;flex-direction:column;flex:1;padding:24px clamp(18px,2.4vw,28px) 26px}
+.ax-prod .bl{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.ax-prod h3{font-family:var(--font-serif);font-weight:600;font-size:20px;letter-spacing:-.01em;line-height:1.18;margin:12px 0 0}
+.ax-prod .desc{margin-top:8px;font-size:13.5px;color:var(--ink-3)}
+.ax-prod .foot{margin-top:auto;padding-top:22px;display:flex;align-items:flex-end;justify-content:space-between;gap:14px}
+.ax-price s{display:block;font-size:13px;color:var(--ink-3);margin-bottom:3px}
+.ax-price b{font-size:22px;font-weight:800;letter-spacing:-.01em}
+.ax-add{width:50px;height:50px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;flex:none;transition:transform .15s,background .2s}
+.ax-add:hover{background:var(--accent-2)}
+.ax-add:active{transform:scale(.92)}
+.ax-add svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7}
+@media(max-width:720px){.ax-prods{grid-template-columns:1fr}}
+
+/* стандарт / категорії-пілони */
+.ax-standard .lead{max-width:20ch}
+.ax-standard .sec-title{margin-top:16px}
+.ax-pillars{margin-top:12px;border-top:1px solid var(--line)}
+.ax-pillar{display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;padding:30px 4px;border-bottom:1px solid var(--line);transition:padding-left .3s}
+.ax-pillar:hover{padding-left:16px}
+.ax-pillar .n{font-family:var(--font-serif);font-style:italic;font-size:18px;color:var(--accent)}
+.ax-pillar h3{font-size:clamp(26px,4.4vw,44px);letter-spacing:-.02em;font-weight:800}
+.ax-pillar p{margin:0;color:var(--ink-3);font-size:14px;max-width:34ch;text-align:right}
+.ax-pillar .go{color:var(--ink-3);transition:transform .3s,color .2s}
+.ax-pillar:hover .go{transform:translateX(6px);color:var(--ink)}
+.ax-pillar .go svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.4}
+@media(max-width:720px){.ax-pillar{grid-template-columns:auto 1fr;gap:18px}.ax-pillar p{display:none}}
+
+/* бренди */
+.ax-brands{border-block:1px solid var(--line);padding:46px 0}
+.ax-brands .label{text-align:center;display:block;margin-bottom:28px}
+.ax-brands .row{display:flex;flex-wrap:wrap;justify-content:center;gap:16px 46px}
+.ax-brands .row span{font-family:var(--font-serif);font-weight:500;font-size:clamp(16px,2vw,22px);color:var(--ink-3);transition:color .2s}
+.ax-brands .row span:hover{color:var(--ink)}
+
+/* велика цитата */
+.ax-quote{text-align:center}
+.ax-quote .mk{font-family:var(--font-serif);font-size:80px;line-height:.4;color:var(--accent)}
+.ax-quote blockquote{margin:24px auto 0;max-width:19ch;font-family:var(--font-serif);font-weight:500;font-size:clamp(26px,4.6vw,50px);line-height:1.22;letter-spacing:-.01em;color:var(--ink)}
+.ax-quote blockquote em{font-style:italic;color:var(--serif-ink)}
+.ax-quote .by{margin-top:30px;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.ax-quote .by b{color:var(--ink);font-weight:700}
+
+/* журнал */
+.ax-journal .row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-block:1px solid var(--line)}
+.ax-art{background:var(--bg);padding:38px clamp(20px,2.5vw,34px);transition:background .25s}
+.ax-art:hover{background:var(--bg-2)}
+.ax-art .m{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.ax-art h3{font-family:var(--font-serif);font-weight:600;font-size:clamp(22px,2.6vw,30px);letter-spacing:-.01em;line-height:1.15;margin:22px 0 26px}
+.ax-art .r{font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--ink-2);display:inline-flex;gap:8px;align-items:center}
+.ax-art:hover .r{color:var(--ink)}
+@media(max-width:640px){.ax-journal .row{grid-template-columns:1fr}}
+
+/* розсилка */
+.ax-news{background:#191d3f;border:1px solid #2a2f5c;padding:clamp(36px,5vw,64px)}
+.ax-news .label{color:var(--accent-2)}
+.ax-news h2{font-family:var(--font-serif);font-weight:600;font-size:clamp(24px,3.6vw,40px);letter-spacing:-.01em;margin:16px 0 0;max-width:20ch}
+.ax-form{display:flex;gap:10px;margin-top:28px;max-width:540px}
+.ax-form input{flex:1;height:58px;padding:0 20px;background:rgba(255,255,255,.06);border:1px solid #343a68;color:var(--ink);font-size:15px;outline:none}
+.ax-form input::placeholder{color:#8286ad}
+.ax-form input:focus{border-color:var(--accent)}
+.ax-form button{width:58px;height:58px;background:var(--ink);color:#0b0b0d;display:grid;place-items:center;flex:none}
+.ax-form button svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2}
+.ax-news small{display:block;margin-top:12px;font-size:12px;color:#8286ad}
+
+/* футер */
+.ax-foot{border-top:1px solid var(--line);padding:64px 0 40px}
+.ax-foot .top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:36px}
+.ax-foot .about .ax-logo{font-size:24px}
+.ax-foot .about p{margin:18px 0 0;color:var(--ink-3);font-size:14px;max-width:32ch;line-height:1.6}
+.ax-foot h4{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin:0 0 16px}
+.ax-foot ul{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+.ax-foot a{color:var(--ink-2);font-size:14px;transition:color .2s}
+.ax-foot a:hover{color:var(--ink)}
+.ax-help{margin-top:48px;padding-top:30px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:14px}
+.ax-help .q{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.ax-help .tel{font-family:var(--font-serif);font-weight:600;font-size:clamp(24px,4vw,40px);letter-spacing:-.01em}
+.ax-foot .bot{margin-top:34px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+@media(max-width:760px){.ax-foot .top{grid-template-columns:1fr 1fr}.ax-foot .about{grid-column:1/-1}}
+@media(max-width:460px){.ax-foot .top{grid-template-columns:1fr}}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- хедер -->
+<header class="ax-header">
+  <div class="wrap">
+    <a class="ax-logo" href="#" aria-label="SOCO Ukraine">SOCO&nbsp;<span class="spark">✦</span></a>
+    <nav class="ax-nav" aria-label="Головна навігація">
+      <a href="#prods">Каталог</a>
+      <a href="#brands">Бренди</a>
+      <a href="#standard">Для клінік</a>
+      <a href="#foot">Контакти</a>
+    </nav>
+    <button class="ax-menu" id="axburger" aria-label="Меню"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg></button>
+  </div>
+  <div class="ax-mnav" id="axmnav">
+    <a href="#prods">Каталог</a><a href="#brands">Бренди</a><a href="#standard">Для клінік</a><a href="#foot">Контакти</a>
+  </div>
+</header>
+
+<!-- hero -->
+<section class="ax-hero"><div class="wrap">
+  <div class="meta">
+    <span class="label">SOCO Edition / 01</span>
+    <span class="label r">Dental supply,<br>exquisitely curated.</span>
+  </div>
+  <span class="label blue kicker" style="display:block">Професійний вибір</span>
+  <h1 class="ax-h1">Клінічна точність, <span class="serif-i">піднесена</span> до стандарту.</h1>
+
+  <div class="ax-media">
+    <a class="btn-pill ax-cta" href="#prods">Дослідити колекцію <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <div class="ax-plate">
+      <img src="../../assets/img/products/handpiece.svg" alt="Турбінний наконечник NSK Ti-Max Z900L" />
+      <div class="ax-sig">
+        <span class="label">01 — Signature</span>
+        <h3>NSK Ti-Max<br>Z900L</h3>
+        <a href="#prods">Переглянути →</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- довіра -->
+<div class="ax-trust"><div class="wrap">
+  <div><b>2009</b><span>рік заснування</span></div>
+  <div><b>3 500+</b><span>позицій у каталозі</span></div>
+  <div><b>18</b><span>офіційних брендів</span></div>
+  <div><b>1–2 дні</b><span>доставка по Україні</span></div>
+</div></div>
+
+<!-- товари -->
+<section class="sec" id="prods"><div class="wrap">
+  <div class="sec-head reveal">
+    <div><span class="label">Curated selection</span><h2 class="sec-title" style="margin-top:14px">Обрані <span class="serif-i">інструменти</span></h2></div>
+    <a class="arrow-link" href="#">Дивитися все →</a>
+  </div>
+  <div class="ax-prods reveal">
+
+    <article class="ax-prod">
+      <div class="img"><img src="../../assets/img/products/handpiece.svg" alt="NSK Ti-Max Z900L" />
+        <div class="ax-chips"><span class="ax-chip">Новинка</span></div>
+        <button class="ax-fav" aria-label="В обране"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-9.3-9C1.2 8 2.8 4.5 6.2 4.5c2 0 3.3 1.1 4.1 2.4h.4c.8-1.3 2.1-2.4 4.1-2.4 3.4 0 5 3.5 3.5 6.5C19 15.4 12 20 12 20z"/></svg></button>
+      </div>
+      <div class="body">
+        <div class="bl">NSK · SC-80240</div>
+        <h3>NSK Ti-Max Z900L — турбінний наконечник із підсвіткою</h3>
+        <p class="desc">Титановий корпус · керамічні підшипники · LED денного світла</p>
+        <div class="foot"><div class="ax-price"><b>24 500 ₴</b></div>
+          <button class="ax-add" aria-label="У кошик"><svg viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M2 3h3l2.4 12.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.2L21 7H6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      </div>
+    </article>
+
+    <article class="ax-prod">
+      <div class="img"><img src="../../assets/img/products/curing-lamp.svg" alt="Woodpecker LED.F" />
+        <div class="ax-chips"><span class="ax-chip">Хіт</span><span class="ax-chip sale">Акція</span></div>
+        <button class="ax-fav" aria-label="В обране"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-9.3-9C1.2 8 2.8 4.5 6.2 4.5c2 0 3.3 1.1 4.1 2.4h.4c.8-1.3 2.1-2.4 4.1-2.4 3.4 0 5 3.5 3.5 6.5C19 15.4 12 20 12 20z"/></svg></button>
+      </div>
+      <div class="body">
+        <div class="bl">Woodpecker · SC-80111</div>
+        <h3>Woodpecker LED.F — полімеризаційна лампа бездротова</h3>
+        <p class="desc">1200 мВт/см² · алюмінієвий корпус · до 400 циклів</p>
+        <div class="foot"><div class="ax-price"><s>6 900 ₴</s><b>5 900 ₴</b></div>
+          <button class="ax-add" aria-label="У кошик"><svg viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M2 3h3l2.4 12.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.2L21 7H6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      </div>
+    </article>
+
+    <article class="ax-prod">
+      <div class="img"><img src="../../assets/img/products/impression-cartridge.svg" alt="Elite HD+ Light Body" />
+        <div class="ax-chips"><span class="ax-chip">Хіт</span></div>
+        <button class="ax-fav" aria-label="В обране"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-9.3-9C1.2 8 2.8 4.5 6.2 4.5c2 0 3.3 1.1 4.1 2.4h.4c.8-1.3 2.1-2.4 4.1-2.4 3.4 0 5 3.5 3.5 6.5C19 15.4 12 20 12 20z"/></svg></button>
+      </div>
+      <div class="body">
+        <div class="bl">Zhermack · SC-60113</div>
+        <h3>Elite HD+ Light Body — А-силікон, 2 × 50 мл</h3>
+        <p class="desc">Гідрофільний · стабільність розмірів 14 днів</p>
+        <div class="foot"><div class="ax-price"><b>2 100 ₴</b></div>
+          <button class="ax-add" aria-label="У кошик"><svg viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M2 3h3l2.4 12.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.2L21 7H6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      </div>
+    </article>
+
+    <article class="ax-prod">
+      <div class="img"><img src="../../assets/img/products/burs-set.svg" alt="Набір алмазних борів Komet" />
+        <div class="ax-chips"><span class="ax-chip sale">Акція</span></div>
+        <button class="ax-fav" aria-label="В обране"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-9.3-9C1.2 8 2.8 4.5 6.2 4.5c2 0 3.3 1.1 4.1 2.4h.4c.8-1.3 2.1-2.4 4.1-2.4 3.4 0 5 3.5 3.5 6.5C19 15.4 12 20 12 20z"/></svg></button>
+      </div>
+      <div class="body">
+        <div class="bl">Komet · SC-20117</div>
+        <h3>Komet — набір алмазних борів для препарування, 10 шт</h3>
+        <p class="desc">Німеччина · гальванічне напилення · калібрований різ</p>
+        <div class="foot"><div class="ax-price"><s>3 300 ₴</s><b>2 850 ₴</b></div>
+          <button class="ax-add" aria-label="У кошик"><svg viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M2 3h3l2.4 12.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.2L21 7H6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+      </div>
+    </article>
+
+  </div>
+</div></section>
+
+<!-- власний стандарт -->
+<section class="sec ax-standard" id="standard"><div class="wrap">
+  <div class="reveal">
+    <span class="label lead" style="display:block">Ваш кабінет</span>
+    <h2 class="sec-title">Власний <span class="serif-i">стандарт</span>.</h2>
+  </div>
+  <div class="ax-pillars reveal">
+    <a class="ax-pillar" href="#"><span class="n">01</span><h3>Реставрація</h3><p>Композити, адгезиви, бори та поліри — усе для естетичної роботи</p><span class="go"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+    <a class="ax-pillar" href="#"><span class="n">02</span><h3>Інструмент</h3><p>Ручні інструменти, ендодонтія, наконечники та обладнання</p><span class="go"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+    <a class="ax-pillar" href="#"><span class="n">03</span><h3>Стерильність</h3><p>Дезінфекція, автоклави, рукавички та витратні матеріали</p><span class="go"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+  </div>
+</div></section>
+
+<!-- бренди -->
+<div class="ax-brands" id="brands"><div class="wrap">
+  <span class="label">Офіційні постачальники</span>
+  <div class="row">
+    <span>3M ESPE</span><span>Ivoclar Vivadent</span><span>Dentsply Sirona</span><span>NSK</span><span>Woodpecker</span><span>Komet</span><span>GC</span><span>MELAG</span><span>Septodont</span><span>Zhermack</span>
+  </div>
+</div></div>
+
+<!-- цитата -->
+<section class="sec"><div class="wrap ax-quote reveal">
+  <div class="mk" aria-hidden="true">“</div>
+  <blockquote>Товар завжди <em>оригінальний</em>, а замовлення приходить день у день.</blockquote>
+  <div class="by"><b>Ірина Ковальчук</b> · головна лікарка, «Дентал Арт» · Київ</div>
+</div></section>
+
+<!-- журнал -->
+<section class="ax-journal"><div class="wrap">
+  <div class="sec-head reveal" style="margin-bottom:36px">
+    <div><span class="label">Практика та знання</span><h2 class="sec-title" style="margin-top:14px">Корисне <span class="serif-i">для роботи</span></h2></div>
+    <a class="arrow-link" href="#">Усі матеріали →</a>
+  </div>
+  <div class="row reveal">
+    <a class="ax-art" href="#"><div class="m">06.07.2026 · Обладнання</div><h3>Як обрати установку для кабінету: 7 практичних критеріїв</h3><span class="r">Читати →</span></a>
+    <a class="ax-art" href="#"><div class="m">24.06.2026 · Стерилізація</div><h3>Повний цикл: що важливо знати про автоклав класу B</h3><span class="r">Читати →</span></a>
+  </div>
+</div></section>
+
+<!-- розсилка -->
+<section class="sec" id="news" style="padding-top:0"><div class="wrap">
+  <div class="ax-news reveal">
+    <span class="label">Новини без шуму</span>
+    <h2>Знижки, нові бренди та важливі оновлення каталогу.</h2>
+    <form class="ax-form" onsubmit="return false">
+      <input type="email" placeholder="Ваш email" aria-label="Ваш email" />
+      <button aria-label="Підписатися"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </form>
+    <small>Натискаючи кнопку, ви погоджуєтесь з політикою конфіденційності.</small>
+  </div>
+</div></section>
+
+<!-- футер -->
+<footer class="ax-foot" id="foot"><div class="wrap">
+  <div class="top">
+    <div class="about">
+      <a class="ax-logo" href="#">SOCO&nbsp;<span class="spark">✦</span></a>
+      <p>Професійне стоматологічне обладнання та матеріали для щоденної практики. Оригінал із сертифікатом.</p>
+    </div>
+    <div><h4>Покупцям</h4><ul><li><a href="#">Каталог товарів</a></li><li><a href="#">Доставка й оплата</a></li><li><a href="#">Гарантія</a></li></ul></div>
+    <div><h4>Для бізнесу</h4><ul><li><a href="#">Для клінік</a></li><li><a href="#">Бренди</a></li><li><a href="#">Контакти</a></li></ul></div>
+  </div>
+  <div class="ax-help">
+    <span class="q">Потрібна допомога?</span>
+    <a class="tel" href="tel:+380445012280">+380 (44) 501-22-80</a>
+  </div>
+  <div class="bot"><span>© 2026 ТОВ «СОКО УКРАЇНА»</span><span>Variant B · Axis premium style</span></div>
+</div></footer>
+
+<script>
+(function(){
+  var b=document.getElementById('axburger'),m=document.getElementById('axmnav');
+  if(b&&m)b.addEventListener('click',function(){m.classList.toggle('open')});
+  m&&m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open')})});
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els=document.querySelectorAll('.reveal');
+  if(reduce||!('IntersectionObserver'in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}})},{rootMargin:'0px 0px -8% 0px'});
+  els.forEach(function(e){io.observe(e);});
+})();
+</script>
+</body>
+</html>

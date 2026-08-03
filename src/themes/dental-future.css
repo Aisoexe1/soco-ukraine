@@ -1,0 +1,526 @@
+/* ==========================================================================
+   SOCO Ukraine — тема «Dental Future»
+   Візуальний референс: макет Dental Future.
+
+   Глибокий синьо-бірюзовий фон, електричний cyan, технічна сітка,
+   світлові кола, волосяні межі, монотипні мікро-мітки, малі радіуси.
+
+   Файл НЕ містить розмітки й контенту: тільки токени та оформлення.
+   Контент, дані та логіка спільні для всіх версій (src/, assets/js/).
+   ========================================================================== */
+
+@import "tailwindcss";
+
+@import "../css/tokens.css";
+@import "../css/keyframes.css";
+@import "../css/base.css";
+@import "../css/components.css";
+@import "../css/utilities.css";
+
+@source "../../*.html";
+@source "../../assets/js/*.js";
+@source "../../src/**/*.html";
+
+/* ==========================================================================
+   1. Токени теми
+   ========================================================================== */
+@theme {
+  /* ---- Нейтральні: шкала перевернута (50 — найтемніша поверхня, 900 — текст) ---- */
+  --color-ink-50: #0a2130;
+  --color-ink-100: #133445;
+  --color-ink-200: #23505f;
+  --color-ink-300: #7fa4ad;
+  --color-ink-400: #93b6bd;
+  --color-ink-500: #a8c7cd;
+  --color-ink-600: #bad6db;
+  --color-ink-700: #c8e2e7;
+  --color-ink-800: #d8f0f4;
+  --color-ink-900: #e7f8fb;
+  --color-ink-950: #030c12;
+
+  /* ---- Акцент: електричний cyan ---- */
+  --color-brand-50: #0a2b38;
+  --color-brand-100: #0f3c4c;
+  --color-brand-200: #16515f;
+  --color-brand-300: #5fd8e8;
+  --color-brand-400: #3ae0f0;
+  --color-brand-500: #22e5f5;
+  --color-brand-600: #22e5f5;
+  --color-brand-700: #5eeaf7;
+  --color-brand-800: #0b6e80;
+  --color-brand-900: #084c59;
+  --color-brand-950: #06333d;
+
+  /* ---- Службові ---- */
+  --color-mint-500: #2ee6a8;
+  --color-amber-500: #ffc44d;
+  --color-rose-500: #ff6d8a;
+
+  /* Вбудовані кольори Tailwind, які використовує розмітка та JS
+     (статуси наявності, зірки, помилки форм) — на темному тлі
+     стокові значення нечитабельні, тому переоголошуємо їх тут. */
+  --color-emerald-600: #35eab0;
+  --color-emerald-700: #62f0c3;
+  --color-rose-400: #ff8ba3;
+  --color-rose-600: #ff849c;
+  --color-amber-400: #ffcb63;
+  --color-amber-600: #ffc44d;
+  --color-amber-700: #ffd27a;
+
+  /* ---- Тіні: глибина + світіння акценту ---- */
+  --shadow-xs: 0 1px 2px 0 rgb(1 8 13 / 0.5);
+  --shadow-sm: 0 1px 3px 0 rgb(1 8 13 / 0.55), 0 1px 2px -1px rgb(1 8 13 / 0.45);
+  --shadow-md: 0 8px 22px -8px rgb(1 8 13 / 0.75), 0 2px 6px -2px rgb(1 8 13 / 0.5);
+  --shadow-lg: 0 22px 48px -16px rgb(1 8 13 / 0.85), 0 8px 18px -10px rgb(1 8 13 / 0.6);
+  --shadow-xl: 0 38px 76px -28px rgb(1 8 13 / 0.9), 0 12px 28px -14px rgb(1 8 13 / 0.65);
+  --shadow-2xl: 0 44px 88px -32px rgb(1 8 13 / 0.92), 0 16px 36px -18px rgb(1 8 13 / 0.7);
+  --shadow-brand: 0 12px 32px -12px rgb(34 229 245 / 0.45);
+
+  /* ---- Радіуси: технічні, майже прямі ---- */
+  --radius-xl: 0.3rem;
+  --radius-2xl: 0.35rem;
+  --radius-3xl: 0.4rem;
+  --radius-4xl: 0.45rem;
+}
+
+/* ==========================================================================
+   2. Оформлення (skin)
+   ========================================================================== */
+@layer utilities {
+  :root[data-theme="dental-future"] {
+    --df-page: #061722;
+    --df-panel: #0b2936;
+    --df-panel-2: #0e3140;
+    --df-section: #08202c;
+    --df-deep: #041520;
+    --df-line: #1f4859;
+    --df-line-soft: #143646;
+    --df-accent: #22e5f5;
+    --df-ink: #d8f0f4;
+    --df-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", "Inter", monospace;
+
+    --srf: var(--df-panel);
+    --srf-ink: var(--df-ink);
+
+    scrollbar-color: #24505f transparent;
+  }
+
+  /* ---------- Документ ---------- */
+  [data-theme="dental-future"] body,
+  [data-theme="dental-future"] body.bg-white {
+    background-color: var(--df-page);
+    color: var(--color-ink-800);
+  }
+  [data-theme="dental-future"] ::selection {
+    background-color: var(--df-accent);
+    color: #04222b;
+  }
+  [data-theme="dental-future"] :focus-visible {
+    outline-color: var(--df-accent);
+  }
+  [data-theme="dental-future"] *::-webkit-scrollbar-thumb {
+    background: #24505f;
+    border-color: var(--df-page);
+  }
+  [data-theme="dental-future"] *::-webkit-scrollbar-thumb:hover {
+    background: #2f6879;
+  }
+
+  /* ---------- bg-white → панель теми ---------- */
+  [data-theme="dental-future"] .bg-white,
+  [data-theme="dental-future"] .hover\:bg-white:hover,
+  [data-theme="dental-future"] .focus\:bg-white:focus,
+  [data-theme="dental-future"] .group:hover .group-hover\:bg-white {
+    background-color: var(--srf);
+    color: var(--srf-ink);
+  }
+  [data-theme="dental-future"] .bg-white\/85 {
+    background-color: color-mix(in oklab, var(--df-page) 84%, transparent);
+  }
+  [data-theme="dental-future"] .bg-white\/60 {
+    background-color: color-mix(in oklab, var(--df-panel) 70%, transparent);
+  }
+  [data-theme="dental-future"] .from-white {
+    --tw-gradient-from: var(--df-page);
+  }
+  [data-theme="dental-future"] .via-white {
+    --tw-gradient-via: var(--df-page);
+  }
+  [data-theme="dental-future"] .to-white {
+    --tw-gradient-to: var(--df-page);
+  }
+
+  /* ---------- Типографіка ---------- */
+  [data-theme="dental-future"] h1,
+  [data-theme="dental-future"] h2,
+  [data-theme="dental-future"] h3 {
+    letter-spacing: -0.05em;
+    font-weight: 700;
+  }
+  [data-theme="dental-future"] h1 {
+    letter-spacing: -0.065em;
+  }
+  [data-theme="dental-future"] .section-title {
+    letter-spacing: -0.055em;
+    font-weight: 700;
+  }
+  [data-theme="dental-future"] .text-gradient {
+    background-image: linear-gradient(100deg, var(--df-accent), #7ef0fb 60%, var(--df-ink));
+  }
+
+  /* Технічна мікро-мітка */
+  [data-theme="dental-future"] .eyebrow {
+    background: transparent;
+    color: var(--df-accent);
+    font-family: var(--df-mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    border-radius: 0;
+    padding: 0 0 0 16px;
+    position: relative;
+  }
+  [data-theme="dental-future"] .eyebrow::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 9px;
+    height: 9px;
+    margin-top: -4.5px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+  }
+
+  /* ---------- Геометрія ---------- */
+  [data-theme="dental-future"] :is(
+      .btn, .btn-primary, .btn-secondary, .btn-ghost, .btn-soft,
+      .field, .chip-suggest, .quick-cat, .page-btn, .tab-btn, .badge,
+      .mobile-link, .radio-card, .faq-item, .card, .card-hover,
+      .cat-card, .why-card, .thumb-btn, .pay-chip, .nav-link
+    ) {
+    border-radius: 5px;
+  }
+  [data-theme="dental-future"] :is(.filter-box, .price-slider) {
+    border-radius: 2px;
+  }
+  [data-theme="dental-future"] .rounded-\[2rem\],
+  [data-theme="dental-future"] .rounded-\[2\.5rem\] {
+    border-radius: 6px;
+  }
+  [data-theme="dental-future"] #site-header .rounded-full:is(input, a, button, form),
+  [data-theme="dental-future"] #site-header .field {
+    border-radius: 5px;
+  }
+  [data-theme="dental-future"] :is(.icon-btn, .quick-btn, .carousel-arrow, .view-btn, .social-btn) {
+    border-radius: 999px;
+  }
+
+  /* ---------- Шапка ---------- */
+  [data-theme="dental-future"] #site-header {
+    border-bottom-color: var(--df-line);
+    background-color: color-mix(in oklab, var(--df-page) 86%, transparent);
+  }
+  [data-theme="dental-future"] .nav-link {
+    color: var(--color-ink-600);
+  }
+  [data-theme="dental-future"] .nav-link:hover,
+  [data-theme="dental-future"] .nav-link[data-active] {
+    color: var(--df-accent);
+  }
+  [data-theme="dental-future"] .nav-link::after {
+    background-color: var(--df-accent);
+  }
+  [data-theme="dental-future"] .bg-ink-50\/70 {
+    background-color: var(--df-deep);
+  }
+  [data-theme="dental-future"] #site-header .bg-ink-900 {
+    background-color: var(--df-accent);
+    color: #04222b;
+  }
+  [data-theme="dental-future"] #site-header .bg-ink-900:hover {
+    background-color: #5eeaf7;
+    color: #04222b;
+  }
+  [data-theme="dental-future"] .bg-ink-900 {
+    --color-ink-900: #10394a;
+  }
+
+  /* ---------- Кнопки ---------- */
+  [data-theme="dental-future"] .btn-primary {
+    background-color: var(--df-accent);
+    color: #04222b;
+    box-shadow: 0 10px 28px -14px rgb(34 229 245 / 0.6);
+  }
+  [data-theme="dental-future"] .btn-primary:hover {
+    background-color: #5eeaf7;
+    color: #04222b;
+    box-shadow: 0 14px 34px -14px rgb(34 229 245 / 0.75);
+  }
+  [data-theme="dental-future"] .btn-secondary {
+    background-color: transparent;
+    color: var(--df-accent);
+    --tw-ring-color: color-mix(in oklab, var(--df-accent) 55%, transparent);
+  }
+  [data-theme="dental-future"] .btn-secondary:hover {
+    color: #04222b;
+    background-color: var(--df-accent);
+    --tw-ring-color: var(--df-accent);
+    box-shadow: none;
+  }
+  [data-theme="dental-future"] .btn-ghost:hover {
+    background-color: var(--df-panel-2);
+    color: var(--df-accent);
+  }
+  [data-theme="dental-future"] .btn-soft {
+    background-color: rgb(34 229 245 / 0.1);
+    color: var(--color-brand-300);
+  }
+  [data-theme="dental-future"] .btn-soft:hover {
+    background-color: rgb(34 229 245 / 0.18);
+  }
+
+  /* Заливки акцентом: «білий» текст на cyan замінюємо на глибокий синій */
+  [data-theme="dental-future"] [class*="bg-brand-6"],
+  [data-theme="dental-future"] [class*="bg-brand-7"],
+  [data-theme="dental-future"] [class*="bg-mint-5"],
+  [data-theme="dental-future"] [class*="bg-rose-5"],
+  [data-theme="dental-future"] [class*="bg-amber-5"] {
+    --color-white: #04222b;
+  }
+
+  /* ---------- Картки та поверхні ---------- */
+  [data-theme="dental-future"] :is(.card, .card-hover, .cat-card, .why-card, .faq-item, .radio-card) {
+    background-color: var(--df-panel);
+    --tw-ring-color: var(--df-line);
+  }
+  [data-theme="dental-future"] :is(.card-hover, .cat-card, .why-card):hover {
+    background-color: var(--df-panel-2);
+    --tw-ring-color: color-mix(in oklab, var(--df-accent) 42%, transparent);
+  }
+  [data-theme="dental-future"] .cat-card::before {
+    background-image: linear-gradient(to bottom, rgb(34 229 245 / 0.13), transparent);
+  }
+  [data-theme="dental-future"] :is(.cat-icon, .why-icon) {
+    background-color: rgb(34 229 245 / 0.1);
+    color: var(--color-brand-400);
+  }
+  [data-theme="dental-future"] .group:hover .cat-icon,
+  [data-theme="dental-future"] .group:hover .why-icon {
+    background-color: var(--df-accent);
+    color: #04222b;
+  }
+
+  /* Товарні зображення — світла «плашка» з холодним відтінком, як у макеті */
+  [data-theme="dental-future"] img[src*="assets/img/products/"] {
+    filter: saturate(0.7) hue-rotate(-14deg) brightness(1.01);
+  }
+  [data-theme="dental-future"] .bg-ink-50\/60 {
+    background-color: #d9e9e6;
+  }
+  [data-theme="dental-future"] img[src*="hero-instruments"],
+  [data-theme="dental-future"] img[src*="clinic"] {
+    filter: saturate(0.55) hue-rotate(-16deg) contrast(1.05) brightness(0.97);
+  }
+
+  /* ---------- Форми ---------- */
+  [data-theme="dental-future"] .field {
+    background-color: rgb(11 38 51 / 0.72);
+    color: var(--df-ink);
+    --tw-ring-color: var(--df-line);
+  }
+  [data-theme="dental-future"] .field:focus {
+    background-color: rgb(11 38 51 / 0.9);
+    --tw-ring-color: var(--df-accent);
+  }
+  [data-theme="dental-future"] .field::placeholder,
+  [data-theme="dental-future"] input::placeholder,
+  [data-theme="dental-future"] textarea::placeholder {
+    color: #71969f;
+  }
+  [data-theme="dental-future"] .filter-box {
+    border-color: #2c5b6c;
+    background-color: transparent;
+  }
+  [data-theme="dental-future"] .filter-box:checked {
+    border-color: var(--df-accent);
+    background-color: var(--df-accent);
+  }
+  [data-theme="dental-future"] .filter-row:hover {
+    background-color: var(--df-panel-2);
+  }
+  [data-theme="dental-future"] .price-slider {
+    background-color: #1c4353;
+  }
+  [data-theme="dental-future"] .price-slider::-webkit-slider-thumb {
+    background-color: var(--df-accent);
+    border-color: var(--df-page);
+  }
+  [data-theme="dental-future"] .price-slider::-moz-range-thumb {
+    background-color: var(--df-accent);
+    border-color: var(--df-page);
+  }
+
+  /* ---------- Дрібні елементи ---------- */
+  [data-theme="dental-future"] .chip-suggest,
+  [data-theme="dental-future"] .quick-cat {
+    background-color: var(--df-panel);
+    color: var(--color-ink-500);
+    --tw-ring-color: var(--df-line);
+  }
+  [data-theme="dental-future"] :is(.chip-suggest, .quick-cat):hover {
+    background-color: var(--df-panel-2);
+    color: var(--df-accent);
+    --tw-ring-color: color-mix(in oklab, var(--df-accent) 45%, transparent);
+  }
+  [data-theme="dental-future"] .quick-cat.is-active {
+    background-color: var(--df-accent);
+    color: #04222b;
+    --tw-ring-color: var(--df-accent);
+    box-shadow: 0 8px 22px -12px rgb(34 229 245 / 0.6);
+  }
+  [data-theme="dental-future"] .page-btn {
+    --tw-ring-color: var(--df-line);
+    color: var(--color-ink-500);
+  }
+  [data-theme="dental-future"] .page-btn:hover {
+    background-color: var(--df-panel-2);
+    color: var(--df-accent);
+    --tw-ring-color: color-mix(in oklab, var(--df-accent) 40%, transparent);
+  }
+  [data-theme="dental-future"] .page-btn.is-active {
+    background-color: var(--df-accent);
+    color: #04222b;
+    --tw-ring-color: var(--df-accent);
+  }
+  [data-theme="dental-future"] .tab-btn.is-active,
+  [data-theme="dental-future"] .view-btn.is-active {
+    background-color: var(--df-panel-2);
+    color: var(--df-accent);
+  }
+  [data-theme="dental-future"] .icon-btn:hover {
+    background-color: var(--df-panel-2);
+    color: var(--df-accent);
+  }
+  [data-theme="dental-future"] .quick-btn {
+    background-color: rgb(6 23 34 / 0.78);
+    color: var(--color-ink-600);
+    --tw-ring-color: rgb(152 230 241 / 0.24);
+  }
+  [data-theme="dental-future"] .quick-btn:hover,
+  [data-theme="dental-future"] .quick-btn.is-active {
+    background-color: var(--df-accent);
+    color: #04222b;
+    --tw-ring-color: var(--df-accent);
+  }
+  [data-theme="dental-future"] .carousel-arrow {
+    background-color: transparent;
+    color: var(--color-ink-500);
+    --tw-ring-color: var(--df-line);
+  }
+  [data-theme="dental-future"] .carousel-arrow:hover {
+    background-color: var(--df-accent);
+    color: #04222b;
+    --tw-ring-color: var(--df-accent);
+  }
+  [data-theme="dental-future"] .thumb-btn {
+    background-color: var(--df-panel);
+    --tw-ring-color: var(--df-line);
+  }
+  /* Тонований блок «до безкоштовної доставки» */
+  [data-theme="dental-future"] [data-free-progress] {
+    --color-brand-800: var(--color-brand-300);
+  }
+  [data-theme="dental-future"] [data-free-progress] .bg-white {
+    background-color: #14404e;
+  }
+  [data-theme="dental-future"] .badge-brand {
+    background-color: rgb(12 51 63 / 0.9);
+    color: var(--df-accent);
+  }
+  [data-theme="dental-future"] .faq-icon {
+    background-color: var(--df-panel-2);
+    color: var(--color-ink-500);
+  }
+  [data-theme="dental-future"] .brand-word:hover {
+    color: var(--df-accent);
+  }
+  [data-theme="dental-future"] .skeleton {
+    background-color: var(--df-panel-2);
+    background-image: linear-gradient(90deg, transparent, rgb(152 230 241 / 0.07), transparent);
+  }
+  [data-theme="dental-future"] .mobile-link:hover,
+  [data-theme="dental-future"] .mobile-link[data-active] {
+    background-color: var(--df-panel-2);
+    color: var(--df-accent);
+  }
+
+  /* ---------- Технічні фонові текстури ---------- */
+  [data-theme="dental-future"] .bg-dots {
+    background-image:
+      linear-gradient(to right, rgb(152 230 241 / 0.13) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(152 230 241 / 0.13) 1px, transparent 1px);
+    background-size: 70px 70px;
+  }
+  [data-theme="dental-future"] .bg-grid {
+    background-image:
+      linear-gradient(to right, rgb(152 230 241 / 0.16) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(152 230 241 / 0.16) 1px, transparent 1px);
+    background-size: 70px 70px;
+  }
+
+  /* ==========================================================================
+     3. Контекстні перевизначення токенів
+     ========================================================================== */
+
+  /* Затемнення під модальними шарами: на темній сторінці 40 % замало */
+  [data-theme="dental-future"] .bg-ink-950\/40,
+  [data-theme="dental-future"] .bg-ink-950\/45 {
+    background-color: rgb(1 8 13 / 0.78);
+  }
+
+  [data-theme="dental-future"] footer,
+  [data-theme="dental-future"] [class*="bg-ink-950"] {
+    --color-ink-950: #030c12;
+    --srf: #e6f6f8;
+    --srf-ink: #061722;
+  }
+  [data-theme="dental-future"] footer {
+    border-top: 1px solid var(--df-line);
+  }
+
+  /* Світлий острів усередині темного (кнопки bg-white на CTA,
+     у підвалі та на брендових градієнтних панелях) */
+  [data-theme="dental-future"] [class*="from-brand-6"],
+  [data-theme="dental-future"] [class*="from-brand-7"] {
+    --srf: #e6f6f8;
+    --srf-ink: #061722;
+  }
+  [data-theme="dental-future"] footer .bg-white,
+  [data-theme="dental-future"] [class*="bg-ink-950"] .bg-white,
+  [data-theme="dental-future"] [class*="from-brand-6"] .bg-white,
+  [data-theme="dental-future"] [class*="from-brand-7"] .bg-white {
+    --color-ink-900: #061722;
+    --color-ink-800: #0d2836;
+    --color-brand-700: #0a6c7e;
+    --color-brand-50: #e6fbfd;
+  }
+  [data-theme="dental-future"] footer .bg-white:hover,
+  [data-theme="dental-future"] [class*="bg-ink-950"] .bg-white:hover,
+  [data-theme="dental-future"] [class*="from-brand-6"] .bg-white:hover,
+  [data-theme="dental-future"] [class*="from-brand-7"] .bg-white:hover {
+    background-color: #fff;
+  }
+
+  /* Панель підписки: глибока бірюза, як у макеті */
+  [data-theme="dental-future"] footer div.bg-gradient-to-br:has(form[data-subscribe]) {
+    background-image: none;
+    background-color: #0d5666;
+    border: 1px solid #16788c;
+    --color-brand-100: #b9eef5;
+  }
+
+  [data-theme="dental-future"] [class*="from-brand-6"] {
+    --color-brand-100: #b9eef5;
+  }
+}

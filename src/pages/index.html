@@ -1,7 +1,7 @@
 <!--META
 {
-  "title": "SOCO Ukraine — стоматологічні матеріали та обладнання з доставкою по Україні",
-  "description": "Професійні стоматологічні матеріали та обладнання для клінік, лікарів і зуботехнічних лабораторій. Понад 5 000 оригінальних сертифікованих товарів, доставка по Україні за 1–2 дні.",
+  "title": "{{SITE_NAME}} — стоматологічні матеріали та обладнання з доставкою по Україні",
+  "description": "Продаж стоматологічного обладнання та матеріалів. Офіційний дистриб’ютор Coxo, Woodpecker, Sani, Nic і Soco. Прямі постачання, офіційна гарантія, доставка по Україні за 1–3 дні.",
   "keywords": "стоматологічні матеріали, стоматологічне обладнання, купити матеріали для стоматології, композит, бори, анестезія, рукавички, відбиткові матеріали, Україна, Київ",
   "nav": "home",
   "script": "home.js",
@@ -9,21 +9,13 @@
   "jsonld": [
     {
       "@type": "ItemList",
-      "name": "Популярні товари SOCO Ukraine",
+      "name": "Популярні товари {{SITE_NAME}}",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Filtek Ultimate — універсальний нанокомпозит", "url": "https://soco.ua/product.html?id=flt-ultimate-a2" },
-        { "@type": "ListItem", "position": 2, "name": "Single Bond Universal — адгезив універсальний", "url": "https://soco.ua/product.html?id=single-bond-universal" },
-        { "@type": "ListItem", "position": 3, "name": "Komet — набір алмазних борів", "url": "https://soco.ua/product.html?id=komet-diamond-set" },
-        { "@type": "ListItem", "position": 4, "name": "Рукавички нітрилові оглядові", "url": "https://soco.ua/product.html?id=nitrile-gloves" }
+        { "@type": "ListItem", "position": 1, "name": "Filtek Ultimate — універсальний нанокомпозит", "url": "{{SITE_URL}}/product.html?id=flt-ultimate-a2" },
+        { "@type": "ListItem", "position": 2, "name": "Single Bond Universal — адгезив універсальний", "url": "{{SITE_URL}}/product.html?id=single-bond-universal" },
+        { "@type": "ListItem", "position": 3, "name": "Komet — набір алмазних борів", "url": "{{SITE_URL}}/product.html?id=komet-diamond-set" },
+        { "@type": "ListItem", "position": 4, "name": "Рукавички нітрилові оглядові", "url": "{{SITE_URL}}/product.html?id=nitrile-gloves" }
       ]
-    },
-    {
-      "@type": "AggregateRating",
-      "@id": "https://soco.ua/#rating",
-      "itemReviewed": { "@id": "https://soco.ua/#organization" },
-      "ratingValue": "4.9",
-      "bestRating": "5",
-      "reviewCount": "1284"
     }
   ]
 }
@@ -50,7 +42,7 @@
             <span class="absolute inline-flex h-full w-full animate-pulse-ring rounded-full bg-brand-500"></span>
             <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand-600"></span>
           </span>
-          Офіційний постачальник з 2009 року
+          Офіційний дистриб’ютор {{BRANDS}}
         </p>
 
         <h1 id="hero-title" class="reveal reveal-d1 is-visible mt-6 text-[2.5rem] font-semibold leading-[1.08] tracking-tight text-ink-900 sm:text-6xl lg:text-[4rem]">
@@ -78,27 +70,27 @@
           </a>
         </div>
 
-        <!-- Швидкі факти -->
+        <!-- Швидкі факти (реальні дані компанії) -->
         <dl class="reveal reveal-d4 is-visible mt-12 grid grid-cols-3 gap-6 border-t border-ink-100 pt-8 sm:gap-10">
           <div>
-            <dt class="sr-only">Товарів у каталозі</dt>
+            <dt class="sr-only">Відгуків покупців</dt>
             <dd>
-              <span class="block text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl" data-counter="5000">5 000</span>
-              <span class="mt-1 block text-[13px] leading-snug text-ink-500">товарів<br class="hidden sm:block" /> у наявності</span>
-            </dd>
-          </div>
-          <div>
-            <dt class="sr-only">Клінік-партнерів</dt>
-            <dd>
-              <span class="block text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl" data-counter="1200">1 200</span>
-              <span class="mt-1 block text-[13px] leading-snug text-ink-500">клінік<br class="hidden sm:block" /> довіряють нам</span>
+              <span class="block text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl" data-counter="{{REVIEWS_COUNT}}">{{REVIEWS_COUNT}}</span>
+              <span class="mt-1 block text-[13px] leading-snug text-ink-500">відгуків<br class="hidden sm:block" /> покупців</span>
             </dd>
           </div>
           <div>
             <dt class="sr-only">Термін доставки</dt>
             <dd>
-              <span class="block text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl">1–2</span>
+              <span class="block text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl">1–3</span>
               <span class="mt-1 block text-[13px] leading-snug text-ink-500">дні<br class="hidden sm:block" /> доставка</span>
+            </dd>
+          </div>
+          <div>
+            <dt class="sr-only">Вартість доставки</dt>
+            <dd>
+              <span class="block text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl">50 ₴</span>
+              <span class="mt-1 block text-[13px] leading-snug text-ink-500">Нова Пошта,<br class="hidden sm:block" /> від</span>
             </dd>
           </div>
         </dl>
@@ -132,7 +124,7 @@
               </span>
               <span>
                 <span class="block text-sm font-semibold text-ink-900">Оригінал</span>
-                <span class="block text-xs text-ink-500">із сертифікатами</span>
+                <span class="block text-xs text-ink-500">з гарантією виробника</span>
               </span>
             </div>
           </div>
@@ -148,7 +140,7 @@
                 </svg>
               </span>
               <span>
-                <span class="block text-sm font-semibold text-ink-900">Доставка 1–2 дні</span>
+                <span class="block text-sm font-semibold text-ink-900">Доставка 1–3 дні</span>
                 <span class="block text-xs text-ink-500">по всій Україні</span>
               </span>
             </div>
@@ -168,16 +160,8 @@
         <div class="relative flex-1 overflow-hidden" style="mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent)">
           <div class="flex w-max animate-marquee items-center gap-12 pr-12">
             <!-- Дублюється для безшовної прокрутки -->
-            <span class="brand-word">3M ESPE</span><span class="brand-word">Ivoclar Vivadent</span><span class="brand-word">Dentsply Sirona</span>
-            <span class="brand-word">Kerr</span><span class="brand-word">VOCO</span><span class="brand-word">Coltene</span>
-            <span class="brand-word">Komet</span><span class="brand-word">Mani</span><span class="brand-word">Septodont</span>
-            <span class="brand-word">Zhermack</span><span class="brand-word">GC</span><span class="brand-word">NSK</span>
-            <span class="brand-word">MELAG</span><span class="brand-word">Tokuyama</span>
-            <span class="brand-word" aria-hidden="true">3M ESPE</span><span class="brand-word" aria-hidden="true">Ivoclar Vivadent</span><span class="brand-word" aria-hidden="true">Dentsply Sirona</span>
-            <span class="brand-word" aria-hidden="true">Kerr</span><span class="brand-word" aria-hidden="true">VOCO</span><span class="brand-word" aria-hidden="true">Coltene</span>
-            <span class="brand-word" aria-hidden="true">Komet</span><span class="brand-word" aria-hidden="true">Mani</span><span class="brand-word" aria-hidden="true">Septodont</span>
-            <span class="brand-word" aria-hidden="true">Zhermack</span><span class="brand-word" aria-hidden="true">GC</span><span class="brand-word" aria-hidden="true">NSK</span>
-            <span class="brand-word" aria-hidden="true">MELAG</span><span class="brand-word" aria-hidden="true">Tokuyama</span>
+            <span class="brand-word">Coxo</span><span class="brand-word">Woodpecker</span><span class="brand-word">Sani</span><span class="brand-word">Nic</span><span class="brand-word">Soco</span>
+            <span class="brand-word" aria-hidden="true">Coxo</span><span class="brand-word" aria-hidden="true">Woodpecker</span><span class="brand-word" aria-hidden="true">Sani</span><span class="brand-word" aria-hidden="true">Nic</span><span class="brand-word" aria-hidden="true">Soco</span>
           </div>
         </div>
       </div>
@@ -393,7 +377,7 @@
 
     <div class="mt-12 text-center">
       <a href="catalog.html" class="btn-secondary btn-lg group">
-        Дивитися всі 5 000 товарів
+        Перейти до каталогу
         <svg viewBox="0 0 20 20" class="h-[18px] w-[18px] transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
           <path d="M4 10h11m0 0-4.5-4.5M15 10l-4.5 4.5" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
@@ -410,7 +394,7 @@
     <p class="eyebrow reveal">Переваги</p>
     <h2 id="why-title" class="section-title reveal reveal-d1 mt-5">Чому обирають нас</h2>
     <p class="section-sub reveal reveal-d2 mx-auto text-center">
-      1 200 клінік по Україні працюють з нами роками. Ось що вони отримують разом із кожним замовленням.
+      Стоматологічні лікарні, лікарі та салони б’юті-індустрії — ось що вони отримують разом із кожним замовленням.
     </p>
   </div>
 
@@ -423,10 +407,10 @@
           <path d="m8.8 11.9 2.3 2.4 4.1-4.5" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </span>
-      <h3 class="why-title">Оригінальна продукція</h3>
+      <h3 class="why-title">Прямі постачання без посередників</h3>
       <p class="why-desc">
-        Прямі контракти з виробниками та офіційними дистрибʼюторами. Кожну партію можна перевірити за номером
-        накладної у вендора — підробки виключені на рівні ланцюга постачання.
+        Ми співпрацюємо з надійними виробниками напряму. Завдяки прямим постачанням першими презентуємо
+        на українському ринку новинки та не робимо зайвих націнок.
       </p>
     </article>
 
@@ -440,10 +424,10 @@
           <path d="M10.2 16.2 9.4 19.6l2.6-1.3 2.6 1.3-.8-3.4" stroke-linejoin="round" />
         </svg>
       </span>
-      <h3 class="why-title">Сертифіковані товари</h3>
+      <h3 class="why-title">Офіційна гарантія</h3>
       <p class="why-desc">
-        Усі позиції внесено до реєстру МОЗ України та мають декларації відповідності, CE-маркування та ISO 13485.
-        Повний пакет документів надсилаємо разом із замовленням або на першу вимогу.
+        На кожен товар надається гарантія, що підтверджує відсутність заводських дефектів. Термін залежить
+        від сервісної політики виробника й вказаний в описі товару.
       </p>
     </article>
 
@@ -457,10 +441,10 @@
           <path d="M2.5 5.5h6" stroke-linecap="round" />
         </svg>
       </span>
-      <h3 class="why-title">Швидка доставка</h3>
+      <h3 class="why-title">Швидка відправка</h3>
       <p class="why-desc">
-        Замовлення, оформлені до 15:00, вирушають зі складу того ж дня. Нова Пошта та Укрпошта по всій Україні за
-        1–2 дні, по Києву — курʼєр день у день. Від 3 000 ₴ доставка безкоштовна.
+        Увесь товар, який вказаний у каталозі, є в наявності, тому ми можемо одразу його відправити
+        кур’єром або на відділення Нової Пошти. У Києві доступний самовивіз.
       </p>
     </article>
 
@@ -472,10 +456,10 @@
           <path d="M12 7.2v5.2l3.2 2" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </span>
-      <h3 class="why-title">Гарантія якості</h3>
+      <h3 class="why-title">Повернення протягом 14 днів</h3>
       <p class="why-desc">
-        На обладнання — від 12 до 24 місяців з авторизованим сервісом у Києві. Заводський брак міняємо власним
-        коштом без експертиз і суперечок. Повернення матеріалів — 14 днів, якщо упаковку не розкрито.
+        Повернення та обмін товарів можливі протягом 14 днів після отримання згідно Закону «Про захист прав
+        споживачів». Кошти повертаємо протягом 3 робочих днів із моменту отримання товару.
       </p>
     </article>
 
@@ -487,10 +471,10 @@
           <path d="m4 12 8 3.8L20 12M4 16.8l8 3.8 8-3.8" stroke-linejoin="round" />
         </svg>
       </span>
-      <h3 class="why-title">Понад 5 000 товарів</h3>
+      <h3 class="why-title">Великий асортимент</h3>
       <p class="why-desc">
-        Один постачальник замість пʼяти: витратні матеріали, інструменти та обладнання в одному замовленні й одній
-        накладній. Рідкісні позиції під замовлення привозимо за 5–10 днів.
+        Обладнання для хірургічних і терапевтичних маніпуляцій, ендодонтичних процедур та виготовлення
+        протезів. Додатково можна придбати витратні матеріали.
       </p>
     </article>
 
@@ -502,10 +486,10 @@
           <path d="M9 10.8h6M9 14h4" stroke-linecap="round" />
         </svg>
       </span>
-      <h3 class="why-title">Підтримка спеціалістів</h3>
+      <h3 class="why-title">Досвідчений колектив</h3>
       <p class="why-desc">
-        Менеджери з профільною освітою: підберуть аналог під ваш протокол, розрахують витрати на місяць і
-        чесно скажуть, якщо дешевша позиція вирішить задачу не гірше.
+        Наші фахівці давно працюють у стоматологічній сфері та знають тонкощі підбору апаратів і витратних
+        матеріалів для різних категорій замовників.
       </p>
     </article>
   </div>
@@ -531,17 +515,17 @@
           />
         </div>
 
-        <!-- Плашка зі статистикою -->
+        <!-- Плашка з реальними даними -->
         <div class="absolute -bottom-8 left-6 hidden rounded-3xl bg-white p-6 shadow-xl ring-1 ring-ink-100 sm:block lg:-right-8 lg:left-auto">
           <div class="flex items-center gap-5">
             <div>
-              <span class="block text-3xl font-bold tracking-tight text-brand-600">17</span>
-              <span class="mt-0.5 block text-xs leading-snug text-ink-500">років на ринку</span>
+              <span class="block text-3xl font-bold tracking-tight text-brand-600">{{REVIEWS_COUNT}}</span>
+              <span class="mt-0.5 block text-xs leading-snug text-ink-500">відгуків покупців</span>
             </div>
             <span class="h-12 w-px bg-ink-100"></span>
             <div>
-              <span class="block text-3xl font-bold tracking-tight text-brand-600">1 200</span>
-              <span class="mt-0.5 block text-xs leading-snug text-ink-500">клінік-партнерів</span>
+              <span class="block text-3xl font-bold tracking-tight text-brand-600">5</span>
+              <span class="mt-0.5 block text-xs leading-snug text-ink-500">брендів<br />за прямою поставкою</span>
             </div>
           </div>
         </div>
@@ -551,24 +535,23 @@
       <div class="order-1 lg:order-2">
         <p class="eyebrow reveal">Про компанію</p>
         <h2 id="about-title" class="section-title reveal reveal-d1 mt-5">
-          Забезпечуємо стоматологію України з 2009 року
+          Обладнання та матеріали для стоматології
         </h2>
 
         <div class="reveal reveal-d2 mt-6 space-y-4 text-base leading-relaxed text-ink-500">
           <p>
-            <strong class="font-semibold text-ink-800">SOCO Ukraine</strong> починалася як невеликий склад у Києві,
-            звідки ми возили матеріали двом десяткам знайомих лікарів. Сьогодні це 1 200 клінік-партнерів по всій
-            країні, власний склад площею 900 м² і команда з 34 людей — але підхід залишився тим самим.
+            <strong class="font-semibold text-ink-800">{{SITE_NAME}}</strong> займається продажем стоматологічного
+            обладнання та матеріалів, постійно розширює каталог і ретельно відбирає постачальників. Ми отримали
+            статус дистриб’ютора марок {{BRANDS}}.
           </p>
           <p>
-            Ми не продаємо те, чим не користувалися б самі. Кожну нову позицію спочатку тестують практикуючі
-            лікарі з нашої консультативної ради, і лише потім вона потрапляє до каталогу. Саме тому в асортименті
-            немає «сірих» брендів і позицій сумнівного походження.
+            Завдяки прямим постачанням вдається першими презентувати на українському ринку останні новинки,
+            надавати максимально докладну інформацію про продукцію та не робити зайвих націнок.
           </p>
           <p>
-            Працюємо з приватними кабінетами, мережевими клініками, зуботехнічними лабораторіями та навчальними
-            закладами. Для постійних клієнтів — персональний менеджер, відтермінування платежу й резерв ключових
-            позицій на складі.
+            Наш колектив складається з професіоналів, які давно працюють у стоматологічній сфері та знають
+            тонкощі підбору апаратів і витратних матеріалів для різних категорій замовників. Серед наших
+            клієнтів — стоматологічні лікарні, лікарі та салони б’юті-індустрії.
           </p>
         </div>
 
@@ -580,7 +563,7 @@
                 <path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </span>
-            <span class="text-[15px] text-ink-700">Власний склад 900 м² у Києві</span>
+            <span class="text-[15px] text-ink-700">Великий асортимент обладнання та витратних матеріалів</span>
           </li>
           <li class="flex items-start gap-3">
             <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600">
@@ -588,7 +571,7 @@
                 <path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </span>
-            <span class="text-[15px] text-ink-700">Авторизований сервісний центр</span>
+            <span class="text-[15px] text-ink-700">Якісні та сертифіковані товари з офіційною гарантією</span>
           </li>
           <li class="flex items-start gap-3">
             <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600">
@@ -596,7 +579,7 @@
                 <path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </span>
-            <span class="text-[15px] text-ink-700">Відтермінування платежу для клінік</span>
+            <span class="text-[15px] text-ink-700">Привабливі ціни завдяки відсутності посередників</span>
           </li>
           <li class="flex items-start gap-3">
             <span class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-brand-50 text-brand-600">
@@ -604,7 +587,7 @@
                 <path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </span>
-            <span class="text-[15px] text-ink-700">Навчальні вебінари для лікарів</span>
+            <span class="text-[15px] text-ink-700">Швидка відправка — увесь товар у каталозі є в наявності</span>
           </li>
         </ul>
 
@@ -627,9 +610,9 @@
         <p class="eyebrow">Відгуки</p>
         <h2 id="reviews-title" class="section-title mt-5">Що кажуть клієнти</h2>
         <div class="mt-5 flex items-center gap-3">
-          <span class="flex" data-rating-stars></span>
           <span class="text-sm text-ink-500">
-            <b class="font-semibold text-ink-900">4.9 з 5</b> · 1 284 відгуки
+            <a href="{{REVIEWS_URL}}" target="_blank" rel="noopener noreferrer" class="font-medium text-brand-700 hover:underline">{{REVIEWS_COUNT}} відгуків покупців</a>
+            на сторінці магазину
           </span>
         </div>
       </div>
@@ -687,11 +670,11 @@
         <a href="contacts.html" class="btn bg-white px-8 py-4 font-semibold text-ink-900 hover:-translate-y-0.5 hover:bg-brand-50">
           Отримати пропозицію
         </a>
-        <a href="tel:+380445012280" class="btn border border-white/20 px-8 py-4 font-medium text-white hover:-translate-y-0.5 hover:bg-white/10">
+        <a href="tel:{{PHONE_HREF}}" class="btn border border-white/20 px-8 py-4 font-medium text-white hover:-translate-y-0.5 hover:bg-white/10">
           <svg viewBox="0 0 24 24" class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
             <path d="M6.5 4h3l1.5 3.8-2 1.4a11.5 11.5 0 0 0 5.3 5.3l1.4-2L19.5 14v3a2 2 0 0 1-2.2 2A15.5 15.5 0 0 1 4.5 6.2 2 2 0 0 1 6.5 4Z" stroke-linejoin="round" />
           </svg>
-          +380 (44) 501-22-80
+          {{PHONE}}
         </a>
       </div>
     </div>
