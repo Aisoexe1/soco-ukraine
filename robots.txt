@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /cart.html
+Disallow: /account.html
+Disallow: /compare.html
+
+Sitemap: https://soco-sani.com.ua/sitemap.xml
