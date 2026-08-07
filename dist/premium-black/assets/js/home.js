@@ -11,6 +11,122 @@
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
   /* ======================================================================
+     Банери (автопрокрутка)
+     Слайди беруться з розмітки: кожен <article> у [data-banner-track].
+     Якщо слайдів немає — секція лишається прихованою.
+     ====================================================================== */
+  (function banners() {
+    const root = $('[data-banners]');
+    if (!root) return;
+
+    const track = $('[data-banner-track]', root);
+    const slides = $$('article', track);
+    if (!slides.length) return; // немає банерів — секція лишається hidden
+
+    root.hidden = false;
+
+    const dots = $('[data-banner-dots]', root);
+    const prev = $('[data-banner-prev]', root);
+    const next = $('[data-banner-next]', root);
+    const single = slides.length === 1;
+
+    let idx = 0;
+    const DELAY = 6000;
+
+    /* --- Один банер: без стрілок, точок і автопрокрутки --- */
+    if (single) {
+      [dots, prev, next].forEach((el) => el && el.remove());
+      return;
+    }
+
+    slides.forEach((s, i) => s.setAttribute('aria-label', `${i + 1} з ${slides.length}`));
+
+    dots.innerHTML = slides
+      .map(
+        (_, i) =>
+          `<button type="button" role="tab" class="h-2 rounded-full transition-all duration-300" data-banner-dot="${i}" aria-label="Банер ${i + 1}"></button>`
+      )
+      .join('');
+    const dotEls = $$('[data-banner-dot]', dots);
+
+    const sync = () => {
+      track.style.transform = `translateX(-${idx * 100}%)`;
+      slides.forEach((s, i) => s.toggleAttribute('inert', i !== idx));
+      dotEls.forEach((d, i) => {
+        const on = i === idx;
+        d.style.width = on ? '26px' : '8px';
+        d.classList.toggle('bg-white', on);
+        d.classList.toggle('bg-white/45', !on);
+        d.setAttribute('aria-selected', on);
+      });
+    };
+
+    const go = (n) => {
+      idx = (n + slides.length) % slides.length;
+      sync();
+    };
+
+    prev.addEventListener('click', () => {
+      go(idx - 1);
+      restart();
+    });
+    next.addEventListener('click', () => {
+      go(idx + 1);
+      restart();
+    });
+    dotEls.forEach((d) =>
+      d.addEventListener('click', () => {
+        go(Number(d.dataset.bannerDot));
+        restart();
+      })
+    );
+
+    /* --- Свайп на тачі --- */
+    let x0 = null;
+    track.addEventListener('touchstart', (e) => (x0 = e.touches[0].clientX), { passive: true });
+    track.addEventListener(
+      'touchend',
+      (e) => {
+        if (x0 === null) return;
+        const dx = e.changedTouches[0].clientX - x0;
+        if (Math.abs(dx) > 45) {
+          go(dx < 0 ? idx + 1 : idx - 1);
+          restart();
+        }
+        x0 = null;
+      },
+      { passive: true }
+    );
+
+    /* --- Автопрокрутка: пауза на наведенні, фокусі та у фоновій вкладці --- */
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let timer = null;
+    const stop = () => {
+      clearInterval(timer);
+      timer = null;
+    };
+    const start = () => {
+      if (reduced || timer) return;
+      timer = setInterval(() => {
+        if (!document.hidden) go(idx + 1);
+      }, DELAY);
+    };
+    const restart = () => {
+      stop();
+      start();
+    };
+
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', start);
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+
+    sync();
+    start();
+  })();
+
+  /* ======================================================================
      Вітрина популярних товарів
      ====================================================================== */
   (function popular() {
@@ -156,10 +272,6 @@
       track.addEventListener('focusin', pause);
       track.addEventListener('touchstart', pause, { passive: true });
     }
-
-    /* --- Загальний рейтинг --- */
-    const rs = $('[data-rating-stars]');
-    if (rs) rs.innerHTML = S.stars(4.9, 'h-4.5 w-4.5');
   })();
 
   /* ======================================================================

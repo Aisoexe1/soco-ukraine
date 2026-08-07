@@ -72,8 +72,6 @@
       </span>
       <span class="text-ink-300">|</span>
       <span>Нова Пошта від <b class="font-semibold text-ink-700">50 ₴</b>, 1–3 дні</span>
-      <span class="text-ink-300">|</span>
-      <span>Самовивіз у Києві</span>
     </div>
     <nav aria-label="Службове меню" class="flex items-center gap-5">
       <a href="delivery.html" class="transition-colors hover:text-brand-700">Доставка та оплата</a>
@@ -358,6 +356,53 @@
 
     <main id="main">
       <!-- ======================================================================
+     0. БАНЕРИ (автопрокрутка)
+
+     Слайдів поки немає — секція автоматично прихована, поки в
+     [data-banner-track] немає жодного <article>. Логіка: assets/js/home.js.
+
+     Щоб додати банер від дизайнера — покладіть файли в assets/img/banners/
+     і скопіюйте блок нижче всередину [data-banner-track] (див. assets/img/banners/README.md):
+
+     <article class="w-full shrink-0" role="group" aria-roledescription="слайд">
+       <a href="catalog.html" class="block">
+         <picture>
+           <source media="(max-width: 639px)" srcset="assets/img/banners/NAME-mobile.jpg" />
+           <img src="assets/img/banners/NAME.jpg" alt="ОПИС БАНЕРА"
+                width="2640" height="600" loading="eager" decoding="async"
+                class="aspect-[9/5] w-full rounded-3xl object-cover sm:aspect-[22/5]" />
+         </picture>
+       </a>
+     </article>
+
+     Банер без посилання — той самий блок без <a>.
+     ====================================================================== -->
+<section class="container-x pt-5 lg:pt-7" aria-label="Банери" data-banners hidden>
+  <div class="relative">
+    <div class="overflow-hidden rounded-3xl">
+      <div class="flex transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]" data-banner-track>
+        <!-- Сюди додаються <article> зі слайдами -->
+      </div>
+    </div>
+
+    <!-- Стрілки -->
+    <button type="button" class="carousel-arrow absolute left-3 top-1/2 hidden -translate-y-1/2 lg:grid" data-banner-prev aria-label="Попередній банер">
+      <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+        <path d="M14.5 5.5 8 12l6.5 6.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+    <button type="button" class="carousel-arrow absolute right-3 top-1/2 hidden -translate-y-1/2 lg:grid" data-banner-next aria-label="Наступний банер">
+      <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+        <path d="M9.5 5.5 16 12l-6.5 6.5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+    <!-- Точки -->
+    <div class="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full bg-ink-950/35 px-3 py-2 backdrop-blur" data-banner-dots role="tablist" aria-label="Вибір банера"></div>
+  </div>
+</section>
+
+<!-- ======================================================================
      1. HERO
      ====================================================================== -->
 <section class="relative overflow-hidden" aria-labelledby="hero-title">
@@ -378,7 +423,7 @@
             <span class="absolute inline-flex h-full w-full animate-pulse-ring rounded-full bg-brand-500"></span>
             <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand-600"></span>
           </span>
-          Офіційний дистриб’ютор Coxo, Woodpecker, Sani, Nic, Soco
+          Увесь товар у каталозі — в наявності
         </p>
 
         <h1 id="hero-title" class="reveal reveal-d1 is-visible mt-6 text-[2.5rem] font-semibold leading-[1.08] tracking-tight text-ink-900 sm:text-6xl lg:text-[4rem]">
@@ -491,7 +536,7 @@
     <div class="container-x">
       <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:gap-10">
         <p class="shrink-0 text-[13px] font-medium text-ink-400">
-          Офіційний дистрибʼютор<br class="hidden lg:block" /> провідних виробників
+          Статус дистрибʼютора<br class="hidden lg:block" /> надійних марок
         </p>
         <div class="relative flex-1 overflow-hidden" style="mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent)">
           <div class="flex w-max animate-marquee items-center gap-12 pr-12">
@@ -780,7 +825,7 @@
       <h3 class="why-title">Швидка відправка</h3>
       <p class="why-desc">
         Увесь товар, який вказаний у каталозі, є в наявності, тому ми можемо одразу його відправити
-        кур’єром або на відділення Нової Пошти. У Києві доступний самовивіз.
+        курʼєром Нової Пошти або на відділення Нової Пошти.
       </p>
     </article>
 
@@ -1210,7 +1255,7 @@
             </svg>
             <span>
               <span class="block">м. Київ, вул. Куренівська, 5/7, 3 поверх, офіс 105</span>
-              <span class="mt-0.5 block text-xs text-ink-500">самовивіз за адресою</span>
+              
             </span>
           </li>
         </ul>
@@ -1231,7 +1276,6 @@
         <span class="text-xs uppercase tracking-[0.14em] text-ink-500">Доставка</span>
         <span class="pay-chip">Нова Пошта — від 50 ₴</span>
         <span class="pay-chip">Курʼєр Нової Пошти — від 85 ₴</span>
-        <span class="pay-chip">Самовивіз, Київ</span>
       </div>
     </div>
 
