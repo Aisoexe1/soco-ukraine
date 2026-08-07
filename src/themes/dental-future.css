@@ -479,13 +479,13 @@
     background-color: rgb(1 8 13 / 0.78);
   }
 
-  [data-theme="dental-future"] footer,
+  [data-theme="dental-future"] body > footer,
   [data-theme="dental-future"] [class*="bg-ink-950"] {
     --color-ink-950: #030c12;
     --srf: #e6f6f8;
     --srf-ink: #061722;
   }
-  [data-theme="dental-future"] footer {
+  [data-theme="dental-future"] body > footer {
     border-top: 1px solid var(--df-line);
   }
 
@@ -496,7 +496,7 @@
     --srf: #e6f6f8;
     --srf-ink: #061722;
   }
-  [data-theme="dental-future"] footer .bg-white,
+  [data-theme="dental-future"] body > footer .bg-white,
   [data-theme="dental-future"] [class*="bg-ink-950"] .bg-white,
   [data-theme="dental-future"] [class*="from-brand-6"] .bg-white,
   [data-theme="dental-future"] [class*="from-brand-7"] .bg-white {
@@ -505,7 +505,7 @@
     --color-brand-700: #0a6c7e;
     --color-brand-50: #e6fbfd;
   }
-  [data-theme="dental-future"] footer .bg-white:hover,
+  [data-theme="dental-future"] body > footer .bg-white:hover,
   [data-theme="dental-future"] [class*="bg-ink-950"] .bg-white:hover,
   [data-theme="dental-future"] [class*="from-brand-6"] .bg-white:hover,
   [data-theme="dental-future"] [class*="from-brand-7"] .bg-white:hover {
@@ -522,5 +522,10 @@
 
   [data-theme="dental-future"] [class*="from-brand-6"] {
     --color-brand-100: #b9eef5;
+  }
+
+  /* Синє світіння під плиткою логотипа лишалося від старої теми */
+  [data-theme="dental-future"] #site-header a[aria-label] > span.bg-gradient-to-br {
+    box-shadow: 0 8px 20px -8px rgb(34 229 245 / 0.5);
   }
 }

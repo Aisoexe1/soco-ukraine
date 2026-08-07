@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="640" height="640" role="img">
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".55" stop-color="#f5f9ff"/>
+      <stop offset="1" stop-color="#e6efff"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".42" r=".62">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="shadow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#0a3f8f" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#0a3f8f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8fa3bd"/>
+      <stop offset=".18" stop-color="#e8eef7"/>
+      <stop offset=".42" stop-color="#ffffff"/>
+      <stop offset=".68" stop-color="#dde5f0"/>
+      <stop offset="1" stop-color="#93a6bf"/>
+    </linearGradient>
+    <linearGradient id="metalV" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4f7fc"/>
+      <stop offset=".5" stop-color="#dbe3ee"/>
+      <stop offset="1" stop-color="#a9b8cd"/>
+    </linearGradient>
+    <linearGradient id="blueG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5f97ff"/>
+      <stop offset=".5" stop-color="#0d6efd"/>
+      <stop offset="1" stop-color="#0a3f8f"/>
+    </linearGradient>
+    <linearGradient id="blueSoft" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eaf2ff"/>
+      <stop offset="1" stop-color="#c9dcff"/>
+    </linearGradient>
+    <linearGradient id="whiteG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".62" stop-color="#f2f6fc"/>
+      <stop offset="1" stop-color="#dde5f1"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".15"/>
+      <stop offset=".28" stop-color="#ffffff" stop-opacity=".72"/>
+      <stop offset=".55" stop-color="#ffffff" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#9fb4cf" stop-opacity=".35"/>
+    </linearGradient>
+    <linearGradient id="darkG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#33415c"/>
+      <stop offset="1" stop-color="#111a2e"/>
+    </linearGradient>
+    
+  </defs>
+  <rect width="640" height="640" fill="url(#bg)"/>
+  <circle cx="320" cy="288" r="248" fill="url(#glow)"/>
+  <ellipse cx="320" cy="566" rx="175" ry="26" fill="url(#shadow)"/>
+
+  <g>
+    <!-- крышка -->
+    <rect x="278" y="164" width="84" height="46" rx="12" fill="url(#darkG)"/>
+    <rect x="288" y="150" width="64" height="20" rx="8" fill="#475569"/>
+    <!-- горловина -->
+    <rect x="292" y="206" width="56" height="30" rx="8" fill="url(#metalV)" stroke="#cbd5e5" stroke-width="2"/>
+    <!-- корпус -->
+    <path d="M268 236h104a34 34 0 0 1 34 34v192a34 34 0 0 1-34 34H268a34 34 0 0 1-34-34V270a34 34 0 0 1 34-34z" fill="url(#whiteG)" stroke="#cbd5e5" stroke-width="2.5"/>
+    <!-- этикетка -->
+    <rect x="248" y="290" width="144" height="130" rx="14" fill="url(#blueG)"/>
+    <rect x="266" y="310" width="108" height="12" rx="6" fill="#fff" opacity=".92"/>
+    <rect x="266" y="332" width="78" height="9" rx="4.5" fill="#fff" opacity=".6"/>
+    <circle cx="320" cy="382" r="24" fill="#fff" opacity=".2"/>
+    <path d="M320 366c-4 0-6.4 2.2-9.4 2.2-2.8 0-4.6-1.2-5.6 1-2.2 5.4-.6 12.6 2.6 19.8 1.8 4.4 3.4 6.8 5.6 6.8 2.2 0 2.8-1.8 3.8-4.6l1.6-4.2c.3-1 1-1 1.3 0l1.6 4.2c1 2.8 1.6 4.6 3.8 4.6s3.8-2.4 5.6-6.8c3.2-7.2 4.8-14.4 2.6-19.8-1-2.2-2.8-1-5.6-1-3 0-5.4-2.2-9.4-2.2z" fill="#fff" opacity=".95"/>
+    <!-- уровень жидкости -->
+    <path d="M234 440h172v22a34 34 0 0 1-34 34H268a34 34 0 0 1-34-34z" fill="#5f97ff" opacity=".3"/>
+    <!-- блик -->
+    <rect x="252" y="252" width="16" height="220" rx="8" fill="#fff" opacity=".75"/>
+  </g>
+  <!-- кисточка-аппликатор -->
+  <g transform="rotate(18 470 340)">
+    <rect x="462" y="210" width="14" height="180" rx="7" fill="url(#metal)" stroke="#9aa9be" stroke-width="1.4"/>
+    <path d="M462 386h14l-3 26a4 4 0 0 1-8 0z" fill="#0d6efd"/>
+  </g>
+
+</svg>

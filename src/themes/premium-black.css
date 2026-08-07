@@ -496,13 +496,13 @@
   }
 
   /* Темні острови вихідного сайта: підвал, CTA-панель, накладки */
-  [data-theme="premium-black"] footer,
+  [data-theme="premium-black"] body > footer,
   [data-theme="premium-black"] [class*="bg-ink-950"] {
     --color-ink-950: #08090a;
     --srf: #f4f1e9;
     --srf-ink: #111313;
   }
-  [data-theme="premium-black"] footer {
+  [data-theme="premium-black"] body > footer {
     border-top: 1px solid var(--pb-line-soft);
   }
 
@@ -513,7 +513,7 @@
     --srf: #f4f1e9;
     --srf-ink: #111313;
   }
-  [data-theme="premium-black"] footer .bg-white,
+  [data-theme="premium-black"] body > footer .bg-white,
   [data-theme="premium-black"] [class*="bg-ink-950"] .bg-white,
   [data-theme="premium-black"] [class*="from-brand-6"] .bg-white,
   [data-theme="premium-black"] [class*="from-brand-7"] .bg-white {
@@ -522,7 +522,7 @@
     --color-brand-700: #2c56c8;
     --color-brand-50: #eef3ff;
   }
-  [data-theme="premium-black"] footer .bg-white:hover,
+  [data-theme="premium-black"] body > footer .bg-white:hover,
   [data-theme="premium-black"] [class*="bg-ink-950"] .bg-white:hover,
   [data-theme="premium-black"] [class*="from-brand-6"] .bg-white:hover,
   [data-theme="premium-black"] [class*="from-brand-7"] .bg-white:hover {
@@ -540,5 +540,10 @@
   /* Плаваючий чат: шапка на градієнті бренду */
   [data-theme="premium-black"] [class*="from-brand-6"] {
     --color-brand-100: #c3d2f4;
+  }
+
+  /* Синє світіння під плиткою логотипа лишалося від старої теми */
+  [data-theme="premium-black"] #site-header a[aria-label] > span.bg-gradient-to-br {
+    box-shadow: 0 8px 20px -8px rgb(105 150 255 / 0.55);
   }
 }

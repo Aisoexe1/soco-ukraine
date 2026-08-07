@@ -88,6 +88,14 @@ const THEMES = {
     themeColor: '#061722',
     colorScheme: 'dark',
   },
+  'soco-ivory': {
+    id: 'soco-ivory',
+    title: 'SOCO Ivory',
+    outDir: path.join(DIST, 'soco-ivory'),
+    css: 'src/themes/soco-ivory.css',
+    themeColor: '#faf8f3',
+    colorScheme: 'light',
+  },
 };
 
 const argOf = (name) => {
