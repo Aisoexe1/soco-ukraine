@@ -20,9 +20,19 @@
     if (!root) return;
 
     const track = $('[data-banner-track]', root);
-    const slides = $$('article', track);
-    if (!slides.length) return; // немає банерів — секція лишається hidden
+    const placeholder = $('[data-banner-placeholder]', track);
+    const slides = $$('article:not([data-banner-placeholder])', track);
 
+    // Поки справжніх банерів немає — показуємо лише заглушку без керування
+    if (!slides.length) {
+      if (!placeholder) return;
+      root.hidden = false;
+      [$('[data-banner-dots]', root), $('[data-banner-prev]', root), $('[data-banner-next]', root)]
+        .forEach((el) => el && el.remove());
+      return;
+    }
+
+    if (placeholder) placeholder.remove();
     root.hidden = false;
 
     const dots = $('[data-banner-dots]', root);
