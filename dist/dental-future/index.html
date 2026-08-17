@@ -40,7 +40,6 @@
     <!-- Шрифти (self-hosted, без сторонніх запитів) -->
     <link rel="preload" href="assets/fonts/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="assets/img/hero-instruments.svg" as="image" type="image/svg+xml" crossorigin>
     <link rel="stylesheet" href="assets/css/fonts.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <!--
@@ -488,9 +487,9 @@
   </div>
 
   <div class="container-x pb-16 pt-12 lg:pb-24 lg:pt-20">
-    <div class="grid items-center gap-12 lg:grid-cols-[1.02fr_1fr] lg:gap-16">
+    <div class="grid items-center gap-12">
       <!-- Текст -->
-      <div class="max-w-2xl">
+      <div class="max-w-3xl">
         <p class="eyebrow reveal is-visible">
           <span class="relative flex h-1.5 w-1.5">
             <span class="absolute inline-flex h-full w-full animate-pulse-ring rounded-full bg-brand-500"></span>
@@ -550,57 +549,6 @@
         </dl>
       </div>
 
-      <!-- Зображення -->
-      <div class="relative">
-        <div class="reveal reveal-d2 is-visible relative">
-          <!-- Підкладка -->
-          <div class="absolute inset-0 -z-10 translate-y-6 scale-95 rounded-[2.5rem] bg-gradient-to-br from-brand-600/12 to-brand-400/5 blur-2xl" aria-hidden="true"></div>
-
-          <div class="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-white to-brand-50 p-2 shadow-xl ring-1 ring-ink-200/70">
-            <img
-              src="assets/img/hero-instruments.svg"
-              alt="Набір стоматологічних інструментів: дзеркало, зонд, пінцет і турбінний наконечник на стерильному лотку"
-              width="900"
-              height="760"
-              fetchpriority="high"
-              decoding="async"
-              class="w-full rounded-[2rem]"
-            />
-          </div>
-
-          <!-- Плашка «у наявності» -->
-          <div class="absolute -left-3 top-8 hidden animate-float rounded-2xl bg-white p-3.5 shadow-lg ring-1 ring-ink-100 sm:block lg:-left-8">
-            <div class="flex items-center gap-3">
-              <span class="grid h-10 w-10 place-items-center rounded-xl bg-mint-500/10 text-emerald-600">
-                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </span>
-              <span>
-                <span class="block text-sm font-semibold text-ink-900">Оригінал</span>
-                <span class="block text-xs text-ink-500">з гарантією виробника</span>
-              </span>
-            </div>
-          </div>
-
-          <!-- Плашка «доставка» -->
-          <div class="absolute -bottom-5 -right-2 hidden rounded-2xl bg-white p-3.5 shadow-lg ring-1 ring-ink-100 sm:block lg:-right-6" style="animation: float 7s ease-in-out 1.2s infinite">
-            <div class="flex items-center gap-3">
-              <span class="grid h-10 w-10 place-items-center rounded-xl bg-brand-50 text-brand-600">
-                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                  <path d="M3 7.5h9v9H3zM12 10.5h4.4l2.6 3v3h-7z" stroke-linejoin="round" />
-                  <circle cx="7" cy="18" r="1.8" />
-                  <circle cx="16" cy="18" r="1.8" />
-                </svg>
-              </span>
-              <span>
-                <span class="block text-sm font-semibold text-ink-900">Доставка 1–3 дні</span>
-                <span class="block text-xs text-ink-500">по всій Україні</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 
