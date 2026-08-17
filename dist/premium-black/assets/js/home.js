@@ -41,7 +41,7 @@
     const single = slides.length === 1;
 
     let idx = 0;
-    const DELAY = 6000;
+    const DELAY = 5000;
 
     /* --- Один банер: без стрілок, точок і автопрокрутки --- */
     if (single) {
