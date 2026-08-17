@@ -24,8 +24,7 @@
 <!-- ======================================================================
      0. БАНЕРИ (автопрокрутка)
 
-     Слайдів поки немає — секція автоматично прихована, поки в
-     [data-banner-track] немає жодного <article>. Логіка: assets/js/home.js.
+     Слайди — <article> нижче. Логіка: assets/js/home.js.
 
      Щоб додати банер від дизайнера — покладіть файли в assets/img/banners/
      і скопіюйте блок нижче всередину [data-banner-track] (див. assets/img/banners/README.md):
@@ -47,26 +46,85 @@
   <div class="relative">
     <div class="overflow-hidden rounded-3xl">
       <div class="flex transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]" data-banner-track>
-        <!-- Сюди додаються <article> зі слайдами.
-             Рамка нижче — тимчасова заглушка, що показує місце й пропорції банера.
-             Щойно зʼявиться перший справжній слайд, скрипт її прибирає сам. -->
-        <article class="w-full shrink-0" data-banner-placeholder>
-          <div class="grid aspect-[9/5] w-full place-items-center rounded-3xl border-2 border-dashed border-ink-300 bg-ink-50 px-6 text-center sm:aspect-[22/5]">
-            <div>
-              <span class="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-ink-100 text-ink-400">
-                <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                  <rect x="3" y="5.5" width="18" height="13" rx="2.4" />
-                  <circle cx="8.5" cy="10" r="1.4" />
-                  <path d="m4.5 17 4.6-4.4 3.2 3 2.7-2.3 4.5 3.7" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </span>
-              <p class="mt-4 text-[15px] font-semibold text-ink-700">Місце для банера</p>
-              <p class="mt-1.5 text-[13px] leading-relaxed text-ink-500">
-                Десктоп 2640 × 600 · мобільна 1080 × 600<br />
-                файли — в <span class="font-medium text-ink-600">assets/img/banners/</span>
-              </p>
-            </div>
-          </div>
+        <article class="w-full shrink-0" role="group" aria-roledescription="слайд">
+          <a href="catalog.html" class="block">
+            <picture>
+              <source media="(max-width: 639px)" srcset="assets/img/banners/endomotors-mobile.jpg" />
+              <img
+                src="assets/img/banners/endomotors.jpg"
+                alt="Ендомотори та содоструйні апарати"
+                width="2640"
+                height="600"
+                loading="eager"
+                decoding="async"
+                class="aspect-[9/5] w-full rounded-3xl object-cover sm:aspect-[22/5]"
+              />
+            </picture>
+          </a>
+        </article>
+        <article class="w-full shrink-0" role="group" aria-roledescription="слайд">
+          <a href="catalog.html" class="block">
+            <picture>
+              <source media="(max-width: 639px)" srcset="assets/img/banners/photopolymer-lamps-mobile.jpg" />
+              <img
+                src="assets/img/banners/photopolymer-lamps.jpg"
+                alt="Фотополімерні лампи"
+                width="2640"
+                height="600"
+                loading="lazy"
+                decoding="async"
+                class="aspect-[9/5] w-full rounded-3xl object-cover sm:aspect-[22/5]"
+              />
+            </picture>
+          </a>
+        </article>
+        <article class="w-full shrink-0" role="group" aria-roledescription="слайд">
+          <a href="catalog.html" class="block">
+            <picture>
+              <source media="(max-width: 639px)" srcset="assets/img/banners/dental-equipment-mobile.jpg" />
+              <img
+                src="assets/img/banners/dental-equipment.jpg"
+                alt="Стоматологічне обладнання"
+                width="2640"
+                height="600"
+                loading="lazy"
+                decoding="async"
+                class="aspect-[9/5] w-full rounded-3xl object-cover sm:aspect-[22/5]"
+              />
+            </picture>
+          </a>
+        </article>
+        <article class="w-full shrink-0" role="group" aria-roledescription="слайд">
+          <a href="catalog.html" class="block">
+            <picture>
+              <source media="(max-width: 639px)" srcset="assets/img/banners/handpieces-mobile.jpg" />
+              <img
+                src="assets/img/banners/handpieces.jpg"
+                alt="Стоматологічні наконечники"
+                width="2640"
+                height="600"
+                loading="lazy"
+                decoding="async"
+                class="aspect-[9/5] w-full rounded-3xl object-cover sm:aspect-[22/5]"
+              />
+            </picture>
+          </a>
+        </article>
+        <article class="w-full shrink-0" role="group" aria-roledescription="слайд">
+          <a href="catalog.html" class="block">
+            <picture>
+              <source media="(max-width: 639px)" srcset="assets/img/banners/rotary-files-mobile.jpg" />
+              <img
+                src="assets/img/banners/rotary-files.jpg"
+                alt="Машинні файли"
+                width="2640"
+                height="600"
+                loading="lazy"
+                decoding="async"
+                class="aspect-[9/5] w-full rounded-3xl object-cover sm:aspect-[22/5]"
+              />
+            </picture>
+          </a>
         </article>
       </div>
     </div>
