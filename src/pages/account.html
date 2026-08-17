@@ -192,7 +192,7 @@
     </div>
 
     <!-- Вкладки -->
-    <div class="mt-10 flex gap-1.5 overflow-x-auto rounded-full bg-ink-100 p-1.5 no-scrollbar" role="tablist" aria-label="Розділи кабінету">
+    <div class="mt-7 sm:mt-10 flex gap-1.5 overflow-x-auto rounded-full bg-ink-100 p-1.5 no-scrollbar" role="tablist" aria-label="Розділи кабінету">
       <button type="button" class="tab-btn is-active" data-acc-tab="orders" role="tab" aria-selected="true">Замовлення</button>
       <button type="button" class="tab-btn" data-acc-tab="profile" role="tab" aria-selected="false">Профіль клініки</button>
       <button type="button" class="tab-btn" data-acc-tab="addresses" role="tab" aria-selected="false">Адреси</button>
@@ -202,7 +202,7 @@
     <!-- Замовлення -->
     <div class="mt-8" data-acc-panel="orders">
       <div class="space-y-4" data-orders-list></div>
-      <div class="hidden rounded-3xl bg-ink-50 px-6 py-16 text-center" data-orders-empty>
+      <div class="hidden rounded-3xl bg-ink-50 px-6 py-10 sm:py-16 text-center" data-orders-empty>
         <p class="text-lg font-semibold text-ink-900">Замовлень поки немає</p>
         <p class="mx-auto mt-2 max-w-md text-[15px] text-ink-500">Оформіть перше замовлення — і воно зʼявиться тут з усіма документами.</p>
         <a href="catalog.html" class="btn-primary mt-6">Перейти до каталогу</a>
@@ -253,8 +253,8 @@
 
     <!-- Переглянуті -->
     <div class="mt-8 hidden" data-acc-panel="viewed">
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-viewed-grid></div>
-      <div class="hidden rounded-3xl bg-ink-50 px-6 py-16 text-center" data-viewed-empty>
+      <div class="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4" data-viewed-grid></div>
+      <div class="hidden rounded-3xl bg-ink-50 px-6 py-10 sm:py-16 text-center" data-viewed-empty>
         <p class="text-lg font-semibold text-ink-900">Ви ще нічого не дивилися</p>
         <a href="catalog.html" class="btn-primary mt-6">Перейти до каталогу</a>
       </div>

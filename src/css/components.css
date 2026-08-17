@@ -11,17 +11,17 @@
 }
 
 @utility badge {
-  @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium;
+  @apply inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[11px] font-medium sm:px-2.5 sm:py-1 sm:text-xs;
 }
 
 @utility card {
-  @apply rounded-3xl bg-white ring-1 ring-ink-200/80 transition-all duration-400 ease-out;
+  @apply rounded-2xl sm:rounded-3xl bg-white ring-1 ring-ink-200/80 transition-all duration-400 ease-out;
 }
 
 @layer components {
   /* ---- Контейнер ---- */
   .container-x {
-    @apply mx-auto w-full max-w-[1320px] px-5 sm:px-6 lg:px-8;
+    @apply mx-auto w-full max-w-[1320px] px-4 sm:px-6 lg:px-8;
   }
 
   /* ---- Кнопки ---- */
@@ -88,7 +88,7 @@
 
   /* ---- Быстрые действия на карточке ---- */
   .quick-btn {
-    @apply grid h-9 w-9 place-items-center rounded-full bg-white/90 text-ink-500 shadow-sm ring-1 ring-ink-200
+    @apply grid h-8 w-8 place-items-center rounded-full bg-white/90 text-ink-500 shadow-sm ring-1 ring-ink-200 sm:h-9 sm:w-9
            backdrop-blur transition-all duration-250
            hover:bg-brand-600 hover:text-white hover:ring-brand-600 active:scale-90;
   }
@@ -121,7 +121,7 @@
 
   /* ---- Карточка категории ---- */
   .cat-card {
-    @apply relative flex flex-col overflow-hidden rounded-3xl bg-white p-6 ring-1 ring-ink-200/80
+    @apply relative flex flex-col overflow-hidden rounded-2xl bg-white p-4 ring-1 ring-ink-200/80 sm:rounded-3xl sm:p-6
            transition-all duration-400 ease-out hover:-translate-y-1.5 hover:shadow-lg hover:ring-brand-200;
   }
   .cat-card::before {
@@ -131,40 +131,40 @@
   }
   .cat-card:hover::before { @apply opacity-100; }
   .cat-icon {
-    @apply relative grid h-14 w-14 place-items-center rounded-2xl bg-brand-50 text-brand-600
+    @apply relative grid h-11 w-11 sm:h-14 sm:w-14 place-items-center rounded-xl sm:rounded-2xl bg-brand-50 text-brand-600
            transition-all duration-400 group-hover:scale-105 group-hover:bg-brand-600 group-hover:text-white
            group-hover:shadow-brand;
   }
   .cat-title {
-    @apply relative mt-5 text-[17px] font-semibold leading-snug text-ink-900 transition-colors duration-300
+    @apply relative mt-3 text-[14px] sm:mt-5 sm:text-[17px] font-semibold leading-snug text-ink-900 transition-colors duration-300
            group-hover:text-brand-700;
   }
   .cat-desc {
-    @apply relative mt-2 text-[13.5px] leading-relaxed text-ink-500;
+    @apply relative mt-2 hidden sm:block text-[13.5px] leading-relaxed text-ink-500;
   }
   .cat-count {
-    @apply relative mt-4 inline-flex w-fit items-center rounded-full bg-ink-50 px-2.5 py-1 text-[11px]
+    @apply relative mt-2.5 sm:mt-4 inline-flex w-fit items-center rounded-full bg-ink-50 px-2.5 py-1 text-[11px]
            font-medium text-ink-500 transition-colors duration-300 group-hover:bg-brand-50 group-hover:text-brand-700;
   }
   .cat-link {
-    @apply relative mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-brand-700
+    @apply relative mt-auto pt-3 sm:pt-5 inline-flex items-center gap-1.5 text-[13px] sm:text-sm font-medium text-brand-700
            after:absolute after:inset-0 after:-m-6 after:content-[''];
   }
 
   /* ---- Карточка преимущества ---- */
   .why-card {
-    @apply relative overflow-hidden rounded-3xl bg-white p-7 ring-1 ring-ink-200/80
+    @apply relative overflow-hidden rounded-2xl sm:rounded-3xl bg-white p-5 sm:p-7 ring-1 ring-ink-200/80
            transition-all duration-400 ease-out hover:-translate-y-1 hover:shadow-lg hover:ring-brand-200 lg:p-8;
   }
   .why-icon {
-    @apply grid h-12 w-12 place-items-center rounded-2xl bg-brand-50 text-brand-600
+    @apply grid h-11 w-11 sm:h-12 sm:w-12 place-items-center rounded-xl sm:rounded-2xl bg-brand-50 text-brand-600
            transition-all duration-400 group-hover:scale-105 group-hover:bg-brand-600 group-hover:text-white;
   }
   .why-title {
-    @apply mt-6 text-lg font-semibold text-ink-900;
+    @apply mt-4 text-[16px] sm:mt-6 sm:text-lg font-semibold text-ink-900;
   }
   .why-desc {
-    @apply mt-3 text-[14.5px] leading-relaxed text-ink-500;
+    @apply mt-2 text-[13.5px] sm:mt-3 sm:text-[14.5px] leading-relaxed text-ink-500;
   }
 
   /* ---- Лента брендов ---- */
@@ -274,21 +274,21 @@
 
   /* ---- Стрелки карусели ---- */
   .carousel-arrow {
-    @apply grid h-11 w-11 place-items-center rounded-full bg-white text-ink-600 ring-1 ring-ink-200
+    @apply grid h-10 w-10 sm:h-11 sm:w-11 place-items-center rounded-full bg-white text-ink-600 ring-1 ring-ink-200
            transition-all duration-300 hover:bg-brand-600 hover:text-white hover:ring-brand-600
            active:scale-95 disabled:opacity-40 disabled:pointer-events-none;
   }
 
   /* ---- Заголовок секции ---- */
   .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full bg-brand-50 px-3.5 py-1.5
-           text-xs font-semibold uppercase tracking-[0.14em] text-brand-700;
+    @apply inline-flex items-center gap-2 rounded-full bg-brand-50 px-3 py-1 sm:px-3.5 sm:py-1.5
+           text-[11px] sm:text-xs font-semibold uppercase tracking-[0.14em] text-brand-700;
   }
   .section-title {
-    @apply text-3xl sm:text-4xl lg:text-[2.75rem] lg:leading-[1.12] font-semibold text-ink-900;
+    @apply text-[1.7rem] leading-tight sm:text-4xl sm:leading-tight lg:text-[2.75rem] lg:leading-[1.12] font-semibold text-ink-900;
   }
   .section-sub {
-    @apply mt-4 max-w-2xl text-base sm:text-lg leading-relaxed text-ink-500;
+    @apply mt-3 max-w-2xl text-[15px] sm:mt-4 sm:text-lg leading-relaxed text-ink-500;
   }
 
   /* ---- Ссылка-стрелка ---- */

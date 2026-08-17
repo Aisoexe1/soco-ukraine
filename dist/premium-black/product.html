@@ -88,7 +88,7 @@
   class="sticky top-0 z-50 border-b border-transparent bg-white/85 backdrop-blur-xl transition-all duration-300"
 >
   <div class="container-x">
-    <div class="flex h-[80px] items-center gap-3 lg:h-[96px] lg:gap-6">
+    <div class="flex h-[66px] items-center gap-3 sm:h-[80px] lg:h-[96px] lg:gap-6">
       <!-- Логотип -->
       <a href="index.html" class="group flex shrink-0 items-center gap-3" aria-label="SOCO-SANI — на головну">
         <img
@@ -96,7 +96,7 @@
           alt="SOCO-SANI"
           width="893"
           height="770"
-          class="h-14 w-auto shrink-0 transition-transform duration-400 group-hover:scale-105 lg:h-[68px]"
+          class="h-11 w-auto shrink-0 transition-transform duration-400 group-hover:scale-105 sm:h-14 lg:h-[68px]"
         />
         <span class="hidden leading-none sm:block">
           <span class="block text-[11px] font-medium leading-snug text-brand-700">
@@ -367,7 +367,7 @@
 <!-- Картка товару -->
 <article class="container-x py-8 lg:py-12" data-product-root>
   <!-- Скелетон / помилка підставляються скриптом -->
-  <div class="grid gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-20">
+  <div class="grid gap-7 sm:gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-20">
     <!-- ===== Галерея ===== -->
     <div class="lg:sticky lg:top-[140px] lg:h-fit lg:self-start">
       <div class="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-ink-50 to-brand-50/60 ring-1 ring-ink-200/70">
@@ -386,26 +386,26 @@
       <div class="mt-3 grid grid-cols-4 gap-3" data-p-thumbs></div>
 
       <!-- Довіра -->
-      <ul class="mt-6 grid gap-3 sm:grid-cols-3">
-        <li class="flex items-center gap-2.5 rounded-2xl bg-ink-50 px-3.5 py-3">
+      <ul class="mt-5 grid grid-cols-3 gap-2 sm:mt-6 sm:gap-3">
+        <li class="flex flex-col items-center gap-1.5 rounded-2xl bg-ink-50 px-2 py-2.5 text-center sm:flex-row sm:gap-2.5 sm:px-3.5 sm:py-3 sm:text-left">
           <svg viewBox="0 0 24 24" class="h-5 w-5 shrink-0 text-brand-600" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
             <path d="M12 3.5 5 6.4v4.4c0 4.2 2.8 8 7 9.2 4.2-1.2 7-5 7-9.2V6.4l-7-2.9Z" stroke-linejoin="round" />
             <path d="m9.2 12 2 2 3.6-3.8" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
-          <span class="text-[12.5px] font-medium leading-tight text-ink-700">Гарантія<br />виробника</span>
+          <span class="text-[11.5px] font-medium leading-tight text-ink-700 sm:text-[12.5px]">Гарантія<br />виробника</span>
         </li>
-        <li class="flex items-center gap-2.5 rounded-2xl bg-ink-50 px-3.5 py-3">
+        <li class="flex flex-col items-center gap-1.5 rounded-2xl bg-ink-50 px-2 py-2.5 text-center sm:flex-row sm:gap-2.5 sm:px-3.5 sm:py-3 sm:text-left">
           <svg viewBox="0 0 24 24" class="h-5 w-5 shrink-0 text-brand-600" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
             <path d="M2.5 8h9.5v9H2.5zM12 11h4.6l2.9 3.3V17H12z" stroke-linejoin="round" />
             <circle cx="6.6" cy="18.6" r="1.9" /><circle cx="16.4" cy="18.6" r="1.9" />
           </svg>
-          <span class="text-[12.5px] font-medium leading-tight text-ink-700">Доставка<br />1–3 дні</span>
+          <span class="text-[11.5px] font-medium leading-tight text-ink-700 sm:text-[12.5px]">Доставка<br />1–3 дні</span>
         </li>
-        <li class="flex items-center gap-2.5 rounded-2xl bg-ink-50 px-3.5 py-3">
+        <li class="flex flex-col items-center gap-1.5 rounded-2xl bg-ink-50 px-2 py-2.5 text-center sm:flex-row sm:gap-2.5 sm:px-3.5 sm:py-3 sm:text-left">
           <svg viewBox="0 0 24 24" class="h-5 w-5 shrink-0 text-brand-600" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
             <path d="M19 12a7 7 0 1 1-2.4-5.3M19 4.5V9h-4.5" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
-          <span class="text-[12.5px] font-medium leading-tight text-ink-700">Повернення<br />14 днів</span>
+          <span class="text-[11.5px] font-medium leading-tight text-ink-700 sm:text-[12.5px]">Повернення<br />14 днів</span>
         </li>
       </ul>
     </div>
@@ -434,26 +434,26 @@
       <!-- Ціна та кошик -->
       <div class="mt-7 rounded-3xl bg-gradient-to-br from-ink-50 to-brand-50/50 p-5 ring-1 ring-ink-200/70 sm:p-6">
         <div class="flex flex-wrap items-end gap-x-4 gap-y-2">
-          <span class="text-4xl font-bold tracking-tight text-ink-900" data-p-price></span>
+          <span class="text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl" data-p-price></span>
           <span class="text-lg text-ink-400 line-through" data-p-old></span>
           <span data-p-save></span>
         </div>
         <p class="mt-1.5 text-[13px] text-ink-500">Ціна за <span data-p-unit></span></p>
 
-        <div class="mt-5 flex flex-col gap-3 sm:flex-row">
+        <div class="mt-5 flex flex-wrap items-center gap-3 sm:flex-nowrap">
           <!-- Кількість -->
-          <div class="flex h-14 shrink-0 items-center rounded-full bg-white ring-1 ring-ink-200">
-            <button type="button" class="grid h-14 w-12 place-items-center rounded-l-full text-ink-600 transition-colors hover:text-brand-700 active:scale-90" data-qty-minus aria-label="Зменшити кількість">
+          <div class="flex h-12 shrink-0 items-center rounded-full bg-white ring-1 ring-ink-200 sm:h-14">
+            <button type="button" class="grid h-12 w-11 place-items-center rounded-l-full sm:h-14 sm:w-12 text-ink-600 transition-colors hover:text-brand-700 active:scale-90" data-qty-minus aria-label="Зменшити кількість">
               <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M6 12h12" stroke-linecap="round" /></svg>
             </button>
             <label for="qty" class="sr-only">Кількість</label>
-            <input id="qty" type="number" min="1" max="99" value="1" class="h-14 w-12 border-0 bg-transparent p-0 text-center text-base font-semibold text-ink-900 focus:outline-none" data-qty />
-            <button type="button" class="grid h-14 w-12 place-items-center rounded-r-full text-ink-600 transition-colors hover:text-brand-700 active:scale-90" data-qty-plus aria-label="Збільшити кількість">
+            <input id="qty" type="number" min="1" max="99" value="1" class="h-12 w-11 border-0 bg-transparent p-0 text-center text-base font-semibold text-ink-900 focus:outline-none sm:h-14 sm:w-12" data-qty />
+            <button type="button" class="grid h-12 w-11 place-items-center rounded-r-full sm:h-14 sm:w-12 text-ink-600 transition-colors hover:text-brand-700 active:scale-90" data-qty-plus aria-label="Збільшити кількість">
               <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 6v12M6 12h12" stroke-linecap="round" /></svg>
             </button>
           </div>
 
-          <button type="button" class="btn-primary h-14 flex-1 text-base" data-p-add>
+          <button type="button" class="btn-primary order-last h-12 w-full basis-full text-base sm:order-none sm:h-14 sm:w-auto sm:flex-1 sm:basis-auto" data-p-add>
             <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
               <path d="M3 4h2.2l2 11.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 2-1.5L20.5 8H6" stroke-linecap="round" stroke-linejoin="round" />
               <circle cx="10" cy="20" r="1.4" fill="currentColor" stroke="none" /><circle cx="17" cy="20" r="1.4" fill="currentColor" stroke="none" />
@@ -461,7 +461,7 @@
             Додати в кошик
           </button>
 
-          <button type="button" class="btn-secondary h-14 w-14 shrink-0 !px-0" data-p-compare aria-label="До порівняння">
+          <button type="button" class="btn-secondary h-12 w-12 shrink-0 !px-0 sm:h-14 sm:w-14" data-p-compare aria-label="До порівняння">
             <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
               <path d="M9 20V9m6 11V4M4 20v-6m16 6V12" stroke-linecap="round" />
             </svg>
@@ -519,7 +519,7 @@
   </div>
 
   <!-- ===== Схожі товари ===== -->
-  <section class="mt-20 lg:mt-28" aria-labelledby="related-title">
+  <section class="mt-12 sm:mt-20 lg:mt-28" aria-labelledby="related-title">
     <div class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
       <div>
         <p class="eyebrow">З цієї категорії</p>
@@ -530,20 +530,20 @@
         <svg viewBox="0 0 20 20" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10h11m0 0-4-4m4 4-4 4" stroke-linecap="round" stroke-linejoin="round" /></svg>
       </a>
     </div>
-    <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-related-grid></div>
+    <div class="mt-7 sm:mt-10 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4" data-related-grid></div>
   </section>
 
   <!-- ===== Відгуки ===== -->
-  <section id="reviews" class="mt-20 scroll-mt-32 lg:mt-28" aria-labelledby="p-reviews-title">
+  <section id="reviews" class="mt-12 sm:mt-20 scroll-mt-32 lg:mt-28" aria-labelledby="p-reviews-title">
     <div class="rounded-[2rem] bg-ink-50 p-7 lg:p-12">
-      <div class="grid gap-10 lg:grid-cols-[300px_1fr] lg:gap-14">
+      <div class="grid gap-7 sm:gap-10 lg:grid-cols-[300px_1fr] lg:gap-14">
         <!-- Зведення -->
         <div>
           <p class="eyebrow">Відгуки</p>
           <h2 id="p-reviews-title" class="mt-4 text-2xl font-semibold text-ink-900">Оцінки лікарів</h2>
 
           <div class="mt-6 flex items-end gap-3">
-            <span class="text-5xl font-bold tracking-tight text-ink-900" data-p-rating-big></span>
+            <span class="text-4xl font-bold tracking-tight text-ink-900 sm:text-5xl" data-p-rating-big></span>
             <span class="pb-2">
               <span class="flex" data-p-stars-big></span>
               <span class="mt-1 block text-[13px] text-ink-500" data-p-reviews-count></span>
@@ -609,8 +609,8 @@
   </div>
 
   <!-- ==== Основний футер ==== -->
-  <div class="container-x relative pb-10 pt-16 lg:pt-20">
-    <div class="grid gap-10 lg:grid-cols-[1.4fr_repeat(4,1fr)] lg:gap-8">
+  <div class="container-x relative pb-10 pt-10 sm:pt-16 lg:pt-20">
+    <div class="grid gap-7 sm:gap-10 lg:grid-cols-[1.4fr_repeat(4,1fr)] lg:gap-8">
       <!-- Колонка бренду -->
       <div class="lg:pr-8">
         <a href="index.html" class="flex items-center gap-2.5" aria-label="SOCO-SANI — на головну">
@@ -762,7 +762,7 @@
     </div>
 
     <!-- Способи оплати -->
-    <div class="mt-12 flex flex-col gap-6 border-t border-white/10 pt-8 lg:flex-row lg:items-center lg:justify-between">
+    <div class="mt-8 sm:mt-12 flex flex-col gap-6 border-t border-white/10 pt-8 lg:flex-row lg:items-center lg:justify-between">
       <div class="flex flex-wrap items-center gap-3">
         <span class="text-xs uppercase tracking-[0.14em] text-ink-500">Оплата</span>
         <span class="pay-chip">Передоплата</span>

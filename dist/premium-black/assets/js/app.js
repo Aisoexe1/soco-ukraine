@@ -269,10 +269,10 @@
 
   function stockHtml(p) {
     if (p.stock > 20)
-      return '<span class="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-600"><span class="h-1.5 w-1.5 rounded-full bg-mint-500"></span>В наявності</span>';
+      return '<span class="inline-flex items-center gap-1.5 text-[11px] font-medium text-emerald-600 sm:text-xs"><span class="h-1.5 w-1.5 rounded-full bg-mint-500"></span>В наявності</span>';
     if (p.stock > 0)
-      return `<span class="inline-flex items-center gap-1.5 text-xs font-medium text-amber-600"><span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>Залишилось ${p.stock} шт</span>`;
-    return '<span class="inline-flex items-center gap-1.5 text-xs font-medium text-ink-400"><span class="h-1.5 w-1.5 rounded-full bg-ink-300"></span>Під замовлення</span>';
+      return `<span class="inline-flex items-center gap-1.5 text-[11px] font-medium text-amber-600 sm:text-xs"><span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>Залишилось ${p.stock} шт</span>`;
+    return '<span class="inline-flex items-center gap-1.5 text-[11px] font-medium text-ink-400 sm:text-xs"><span class="h-1.5 w-1.5 rounded-full bg-ink-300"></span>Під замовлення</span>';
   }
 
   /**
@@ -289,17 +289,17 @@
     return `
     <article class="card-hover group relative flex flex-col overflow-hidden${opts.reveal ? ` reveal${delay}` : ''}" data-product="${p.id}">
       <!-- Бейджи -->
-      <div class="absolute left-4 top-4 z-10 flex flex-col items-start gap-1.5">${badgeHtml(p)}</div>
+      <div class="absolute left-2.5 top-2.5 z-10 flex flex-col items-start gap-1 sm:left-4 sm:top-4 sm:gap-1.5">${badgeHtml(p)}</div>
 
       <!-- Быстрые действия -->
-      <div class="absolute right-3.5 top-3.5 z-10 flex flex-col gap-1.5 opacity-0 transition-all duration-300 group-hover:opacity-100 max-lg:opacity-100">
+      <div class="absolute right-2 top-2 z-10 flex flex-col gap-1 transition-all duration-300 sm:right-3.5 sm:top-3.5 sm:gap-1.5">
         <button type="button" class="quick-btn ${fav ? 'is-active' : ''}" data-fav="${p.id}" aria-label="До обраного" aria-pressed="${fav}">
-          <svg viewBox="0 0 24 24" class="h-[18px] w-[18px]" fill="${fav ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="h-4 w-4 sm:h-[18px] sm:w-[18px]" fill="${fav ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
             <path d="M12 20.5s-7.5-4.7-7.5-10A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.5 2.9c0 5.3-7.5 10-7.5 10Z" stroke-linejoin="round"/>
           </svg>
         </button>
         <button type="button" class="quick-btn ${cmp ? 'is-active' : ''}" data-compare="${p.id}" aria-label="До порівняння" aria-pressed="${cmp}">
-          <svg viewBox="0 0 24 24" class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+          <svg viewBox="0 0 24 24" class="h-4 w-4 sm:h-[18px] sm:w-[18px]" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
             <path d="M9 20V9m6 11V4M4 20v-6m16 6V12" stroke-linecap="round"/>
           </svg>
         </button>
@@ -312,36 +312,36 @@
       </a>
 
       <!-- Контент -->
-      <div class="flex flex-1 flex-col p-5">
-        <div class="mb-2 flex items-center justify-between gap-2">
-          <span class="text-[11px] font-semibold uppercase tracking-[0.1em] text-brand-600">${escapeHtml(D.brandName(p.brand))}</span>
+      <div class="flex flex-1 flex-col p-3 sm:p-5">
+        <div class="mb-1.5 flex items-center justify-between gap-2 sm:mb-2">
+          <span class="truncate text-[10px] font-semibold uppercase tracking-[0.1em] text-brand-600 sm:text-[11px]">${escapeHtml(D.brandName(p.brand))}</span>
           <span class="flex items-center gap-1">
-            <span class="flex">${stars(p.rating)}</span>
-            <span class="text-xs font-medium text-ink-400">${p.rating.toFixed(1)}</span>
+            <span class="hidden sm:flex">${stars(p.rating)}</span>
+            <span class="text-[11px] font-medium text-ink-400 sm:text-xs">${p.rating.toFixed(1)}</span>
           </span>
         </div>
 
-        <h3 class="text-[15px] font-semibold leading-snug text-ink-900">
+        <h3 class="line-clamp-2 text-[13px] font-semibold leading-snug text-ink-900 sm:text-[15px]">
           <a href="${href}" class="transition-colors after:absolute after:inset-0 after:content-[''] hover:text-brand-700">${escapeHtml(p.name)}</a>
         </h3>
 
-        <p class="mt-2 line-clamp-2 text-[13px] leading-relaxed text-ink-500">${escapeHtml(p.short)}</p>
+        <p class="mt-2 hidden line-clamp-2 text-[13px] leading-relaxed text-ink-500 sm:block">${escapeHtml(p.short)}</p>
 
-        <div class="mt-3">${stockHtml(p)}</div>
+        <div class="mt-2 sm:mt-3">${stockHtml(p)}</div>
 
-        <div class="mt-auto pt-4">
-          <div class="flex items-end justify-between gap-3">
+        <div class="mt-auto pt-3 sm:pt-4">
+          <div class="flex items-end justify-between gap-2 sm:gap-3">
             <div>
-              ${p.oldPrice ? `<span class="block text-[13px] text-ink-400 line-through">${money(p.oldPrice)}</span>` : ''}
-              <span class="block text-xl font-bold tracking-tight text-ink-900">${money(p.price)}</span>
-              <span class="text-[11px] text-ink-400">за ${escapeHtml(p.unit)}</span>
+              ${p.oldPrice ? `<span class="block text-[11px] text-ink-400 line-through sm:text-[13px]">${money(p.oldPrice)}</span>` : ''}
+              <span class="block text-base font-bold tracking-tight text-ink-900 sm:text-xl">${money(p.price)}</span>
+              <span class="text-[10px] text-ink-400 sm:text-[11px]">за ${escapeHtml(p.unit)}</span>
             </div>
             <button type="button"
-              class="relative z-[1] inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full transition-all duration-300 active:scale-90 ${
+              class="relative z-[1] inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full sm:h-11 sm:w-11 transition-all duration-300 active:scale-90 ${
                 inCart ? 'bg-mint-500 text-white' : 'bg-brand-50 text-brand-700 hover:bg-brand-600 hover:text-white hover:shadow-brand'
               }"
               data-add="${p.id}" aria-label="Додати в кошик">
-              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="h-[18px] w-[18px] sm:h-5 sm:w-5" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                 ${
                   inCart
                     ? '<path d="m5 12.5 4.5 4.5L19 7" stroke-linecap="round" stroke-linejoin="round"/>'

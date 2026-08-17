@@ -70,6 +70,10 @@
   img, svg { @apply max-w-full; }
 
   input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; }
+  /* Кількість керується власними кнопками − / +, тому нативний степпер
+     прибираємо в усіх браузерах: Safari й Firefox не реагують лише на
+     псевдоелементи, їм потрібне правило на самому полі. */
+  input[type="number"] { appearance: textfield; -moz-appearance: textfield; }
   input[type="number"]::-webkit-inner-spin-button,
-  input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+  input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; appearance: none; margin: 0; }
 }

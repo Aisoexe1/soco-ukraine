@@ -88,7 +88,7 @@
   class="sticky top-0 z-50 border-b border-transparent bg-white/85 backdrop-blur-xl transition-all duration-300"
 >
   <div class="container-x">
-    <div class="flex h-[80px] items-center gap-3 lg:h-[96px] lg:gap-6">
+    <div class="flex h-[66px] items-center gap-3 sm:h-[80px] lg:h-[96px] lg:gap-6">
       <!-- Логотип -->
       <a href="index.html" class="group flex shrink-0 items-center gap-3" aria-label="SOCO-SANI — на головну">
         <img
@@ -96,7 +96,7 @@
           alt="SOCO-SANI"
           width="893"
           height="770"
-          class="h-14 w-auto shrink-0 transition-transform duration-400 group-hover:scale-105 lg:h-[68px]"
+          class="h-11 w-auto shrink-0 transition-transform duration-400 group-hover:scale-105 sm:h-14 lg:h-[68px]"
         />
         <span class="hidden leading-none sm:block">
           <span class="block text-[11px] font-medium leading-snug text-brand-700">
@@ -532,7 +532,7 @@
     </div>
 
     <!-- Вкладки -->
-    <div class="mt-10 flex gap-1.5 overflow-x-auto rounded-full bg-ink-100 p-1.5 no-scrollbar" role="tablist" aria-label="Розділи кабінету">
+    <div class="mt-7 sm:mt-10 flex gap-1.5 overflow-x-auto rounded-full bg-ink-100 p-1.5 no-scrollbar" role="tablist" aria-label="Розділи кабінету">
       <button type="button" class="tab-btn is-active" data-acc-tab="orders" role="tab" aria-selected="true">Замовлення</button>
       <button type="button" class="tab-btn" data-acc-tab="profile" role="tab" aria-selected="false">Профіль клініки</button>
       <button type="button" class="tab-btn" data-acc-tab="addresses" role="tab" aria-selected="false">Адреси</button>
@@ -542,7 +542,7 @@
     <!-- Замовлення -->
     <div class="mt-8" data-acc-panel="orders">
       <div class="space-y-4" data-orders-list></div>
-      <div class="hidden rounded-3xl bg-ink-50 px-6 py-16 text-center" data-orders-empty>
+      <div class="hidden rounded-3xl bg-ink-50 px-6 py-10 sm:py-16 text-center" data-orders-empty>
         <p class="text-lg font-semibold text-ink-900">Замовлень поки немає</p>
         <p class="mx-auto mt-2 max-w-md text-[15px] text-ink-500">Оформіть перше замовлення — і воно зʼявиться тут з усіма документами.</p>
         <a href="catalog.html" class="btn-primary mt-6">Перейти до каталогу</a>
@@ -593,8 +593,8 @@
 
     <!-- Переглянуті -->
     <div class="mt-8 hidden" data-acc-panel="viewed">
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-viewed-grid></div>
-      <div class="hidden rounded-3xl bg-ink-50 px-6 py-16 text-center" data-viewed-empty>
+      <div class="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4" data-viewed-grid></div>
+      <div class="hidden rounded-3xl bg-ink-50 px-6 py-10 sm:py-16 text-center" data-viewed-empty>
         <p class="text-lg font-semibold text-ink-900">Ви ще нічого не дивилися</p>
         <a href="catalog.html" class="btn-primary mt-6">Перейти до каталогу</a>
       </div>
@@ -649,8 +649,8 @@
   </div>
 
   <!-- ==== Основний футер ==== -->
-  <div class="container-x relative pb-10 pt-16 lg:pt-20">
-    <div class="grid gap-10 lg:grid-cols-[1.4fr_repeat(4,1fr)] lg:gap-8">
+  <div class="container-x relative pb-10 pt-10 sm:pt-16 lg:pt-20">
+    <div class="grid gap-7 sm:gap-10 lg:grid-cols-[1.4fr_repeat(4,1fr)] lg:gap-8">
       <!-- Колонка бренду -->
       <div class="lg:pr-8">
         <a href="index.html" class="flex items-center gap-2.5" aria-label="SOCO-SANI — на головну">
@@ -802,7 +802,7 @@
     </div>
 
     <!-- Способи оплати -->
-    <div class="mt-12 flex flex-col gap-6 border-t border-white/10 pt-8 lg:flex-row lg:items-center lg:justify-between">
+    <div class="mt-8 sm:mt-12 flex flex-col gap-6 border-t border-white/10 pt-8 lg:flex-row lg:items-center lg:justify-between">
       <div class="flex flex-wrap items-center gap-3">
         <span class="text-xs uppercase tracking-[0.14em] text-ink-500">Оплата</span>
         <span class="pay-chip">Передоплата</span>
