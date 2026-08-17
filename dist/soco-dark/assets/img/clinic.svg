@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 700" width="960" height="700" role="img">
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".55" stop-color="#f5f9ff"/>
+      <stop offset="1" stop-color="#e6efff"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".42" r=".62">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="shadow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#0a3f8f" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#0a3f8f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8fa3bd"/>
+      <stop offset=".18" stop-color="#e8eef7"/>
+      <stop offset=".42" stop-color="#ffffff"/>
+      <stop offset=".68" stop-color="#dde5f0"/>
+      <stop offset="1" stop-color="#93a6bf"/>
+    </linearGradient>
+    <linearGradient id="metalV" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4f7fc"/>
+      <stop offset=".5" stop-color="#dbe3ee"/>
+      <stop offset="1" stop-color="#a9b8cd"/>
+    </linearGradient>
+    <linearGradient id="blueG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5f97ff"/>
+      <stop offset=".5" stop-color="#0d6efd"/>
+      <stop offset="1" stop-color="#0a3f8f"/>
+    </linearGradient>
+    <linearGradient id="blueSoft" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eaf2ff"/>
+      <stop offset="1" stop-color="#c9dcff"/>
+    </linearGradient>
+    <linearGradient id="whiteG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".62" stop-color="#f2f6fc"/>
+      <stop offset="1" stop-color="#dde5f1"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".15"/>
+      <stop offset=".28" stop-color="#ffffff" stop-opacity=".72"/>
+      <stop offset=".55" stop-color="#ffffff" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#9fb4cf" stop-opacity=".35"/>
+    </linearGradient>
+    <linearGradient id="darkG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#33415c"/>
+      <stop offset="1" stop-color="#111a2e"/>
+    </linearGradient>
+    
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8fbff"/>
+      <stop offset="1" stop-color="#e9f1fc"/>
+    </linearGradient>
+    <linearGradient id="floorG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#dde7f5"/>
+      <stop offset="1" stop-color="#eff4fb"/>
+    </linearGradient>
+    <linearGradient id="chairG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".55" stop-color="#eaf1fb"/>
+      <stop offset="1" stop-color="#cddcef"/>
+    </linearGradient>
+    <linearGradient id="winG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#cfe4ff"/>
+      <stop offset="1" stop-color="#eaf4ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="700" fill="url(#wall)"/>
+  <path d="M0 470h960v230H0z" fill="url(#floorG)"/>
+  <path d="M0 470h960" stroke="#cbd5e5" stroke-width="2"/>
+
+  <!-- окно -->
+  <g>
+    <rect x="600" y="70" width="300" height="300" rx="18" fill="url(#winG)" stroke="#cbd5e5" stroke-width="3"/>
+    <path d="M750 70v300M600 220h300" stroke="#fff" stroke-width="6" opacity=".9"/>
+    <path d="M620 340c40-70 70-100 120-120 44-18 80-6 120 20v130H620z" fill="#fff" opacity=".35"/>
+    <circle cx="836" cy="132" r="26" fill="#fff" opacity=".8"/>
+  </g>
+
+  <!-- шкаф -->
+  <g>
+    <rect x="40" y="180" width="230" height="290" rx="16" fill="#fff" stroke="#cbd5e5" stroke-width="3"/>
+    <path d="M155 180v290" stroke="#cbd5e5" stroke-width="2"/>
+    <path d="M40 300h230M40 386h230" stroke="#cbd5e5" stroke-width="2"/>
+    <rect x="68" y="216" width="72" height="10" rx="5" fill="#e2e8f2"/><rect x="184" y="216" width="72" height="10" rx="5" fill="#e2e8f2"/><rect x="68" y="302" width="72" height="10" rx="5" fill="#e2e8f2"/><rect x="184" y="302" width="72" height="10" rx="5" fill="#e2e8f2"/><rect x="68" y="388" width="72" height="10" rx="5" fill="#e2e8f2"/><rect x="184" y="388" width="72" height="10" rx="5" fill="#e2e8f2"/>
+    <rect x="126" y="246" width="14" height="10" rx="5" fill="#0d6efd" opacity=".6"/>
+    <rect x="126" y="332" width="14" height="10" rx="5" fill="#0d6efd" opacity=".6"/>
+    <!-- предметы на шкафу -->
+    <rect x="72" y="140" width="34" height="40" rx="8" fill="url(#blueG)" opacity=".85"/>
+    <rect x="118" y="152" width="26" height="28" rx="7" fill="#e2e8f2"/>
+    <rect x="156" y="132" width="44" height="48" rx="10" fill="#fff" stroke="#cbd5e5" stroke-width="2"/>
+    <rect x="166" y="146" width="24" height="8" rx="4" fill="#0d6efd" opacity=".5"/>
+  </g>
+
+  <!-- стоматологическая установка: кресло -->
+  <g transform="translate(300 150)">
+    <!-- основание -->
+    <path d="M104 396h150a16 16 0 0 1 0 32H104a16 16 0 0 1 0-32z" fill="#b9c7da"/>
+    <path d="M158 300h42v100h-42z" fill="url(#metalV)"/>
+    <!-- сиденье -->
+    <path d="M42 268h250a30 30 0 0 1 30 30v18a30 30 0 0 1-30 30H42a30 30 0 0 1-30-30v-18a30 30 0 0 1 30-30z" fill="url(#chairG)" stroke="#cbd5e5" stroke-width="3"/>
+    <!-- спинка -->
+    <path d="M12 122a34 34 0 0 1 34-34h44a34 34 0 0 1 34 34v146H12z" fill="url(#chairG)" stroke="#cbd5e5" stroke-width="3" transform="rotate(-16 74 178)"/>
+    <!-- подголовник -->
+    <rect x="-20" y="52" width="86" height="52" rx="22" fill="url(#chairG)" stroke="#cbd5e5" stroke-width="3" transform="rotate(-16 23 78)"/>
+    <!-- подлокотник -->
+    <rect x="196" y="228" width="130" height="18" rx="9" fill="#dbe6f5" stroke="#cbd5e5" stroke-width="2"/>
+  </g>
+
+  <!-- светильник -->
+  <g transform="translate(430 60)">
+    <path d="M110 0v54" stroke="#cbd5e5" stroke-width="8" stroke-linecap="round"/>
+    <path d="M110 54c-56 4-96 22-120 54" stroke="url(#metal)" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <g transform="rotate(24 -8 116)">
+      <rect x="-70" y="94" width="128" height="48" rx="20" fill="url(#whiteG)" stroke="#cbd5e5" stroke-width="3"/>
+      <rect x="-58" y="134" width="104" height="14" rx="7" fill="#dbe8ff"/>
+      <path d="M-58 148 -34 214h96l24-66z" fill="#5f97ff" opacity=".2"/>
+      <circle cx="-30" cy="118" r="9" fill="#eff5ff"/>
+      <circle cx="-6" cy="118" r="9" fill="#eff5ff"/>
+      <circle cx="18" cy="118" r="9" fill="#eff5ff"/>
+    </g>
+  </g>
+
+  <!-- столик с инструментами -->
+  <g transform="translate(600 330)">
+    <rect x="0" y="0" width="200" height="16" rx="8" fill="url(#metalV)" stroke="#cbd5e5" stroke-width="2"/>
+    <rect x="88" y="16" width="16" height="124" fill="url(#metalV)"/>
+    <ellipse cx="96" cy="146" rx="52" ry="12" fill="#c3d1e4"/>
+    <rect x="18" y="-14" width="70" height="14" rx="7" fill="url(#metal)"/>
+    <rect x="104" y="-12" width="56" height="12" rx="6" fill="url(#metal)"/>
+    <rect x="24" y="-30" width="40" height="16" rx="6" fill="url(#blueG)" opacity=".8"/>
+  </g>
+
+  <!-- растение -->
+  <g transform="translate(856 372)">
+    <path d="M28 98V44" stroke="#4d7c5f" stroke-width="6" stroke-linecap="round"/>
+    <path d="M28 60c-26-6-36-24-34-46 22-2 34 14 34 32zM28 46c22-8 30-24 26-44-20 0-30 16-30 32z" fill="#5fa37a"/>
+    <path d="M8 98h40l-6 40a10 10 0 0 1-10 8H24a10 10 0 0 1-10-8z" fill="#fff" stroke="#cbd5e5" stroke-width="2.5"/>
+  </g>
+
+  <!-- тени на полу -->
+  <ellipse cx="480" cy="560" rx="230" ry="26" fill="#0a3f8f" opacity=".07"/>
+  <ellipse cx="696" cy="482" rx="90" ry="14" fill="#0a3f8f" opacity=".06"/>
+</svg>

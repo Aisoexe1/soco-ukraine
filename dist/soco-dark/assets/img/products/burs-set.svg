@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="640" height="640" role="img">
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".55" stop-color="#f5f9ff"/>
+      <stop offset="1" stop-color="#e6efff"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".42" r=".62">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="shadow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#0a3f8f" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#0a3f8f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8fa3bd"/>
+      <stop offset=".18" stop-color="#e8eef7"/>
+      <stop offset=".42" stop-color="#ffffff"/>
+      <stop offset=".68" stop-color="#dde5f0"/>
+      <stop offset="1" stop-color="#93a6bf"/>
+    </linearGradient>
+    <linearGradient id="metalV" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4f7fc"/>
+      <stop offset=".5" stop-color="#dbe3ee"/>
+      <stop offset="1" stop-color="#a9b8cd"/>
+    </linearGradient>
+    <linearGradient id="blueG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5f97ff"/>
+      <stop offset=".5" stop-color="#0d6efd"/>
+      <stop offset="1" stop-color="#0a3f8f"/>
+    </linearGradient>
+    <linearGradient id="blueSoft" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eaf2ff"/>
+      <stop offset="1" stop-color="#c9dcff"/>
+    </linearGradient>
+    <linearGradient id="whiteG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".62" stop-color="#f2f6fc"/>
+      <stop offset="1" stop-color="#dde5f1"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".15"/>
+      <stop offset=".28" stop-color="#ffffff" stop-opacity=".72"/>
+      <stop offset=".55" stop-color="#ffffff" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#9fb4cf" stop-opacity=".35"/>
+    </linearGradient>
+    <linearGradient id="darkG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#33415c"/>
+      <stop offset="1" stop-color="#111a2e"/>
+    </linearGradient>
+    
+  </defs>
+  <rect width="640" height="640" fill="url(#bg)"/>
+  <circle cx="320" cy="288" r="248" fill="url(#glow)"/>
+  <ellipse cx="320" cy="566" rx="175" ry="26" fill="url(#shadow)"/>
+
+  <!-- подставка -->
+  <path d="M146 386h348a20 20 0 0 1 20 20v92a20 20 0 0 1-20 20H146a20 20 0 0 1-20-20v-92a20 20 0 0 1 20-20z" fill="url(#whiteG)" stroke="#cbd5e5" stroke-width="2.5"/>
+  <path d="M126 428h388" stroke="#cbd5e5" stroke-width="2" opacity=".7"/>
+  <rect x="150" y="452" width="120" height="12" rx="6" fill="#e2e8f2"/>
+  <rect x="150" y="478" width="76" height="10" rx="5" fill="#e2e8f2"/>
+  <rect x="380" y="452" width="106" height="36" rx="10" fill="url(#blueG)" opacity=".9"/>
+  <rect x="163" y="168" width="10" height="218" rx="5" fill="url(#metal)" stroke="#9aa9be" stroke-width="1.2"/><circle cx="168" cy="182" r="14" fill="#0d6efd"/><rect x="162" y="222" width="12" height="9" rx="3" fill="#0d6efd" opacity=".85"/>
+  <rect x="206" y="176" width="10" height="210" rx="5" fill="url(#metal)" stroke="#9aa9be" stroke-width="1.2"/><path d="M198 206h26L211 172z" fill="#0b5ed7"/><rect x="205" y="230" width="12" height="9" rx="3" fill="#0b5ed7" opacity=".85"/>
+  <rect x="249" y="184" width="10" height="202" rx="5" fill="url(#metal)" stroke="#9aa9be" stroke-width="1.2"/><rect x="242" y="182" width="24" height="34" rx="10" fill="#0a3f8f"/><rect x="248" y="238" width="12" height="9" rx="3" fill="#0a3f8f" opacity=".85"/>
+  <rect x="292" y="168" width="10" height="218" rx="5" fill="url(#metal)" stroke="#9aa9be" stroke-width="1.2"/><path d="M297 162c11 12 13 22 13 28 0 9-6 14-13 14s-13-5-13-14c0-6 2-16 13-28z" fill="#0d6efd"/><rect x="291" y="222" width="12" height="9" rx="3" fill="#0d6efd" opacity=".85"/>
+  <rect x="335" y="176" width="10" height="210" rx="5" fill="url(#metal)" stroke="#9aa9be" stroke-width="1.2"/><circle cx="340" cy="190" r="14" fill="#0b5ed7"/><rect x="334" y="230" width="12" height="9" rx="3" fill="#0b5ed7" opacity=".85"/>
+  <rect x="378" y="184" width="10" height="202" rx="5" fill="url(#metal)" stroke="#9aa9be" stroke-width="1.2"/><path d="M370 214h26L383 180z" fill="#0a3f8f"/><rect x="377" y="238" width="12" height="9" rx="3" fill="#0a3f8f" opacity=".85"/>
+  <rect x="421" y="168" width="10" height="218" rx="5" fill="url(#metal)" stroke="#9aa9be" stroke-width="1.2"/><rect x="414" y="166" width="24" height="34" rx="10" fill="#0d6efd"/><rect x="420" y="222" width="12" height="9" rx="3" fill="#0d6efd" opacity=".85"/>
+  <rect x="464" y="176" width="10" height="210" rx="5" fill="url(#metal)" stroke="#9aa9be" stroke-width="1.2"/><path d="M469 170c11 12 13 22 13 28 0 9-6 14-13 14s-13-5-13-14c0-6 2-16 13-28z" fill="#0b5ed7"/><rect x="463" y="230" width="12" height="9" rx="3" fill="#0b5ed7" opacity=".85"/>
+
+</svg>

@@ -1,0 +1,546 @@
+/* ==========================================================================
+   SOCO-SANI — тема «SOCO Dark»
+   Темне дзеркало «SOCO Ivory»: та сама фірмова стилістика й те саме
+   приглушене золото #C7A35A, але на теплій графітовій базі.
+
+   На темному тлі золото проходить за контрастом і як текст (7.6:1),
+   тому окремий «темніший для тексту» відтінок тут не потрібен —
+   на відміну від світлої теми.
+
+   Файл НЕ містить розмітки й контенту: тільки токени та оформлення.
+   Контент, дані та логіка спільні для всіх версій (src/, assets/js/).
+   ========================================================================== */
+
+@import "tailwindcss";
+
+@import "../css/tokens.css";
+@import "../css/keyframes.css";
+@import "../css/base.css";
+@import "../css/components.css";
+@import "../css/utilities.css";
+
+@source "../../*.html";
+@source "../../assets/js/*.js";
+@source "../../src/**/*.html";
+
+/* ==========================================================================
+   1. Токени теми
+   ========================================================================== */
+@theme {
+  /* ---- Нейтральні: шкала перевернута (50 — найтемніша поверхня, 900 — текст).
+          Температура тепла, щоб графіт не сперечався із золотом. ---- */
+  --color-ink-50: #1c1a16;   /* тоновані смуги, полиці під зображенням */
+  --color-ink-100: #232019;  /* делікатні роздільники */
+  --color-ink-200: #302c24;  /* рамки, ring */
+  --color-ink-300: #6f695e;  /* декоративний сірий, крапки */
+  --color-ink-400: #928b7d;  /* контраст 5.4:1 на фоні сторінки */
+  --color-ink-500: #aaa294;  /* text-secondary, 7.5:1 */
+  --color-ink-600: #c2bbac;
+  --color-ink-700: #d7d0c1;
+  --color-ink-800: #e8e2d5;
+  --color-ink-900: #f5f1e8;  /* text-primary, 16.8:1 */
+  --color-ink-950: #0d0c0a;  /* глибокі острови: підвал, CTA-панель */
+
+  /* ---- Акцент: те саме приглушене золото ---- */
+  --color-brand-50: #2a2318;  /* primary-subtle у темному прочитанні */
+  --color-brand-100: #3a2f1e;
+  --color-brand-200: #4d3f27;
+  --color-brand-300: #e0cb9a;
+  --color-brand-400: #d8be83;
+  --color-brand-500: #c7a35a; /* primary */
+  --color-brand-600: #c7a35a; /* primary: заливки, іконки, рамки */
+  --color-brand-700: #d8be83; /* золото як ТЕКСТ і посилання (9.6:1) */
+  --color-brand-800: #e0cb9a;
+  --color-brand-900: #4d3f27;
+  --color-brand-950: #2a2318;
+
+  /* ---- Службові: приглушені, у теплій температурі, освітлені під темне ---- */
+  --color-mint-500: #62b184;
+  --color-amber-500: #d9a13f;
+  --color-rose-500: #cf6c53;
+  --color-emerald-600: #6fbf90;
+  --color-emerald-700: #7ec99c;
+  --color-rose-400: #db8069;
+  --color-rose-600: #d1745b;
+  --color-amber-400: #dfae55;
+  --color-amber-600: #d9a13f;
+  --color-amber-700: #e0b25e;
+
+  /* ---- Тіні: на темному працює глибина, а не м'якість ---- */
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.45);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.5), 0 1px 2px -1px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 8px 22px -8px rgb(0 0 0 / 0.65), 0 2px 6px -2px rgb(0 0 0 / 0.45);
+  --shadow-lg: 0 20px 44px -16px rgb(0 0 0 / 0.75), 0 8px 18px -10px rgb(0 0 0 / 0.5);
+  --shadow-xl: 0 34px 70px -26px rgb(0 0 0 / 0.8), 0 12px 28px -14px rgb(0 0 0 / 0.55);
+  --shadow-2xl: 0 42px 84px -30px rgb(0 0 0 / 0.85), 0 16px 36px -18px rgb(0 0 0 / 0.6);
+  --shadow-brand: 0 10px 26px -12px rgb(199 163 90 / 0.45);
+
+  /* ---- Радіуси: ті самі стримані, що й у світлій версії ---- */
+  --radius-xl: 0.5rem;
+  --radius-2xl: 0.625rem;
+  --radius-3xl: 0.875rem;
+  --radius-4xl: 1rem;
+}
+
+/* ==========================================================================
+   2. Оформлення (skin).
+   Шар utilities + префікс [data-theme] дає специфічність 0,2,x —
+   цього достатньо, щоб перекрити одноклассові утиліти без !important.
+   ========================================================================== */
+@layer utilities {
+  :root[data-theme="soco-dark"] {
+    --dk-page: #14120f;      /* background */
+    --dk-surface: #1c1a16;   /* surface: картки */
+    --dk-surface-2: #242018; /* surface-secondary, hover */
+    --dk-deep: #0d0c0a;      /* найглибше: поля вводу, службова смуга */
+    --dk-line: #332e26;      /* border */
+    --dk-line-2: #55492f;    /* border-hover */
+    --dk-gold: #c7a35a;      /* primary */
+    --dk-gold-hover: #d8be83;/* primary-hover */
+    --dk-subtle: #2a2318;    /* primary-subtle */
+    --dk-ink: #14120f;       /* темний текст на золотих заливках */
+    --dk-ivory: #f5f1e8;     /* світлий текст */
+
+    /* Поверхня, яку віддає утиліта bg-white */
+    --srf: var(--dk-surface);
+    --srf-ink: var(--dk-ivory);
+
+    color-scheme: dark;
+    scrollbar-color: #3a342a transparent;
+  }
+
+  /* ---------- Документ ---------- */
+  [data-theme="soco-dark"] body,
+  [data-theme="soco-dark"] body.bg-white {
+    background-color: var(--dk-page);
+    color: var(--color-ink-800);
+  }
+  [data-theme="soco-dark"] ::selection {
+    background-color: var(--dk-gold);
+    color: var(--dk-ink);
+  }
+  [data-theme="soco-dark"] :focus-visible {
+    outline-color: var(--dk-gold);
+  }
+  [data-theme="soco-dark"] *::-webkit-scrollbar-thumb {
+    background: #3a342a;
+    border-color: var(--dk-page);
+  }
+  [data-theme="soco-dark"] *::-webkit-scrollbar-thumb:hover {
+    background: #4d4536;
+  }
+
+  /* ---------- Головна заміна: bg-white → поверхня теми ---------- */
+  [data-theme="soco-dark"] .bg-white,
+  [data-theme="soco-dark"] .hover\:bg-white:hover,
+  [data-theme="soco-dark"] .focus\:bg-white:focus,
+  [data-theme="soco-dark"] .group:hover .group-hover\:bg-white {
+    background-color: var(--srf);
+    color: var(--srf-ink);
+  }
+  [data-theme="soco-dark"] .bg-white\/85 {
+    background-color: color-mix(in oklab, var(--dk-page) 84%, transparent);
+  }
+  [data-theme="soco-dark"] .bg-white\/60 {
+    background-color: color-mix(in oklab, var(--dk-surface) 70%, transparent);
+  }
+  [data-theme="soco-dark"] .bg-white\/90 {
+    background-color: color-mix(in oklab, var(--dk-surface) 90%, transparent);
+  }
+  /* Заливки, що «згасають у білий», згасають у фон сторінки */
+  [data-theme="soco-dark"] .from-white {
+    --tw-gradient-from: var(--dk-page);
+  }
+  [data-theme="soco-dark"] .via-white {
+    --tw-gradient-via: var(--dk-page);
+  }
+  [data-theme="soco-dark"] .to-white {
+    --tw-gradient-to: var(--dk-page);
+  }
+  [data-theme="soco-dark"] .from-brand-50\/70 {
+    --tw-gradient-from: #1f1b15;
+  }
+
+  /* ---------- Геометрія: як у світлій версії ---------- */
+  [data-theme="soco-dark"] :is(
+      .btn, .btn-primary, .btn-secondary, .btn-ghost, .btn-soft,
+      .field, .chip-suggest, .quick-cat, .page-btn, .tab-btn, .badge,
+      .mobile-link, .radio-card, .faq-item, .thumb-btn, .pay-chip, .nav-link
+    ) {
+    border-radius: 8px;
+  }
+  [data-theme="soco-dark"] :is(.card, .card-hover, .cat-card, .why-card) {
+    border-radius: 12px;
+  }
+  [data-theme="soco-dark"] .rounded-\[2rem\],
+  [data-theme="soco-dark"] .rounded-\[2\.5rem\] {
+    border-radius: 14px;
+  }
+  [data-theme="soco-dark"] #site-header .rounded-full:is(input, a, button, form),
+  [data-theme="soco-dark"] #site-header .field {
+    border-radius: 8px;
+  }
+  [data-theme="soco-dark"] :is(.icon-btn, .quick-btn, .carousel-arrow, .view-btn, .social-btn) {
+    border-radius: 999px;
+  }
+
+  /* ---------- Шапка ---------- */
+  [data-theme="soco-dark"] #site-header {
+    background-color: color-mix(in oklab, var(--dk-page) 86%, transparent);
+    border-bottom-color: var(--dk-line);
+  }
+  /* Верхня службова смуга */
+  [data-theme="soco-dark"] .bg-ink-50\/70 {
+    background-color: var(--dk-deep);
+  }
+  [data-theme="soco-dark"] .nav-link {
+    color: var(--color-ink-700);
+  }
+  [data-theme="soco-dark"] .nav-link:hover,
+  [data-theme="soco-dark"] .nav-link[data-active] {
+    color: var(--dk-gold-hover);
+  }
+  [data-theme="soco-dark"] .nav-link::after {
+    background-color: var(--dk-gold);
+  }
+  [data-theme="soco-dark"] .icon-btn {
+    color: var(--color-ink-700);
+  }
+  [data-theme="soco-dark"] .icon-btn:hover {
+    background-color: var(--dk-subtle);
+    color: var(--dk-gold-hover);
+  }
+  /* Кнопка кошика: у світлій версії темна «пігулка» — тут золота */
+  [data-theme="soco-dark"] #site-header .bg-ink-900 {
+    background-color: var(--dk-gold);
+    color: var(--dk-ink);
+  }
+  [data-theme="soco-dark"] #site-header .bg-ink-900:hover {
+    background-color: var(--dk-gold-hover);
+    color: var(--dk-ink);
+  }
+  /* Інші темні «пігулки» (бейдж «Новинка») мають лишатися помітними */
+  [data-theme="soco-dark"] .bg-ink-900:not(#site-header *) {
+    --color-ink-900: #35301f;
+  }
+  /* Логотип: клієнтський SVG золотий сам по собі, знімаємо стару підсвітку */
+  [data-theme="soco-dark"] #site-header a[aria-label] > span.bg-gradient-to-br {
+    box-shadow: 0 6px 16px -8px rgb(199 163 90 / 0.5);
+  }
+  [data-theme="soco-dark"] #site-header .from-brand-600,
+  [data-theme="soco-dark"] body > footer .from-brand-600 {
+    --tw-gradient-from: #cdae70;
+  }
+  [data-theme="soco-dark"] #site-header .to-brand-800 {
+    --tw-gradient-to: #a98743;
+  }
+
+  /* ---------- Кнопки ---------- */
+  [data-theme="soco-dark"] .btn-primary {
+    background-color: var(--dk-gold);
+    color: var(--dk-ink); /* контраст 7.6:1 */
+    box-shadow: none;
+  }
+  [data-theme="soco-dark"] .btn-primary:hover {
+    background-color: var(--dk-gold-hover);
+    color: var(--dk-ink);
+    box-shadow: 0 10px 26px -12px rgb(199 163 90 / 0.45);
+  }
+  [data-theme="soco-dark"] .btn-secondary {
+    background-color: transparent;
+    color: var(--dk-gold-hover);
+    --tw-ring-color: var(--dk-line-2);
+  }
+  [data-theme="soco-dark"] .btn-secondary:hover {
+    background-color: var(--dk-subtle);
+    color: var(--dk-gold-hover);
+    --tw-ring-color: var(--dk-gold);
+    box-shadow: none;
+  }
+  [data-theme="soco-dark"] .btn-ghost:hover {
+    background-color: var(--dk-surface-2);
+    color: var(--dk-gold-hover);
+  }
+  [data-theme="soco-dark"] .btn-soft {
+    background-color: var(--dk-subtle);
+    color: var(--dk-gold-hover);
+  }
+  [data-theme="soco-dark"] .btn-soft:hover {
+    background-color: #352c1d;
+  }
+
+  /* Заливки золотом і службовими кольорами: «білий» текст на них замінюємо
+     на темний — інакше 2.4:1 */
+  [data-theme="soco-dark"] [class~="bg-brand-600"],
+  [data-theme="soco-dark"] [class~="bg-brand-500"],
+  [data-theme="soco-dark"] [class~="hover:bg-brand-600"]:hover,
+  [data-theme="soco-dark"] .group:hover [class~="group-hover:bg-brand-600"],
+  [data-theme="soco-dark"] [class~="from-brand-500"],
+  [data-theme="soco-dark"] [class~="from-brand-600"],
+  [data-theme="soco-dark"] [class*="bg-mint-5"],
+  [data-theme="soco-dark"] [class*="bg-rose-5"],
+  [data-theme="soco-dark"] [class*="bg-amber-5"] {
+    --color-white: #14120f;
+  }
+
+  /* Золото як дрібний текст на темному проходить — беремо світліший відтінок */
+  [data-theme="soco-dark"] :is(.text-brand-600, .text-brand-500) {
+    color: var(--dk-gold-hover);
+  }
+  [data-theme="soco-dark"] .brand-word {
+    color: var(--color-ink-500);
+  }
+  [data-theme="soco-dark"] .brand-word:hover {
+    color: var(--dk-gold-hover);
+  }
+
+  /* ---------- Картки та поверхні ---------- */
+  [data-theme="soco-dark"] :is(.card, .card-hover, .cat-card, .why-card, .faq-item, .radio-card) {
+    background-color: var(--dk-surface);
+    --tw-ring-color: var(--dk-line);
+  }
+  [data-theme="soco-dark"] :is(.card-hover, .cat-card, .why-card):hover {
+    background-color: var(--dk-surface-2);
+    --tw-ring-color: var(--dk-line-2);
+    box-shadow: 0 16px 36px -18px rgb(0 0 0 / 0.8);
+  }
+  [data-theme="soco-dark"] .cat-card::before {
+    background-image: linear-gradient(to bottom, rgb(199 163 90 / 0.12), transparent);
+  }
+  [data-theme="soco-dark"] :is(.cat-icon, .why-icon) {
+    background-color: var(--dk-subtle);
+    color: var(--dk-gold-hover);
+  }
+  [data-theme="soco-dark"] .group:hover .cat-icon,
+  [data-theme="soco-dark"] .group:hover .why-icon {
+    background-color: var(--dk-gold);
+    color: var(--dk-ink);
+    box-shadow: none;
+  }
+  [data-theme="soco-dark"] .thumb-btn {
+    background-color: var(--dk-surface);
+    --tw-ring-color: var(--dk-line);
+  }
+  [data-theme="soco-dark"] .skeleton {
+    background-color: var(--dk-surface-2);
+    background-image: linear-gradient(90deg, transparent, rgb(245 241 232 / 0.06), transparent);
+  }
+
+  /* Товарні зображення намальовані під світлу підкладку — лишаємо їм
+     світлу полицю, лише теплішу, щоб не світилися чистим білим.
+     Тільки обгортка зображення на картці: та сама утиліта використовується
+     ще й у стрічці чату та в шапці замовлення, там потрібен темний фон. */
+  [data-theme="soco-dark"] a.bg-ink-50\/60:has(img) {
+    background-color: #e6e1d6;
+  }
+  [data-theme="soco-dark"] img[src*="assets/img/products/"] {
+    filter: saturate(0.7) sepia(0.1);
+  }
+  /* Фотографія обладнання — трохи приглушена під темну сторінку */
+  [data-theme="soco-dark"] img[src*="about-equipment"] {
+    filter: brightness(0.9) contrast(1.04) saturate(0.9);
+  }
+
+  /* ---------- Форми ---------- */
+  [data-theme="soco-dark"] .field {
+    background-color: var(--dk-deep);
+    color: var(--color-ink-900);
+    --tw-ring-color: var(--dk-line);
+  }
+  [data-theme="soco-dark"] .field:focus {
+    background-color: var(--dk-deep);
+    --tw-ring-color: var(--dk-gold);
+    box-shadow: 0 0 0 3px rgb(199 163 90 / 0.14);
+  }
+  [data-theme="soco-dark"] .field::placeholder,
+  [data-theme="soco-dark"] input::placeholder,
+  [data-theme="soco-dark"] textarea::placeholder {
+    color: #8b8478;
+  }
+  [data-theme="soco-dark"] .filter-box {
+    border-color: #4a4335;
+    background-color: transparent;
+  }
+  [data-theme="soco-dark"] .filter-box:checked {
+    border-color: var(--dk-gold);
+    background-color: var(--dk-gold);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%2314120F' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 10.5 3.5 3.5L15 6.5'/%3E%3C/svg%3E");
+  }
+  [data-theme="soco-dark"] .filter-row:hover {
+    background-color: var(--dk-surface-2);
+  }
+  [data-theme="soco-dark"] .price-slider {
+    background-color: #3a342a;
+    accent-color: var(--dk-gold);
+  }
+  [data-theme="soco-dark"] .price-slider::-webkit-slider-thumb {
+    background-color: var(--dk-gold);
+    border-color: var(--dk-page);
+  }
+  [data-theme="soco-dark"] .price-slider::-moz-range-thumb {
+    background-color: var(--dk-gold);
+    border-color: var(--dk-page);
+  }
+  [data-theme="soco-dark"] .radio-card:has(:checked) {
+    background-color: var(--dk-subtle);
+  }
+
+  /* ---------- Дрібні елементи ---------- */
+  [data-theme="soco-dark"] .eyebrow {
+    background-color: var(--dk-subtle);
+    color: var(--dk-gold-hover); /* контраст 7.4:1 на #2A2318 */
+  }
+  [data-theme="soco-dark"] .text-gradient {
+    background-image: none;
+    color: var(--dk-gold-hover);
+  }
+  [data-theme="soco-dark"] :is(.chip-suggest, .quick-cat) {
+    background-color: var(--dk-surface);
+    color: var(--color-ink-600);
+    --tw-ring-color: var(--dk-line);
+  }
+  [data-theme="soco-dark"] :is(.chip-suggest, .quick-cat):hover {
+    background-color: var(--dk-surface-2);
+    color: var(--dk-gold-hover);
+    --tw-ring-color: var(--dk-line-2);
+  }
+  [data-theme="soco-dark"] .quick-cat.is-active {
+    background-color: var(--dk-gold);
+    color: var(--dk-ink);
+    --tw-ring-color: var(--dk-gold);
+    box-shadow: none;
+  }
+  [data-theme="soco-dark"] .page-btn {
+    color: var(--color-ink-600);
+    --tw-ring-color: var(--dk-line);
+  }
+  [data-theme="soco-dark"] .page-btn:hover {
+    background-color: var(--dk-surface-2);
+    color: var(--dk-gold-hover);
+    --tw-ring-color: var(--dk-line-2);
+  }
+  [data-theme="soco-dark"] .page-btn.is-active {
+    background-color: var(--dk-gold);
+    color: var(--dk-ink);
+    --tw-ring-color: var(--dk-gold);
+    box-shadow: none;
+  }
+  [data-theme="soco-dark"] .tab-btn.is-active,
+  [data-theme="soco-dark"] .view-btn.is-active {
+    background-color: var(--dk-surface-2);
+    color: var(--color-ink-900);
+  }
+  [data-theme="soco-dark"] .quick-btn {
+    background-color: rgb(20 18 15 / 0.85);
+    color: var(--color-ink-500);
+    --tw-ring-color: rgb(245 241 232 / 0.18);
+  }
+  [data-theme="soco-dark"] .quick-btn:hover,
+  [data-theme="soco-dark"] .quick-btn.is-active {
+    background-color: var(--dk-gold);
+    color: var(--dk-ink);
+    --tw-ring-color: var(--dk-gold);
+  }
+  [data-theme="soco-dark"] .carousel-arrow {
+    background-color: var(--dk-surface);
+    color: var(--color-ink-600);
+    --tw-ring-color: var(--dk-line);
+  }
+  [data-theme="soco-dark"] .carousel-arrow:hover {
+    background-color: var(--dk-gold);
+    color: var(--dk-ink);
+    --tw-ring-color: var(--dk-gold);
+  }
+  [data-theme="soco-dark"] .badge-brand {
+    background-color: var(--dk-subtle);
+    color: var(--dk-gold-hover);
+  }
+  [data-theme="soco-dark"] .faq-icon {
+    background-color: var(--dk-subtle);
+    color: var(--dk-gold-hover);
+  }
+  [data-theme="soco-dark"] details[open] .faq-icon {
+    background-color: var(--dk-gold);
+    color: var(--dk-ink);
+  }
+  [data-theme="soco-dark"] .mobile-link:hover,
+  [data-theme="soco-dark"] .mobile-link[data-active] {
+    background-color: var(--dk-subtle);
+    color: var(--dk-gold-hover);
+  }
+  [data-theme="soco-dark"] .link-arrow {
+    color: var(--dk-gold-hover);
+  }
+
+  /* ---------- Фонові текстури ---------- */
+  [data-theme="soco-dark"] .bg-dots {
+    background-image: radial-gradient(circle at 1px 1px, rgb(245 241 232 / 0.08) 1px, transparent 0);
+  }
+  [data-theme="soco-dark"] .bg-grid {
+    background-image:
+      linear-gradient(to right, rgb(245 241 232 / 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(245 241 232 / 0.08) 1px, transparent 1px);
+  }
+
+  /* ==========================================================================
+     3. Контекст: острови з власною палітрою.
+        CSS-змінні успадковуються, тому «острів» перевизначає всю палітру
+        всередині себе.
+     ========================================================================== */
+
+  /* Затемнення під модальними шарами: на темній сторінці 40 % замало */
+  [data-theme="soco-dark"] .bg-ink-950\/40,
+  [data-theme="soco-dark"] .bg-ink-950\/45 {
+    background-color: rgb(0 0 0 / 0.7);
+  }
+
+  /* Підвал і CTA-панель: найглибший тон, білі кнопки стають світлими плитками */
+  [data-theme="soco-dark"] body > footer,
+  [data-theme="soco-dark"] [class*="bg-ink-950"] {
+    --color-ink-950: #0d0c0a;
+    --srf: #f5f1e8;
+    --srf-ink: #14120f;
+    /* Підвал темніший за сторінку — освітлюємо дрібний текст: 6.0:1 замість 3.6:1 */
+    --color-ink-300: #9a9384;
+    --color-ink-400: #a39c8d;
+  }
+  [data-theme="soco-dark"] body > footer {
+    border-top: 1px solid var(--dk-line);
+  }
+  [data-theme="soco-dark"] body > footer .bg-white,
+  [data-theme="soco-dark"] [class*="bg-ink-950"] .bg-white,
+  [data-theme="soco-dark"] [class~="from-brand-600"] .bg-white {
+    --color-ink-900: #14120f;
+    --color-ink-800: #201d18;
+    --color-brand-700: #8a6e36; /* золото як текст на світлій плитці */
+    --color-brand-50: #f2e9d5;
+  }
+  [data-theme="soco-dark"] body > footer .bg-white:hover,
+  [data-theme="soco-dark"] [class*="bg-ink-950"] .bg-white:hover {
+    background-color: #fff;
+  }
+
+  /* Панель підписки: золото, темний текст — як у світлій версії */
+  [data-theme="soco-dark"] footer div.bg-gradient-to-br:has(form[data-subscribe]) {
+    background-image: linear-gradient(135deg, #cfae6d, #a98743);
+    --color-white: #14120f;
+    --color-brand-100: #241c0e; /* контраст 5.6:1 як дрібний текст на золоті */
+  }
+  [data-theme="soco-dark"] footer div.bg-gradient-to-br:has(form[data-subscribe]) .bg-white {
+    background-color: #fff;
+    --color-brand-700: #8a6e36;
+  }
+
+  /* Брендові золоті панелі (кабінет, каталог, шапка чату).
+     Усередині них палітра перевертається назад: заголовки успадковують
+     ink-900, який у темній темі світлий — на золоті він не читається. */
+  [data-theme="soco-dark"] :is([class~="from-brand-600"], [class~="from-brand-500"]):not(#site-header *) {
+    --color-brand-100: #241c0e; /* контраст 5.6:1 як дрібний текст на золоті */
+    --color-ink-900: #14120f;
+    --color-ink-800: #201d18;
+    --color-ink-700: #2e2a22;
+    /* Кнопки bg-white на золотій панелі лишаються світлими плитками */
+    --srf: #f5f1e8;
+    --srf-ink: #14120f;
+  }
+}

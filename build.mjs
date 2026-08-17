@@ -96,6 +96,14 @@ const THEMES = {
     themeColor: '#faf8f3',
     colorScheme: 'light',
   },
+  'soco-dark': {
+    id: 'soco-dark',
+    title: 'SOCO Dark',
+    outDir: path.join(DIST, 'soco-dark'),
+    css: 'src/themes/soco-dark.css',
+    themeColor: '#14120f',
+    colorScheme: 'dark',
+  },
 };
 
 const argOf = (name) => {

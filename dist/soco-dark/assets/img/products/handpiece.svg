@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" width="640" height="640" role="img">
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".55" stop-color="#f5f9ff"/>
+      <stop offset="1" stop-color="#e6efff"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".42" r=".62">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="shadow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#0a3f8f" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#0a3f8f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8fa3bd"/>
+      <stop offset=".18" stop-color="#e8eef7"/>
+      <stop offset=".42" stop-color="#ffffff"/>
+      <stop offset=".68" stop-color="#dde5f0"/>
+      <stop offset="1" stop-color="#93a6bf"/>
+    </linearGradient>
+    <linearGradient id="metalV" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4f7fc"/>
+      <stop offset=".5" stop-color="#dbe3ee"/>
+      <stop offset="1" stop-color="#a9b8cd"/>
+    </linearGradient>
+    <linearGradient id="blueG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5f97ff"/>
+      <stop offset=".5" stop-color="#0d6efd"/>
+      <stop offset="1" stop-color="#0a3f8f"/>
+    </linearGradient>
+    <linearGradient id="blueSoft" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eaf2ff"/>
+      <stop offset="1" stop-color="#c9dcff"/>
+    </linearGradient>
+    <linearGradient id="whiteG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".62" stop-color="#f2f6fc"/>
+      <stop offset="1" stop-color="#dde5f1"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".15"/>
+      <stop offset=".28" stop-color="#ffffff" stop-opacity=".72"/>
+      <stop offset=".55" stop-color="#ffffff" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#9fb4cf" stop-opacity=".35"/>
+    </linearGradient>
+    <linearGradient id="darkG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#33415c"/>
+      <stop offset="1" stop-color="#111a2e"/>
+    </linearGradient>
+    
+  </defs>
+  <rect width="640" height="640" fill="url(#bg)"/>
+  <circle cx="320" cy="288" r="248" fill="url(#glow)"/>
+  <ellipse cx="320" cy="566" rx="175" ry="26" fill="url(#shadow)"/>
+
+  <g transform="rotate(34 320 320)">
+    <!-- хвостовик/коннектор -->
+    <rect x="292" y="446" width="56" height="94" rx="16" fill="url(#metalV)" stroke="#93a6bf" stroke-width="2"/>
+    <rect x="286" y="430" width="68" height="24" rx="10" fill="#8fa3bd"/>
+    <!-- корпус -->
+    <path d="M296 190h48a26 26 0 0 1 26 26v218a26 26 0 0 1-26 26h-48a26 26 0 0 1-26-26V216a26 26 0 0 1 26-26z" fill="url(#metal)" stroke="#93a6bf" stroke-width="2"/>
+    <rect x="278" y="250" width="84" height="26" rx="13" fill="url(#blueG)"/>
+    <rect x="286" y="300" width="68" height="9" rx="4.5" fill="#9aa9be" opacity=".7"/>
+    <rect x="286" y="318" width="52" height="9" rx="4.5" fill="#9aa9be" opacity=".5"/>
+    <!-- головка -->
+    <path d="M270 216c-10-24-6-44 12-58l38-30c14-10 32 2 30 20l-6 62z" fill="url(#metal)" stroke="#93a6bf" stroke-width="2" stroke-linejoin="round"/>
+    <circle cx="304" cy="164" r="26" fill="url(#metalV)" stroke="#93a6bf" stroke-width="2"/>
+    <circle cx="304" cy="164" r="13" fill="#0a3f8f" opacity=".5"/>
+    <!-- LED -->
+    <circle cx="266" cy="200" r="11" fill="#fff9d6" stroke="#e7dfa8" stroke-width="2"/>
+    <circle cx="266" cy="200" r="20" fill="#fffbe0" opacity=".5"/>
+    <!-- бор в головке -->
+    <path d="M304 138V78" stroke="url(#metal)" stroke-width="10" stroke-linecap="round"/>
+    <path d="M304 78c8 10 12 18 12 24 0 9-5 14-12 14s-12-5-12-14c0-6 4-14 12-24z" fill="#0d6efd"/>
+    <rect x="276" y="200" width="12" height="240" rx="6" fill="#fff" opacity=".7"/>
+  </g>
+
+</svg>

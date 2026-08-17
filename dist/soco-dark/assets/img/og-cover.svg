@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="ogbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".55" stop-color="#f2f7ff"/>
+      <stop offset="1" stop-color="#dbe8ff"/>
+    </linearGradient>
+    <linearGradient id="ogblue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d6efd"/>
+      <stop offset="1" stop-color="#0a3f8f"/>
+    </linearGradient>
+    <linearGradient id="ogmetal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8fa3bd"/><stop offset=".3" stop-color="#ffffff"/><stop offset="1" stop-color="#9fb0c7"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#ogbg)"/>
+  <circle cx="980" cy="150" r="300" fill="#0d6efd" opacity=".07"/>
+  <circle cx="1080" cy="520" r="200" fill="#0d6efd" opacity=".05"/>
+
+  <g transform="translate(88 96)">
+    <rect width="88" height="88" rx="24" fill="url(#ogblue)"/>
+    <path d="M44 22c-4 0-7 1.4-11 2.6-3.2 1.2-5.6 1.9-8.6 1.9-2 0-4.2-.4-6.2-1.2-2.4-1-4.9.8-5.6 3.4-2.6 7.8-2.4 16.4.3 26.6 1.8 6.2 4.4 13 7.4 20.6 2 4.9 3.7 8.2 5.5 10.5 1.7 2.7 4 4.5 6.9 4.5 3.6 0 5.6-2.6 6.9-6.6l2.2-7.4c.7-2.4 1.4-3.6 2-3.6s1.3 1.2 2 3.6l2.2 7.4c1.3 4 3.3 6.6 6.9 6.6 2.9 0 5.2-1.8 6.9-4.5 1.8-2.3 3.5-5.6 5.5-10.5 3-7.6 5.6-14.4 7.4-20.6 2.7-10.2 2.9-18.8.3-26.6-.7-2.6-3.2-4.4-5.6-3.4-2 .8-4.2 1.2-6.2 1.2-3 0-5.4-.7-8.6-1.9C51 23.4 48 22 44 22z" fill="#fff"/>
+  </g>
+  <text x="196" y="140" font-family="Inter, Helvetica, Arial, sans-serif" font-size="44" font-weight="700" fill="#0f1c33" letter-spacing="-1">SOCO<tspan fill="#0d6efd">.</tspan></text>
+  <text x="197" y="172" font-family="Inter, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#0d6efd" letter-spacing="5">UKRAINE · DENTAL</text>
+
+  <text x="88" y="300" font-family="Inter, Helvetica, Arial, sans-serif" font-size="60" font-weight="700" fill="#0f1c33" letter-spacing="-1.6">Профессиональные</text>
+  <text x="88" y="368" font-family="Inter, Helvetica, Arial, sans-serif" font-size="60" font-weight="700" fill="#0f1c33" letter-spacing="-1.6">стоматологические</text>
+  <text x="88" y="436" font-family="Inter, Helvetica, Arial, sans-serif" font-size="60" font-weight="700" fill="url(#ogblue)" letter-spacing="-1.6">материалы</text>
+
+  <text x="88" y="500" font-family="Inter, Helvetica, Arial, sans-serif" font-size="24" fill="#64748b">Оборудование и расходники для клиник · Доставка по Украине</text>
+
+  <g transform="translate(88 536)">
+    <rect x="0" y="0" width="272" height="48" rx="24" fill="#fff" stroke="#dbe8ff" stroke-width="2"/>
+    <circle cx="28" cy="24" r="9" fill="#0d6efd"/>
+    <path d="m24 24 3 3.4 5.6-6.4" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="50" y="30" font-family="Inter, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#0f1c33">5 000+ товаров</text>
+    <rect x="300" y="0" width="272" height="48" rx="24" fill="#fff" stroke="#dbe8ff" stroke-width="2"/>
+    <circle cx="328" cy="24" r="9" fill="#0d6efd"/>
+    <path d="m324 24 3 3.4 5.6-6.4" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="350" y="30" font-family="Inter, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#0f1c33">Оригинал и сертификаты</text>
+    <rect x="600" y="0" width="272" height="48" rx="24" fill="#fff" stroke="#dbe8ff" stroke-width="2"/>
+    <circle cx="628" cy="24" r="9" fill="#0d6efd"/>
+    <path d="m624 24 3 3.4 5.6-6.4" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="650" y="30" font-family="Inter, Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#0f1c33">Доставка 1–2 дня</text>
+  </g>
+
+  <!-- инструменты справа -->
+  <g transform="translate(880 250) rotate(-24)">
+    <rect x="0" y="0" width="240" height="18" rx="9" fill="url(#ogmetal)" stroke="#9aa9be" stroke-width="1.5"/>
+    <rect x="52" y="2" width="140" height="14" rx="7" fill="#0d6efd" opacity=".22"/>
+    <circle cx="-26" cy="9" r="30" fill="#eef3fa" stroke="#93a6bf" stroke-width="2.5"/>
+    <circle cx="-26" cy="9" r="21" fill="#dbeafe"/>
+  </g>
+  <g transform="translate(870 340) rotate(16)">
+    <rect x="0" y="0" width="230" height="16" rx="8" fill="url(#ogmetal)" stroke="#9aa9be" stroke-width="1.5"/>
+    <rect x="50" y="2" width="130" height="12" rx="6" fill="#0a3f8f" opacity=".18"/>
+    <path d="M0 8c-22 0-36-9-50-24" stroke="url(#ogmetal)" stroke-width="12" fill="none" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(900 420) rotate(-8)">
+    <rect x="0" y="0" width="150" height="52" rx="16" fill="#fff" stroke="#dbe8ff" stroke-width="2.5"/>
+    <rect x="10" y="10" width="120" height="18" rx="9" fill="url(#ogblue)" opacity=".9"/>
+    <rect x="10" y="34" width="76" height="10" rx="5" fill="#e2e8f2"/>
+  </g>
+</svg>
