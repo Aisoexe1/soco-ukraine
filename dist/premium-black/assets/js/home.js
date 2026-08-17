@@ -54,7 +54,7 @@
     dots.innerHTML = slides
       .map(
         (_, i) =>
-          `<button type="button" role="tab" class="h-2 rounded-full transition-all duration-300" data-banner-dot="${i}" aria-label="Банер ${i + 1}"></button>`
+          `<button type="button" role="tab" class="h-2 rounded-full bg-ink-300 transition-all duration-300" data-banner-dot="${i}" aria-label="Банер ${i + 1}"></button>`
       )
       .join('');
     const dotEls = $$('[data-banner-dot]', dots);
@@ -65,8 +65,8 @@
       dotEls.forEach((d, i) => {
         const on = i === idx;
         d.style.width = on ? '26px' : '8px';
-        d.classList.toggle('bg-white', on);
-        d.classList.toggle('bg-white/45', !on);
+        d.classList.toggle('bg-brand-600', on);
+        d.classList.toggle('bg-ink-300', !on);
         d.setAttribute('aria-selected', on);
       });
     };
