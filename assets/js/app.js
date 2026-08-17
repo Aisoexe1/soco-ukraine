@@ -742,7 +742,6 @@
     const log = $('[data-chat-log]');
     const form = $('[data-chat-form]');
     const input = $('[data-chat-input]');
-    const badge = $('[data-chat-badge]');
     const contactForm = $('[data-chat-contact-form]');
     const contactSubmit = $('[data-chat-contact-submit]');
     let pendingLeadMessage = '';
@@ -751,7 +750,7 @@
 
     const GREETING = {
       from: 'bot',
-      text: 'Вітаю! Мене звати Анна, я менеджерка SOCO-SANI. Підберу матеріали, розрахую вартість і відповім щодо термінів доставки. Чим допомогти?',
+      text: 'Вітаю! Опишіть, що потрібно — матеріали, обладнання чи розрахунок вартості. Ми отримаємо заявку й відповімо на пошту або у Viber.',
     };
 
     // Привітання версіонуємо: інакше збережена в localStorage історія
@@ -783,7 +782,7 @@
       m.from === 'bot'
         ? `<div class="flex gap-2.5">
              <span class="mt-auto grid h-7 w-7 shrink-0 place-items-center rounded-full bg-brand-600 text-white">
-               <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8.5" r="3.2"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0" stroke-linecap="round"/></svg>
+               <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.4"/><path d="m4 7 8 5.5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
              </span>
              <p class="max-w-[80%] rounded-2xl rounded-bl-md bg-white px-3.5 py-2.5 text-[13.5px] leading-relaxed text-ink-700 shadow-sm ring-1 ring-ink-100">${escapeHtml(m.text)}</p>
            </div>`
@@ -802,7 +801,7 @@
       el.dataset.typing = '';
       el.innerHTML = `
         <span class="mt-auto grid h-7 w-7 shrink-0 place-items-center rounded-full bg-brand-600 text-white">
-          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8.5" r="3.2"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0" stroke-linecap="round"/></svg>
+          <svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.4"/><path d="m4 7 8 5.5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
         <span class="flex items-center gap-1 rounded-2xl rounded-bl-md bg-white px-4 py-3.5 shadow-sm ring-1 ring-ink-100">
           <span class="h-1.5 w-1.5 animate-bounce rounded-full bg-ink-300 [animation-delay:-0.3s]"></span>
@@ -847,7 +846,6 @@
       panel.classList.toggle('translate-y-4', !v);
       panel.classList.toggle('scale-95', !v);
       if (v) {
-        badge.classList.add('scale-0');
         draw();
         setTimeout(() => input.focus(), 260);
       }
