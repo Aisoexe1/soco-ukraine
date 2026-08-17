@@ -144,101 +144,29 @@
 </section>
 
 <!-- ======================================================================
-     1. HERO
+     1. ЗАГОЛОВОК СТОРІНКИ + СТРІЧКА БРЕНДІВ
+     Візуальний блок-герой прибрано: його роль виконують банери вгорі.
+     Заголовок лишається в розмітці для пошуку й читалок.
      ====================================================================== -->
-<section class="relative overflow-hidden" aria-labelledby="hero-title">
-  <!-- Фон -->
-  <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
-    <div class="absolute inset-0 bg-gradient-to-b from-brand-50/70 via-white to-white"></div>
-    <div class="absolute -right-40 -top-40 h-[36rem] w-[36rem] rounded-full bg-brand-200/35 blur-[120px]"></div>
-    <div class="absolute -left-32 top-40 h-96 w-96 rounded-full bg-brand-100/50 blur-[100px]"></div>
-    <div class="absolute inset-x-0 top-0 h-[520px] bg-dots opacity-[0.55] mask-fade-b"></div>
-  </div>
+<h1 class="sr-only">Професійні стоматологічні матеріали та обладнання — SOCO-SANI</h1>
 
-  <div class="container-x pb-16 pt-12 lg:pb-24 lg:pt-20">
-    <div class="grid items-center gap-12">
-      <!-- Текст -->
-      <div class="max-w-3xl">
-        <p class="eyebrow reveal is-visible">
-          <span class="relative flex h-1.5 w-1.5">
-            <span class="absolute inline-flex h-full w-full animate-pulse-ring rounded-full bg-brand-500"></span>
-            <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand-600"></span>
-          </span>
-          Увесь товар у каталозі — в наявності
-        </p>
-
-        <h1 id="hero-title" class="reveal reveal-d1 is-visible mt-6 text-[2.5rem] font-semibold leading-[1.08] tracking-tight text-ink-900 sm:text-6xl lg:text-[4rem]">
-          Професійні
-          <span class="text-gradient">стоматологічні</span>
-          матеріали та обладнання
-        </h1>
-
-        <p class="reveal reveal-d2 is-visible mt-6 max-w-xl text-lg leading-relaxed text-ink-500">
-          Усе необхідне для стоматологічних клінік і спеціалістів зі швидкою доставкою по Україні.
-        </p>
-
-        <div class="reveal reveal-d3 is-visible mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <a href="catalog.html" class="btn-primary btn-lg group">
-            Каталог
-            <svg viewBox="0 0 20 20" class="h-[18px] w-[18px] transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
-              <path d="M4 10h11m0 0-4.5-4.5M15 10l-4.5 4.5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </a>
-          <a href="contacts.html" class="btn-secondary btn-lg">
-            <svg viewBox="0 0 24 24" class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-              <path d="M6.5 4h3l1.5 3.8-2 1.4a11.5 11.5 0 0 0 5.3 5.3l1.4-2L19.5 14v3a2 2 0 0 1-2.2 2A15.5 15.5 0 0 1 4.5 6.2 2 2 0 0 1 6.5 4Z" stroke-linejoin="round" />
-            </svg>
-            Звʼязатися
-          </a>
-        </div>
-
-        <!-- Швидкі факти (реальні дані компанії) -->
-        <dl class="reveal reveal-d4 is-visible mt-12 grid grid-cols-3 gap-6 border-t border-ink-100 pt-8 sm:gap-10">
-          <div>
-            <dt class="sr-only">Відгуків покупців</dt>
-            <dd>
-              <span class="block text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl" data-counter="{{REVIEWS_COUNT}}">{{REVIEWS_COUNT}}</span>
-              <span class="mt-1 block text-[13px] leading-snug text-ink-500">відгуків<br class="hidden sm:block" /> покупців</span>
-            </dd>
-          </div>
-          <div>
-            <dt class="sr-only">Термін доставки</dt>
-            <dd>
-              <span class="block text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl">1–3</span>
-              <span class="mt-1 block text-[13px] leading-snug text-ink-500">дні<br class="hidden sm:block" /> доставка</span>
-            </dd>
-          </div>
-          <div>
-            <dt class="sr-only">Вартість доставки</dt>
-            <dd>
-              <span class="block text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl">50 ₴</span>
-              <span class="mt-1 block text-[13px] leading-snug text-ink-500">Нова Пошта,<br class="hidden sm:block" /> від</span>
-            </dd>
-          </div>
-        </dl>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- Стрічка брендів -->
-  <div id="brands" class="border-y border-ink-100 bg-white/60 py-7 backdrop-blur">
-    <div class="container-x">
-      <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:gap-10">
-        <p class="shrink-0 text-[13px] font-medium text-ink-400">
-          Статус дистрибʼютора<br class="hidden lg:block" /> надійних марок
-        </p>
-        <div class="relative flex-1 overflow-hidden" style="mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent)">
-          <div class="flex w-max animate-marquee items-center gap-12 pr-12">
-            <!-- Дублюється для безшовної прокрутки -->
-            <span class="brand-word">Coxo</span><span class="brand-word">Woodpecker</span><span class="brand-word">Sani</span><span class="brand-word">Nic</span><span class="brand-word">Soco</span>
-            <span class="brand-word" aria-hidden="true">Coxo</span><span class="brand-word" aria-hidden="true">Woodpecker</span><span class="brand-word" aria-hidden="true">Sani</span><span class="brand-word" aria-hidden="true">Nic</span><span class="brand-word" aria-hidden="true">Soco</span>
-          </div>
+<section id="brands" class="border-y border-ink-100 bg-white/60 py-7 backdrop-blur" aria-label="Бренди">
+  <div class="container-x">
+    <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:gap-10">
+      <p class="shrink-0 text-[13px] font-medium text-ink-400">
+        Статус дистрибʼютора<br class="hidden lg:block" /> надійних марок
+      </p>
+      <div class="relative flex-1 overflow-hidden" style="mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent)">
+        <div class="flex w-max animate-marquee items-center gap-12 pr-12">
+          <!-- Дублюється для безшовної прокрутки -->
+          <span class="brand-word">Coxo</span><span class="brand-word">Woodpecker</span><span class="brand-word">Sani</span><span class="brand-word">Nic</span><span class="brand-word">Soco</span>
+          <span class="brand-word" aria-hidden="true">Coxo</span><span class="brand-word" aria-hidden="true">Woodpecker</span><span class="brand-word" aria-hidden="true">Sani</span><span class="brand-word" aria-hidden="true">Nic</span><span class="brand-word" aria-hidden="true">Soco</span>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 
 <!-- ======================================================================
      2. КАТЕГОРІЇ
