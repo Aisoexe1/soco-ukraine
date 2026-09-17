@@ -46,7 +46,7 @@
       Базовий URL CRM API. Залиште порожнім, коли вітрина та CRM працюють
       на одному домені; інакше задайте URL CRM під час розгортання.
     -->
-    <meta name="soco-crm-api-url" content="" />
+    <meta name="soco-crm-api-url" content="https://crm.soco.in.ua" />
 
     <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://soco-sani.com.ua/#organization","name":"SOCO-SANI","legalName":"SOCO-SANI","url":"https://soco-sani.com.ua","logo":{"@type":"ImageObject","url":"https://soco-sani.com.ua/assets/img/logo.svg","width":512,"height":512},"image":"https://soco-sani.com.ua/assets/img/og-cover.png","description":"Продаж стоматологічного обладнання та матеріалів. Офіційний дистриб’ютор марок Coxo, Woodpecker, Sani, Nic і Soco. Прямі постачання без посередників, офіційна гарантія на кожен товар.","email":"molmar0175@gmail.com","telephone":"+380987555588","address":{"@type":"PostalAddress","streetAddress":"вул. Куренівська, 5/7, 3 поверх, офіс 105","addressLocality":"Київ","addressCountry":"UA"},"contactPoint":[{"@type":"ContactPoint","telephone":"+380987555588","contactType":"sales","areaServed":"UA","availableLanguage":["uk","ru"]}],"brand":[{"@type":"Brand","name":"Coxo"},{"@type":"Brand","name":"Woodpecker"},{"@type":"Brand","name":"Sani"},{"@type":"Brand","name":"Nic"},{"@type":"Brand","name":"Soco"}]},{"@type":"WebSite","@id":"https://soco-sani.com.ua/#website","url":"https://soco-sani.com.ua","name":"SOCO-SANI","inLanguage":"uk-UA","publisher":{"@id":"https://soco-sani.com.ua/#organization"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://soco-sani.com.ua/catalog.html?q={search_term_string}"},"query-input":"required name=search_term_string"}},{"@type":"MedicalBusiness","@id":"https://soco-sani.com.ua/#store","name":"SOCO-SANI","image":"https://soco-sani.com.ua/assets/img/og-cover.png","url":"https://soco-sani.com.ua","telephone":"+380987555588","email":"molmar0175@gmail.com","currenciesAccepted":"UAH","paymentAccepted":"Передоплата, Готівка, Оплата на картку, Реквізити ФОП, Післяплата","address":{"@type":"PostalAddress","streetAddress":"вул. Куренівська, 5/7, 3 поверх, офіс 105","addressLocality":"Київ","addressCountry":"UA"},"areaServed":{"@type":"Country","name":"Україна"}},{"@type":"BreadcrumbList","@id":"https://soco-sani.com.ua/cart.html#breadcrumbs","itemListElement":[{"@type":"ListItem","position":1,"name":"Головна","item":"https://soco-sani.com.ua/"},{"@type":"ListItem","position":2,"name":"Кошик","item":"https://soco-sani.com.ua/cart.html"}]}]}</script>
   </head>
@@ -420,7 +420,10 @@
       <div class="overflow-hidden rounded-3xl ring-1 ring-ink-200/80" data-cart-list></div>
 
       <!-- Форма замовлення -->
-      <form class="space-y-4" data-checkout novalidate>
+      <form class="space-y-4" data-checkout id="checkout-form" novalidate>
+        <!-- Honeypot: справжній користувач це поле не заповнює -->
+        <input type="text" name="website" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
         <!-- Контакти -->
         <fieldset class="rounded-3xl bg-white p-6 ring-1 ring-ink-200/80">
           <legend class="mb-5 flex items-center gap-2.5 text-base font-semibold text-ink-900">
@@ -477,12 +480,16 @@
 
           <div class="mt-4 grid gap-4 sm:grid-cols-2">
             <div>
+              <label for="c-region" class="field-label">Область <span class="text-rose-500">*</span></label>
+              <input id="c-region" name="region" required class="field" placeholder="Київська область" />
+            </div>
+            <div>
               <label for="c-city" class="field-label">Місто <span class="text-rose-500">*</span></label>
               <input id="c-city" name="city" required class="field" placeholder="Київ" />
             </div>
-            <div>
-              <label for="c-address" class="field-label">Відділення / адреса <span class="text-rose-500">*</span></label>
-              <input id="c-address" name="address" required class="field" placeholder="Відділення №12" />
+            <div class="sm:col-span-2">
+              <label for="c-warehouse" class="field-label">Відділення Нової Пошти <span class="text-rose-500">*</span></label>
+              <input id="c-warehouse" name="warehouse" required class="field" placeholder="Відділення №12" />
             </div>
           </div>
         </fieldset>
@@ -561,16 +568,19 @@
           <span class="text-3xl font-bold tracking-tight text-ink-900" data-sum-total>0 ₴</span>
         </div>
 
-        <button type="submit" form="" class="btn-primary btn-lg mt-6 w-full" data-checkout-submit>
+        <button type="submit" form="checkout-form" class="btn-primary btn-lg mt-6 w-full" data-checkout-submit>
           Оформити замовлення
         </button>
 
-        <p class="mt-3 text-center text-[11.5px] leading-relaxed text-ink-400">
-          Натискаючи кнопку, ви погоджуєтеся з
-          <a href="privacy.html#offer" class="underline underline-offset-2 hover:text-brand-600">умовами оферти</a>
-          та
-          <a href="privacy.html" class="underline underline-offset-2 hover:text-brand-600">політикою конфіденційності</a>.
-        </p>
+        <label class="mt-4 flex cursor-pointer items-start gap-2.5 text-left text-[12.5px] leading-relaxed text-ink-500">
+          <input type="checkbox" name="consent" form="checkout-form" required class="filter-box mt-0.5 shrink-0" />
+          <span>
+            Погоджуюся з
+            <a href="privacy.html#offer" class="underline underline-offset-2 hover:text-brand-600" target="_blank" rel="noopener">умовами оферти</a>
+            та
+            <a href="privacy.html" class="underline underline-offset-2 hover:text-brand-600" target="_blank" rel="noopener">політикою конфіденційності</a>
+          </span>
+        </label>
 
         <ul class="mt-6 space-y-2.5 border-t border-ink-100 pt-5">
           <li class="flex items-center gap-2.5 text-[13px] text-ink-500">

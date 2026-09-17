@@ -5,7 +5,6 @@
   'use strict';
 
   const S = window.SOCO;
-  const D = window.SOCO_DATA;
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
@@ -98,7 +97,7 @@
   /* ======================================================================
      Наповнення кабінету
      ====================================================================== */
-  function fillAccount(u) {
+  async function fillAccount(u) {
     $('[data-user-initials]').textContent = initials(u.name);
     $('[data-user-name]').textContent = u.name;
     $('[data-user-meta]').textContent = [u.company, u.email].filter(Boolean).join(' · ');
@@ -133,8 +132,8 @@
             .map(
               (i) => `
             <div class="flex items-center gap-4 px-6 py-3.5">
-              <img src="${(D.byId(i.id) || {}).image || 'assets/img/logo.svg'}" alt="" width="56" height="56" loading="lazy" class="h-14 w-14 shrink-0 rounded-xl bg-ink-50 object-cover" />
-              <a href="product.html?id=${i.id}" class="min-w-0 flex-1 text-[14px] font-medium text-ink-800 transition-colors hover:text-brand-700">${S.escapeHtml(i.name)}</a>
+              <img src="assets/img/logo.svg" alt="" width="56" height="56" loading="lazy" class="h-14 w-14 shrink-0 rounded-xl bg-ink-50 object-cover p-2" />
+              <a href="product.html?sku=${encodeURIComponent(i.sku)}" class="min-w-0 flex-1 text-[14px] font-medium text-ink-800 transition-colors hover:text-brand-700">${S.escapeHtml(i.name)}</a>
               <span class="shrink-0 text-[13px] text-ink-500">${i.qty} × ${S.money(i.price)}</span>
             </div>`
             )
@@ -188,7 +187,8 @@
        </a>`;
 
     /* --- Переглянуті --- */
-    const viewed = (S.state.recent || []).map(D.byId).filter(Boolean);
+    const recentSkus = (S.state.recent || []).slice(0, 8);
+    const viewed = recentSkus.length ? (await S.fetchProducts({ skus: recentSkus.join(',') })).data : [];
     $('[data-viewed-empty]').classList.toggle('hidden', viewed.length > 0);
     $('[data-viewed-grid]').innerHTML = viewed.slice(0, 8).map((p) => S.renderCard(p)).join('');
     S.rendered();

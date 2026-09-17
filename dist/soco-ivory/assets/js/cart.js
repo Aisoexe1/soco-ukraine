@@ -167,13 +167,53 @@
 
 
   /* --- Оформлення --- */
-  $('[data-checkout-submit]').addEventListener('click', () => {
+
+  /// Розбиває ПІБ на імʼя/прізвище — CRM веде їх окремими полями.
+  /// Перше слово завжди імʼя, решта (якщо є) — прізвище.
+  function splitName(full) {
+    const parts = full.trim().split(/\s+/);
+    return { firstName: parts[0] || '', lastName: parts.slice(1).join(' ') || undefined };
+  }
+
+  /// Версія угоди — з CRM (`/api/storefront/legal`), щоб у картці клієнта
+  /// зберігся текст, на який він реально погодився. Кешується на сторінці:
+  /// текст оновлюється рідко, а два запити на одне оформлення не потрібні.
+  let consentVersionPromise = null;
+  async function getConsentVersion() {
+    if (!consentVersionPromise) {
+      consentVersionPromise = fetch(
+        (function () {
+          const configured =
+            window.SOCO_CRM_API_URL || document.querySelector('meta[name="soco-crm-api-url"]')?.getAttribute('content')?.trim();
+          return configured ? new URL('/api/storefront/legal', configured).toString() : '/api/storefront/legal';
+        })(),
+      )
+        .then((r) => (r.ok ? r.json() : null))
+        .then((json) => json?.data?.version || 'unknown')
+        .catch(() => 'unknown');
+    }
+    return consentVersionPromise;
+  }
+
+  const ORDER_ERROR_MESSAGES = {
+    'Товару недостатньо на складі': 'На жаль, частина товару вже розкуплена — зменшіть кількість або оберіть інший варіант.',
+    'Невідомий товар': 'Один із товарів більше не в каталозі. Оновіть сторінку кошика і спробуйте ще раз.',
+    'Сума замовлення менша за мінімальну': 'Мінімальна сума замовлення — 400 ₴. Додайте ще товарів у кошик.',
+    'Invalid order payload': 'Перевірте правильність заповнення полів.',
+  };
+
+  $('[data-checkout-submit]').addEventListener('click', async () => {
     const form = $('[data-checkout]');
-    const required = $$('[required]', form);
+    // Не лише нащадки form у DOM, а й усі елементи, зв'язані через form="checkout-form"
+    // (кнопка й чекбокс згоди фізично лежать у сайдбарі підсумку).
+    const required = Array.from(document.querySelectorAll('[required]')).filter((el) => el.form === form);
     let firstBad = null;
 
     required.forEach((f) => {
-      const bad = !f.value.trim() || (f.type === 'email' && !/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(f.value));
+      const bad =
+        f.type === 'checkbox'
+          ? !f.checked
+          : !f.value.trim() || (f.type === 'email' && !/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(f.value));
       f.classList.toggle('!ring-rose-400', bad);
       f.classList.toggle('!ring-2', bad);
       if (bad && !firstBad) firstBad = f;
@@ -186,33 +226,66 @@
       return;
     }
 
+    const btn = $('[data-checkout-submit]');
+    if (btn.disabled) return;
+    btn.disabled = true;
+    const btnLabel = btn.textContent;
+    btn.textContent = 'Оформлюємо…';
+
     const data = Object.fromEntries(new FormData(form));
-    const number = 'SC-' + String(100000 + Math.floor(Math.abs(Date.now() % 900000))).slice(0, 6);
+    const { firstName, lastName } = splitName(data.name || '');
+    const items = S.Cart.items().map((i) => ({ sku: i.product.sku, quantity: i.qty }));
 
-    S.state.orders.unshift({
-      number,
-      date: new Date().toISOString(),
-      items: S.Cart.items().map((i) => ({ id: i.product.id, name: i.product.name, qty: i.qty, price: i.product.price })),
-      total: S.Cart.subtotal() + deliveryCost(S.Cart.subtotal()),
-      status: 'Очікує підтвердження',
-      contact: { name: data.name, phone: data.phone, email: data.email, company: data.company || '' },
-      delivery: data.delivery,
-      payment: data.payment,
-    });
+    try {
+      const consentVersion = await getConsentVersion();
+      const result = await S.createStorefrontOrder({
+        firstName,
+        lastName,
+        phone: data.phone,
+        email: data.email || undefined,
+        region: data.region,
+        city: data.city,
+        warehouse: data.warehouse,
+        comment: data.comment || undefined,
+        items,
+        consent: true,
+        consentVersion,
+        website: data.website || undefined,
+      });
 
-    S.Cart.clear();
-    S.persist();
+      const code = 'SO-' + String(result.data.orderNumber).padStart(6, '0');
 
-    $('[data-cart-body]').classList.add('hidden');
-    $('[data-cart-body]').classList.remove('lg:grid');
-    $('[data-cart-empty]').classList.add('hidden');
-    $('[data-steps]').classList.add('hidden');
-    $('[data-cart-clear]').classList.add('hidden');
-    $('[data-order-number]').textContent = number;
-    $('[data-cart-success]').classList.remove('hidden');
+      // Локальний запис лишається для екрана «Мої замовлення» в кабінеті —
+      // сам факт замовлення й реальний номер тепер завжди з CRM.
+      S.state.orders.unshift({
+        number: code,
+        date: new Date().toISOString(),
+        items: S.Cart.items().map((i) => ({ id: i.product.id, name: i.product.name, qty: i.qty, price: i.product.price })),
+        total: S.Cart.subtotal(),
+        status: 'Очікує підтвердження',
+        contact: { name: data.name, phone: data.phone, email: data.email, company: data.company || '' },
+      });
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    S.toast('Замовлення оформлено', 'ok', `Номер ${number}`);
+      S.Cart.clear();
+      S.persist();
+
+      $('[data-cart-body]').classList.add('hidden');
+      $('[data-cart-body]').classList.remove('lg:grid');
+      $('[data-cart-empty]').classList.add('hidden');
+      $('[data-steps]').classList.add('hidden');
+      $('[data-cart-clear]').classList.add('hidden');
+      $('[data-order-number]').textContent = code;
+      $('[data-cart-success]').classList.remove('hidden');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      S.toast('Замовлення оформлено', 'ok', `Номер ${code}`);
+    } catch (err) {
+      const message = err && err.data && err.data.error;
+      S.toast(ORDER_ERROR_MESSAGES[message] || 'Не вдалося оформити замовлення. Спробуйте ще раз або зателефонуйте нам.', 'error');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = btnLabel;
+    }
   });
 
   render();

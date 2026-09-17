@@ -11,8 +11,8 @@
   const grid = $('[data-fav-grid]');
   if (!grid) return;
 
-  function render() {
-    const items = S.Favorites.items();
+  async function render() {
+    const items = await S.Favorites.items();
 
     $('[data-fav-empty]').classList.toggle('hidden', items.length > 0);
     grid.classList.toggle('hidden', items.length === 0);
@@ -28,10 +28,10 @@
     requestAnimationFrame(() => $$('.reveal', grid).forEach((el) => el.classList.add('is-visible')));
   }
 
-  $('[data-fav-add-all]').addEventListener('click', () => {
-    const items = S.Favorites.items().filter((p) => !S.Cart.has(p.id));
+  $('[data-fav-add-all]').addEventListener('click', async () => {
+    const items = (await S.Favorites.items()).filter((p) => !S.Cart.has(p.sku));
     if (!items.length) return S.toast('Усі обрані товари вже в кошику', 'info');
-    items.forEach((p) => (S.state.cart[p.id] = (S.state.cart[p.id] || 0) + 1));
+    items.forEach((p) => (S.state.cart[p.sku] = (S.state.cart[p.sku] || 0) + 1));
     S.persist();
     S.syncCards();
     S.toast(`Додано в кошик: ${items.length} ${S.plural(items.length, 'товар', 'товари', 'товарів')}`, 'cart');
@@ -46,7 +46,7 @@
 
   // Перемальовувати при знятті сердечка на самій сторінці
   document.addEventListener('soco:change', () => {
-    if (S.Favorites.items().length !== $$('[data-product]', grid).length) render();
+    if (S.state.favorites.length !== $$('[data-product]', grid).length) render();
   });
 
   render();

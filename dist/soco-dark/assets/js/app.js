@@ -70,18 +70,18 @@
     };
   };
 
-  const storefrontLeadUrl = () => {
+  const storefrontApiUrl = (path) => {
     const configuredUrl =
       window.SOCO_CRM_API_URL || document.querySelector('meta[name="soco-crm-api-url"]')?.getAttribute('content')?.trim();
 
-    return configuredUrl ? new URL('/api/storefront/leads', configuredUrl).toString() : '/api/storefront/leads';
+    return configuredUrl ? new URL(path, configuredUrl).toString() : path;
   };
 
   const createStorefrontLead = async (lead) => {
     let response;
 
     try {
-      response = await fetch(storefrontLeadUrl(), {
+      response = await fetch(storefrontApiUrl('/api/storefront/leads'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(lead),
@@ -95,6 +95,44 @@
     }
 
     return response.json();
+  };
+
+  /**
+   * На відміну від ліда, тут важливо, ЧОМУ саме запит не пройшов: «немає на
+   * складі» і «менше мінімальної суми» показуються клієнту різними
+   * підказками, а не спільним «щось пішло не так». Тому помилка несе
+   * status і розібраний JSON відповіді, а не лише текст.
+   */
+  const createStorefrontOrder = async (order) => {
+    let response;
+
+    try {
+      response = await fetch(storefrontApiUrl('/api/storefront/orders'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(order),
+      });
+    } catch {
+      const err = new Error('Storefront order request failed');
+      err.status = 0;
+      throw err;
+    }
+
+    let body = null;
+    try {
+      body = await response.json();
+    } catch {
+      /* тіло могло бути порожнім при мережевій помилці проксі — нижче обробляємо як помилку без деталей */
+    }
+
+    if (!response.ok) {
+      const err = new Error(body?.error || `Storefront order request failed with status ${response.status}`);
+      err.status = response.status;
+      err.data = body;
+      throw err;
+    }
+
+    return body;
   };
 
   /* ======================================================================
@@ -977,6 +1015,7 @@
     badgeHtml,
     toast,
     createStorefrontLead,
+    createStorefrontOrder,
     searchProducts,
     updateCounters,
     rendered: () => document.dispatchEvent(new CustomEvent('soco:rendered')),
