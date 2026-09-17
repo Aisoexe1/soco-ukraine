@@ -5,55 +5,52 @@
   'use strict';
 
   const S = window.SOCO;
-  const D = window.SOCO_DATA;
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 
   const list = $('[data-cart-list]');
   if (!list) return;
 
-
-
   /* ======================================================================
      Рядок товару
      ====================================================================== */
   function row({ product: p, qty }, i) {
+    const unitPrice = p.salePrice ?? p.price;
     return `
-    <div class="flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:gap-5 sm:p-5 ${i > 0 ? 'border-t border-ink-100' : ''}" data-row="${p.id}">
-      <a href="product.html?id=${p.id}" class="shrink-0">
-        <img src="${p.image}" alt="${S.escapeHtml(p.name)}" width="128" height="128" loading="lazy"
+    <div class="flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:gap-5 sm:p-5 ${i > 0 ? 'border-t border-ink-100' : ''}" data-row="${p.sku}">
+      <a href="product.html?sku=${encodeURIComponent(p.sku)}" class="shrink-0">
+        <img src="${p.image || (p.images && p.images[0]) || 'assets/img/logo.svg'}" alt="${S.escapeHtml(p.name)}" width="128" height="128" loading="lazy"
              class="h-24 w-24 rounded-2xl bg-ink-50 object-cover sm:h-28 sm:w-28" />
       </a>
 
       <div class="min-w-0 flex-1">
-        <span class="text-[11px] font-semibold uppercase tracking-[0.1em] text-brand-600">${S.escapeHtml(D.brandName(p.brand))}</span>
-        <h3 class="mt-1 text-[15px] font-semibold leading-snug text-ink-900">
-          <a href="product.html?id=${p.id}" class="transition-colors hover:text-brand-700">${S.escapeHtml(p.name)}</a>
+        <h3 class="text-[15px] font-semibold leading-snug text-ink-900">
+          <a href="product.html?sku=${encodeURIComponent(p.sku)}" class="transition-colors hover:text-brand-700">${S.escapeHtml(p.name)}</a>
         </h3>
-        <p class="mt-1.5 text-xs text-ink-400">Артикул: ${p.sku} · ${S.escapeHtml(D.catName(p.cat))}</p>
+        <p class="mt-1.5 text-xs text-ink-400">Артикул: ${p.sku}${p.categoryName ? ` · ${S.escapeHtml(p.categoryName)}` : ''}</p>
         <div class="mt-2">${S.stockHtml(p)}</div>
       </div>
 
       <div class="flex items-center justify-between gap-4 sm:flex-col sm:items-end sm:gap-3">
         <!-- Кількість -->
         <div class="flex h-11 items-center rounded-full bg-ink-50 ring-1 ring-ink-200">
-          <button type="button" class="grid h-11 w-10 place-items-center rounded-l-full text-ink-600 transition-colors hover:text-brand-700 active:scale-90" data-dec="${p.id}" aria-label="Зменшити">
+          <button type="button" class="grid h-11 w-10 place-items-center rounded-l-full text-ink-600 transition-colors hover:text-brand-700 active:scale-90" data-dec="${p.sku}" aria-label="Зменшити">
             <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 12h12" stroke-linecap="round"/></svg>
           </button>
-          <input type="number" min="1" max="99" value="${qty}" class="h-11 w-10 border-0 bg-transparent p-0 text-center text-sm font-semibold text-ink-900 focus:outline-none" data-qty-input="${p.id}" aria-label="Кількість" />
-          <button type="button" class="grid h-11 w-10 place-items-center rounded-r-full text-ink-600 transition-colors hover:text-brand-700 active:scale-90" data-inc="${p.id}" aria-label="Збільшити">
+          <input type="number" min="1" max="99" value="${qty}" class="h-11 w-10 border-0 bg-transparent p-0 text-center text-sm font-semibold text-ink-900 focus:outline-none" data-qty-input="${p.sku}" aria-label="Кількість" />
+          <button type="button" class="grid h-11 w-10 place-items-center rounded-r-full text-ink-600 transition-colors hover:text-brand-700 active:scale-90" data-inc="${p.sku}" aria-label="Збільшити">
             <svg viewBox="0 0 24 24" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 6v12M6 12h12" stroke-linecap="round"/></svg>
           </button>
         </div>
 
         <!-- Ціна -->
         <div class="text-right">
-          ${p.oldPrice ? `<span class="block text-xs text-ink-400 line-through">${S.money(p.oldPrice * qty)}</span>` : ''}
-          <span class="block text-lg font-bold tracking-tight text-ink-900">${S.money(p.price * qty)}</span>
-          ${qty > 1 ? `<span class="block text-[11px] text-ink-400">${S.money(p.price)} × ${qty}</span>` : ''}
+          ${p.salePrice ? `<span class="block text-xs text-ink-400 line-through">${S.money(p.price * qty)}</span>` : ''}
+          <span class="block text-lg font-bold tracking-tight text-ink-900">${S.money(unitPrice * qty)}</span>
+          ${qty > 1 ? `<span class="block text-[11px] text-ink-400">${S.money(unitPrice)} × ${qty}</span>` : ''}
         </div>
 
-        <button type="button" class="grid h-9 w-9 shrink-0 place-items-center rounded-full text-ink-400 transition-all duration-250 hover:bg-rose-500/10 hover:text-rose-600 active:scale-90" data-remove="${p.id}" aria-label="Прибрати товар">
+        <button type="button" class="grid h-9 w-9 shrink-0 place-items-center rounded-full text-ink-400 transition-all duration-250 hover:bg-rose-500/10 hover:text-rose-600 active:scale-90" data-remove="${p.sku}" aria-label="Прибрати товар">
           <svg viewBox="0 0 24 24" class="h-[18px] w-[18px]" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
             <path d="M5 7h14M9.5 7V5.5A1.5 1.5 0 0 1 11 4h2a1.5 1.5 0 0 1 1.5 1.5V7m2 0v12a1.5 1.5 0 0 1-1.5 1.5H9A1.5 1.5 0 0 1 7.5 19V7" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -65,14 +62,13 @@
   /* ======================================================================
      Підсумок
      ====================================================================== */
-  function deliveryCost(subtotal) {
+  function deliveryCost() {
     const sel = $('[data-delivery]:checked');
-    const base = sel ? Number(sel.dataset.price) : 0;
-    return base;
+    return sel ? Number(sel.dataset.price) : 0;
   }
 
-  function render() {
-    const items = S.Cart.items();
+  async function render() {
+    const items = await S.Cart.items();
     const count = S.Cart.count();
 
     $('[data-cart-empty]').classList.toggle('hidden', items.length > 0);
@@ -81,28 +77,25 @@
     $('[data-cart-clear]').classList.toggle('hidden', items.length === 0);
     $('[data-steps]').classList.toggle('hidden', items.length === 0);
 
-    $('[data-cart-count-label]').textContent = count
-      ? `${count} ${S.plural(count, 'товар', 'товари', 'товарів')}`
-      : '';
+    $('[data-cart-count-label]').textContent = count ? `${count} ${S.plural(count, 'товар', 'товари', 'товарів')}` : '';
 
     if (!items.length) {
-      // Підказки в порожньому кошику
       const suggest = $('[data-cart-suggest]');
       if (suggest && !suggest.dataset.filled) {
-        suggest.innerHTML = D.PRODUCTS.filter((p) => p.badges.includes('hit'))
-          .slice(0, 4)
-          .map((p) => S.renderCard(p))
-          .join('');
         suggest.dataset.filled = '1';
+        S.fetchProducts({ perPage: 4 }).then(({ data }) => {
+          suggest.innerHTML = data.map((p) => S.renderCard(p)).join('');
+          S.rendered();
+        });
       }
       return;
     }
 
     list.innerHTML = `<div class="bg-white">${items.map(row).join('')}</div>`;
 
-    const subtotal = S.Cart.subtotal();
-    const savings = S.Cart.savings();
-    const delivery = deliveryCost(subtotal);
+    const subtotal = await S.Cart.subtotal();
+    const savings = await S.Cart.savings();
+    const delivery = deliveryCost();
     const total = subtotal + delivery;
 
     $('[data-sum-count]').textContent = `(${count})`;
@@ -111,7 +104,6 @@
     $('[data-sum-savings-row]').classList.toggle('hidden', savings === 0);
     $('[data-sum-savings-row]').classList.toggle('flex', savings > 0);
     $('[data-sum-savings]').textContent = `−${S.money(savings)}`;
-
 
     $('[data-sum-delivery]').textContent = delivery ? 'від ' + S.money(delivery) : 'Безкоштовно';
     $('[data-sum-delivery]').classList.toggle('text-emerald-600', delivery === 0);
@@ -165,7 +157,6 @@
 
   $$('[data-delivery]').forEach((r) => r.addEventListener('change', render));
 
-
   /* --- Оформлення --- */
 
   /// Розбиває ПІБ на імʼя/прізвище — CRM веде їх окремими полями.
@@ -181,13 +172,7 @@
   let consentVersionPromise = null;
   async function getConsentVersion() {
     if (!consentVersionPromise) {
-      consentVersionPromise = fetch(
-        (function () {
-          const configured =
-            window.SOCO_CRM_API_URL || document.querySelector('meta[name="soco-crm-api-url"]')?.getAttribute('content')?.trim();
-          return configured ? new URL('/api/storefront/legal', configured).toString() : '/api/storefront/legal';
-        })(),
-      )
+      consentVersionPromise = fetch(S.storefrontApiUrl('/api/storefront/legal'))
         .then((r) => (r.ok ? r.json() : null))
         .then((json) => json?.data?.version || 'unknown')
         .catch(() => 'unknown');
@@ -196,7 +181,7 @@
   }
 
   const ORDER_ERROR_MESSAGES = {
-    'Товару недостатньо на складі': 'На жаль, частина товару вже розкуплена — зменшіть кількість або оберіть інший варіант.',
+    'Товар недоступний': 'На жаль, частина товару вже розкуплена — зменшіть кількість або оберіть інший варіант.',
     'Невідомий товар': 'Один із товарів більше не в каталозі. Оновіть сторінку кошика і спробуйте ще раз.',
     'Сума замовлення менша за мінімальну': 'Мінімальна сума замовлення — 400 ₴. Додайте ще товарів у кошик.',
     'Invalid order payload': 'Перевірте правильність заповнення полів.',
@@ -234,7 +219,8 @@
 
     const data = Object.fromEntries(new FormData(form));
     const { firstName, lastName } = splitName(data.name || '');
-    const items = S.Cart.items().map((i) => ({ sku: i.product.sku, quantity: i.qty }));
+    const cartItems = await S.Cart.items();
+    const items = cartItems.map((i) => ({ sku: i.product.sku, quantity: i.qty }));
 
     try {
       const consentVersion = await getConsentVersion();
@@ -254,14 +240,15 @@
       });
 
       const code = 'SO-' + String(result.data.orderNumber).padStart(6, '0');
+      const subtotal = await S.Cart.subtotal();
 
       // Локальний запис лишається для екрана «Мої замовлення» в кабінеті —
       // сам факт замовлення й реальний номер тепер завжди з CRM.
       S.state.orders.unshift({
         number: code,
         date: new Date().toISOString(),
-        items: S.Cart.items().map((i) => ({ id: i.product.id, name: i.product.name, qty: i.qty, price: i.product.price })),
-        total: S.Cart.subtotal(),
+        items: cartItems.map((i) => ({ sku: i.product.sku, name: i.product.name, qty: i.qty, price: i.product.salePrice ?? i.product.price })),
+        total: subtotal,
         status: 'Очікує підтвердження',
         contact: { name: data.name, phone: data.phone, email: data.email, company: data.company || '' },
       });

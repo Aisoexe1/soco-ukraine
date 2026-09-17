@@ -70,12 +70,77 @@
     };
   };
 
+  /** Категорії тепер із CRM, без індивідуальних іконок на кожну — одна спільна. */
+  const CATEGORY_ICON = '<path d="M4 7h16M4 12h16M4 17h10" stroke-linecap="round"/>';
+
   const storefrontApiUrl = (path) => {
     const configuredUrl =
       window.SOCO_CRM_API_URL || document.querySelector('meta[name="soco-crm-api-url"]')?.getAttribute('content')?.trim();
 
     return configuredUrl ? new URL(path, configuredUrl).toString() : path;
   };
+
+  /* ======================================================================
+     Каталог із CRM
+     ====================================================================== */
+  let categoriesPromise = null;
+  /** Дерево категорій (2 рівні), кешується на все життя вкладки — міняється рідко. */
+  function fetchCategories() {
+    if (!categoriesPromise) {
+      categoriesPromise = fetch(storefrontApiUrl('/api/storefront/categories'))
+        .then((r) => (r.ok ? r.json() : { data: [] }))
+        .then((json) => json.data || [])
+        .catch(() => []);
+    }
+    return categoriesPromise;
+  }
+
+  async function fetchProducts(params = {}) {
+    const search = new URLSearchParams();
+    Object.entries(params).forEach(([key, value]) => {
+      if (value !== undefined && value !== null && value !== '') search.set(key, value);
+    });
+    const query = search.toString();
+
+    try {
+      const response = await fetch(storefrontApiUrl(`/api/storefront/products${query ? `?${query}` : ''}`));
+      if (!response.ok) return { data: [], meta: { page: 1, perPage: 0, total: 0, totalPages: 1 } };
+      const json = await response.json();
+      D.registerProducts(json.data);
+      return json;
+    } catch {
+      return { data: [], meta: { page: 1, perPage: 0, total: 0, totalPages: 1 } };
+    }
+  }
+
+  async function fetchProduct(sku) {
+    try {
+      const response = await fetch(storefrontApiUrl(`/api/storefront/products/${encodeURIComponent(sku)}`));
+      if (!response.ok) return null;
+      const json = await response.json();
+      if (json.data) D.registerProducts([json.data]);
+      return json.data || null;
+    } catch {
+      return null;
+    }
+  }
+
+  /**
+   * Товари для набору SKU (кошик/обране/порівняння, відкриті напряму —
+   * без сторінки каталогу, де вони підвантажились би самі). Спочатку бере
+   * те, що вже є в реєстрі поточної сторінки, дотягує мережею лише брак.
+   */
+  async function hydrateBySku(skus) {
+    const unique = Array.from(new Set(skus));
+    const missing = unique.filter((sku) => !D.bySku(sku));
+
+    if (missing.length) {
+      const { data } = await fetchProducts({ skus: missing.join(',') });
+      void data;
+    }
+
+    return unique.map((sku) => D.bySku(sku)).filter(Boolean);
+  }
 
   const createStorefrontLead = async (lead) => {
     let response;
@@ -138,70 +203,77 @@
   /* ======================================================================
      API кошика / обраного / порівняння
      ====================================================================== */
+  /**
+   * Кошик/обране/порівняння зберігають лише SKU й кількість — не знімок
+   * товару. Ціна й наявність завжди актуальні: рендер бере товар із
+   * реєстру сторінки (D.bySku) або дотягує мережею (hydrateBySku).
+   */
   const Cart = {
-    add(id, qty = 1) {
-      state.cart[id] = (state.cart[id] || 0) + qty;
+    add(sku, qty = 1) {
+      state.cart[sku] = (state.cart[sku] || 0) + qty;
       persist();
-      const p = D.byId(id);
-      toast(`«${p ? p.name.split(' —')[0] : 'Товар'}» у кошику`, 'cart', qty > 1 ? `${qty} шт · ${money(p.price * qty)}` : money(p.price));
+      const p = D.bySku(sku);
+      toast(`«${p ? p.name.split(' —')[0] : 'Товар'}» у кошику`, 'cart', p ? (qty > 1 ? `${qty} шт · ${money((p.salePrice ?? p.price) * qty)}` : money(p.salePrice ?? p.price)) : '');
       bump('[data-count="cart"]');
     },
-    set(id, qty) {
-      if (qty <= 0) delete state.cart[id];
-      else state.cart[id] = qty;
+    set(sku, qty) {
+      if (qty <= 0) delete state.cart[sku];
+      else state.cart[sku] = qty;
       persist();
     },
-    remove(id) {
-      delete state.cart[id];
+    remove(sku) {
+      delete state.cart[sku];
       persist();
     },
     clear() {
       state.cart = {};
       persist();
     },
-    has: (id) => !!state.cart[id],
-    qty: (id) => state.cart[id] || 0,
-    items() {
-      return Object.entries(state.cart)
-        .map(([id, qty]) => ({ product: D.byId(id), qty }))
-        .filter((i) => i.product);
+    has: (sku) => !!state.cart[sku],
+    qty: (sku) => state.cart[sku] || 0,
+    async items() {
+      const skus = Object.keys(state.cart);
+      const products = await hydrateBySku(skus);
+      return products.map((product) => ({ product, qty: state.cart[product.sku] || 0 }));
     },
     count() {
       return Object.values(state.cart).reduce((s, q) => s + q, 0);
     },
-    subtotal() {
-      return Cart.items().reduce((s, i) => s + i.product.price * i.qty, 0);
+    async subtotal() {
+      const items = await Cart.items();
+      return items.reduce((s, i) => s + (i.product.salePrice ?? i.product.price) * i.qty, 0);
     },
-    savings() {
-      return Cart.items().reduce((s, i) => s + (i.product.oldPrice ? (i.product.oldPrice - i.product.price) * i.qty : 0), 0);
+    async savings() {
+      const items = await Cart.items();
+      return items.reduce((s, i) => s + (i.product.salePrice ? (i.product.price - i.product.salePrice) * i.qty : 0), 0);
     },
   };
 
   const Favorites = {
-    toggle(id) {
-      const i = state.favorites.indexOf(id);
+    toggle(sku) {
+      const i = state.favorites.indexOf(sku);
       const added = i === -1;
-      if (added) state.favorites.push(id);
+      if (added) state.favorites.push(sku);
       else state.favorites.splice(i, 1);
       persist();
       toast(added ? 'Додано до обраного' : 'Прибрано з обраного', 'heart');
       if (added) bump('[data-count="favorites"]');
       return added;
     },
-    has: (id) => state.favorites.includes(id),
-    items: () => state.favorites.map(D.byId).filter(Boolean),
+    has: (sku) => state.favorites.includes(sku),
+    items: () => hydrateBySku(state.favorites),
   };
 
   const Compare = {
-    toggle(id) {
-      const i = state.compare.indexOf(id);
+    toggle(sku) {
+      const i = state.compare.indexOf(sku);
       const added = i === -1;
       if (added) {
         if (state.compare.length >= 4) {
           toast('У порівнянні максимум 4 товари', 'info');
           return false;
         }
-        state.compare.push(id);
+        state.compare.push(sku);
       } else {
         state.compare.splice(i, 1);
       }
@@ -210,8 +282,8 @@
       if (added) bump('[data-count="compare"]');
       return added;
     },
-    has: (id) => state.compare.includes(id),
-    items: () => state.compare.map(D.byId).filter(Boolean),
+    has: (sku) => state.compare.includes(sku),
+    items: () => hydrateBySku(state.compare),
   };
 
   /* ======================================================================
@@ -230,7 +302,8 @@
         el.classList.toggle('flex', n > 0);
       });
     });
-    $$('[data-cart-total]').forEach((el) => (el.textContent = money(Cart.subtotal())));
+    const totalEls = $$('[data-cart-total]');
+    if (totalEls.length) Cart.subtotal().then((subtotal) => totalEls.forEach((el) => (el.textContent = money(subtotal))));
   }
 
   function bump(sel) {
@@ -295,21 +368,14 @@
   }
 
   function badgeHtml(p) {
-    const out = [];
-    if (p.badges.includes('sale') && p.oldPrice)
-      out.push(
-        `<span class="badge bg-rose-500 text-white shadow-sm">−${Math.round((1 - p.price / p.oldPrice) * 100)}%</span>`
-      );
-    if (p.badges.includes('hit')) out.push('<span class="badge bg-brand-600 text-white shadow-sm">Хіт</span>');
-    if (p.badges.includes('new')) out.push('<span class="badge bg-ink-900 text-white shadow-sm">Новинка</span>');
-    return out.join('');
+    if (p.salePrice && p.price)
+      return `<span class="badge bg-rose-500 text-white shadow-sm">−${Math.round((1 - p.salePrice / p.price) * 100)}%</span>`;
+    return '';
   }
 
   function stockHtml(p) {
-    if (p.stock > 20)
+    if (p.inStock)
       return '<span class="inline-flex items-center gap-1.5 text-[11px] font-medium text-emerald-600 sm:text-xs"><span class="h-1.5 w-1.5 rounded-full bg-mint-500"></span>В наявності</span>';
-    if (p.stock > 0)
-      return `<span class="inline-flex items-center gap-1.5 text-[11px] font-medium text-amber-600 sm:text-xs"><span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>Залишилось ${p.stock} шт</span>`;
     return '<span class="inline-flex items-center gap-1.5 text-[11px] font-medium text-ink-400 sm:text-xs"><span class="h-1.5 w-1.5 rounded-full bg-ink-300"></span>Під замовлення</span>';
   }
 
@@ -317,26 +383,28 @@
    * @param {object} p товар
    * @param {{compact?: boolean, reveal?: boolean, delay?: number}} opts
    */
+  /** @param {{sku,name,price,salePrice,image,categoryName,inStock}} p товар з /api/storefront/products */
   function renderCard(p, opts = {}) {
-    const href = `product.html?id=${encodeURIComponent(p.id)}`;
-    const fav = Favorites.has(p.id);
-    const cmp = Compare.has(p.id);
-    const inCart = Cart.has(p.id);
+    const href = `product.html?sku=${encodeURIComponent(p.sku)}`;
+    const fav = Favorites.has(p.sku);
+    const cmp = Compare.has(p.sku);
+    const inCart = Cart.has(p.sku);
     const delay = opts.delay ? ` reveal-d${Math.min(opts.delay, 6)}` : '';
+    const shownPrice = p.salePrice ?? p.price;
 
     return `
-    <article class="card-hover group relative flex flex-col overflow-hidden${opts.reveal ? ` reveal${delay}` : ''}" data-product="${p.id}">
+    <article class="card-hover group relative flex flex-col overflow-hidden${opts.reveal ? ` reveal${delay}` : ''}" data-product="${p.sku}">
       <!-- Бейджи -->
       <div class="absolute left-2.5 top-2.5 z-10 flex flex-col items-start gap-1 sm:left-4 sm:top-4 sm:gap-1.5">${badgeHtml(p)}</div>
 
       <!-- Быстрые действия -->
       <div class="absolute right-2 top-2 z-10 flex flex-col gap-1 transition-all duration-300 sm:right-3.5 sm:top-3.5 sm:gap-1.5">
-        <button type="button" class="quick-btn ${fav ? 'is-active' : ''}" data-fav="${p.id}" aria-label="До обраного" aria-pressed="${fav}">
+        <button type="button" class="quick-btn ${fav ? 'is-active' : ''}" data-fav="${p.sku}" aria-label="До обраного" aria-pressed="${fav}">
           <svg viewBox="0 0 24 24" class="h-4 w-4 sm:h-[18px] sm:w-[18px]" fill="${fav ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
             <path d="M12 20.5s-7.5-4.7-7.5-10A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.5 2.9c0 5.3-7.5 10-7.5 10Z" stroke-linejoin="round"/>
           </svg>
         </button>
-        <button type="button" class="quick-btn ${cmp ? 'is-active' : ''}" data-compare="${p.id}" aria-label="До порівняння" aria-pressed="${cmp}">
+        <button type="button" class="quick-btn ${cmp ? 'is-active' : ''}" data-compare="${p.sku}" aria-label="До порівняння" aria-pressed="${cmp}">
           <svg viewBox="0 0 24 24" class="h-4 w-4 sm:h-[18px] sm:w-[18px]" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
             <path d="M9 20V9m6 11V4M4 20v-6m16 6V12" stroke-linecap="round"/>
           </svg>
@@ -345,40 +413,33 @@
 
       <!-- Изображение -->
       <a href="${href}" class="relative block overflow-hidden bg-ink-50/60" aria-label="${escapeHtml(p.name)}">
-        <img src="${p.image}" alt="${escapeHtml(p.name)}" width="640" height="640" loading="lazy" decoding="async"
+        <img src="${p.image || 'assets/img/logo.svg'}" alt="${escapeHtml(p.name)}" width="640" height="640" loading="lazy" decoding="async"
              class="aspect-square w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]" />
       </a>
 
       <!-- Контент -->
       <div class="flex flex-1 flex-col p-3 sm:p-5">
-        <div class="mb-1.5 flex items-center justify-between gap-2 sm:mb-2">
-          <span class="truncate text-[10px] font-semibold uppercase tracking-[0.1em] text-brand-600 sm:text-[11px]">${escapeHtml(D.brandName(p.brand))}</span>
-          <span class="flex items-center gap-1">
-            <span class="hidden sm:flex">${stars(p.rating)}</span>
-            <span class="text-[11px] font-medium text-ink-400 sm:text-xs">${p.rating.toFixed(1)}</span>
-          </span>
+        <div class="mb-1.5 flex items-center gap-2 sm:mb-2">
+          <span class="truncate text-[10px] font-semibold uppercase tracking-[0.1em] text-brand-600 sm:text-[11px]">${escapeHtml(p.categoryName || '')}</span>
         </div>
 
         <h3 class="line-clamp-2 text-[13px] font-semibold leading-snug text-ink-900 sm:text-[15px]">
           <a href="${href}" class="transition-colors after:absolute after:inset-0 after:content-[''] hover:text-brand-700">${escapeHtml(p.name)}</a>
         </h3>
 
-        <p class="mt-2 hidden line-clamp-2 text-[13px] leading-relaxed text-ink-500 sm:block">${escapeHtml(p.short)}</p>
-
         <div class="mt-2 sm:mt-3">${stockHtml(p)}</div>
 
         <div class="mt-auto pt-3 sm:pt-4">
           <div class="flex items-end justify-between gap-2 sm:gap-3">
             <div>
-              ${p.oldPrice ? `<span class="block text-[11px] text-ink-400 line-through sm:text-[13px]">${money(p.oldPrice)}</span>` : ''}
-              <span class="block text-base font-bold tracking-tight text-ink-900 sm:text-xl">${money(p.price)}</span>
-              <span class="text-[10px] text-ink-400 sm:text-[11px]">за ${escapeHtml(p.unit)}</span>
+              ${p.salePrice ? `<span class="block text-[11px] text-ink-400 line-through sm:text-[13px]">${money(p.price)}</span>` : ''}
+              <span class="block text-base font-bold tracking-tight text-ink-900 sm:text-xl">${money(shownPrice)}</span>
             </div>
             <button type="button"
               class="relative z-[1] inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full sm:h-11 sm:w-11 transition-all duration-300 active:scale-90 ${
                 inCart ? 'bg-mint-500 text-white' : 'bg-brand-50 text-brand-700 hover:bg-brand-600 hover:text-white hover:shadow-brand'
               }"
-              data-add="${p.id}" aria-label="Додати в кошик">
+              data-add="${p.sku}" aria-label="Додати в кошик">
               <svg viewBox="0 0 24 24" class="h-[18px] w-[18px] sm:h-5 sm:w-5" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                 ${
                   inCart
@@ -493,18 +554,22 @@
     const panel = $('[data-megamenu-panel]', root);
     const list = $('[data-megamenu-list]', root);
 
-    list.innerHTML = D.CATEGORIES.map(
-      (c) => `
-      <a href="catalog.html?cat=${c.id}" class="group flex items-center gap-3.5 rounded-2xl p-3 transition-colors duration-250 hover:bg-brand-50">
-        <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600 transition-colors duration-300 group-hover:bg-brand-600 group-hover:text-white">
-          <svg viewBox="0 0 24 24" class="h-[22px] w-[22px]" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">${c.icon}</svg>
-        </span>
-        <span class="min-w-0">
-          <span class="block truncate text-sm font-medium text-ink-900 transition-colors group-hover:text-brand-700">${c.name}</span>
-          <span class="block text-xs text-ink-400">${c.count} товарів</span>
-        </span>
-      </a>`
-    ).join('');
+    fetchCategories().then((categories) => {
+      list.innerHTML = categories
+        .map(
+          (c) => `
+        <a href="catalog.html?cat=${encodeURIComponent(c.slug)}" class="group flex items-center gap-3.5 rounded-2xl p-3 transition-colors duration-250 hover:bg-brand-50">
+          <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600 transition-colors duration-300 group-hover:bg-brand-600 group-hover:text-white">
+            <svg viewBox="0 0 24 24" class="h-[22px] w-[22px]" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">${CATEGORY_ICON}</svg>
+          </span>
+          <span class="min-w-0">
+            <span class="block truncate text-sm font-medium text-ink-900 transition-colors group-hover:text-brand-700">${escapeHtml(c.name)}</span>
+            <span class="block text-xs text-ink-400">${c.productCount} товарів</span>
+          </span>
+        </a>`,
+        )
+        .join('');
+    });
 
     let open = false;
     const set = (v) => {
@@ -532,20 +597,24 @@
     const list = $('[data-menu-categories]', root);
 
     if (list) {
-      list.innerHTML = D.CATEGORIES.map(
-        (c) => `
-        <li>
-          <a href="catalog.html?cat=${c.id}" class="mobile-link">
-            <span class="flex items-center gap-3">
-              <span class="grid h-9 w-9 place-items-center rounded-xl bg-brand-50 text-brand-600">
-                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">${c.icon}</svg>
+      fetchCategories().then((categories) => {
+        list.innerHTML = categories
+          .map(
+            (c) => `
+          <li>
+            <a href="catalog.html?cat=${encodeURIComponent(c.slug)}" class="mobile-link">
+              <span class="flex items-center gap-3">
+                <span class="grid h-9 w-9 place-items-center rounded-xl bg-brand-50 text-brand-600">
+                  <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">${CATEGORY_ICON}</svg>
+                </span>
+                <span class="text-[15px]">${escapeHtml(c.name)}</span>
               </span>
-              <span class="text-[15px]">${c.short}</span>
-            </span>
-            <span class="text-xs text-ink-400">${c.count}</span>
-          </a>
-        </li>`
-      ).join('');
+              <span class="text-xs text-ink-400">${c.productCount}</span>
+            </a>
+          </li>`,
+          )
+          .join('');
+      });
     }
 
     const open = () => {
@@ -574,28 +643,10 @@
   /* ======================================================================
      Пошук: живі підказки + оверлей
      ====================================================================== */
-  function searchProducts(q, limit = 6) {
-    const query = q.trim().toLowerCase();
-    if (query.length < 2) return [];
-    const words = query.split(/\s+/);
-
-    return D.PRODUCTS.map((p) => {
-      const hay = `${p.name} ${p.short} ${p.description} ${D.brandName(p.brand)} ${D.catName(p.cat)} ${p.sku}`.toLowerCase();
-      let score = 0;
-      for (const w of words) {
-        if (!hay.includes(w)) return null;
-        if (p.name.toLowerCase().includes(w)) score += 3;
-        if (D.brandName(p.brand).toLowerCase().includes(w)) score += 2;
-        if (D.catName(p.cat).toLowerCase().includes(w)) score += 2;
-        score += 1;
-      }
-      if (p.badges.includes('hit')) score += 0.5;
-      return { p, score };
-    })
-      .filter(Boolean)
-      .sort((a, b) => b.score - a.score)
-      .slice(0, limit)
-      .map((r) => r.p);
+  async function searchProducts(q, limit = 6) {
+    if (q.trim().length < 2) return [];
+    const { data } = await fetchProducts({ q: q.trim(), perPage: limit, sort: 'name' });
+    return data;
   }
 
   function highlight(text, q) {
@@ -627,13 +678,13 @@
       list
         .map(
           (p) => `
-      <a href="product.html?id=${encodeURIComponent(p.id)}" class="flex items-center gap-3.5 rounded-2xl p-2.5 transition-colors duration-200 hover:bg-brand-50" role="option">
-        <img src="${p.image}" alt="" width="64" height="64" loading="lazy" class="h-14 w-14 shrink-0 rounded-xl bg-ink-50 object-cover" />
+      <a href="product.html?sku=${encodeURIComponent(p.sku)}" class="flex items-center gap-3.5 rounded-2xl p-2.5 transition-colors duration-200 hover:bg-brand-50" role="option">
+        <img src="${p.image || 'assets/img/logo.svg'}" alt="" width="64" height="64" loading="lazy" class="h-14 w-14 shrink-0 rounded-xl bg-ink-50 object-cover" />
         <span class="min-w-0 flex-1">
           <span class="block truncate text-sm font-medium text-ink-900">${highlight(p.name, q)}</span>
-          <span class="mt-0.5 block text-xs text-ink-400">${escapeHtml(D.brandName(p.brand))} · ${escapeHtml(D.catName(p.cat))}</span>
+          <span class="mt-0.5 block text-xs text-ink-400">${escapeHtml(p.categoryName || '')}</span>
         </span>
-        <span class="shrink-0 text-sm font-semibold text-ink-900">${money(p.price)}</span>
+        <span class="shrink-0 text-sm font-semibold text-ink-900">${money(p.salePrice ?? p.price)}</span>
       </a>`
         )
         .join('') +
@@ -656,10 +707,10 @@
       box.classList.toggle('translate-y-2', !v);
     };
 
-    const run = debounce(() => {
+    const run = debounce(async () => {
       const q = input.value;
       if (q.trim().length < 2) return show(false);
-      box.innerHTML = resultsHtml(searchProducts(q), q);
+      box.innerHTML = resultsHtml(await searchProducts(q), q);
       show(true);
     }, 160);
 
@@ -680,18 +731,22 @@
     const cats = $('[data-search-categories]', root);
 
     if (cats) {
-      cats.innerHTML = D.CATEGORIES.map(
-        (c) => `
-        <a href="catalog.html?cat=${c.id}" class="flex items-center gap-3 rounded-2xl p-3 ring-1 ring-ink-200 transition-all duration-250 hover:ring-brand-300 hover:bg-brand-50">
-          <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600">
-            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">${c.icon}</svg>
-          </span>
-          <span class="min-w-0">
-            <span class="block truncate text-sm font-medium text-ink-900">${c.short}</span>
-            <span class="block text-xs text-ink-400">${c.count} товарів</span>
-          </span>
-        </a>`
-      ).join('');
+      fetchCategories().then((categories) => {
+        cats.innerHTML = categories
+          .map(
+            (c) => `
+          <a href="catalog.html?cat=${encodeURIComponent(c.slug)}" class="flex items-center gap-3 rounded-2xl p-3 ring-1 ring-ink-200 transition-all duration-250 hover:ring-brand-300 hover:bg-brand-50">
+            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600">
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">${CATEGORY_ICON}</svg>
+            </span>
+            <span class="min-w-0">
+              <span class="block truncate text-sm font-medium text-ink-900">${escapeHtml(c.name)}</span>
+              <span class="block text-xs text-ink-400">${c.productCount} товарів</span>
+            </span>
+          </a>`,
+          )
+          .join('');
+      });
     }
 
     const open = () => {
@@ -714,11 +769,11 @@
     $$('[data-close-search]').forEach((b) => b.addEventListener('click', close));
     backdrop.addEventListener('click', close);
 
-    const run = debounce(() => {
+    const run = debounce(async () => {
       const q = input.value;
       const active = q.trim().length >= 2;
       sugg.classList.toggle('hidden', active);
-      box.innerHTML = active ? resultsHtml(searchProducts(q, 8), q) : '';
+      box.innerHTML = active ? resultsHtml(await searchProducts(q, 8), q) : '';
     }, 160);
     input.addEventListener('input', run);
 
@@ -1018,6 +1073,10 @@
     createStorefrontOrder,
     searchProducts,
     updateCounters,
+    storefrontApiUrl,
+    fetchCategories,
+    fetchProducts,
+    fetchProduct,
     rendered: () => document.dispatchEvent(new CustomEvent('soco:rendered')),
   };
 

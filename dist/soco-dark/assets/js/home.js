@@ -143,21 +143,18 @@
     const grid = $('[data-popular-grid]');
     if (!grid) return;
 
-    const pick = (tab) => {
-      if (tab === 'new')
-        return [...D.PRODUCTS].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, 8);
-      if (tab === 'sale')
-        return D.PRODUCTS.filter((p) => p.oldPrice)
-          .sort((a, b) => b.oldPrice - b.price - (a.oldPrice - a.price))
-          .slice(0, 8);
-      return D.PRODUCTS.filter((p) => p.badges.includes('hit'))
-        .concat(D.PRODUCTS.filter((p) => !p.badges.includes('hit') && p.reviews > 140))
-        .slice(0, 8);
+    const pick = async (tab) => {
+      const { data } = await S.fetchProducts(tab === 'sale' ? { sale: '1', perPage: 8 } : { perPage: 8 });
+      return data;
     };
 
-    const draw = (tab) => {
-      const list = pick(tab);
-      grid.innerHTML = list.map((p, i) => S.renderCard(p, { reveal: true, delay: (i % 4) + 1 })).join('');
+    const draw = async (tab) => {
+      const list = await pick(tab);
+      grid.innerHTML = list.length
+        ? list.map((p, i) => S.renderCard(p, { reveal: true, delay: (i % 4) + 1 })).join('')
+        : `<p class="col-span-full py-10 text-center text-sm text-ink-400">${
+            tab === 'sale' ? 'Поки без активних знижок — загляньте пізніше.' : 'Каталог порожній.'
+          }</p>`;
       S.rendered();
       // Картки першого екрана показуємо одразу
       requestAnimationFrame(() => $$('.reveal', grid).forEach((el) => el.classList.add('is-visible')));
@@ -173,8 +170,8 @@
         });
         grid.style.opacity = '0';
         grid.style.transform = 'translateY(8px)';
-        setTimeout(() => {
-          draw(btn.dataset.tab);
+        setTimeout(async () => {
+          await draw(btn.dataset.tab);
           grid.style.transition = 'opacity .35s ease, transform .35s ease';
           grid.style.opacity = '1';
           grid.style.transform = 'none';
