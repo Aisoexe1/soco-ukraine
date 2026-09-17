@@ -137,6 +137,70 @@
   })();
 
   /* ======================================================================
+     Категорії на головній (реальне дерево з CRM)
+     ====================================================================== */
+  (function homeCategories() {
+    const grid = $('[data-home-categories]');
+    if (!grid) return;
+
+    S.fetchCategories().then((categories) => {
+      const top = categories.filter((c) => c.productCount > 0).slice(0, 8);
+      if (!top.length) return;
+
+      grid.innerHTML = top
+        .map((c, i) => {
+          const children = c.children || [];
+          const desc = children.length
+            ? children
+                .slice(0, 3)
+                .map((child) => child.name)
+                .join(', ')
+            : 'Переглянути товари категорії';
+          const delay = ` reveal-d${(i % 4) + 1}`;
+
+          return `
+        <article class="group cat-card reveal${delay}">
+          <span class="cat-icon">
+            <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">${S.CATEGORY_ICON}</svg>
+          </span>
+          <h3 class="cat-title">${S.escapeHtml(c.name)}</h3>
+          <p class="cat-desc">${S.escapeHtml(desc)}</p>
+          <span class="cat-count">${c.productCount} ${S.plural(c.productCount, 'товар', 'товари', 'товарів')}</span>
+          <a href="catalog.html?cat=${encodeURIComponent(c.slug)}" class="cat-link">
+            Перейти
+            <svg viewBox="0 0 20 20" class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+              <path d="M4 10h11m0 0-4-4m4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </article>`;
+        })
+        .join('');
+
+      requestAnimationFrame(() => $$('.reveal', grid).forEach((el) => el.classList.add('is-visible')));
+    });
+  })();
+
+  /* ======================================================================
+     Категорії у футері
+     ====================================================================== */
+  (function footerCategories() {
+    const list = $('[data-footer-categories]');
+    if (!list) return;
+
+    S.fetchCategories().then((categories) => {
+      const top = categories.filter((c) => c.productCount > 0).slice(0, 7);
+      if (!top.length) return;
+
+      list.insertAdjacentHTML(
+        'beforeend',
+        top
+          .map((c) => `<li><a href="catalog.html?cat=${encodeURIComponent(c.slug)}" class="footer-link">${S.escapeHtml(c.name)}</a></li>`)
+          .join('')
+      );
+    });
+  })();
+
+  /* ======================================================================
      Вітрина популярних товарів
      ====================================================================== */
   (function popular() {

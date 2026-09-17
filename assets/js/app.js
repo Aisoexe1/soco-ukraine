@@ -1077,6 +1077,7 @@
     fetchCategories,
     fetchProducts,
     fetchProduct,
+    CATEGORY_ICON,
     rendered: () => document.dispatchEvent(new CustomEvent('soco:rendered')),
   };
 
