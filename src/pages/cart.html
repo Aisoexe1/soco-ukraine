@@ -80,7 +80,10 @@
       <div class="overflow-hidden rounded-3xl ring-1 ring-ink-200/80" data-cart-list></div>
 
       <!-- Форма замовлення -->
-      <form class="space-y-4" data-checkout novalidate>
+      <form class="space-y-4" data-checkout id="checkout-form" novalidate>
+        <!-- Honeypot: справжній користувач це поле не заповнює -->
+        <input type="text" name="website" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
         <!-- Контакти -->
         <fieldset class="rounded-3xl bg-white p-6 ring-1 ring-ink-200/80">
           <legend class="mb-5 flex items-center gap-2.5 text-base font-semibold text-ink-900">
@@ -137,12 +140,16 @@
 
           <div class="mt-4 grid gap-4 sm:grid-cols-2">
             <div>
+              <label for="c-region" class="field-label">Область <span class="text-rose-500">*</span></label>
+              <input id="c-region" name="region" required class="field" placeholder="Київська область" />
+            </div>
+            <div>
               <label for="c-city" class="field-label">Місто <span class="text-rose-500">*</span></label>
               <input id="c-city" name="city" required class="field" placeholder="Київ" />
             </div>
-            <div>
-              <label for="c-address" class="field-label">Відділення / адреса <span class="text-rose-500">*</span></label>
-              <input id="c-address" name="address" required class="field" placeholder="Відділення №12" />
+            <div class="sm:col-span-2">
+              <label for="c-warehouse" class="field-label">Відділення Нової Пошти <span class="text-rose-500">*</span></label>
+              <input id="c-warehouse" name="warehouse" required class="field" placeholder="Відділення №12" />
             </div>
           </div>
         </fieldset>
@@ -221,16 +228,19 @@
           <span class="text-3xl font-bold tracking-tight text-ink-900" data-sum-total>0 ₴</span>
         </div>
 
-        <button type="submit" form="" class="btn-primary btn-lg mt-6 w-full" data-checkout-submit>
+        <button type="submit" form="checkout-form" class="btn-primary btn-lg mt-6 w-full" data-checkout-submit>
           Оформити замовлення
         </button>
 
-        <p class="mt-3 text-center text-[11.5px] leading-relaxed text-ink-400">
-          Натискаючи кнопку, ви погоджуєтеся з
-          <a href="privacy.html#offer" class="underline underline-offset-2 hover:text-brand-600">умовами оферти</a>
-          та
-          <a href="privacy.html" class="underline underline-offset-2 hover:text-brand-600">політикою конфіденційності</a>.
-        </p>
+        <label class="mt-4 flex cursor-pointer items-start gap-2.5 text-left text-[12.5px] leading-relaxed text-ink-500">
+          <input type="checkbox" name="consent" form="checkout-form" required class="filter-box mt-0.5 shrink-0" />
+          <span>
+            Погоджуюся з
+            <a href="privacy.html#offer" class="underline underline-offset-2 hover:text-brand-600" target="_blank" rel="noopener">умовами оферти</a>
+            та
+            <a href="privacy.html" class="underline underline-offset-2 hover:text-brand-600" target="_blank" rel="noopener">політикою конфіденційності</a>
+          </span>
+        </label>
 
         <ul class="mt-6 space-y-2.5 border-t border-ink-100 pt-5">
           <li class="flex items-center gap-2.5 text-[13px] text-ink-500">
