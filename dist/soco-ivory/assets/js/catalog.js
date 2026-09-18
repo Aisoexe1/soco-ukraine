@@ -23,6 +23,7 @@
   const state = {
     q: '',
     cat: '',
+    brand: '',
     min: null,
     max: null,
     inStock: false,
@@ -36,6 +37,7 @@
     const u = new URLSearchParams(location.search);
     state.q = u.get('q') || '';
     state.cat = u.get('cat') || '';
+    state.brand = u.get('brand') || '';
     if (u.get('min')) state.min = Number(u.get('min'));
     if (u.get('max')) state.max = Number(u.get('max'));
     state.inStock = u.get('stock') === '1';
@@ -47,6 +49,7 @@
     const u = new URLSearchParams();
     if (state.q) u.set('q', state.q);
     if (state.cat) u.set('cat', state.cat);
+    if (state.brand) u.set('brand', state.brand);
     if (state.min != null) u.set('min', state.min);
     if (state.max != null) u.set('max', state.max);
     if (state.inStock) u.set('stock', '1');
@@ -118,6 +121,7 @@
 
     if (state.q.trim()) chips.push(['q', `Пошук: «${S.escapeHtml(state.q)}»`]);
     if (state.cat) chips.push(['cat', (categoryBySlug.get(state.cat) || {}).name || state.cat]);
+    if (state.brand) chips.push(['brand', `Бренд: ${S.escapeHtml(state.brand)}`]);
     if (state.min != null || state.max != null)
       chips.push(['price', `${state.min != null ? S.money(state.min) : '0 ₴'} — ${state.max != null ? S.money(state.max) : '∞'}`]);
     if (state.inStock) chips.push(['stock', 'У наявності']);
@@ -183,6 +187,7 @@
 
     const { data, meta } = await S.fetchProducts({
       category: state.cat || undefined,
+      brand: state.brand || undefined,
       q: state.q.trim() || undefined,
       min: state.min ?? undefined,
       max: state.max ?? undefined,
@@ -245,6 +250,11 @@
         crumb.textContent = c.name;
         document.title = `${c.name} — купити в Україні | SOCO-SANI`;
       }
+    } else if (state.brand) {
+      title.textContent = state.brand;
+      desc.textContent = 'Офіційна гарантія виробника, доставка по Україні за 1–3 дні.';
+      crumb.textContent = state.brand;
+      document.title = `${state.brand} — купити в Україні | SOCO-SANI`;
     }
   }
 
@@ -372,6 +382,7 @@
         searchInputs.forEach((i) => (i.value = ''));
       }
       if (type === 'cat') state.cat = '';
+      if (type === 'brand') state.brand = '';
       if (type === 'price') {
         state.min = state.max = null;
         if (minI) minI.value = maxI.value = '';
@@ -393,6 +404,7 @@
     if (e.target.closest('[data-filters-reset]')) {
       state.q = '';
       state.cat = '';
+      state.brand = '';
       state.min = state.max = null;
       state.inStock = false;
       state.page = 1;

@@ -70,8 +70,64 @@
     };
   };
 
-  /** Категорії тепер із CRM, без індивідуальних іконок на кожну — одна спільна. */
+  /** Іконка-заглушка для категорії, якої немає в CATEGORY_ICONS (нова/нетипова). */
   const CATEGORY_ICON = '<path d="M4 7h16M4 12h16M4 17h10" stroke-linecap="round"/>';
+
+  /** Тематичні іконки топ-рівневих категорій за slug. Категорії йдуть з CRM
+   *  динамічно, тож мапа — за smart-fallback на CATEGORY_ICON для будь-якого
+   *  slug, якого тут немає (нова категорія в майбутньому). */
+  const CATEGORY_ICONS = {
+    'obertovi-instrumenty': `
+      <path d="M12 2.6v6.2M12 21.4v-3.1" stroke-linecap="round"/>
+      <path d="M9.4 8.8h5.2l1.5 4.3a4.3 4.3 0 0 1-8.2 0l1.5-4.3Z" stroke-linejoin="round"/>
+      <path d="M8.4 11.6h7.2M9 14.2h6" stroke-linecap="round"/>`,
+    endodontiia: `
+      <circle cx="12" cy="4.2" r="1.3"/>
+      <path d="M12 6.5v2" stroke-linecap="round"/>
+      <path d="M10.6 8.5h2.8l-1.1 10.8a.35.35 0 0 1-.6 0L10.6 8.5Z" stroke-linejoin="round"/>
+      <path d="M11 11h2M11.1 13.5h1.8M11.2 16h1.6" stroke-linecap="round"/>`,
+    materialy: `
+      <path d="M7 3.5h10l-1 5.2a3 3 0 0 0 .3 2l1.6 3a5.5 5.5 0 0 1-4.9 8.1h-2A5.5 5.5 0 0 1 6.1 13.7l1.6-3a3 3 0 0 0 .3-2L7 3.5Z" stroke-linejoin="round"/>
+      <path d="M6.6 14.5h10.8" stroke-linecap="round"/>
+      <circle cx="10.4" cy="17.8" r="1.1" fill="currentColor" stroke="none"/>
+      <circle cx="13.8" cy="19.2" r=".8" fill="currentColor" stroke="none"/>`,
+    'zubotekhnichna-laboratoriia': `
+      <path d="M10 3.5h4" stroke-linecap="round"/>
+      <path d="M10.5 3.5v5.2L6 17a2.2 2.2 0 0 0 2 3.5h8a2.2 2.2 0 0 0 2-3.5l-4.5-8.3V3.5" stroke-linejoin="round"/>
+      <path d="M8.2 15h7.6" stroke-linecap="round"/>`,
+    'nakonechnyky-ta-motory': `
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M12 8.7V7.4M12 16.6v-1.3M15.3 12h1.3M7.4 12h1.3M14.3 9.7l.9-.9M8.8 15.2l.9-.9M14.3 14.3l.9.9M8.8 8.8l.9.9" stroke-linecap="round"/>`,
+    obladnannia: `
+      <rect x="3.2" y="5.4" width="17.6" height="12" rx="2.4"/>
+      <path d="M8.4 20.6h7.2M12 17.4v3.2" stroke-linecap="round"/>
+      <path d="M6.8 11.4h2.6l1.4-2.6 2 5.2 1.4-2.6h2.9" stroke-linecap="round" stroke-linejoin="round"/>`,
+    'ruchni-instrumenty': `
+      <path d="M6.6 3.2a2.6 2.6 0 0 1 2.2 3.9l-.6 1 8.4 8.4a2 2 0 1 1-2.8 2.8L5.4 11l1-.6a2.6 2.6 0 0 1 .2-7.2Z" stroke-linejoin="round"/>
+      <path d="M17.8 3.4 12.6 8.6M19.9 5.5l-3.4 3.4" stroke-linecap="round"/>`,
+    'vytratni-materialy': `
+      <path d="M8.2 21.2v-4.6l-1.9-2.3a2.1 2.1 0 0 1 3.1-2.7V6.1a1.4 1.4 0 0 1 2.8 0V4.2a1.4 1.4 0 1 1 2.8 0v1.9a1.4 1.4 0 1 1 2.8 0v8.3a6.6 6.6 0 0 1-1.7 4.4l-1 1.2a2 2 0 0 0-.5 1.2" stroke-linejoin="round" stroke-linecap="round"/>`,
+    ortodontiia: `
+      <path d="M4.5 10c2.5 4 5 6 7.5 6s5-2 7.5-6" stroke-linecap="round"/>
+      <circle cx="7.6" cy="12.3" r="1" fill="currentColor" stroke="none"/>
+      <circle cx="10.8" cy="14.7" r="1" fill="currentColor" stroke="none"/>
+      <circle cx="13.2" cy="14.7" r="1" fill="currentColor" stroke="none"/>
+      <circle cx="16.4" cy="12.3" r="1" fill="currentColor" stroke="none"/>`,
+    khirurhiia: `
+      <path d="M4.5 19.5 12.5 11.5" stroke-linecap="round"/>
+      <path d="M12.5 11.5 18 6 21 9 15.5 14.5 13 13 12.5 11.5Z" stroke-linejoin="round"/>
+      <circle cx="4.5" cy="19.5" r="1.1" fill="currentColor" stroke="none"/>`,
+    'fizioterapiia-ta-bakterytsydne': `
+      <circle cx="12" cy="12" r="3.2"/>
+      <path d="M12 6.2V4.4M12 19.6v-1.8M17.8 12h1.8M4.4 12h1.8M15.5 8.5l1.3-1.3M7.2 16.8l1.3-1.3M15.5 15.5l1.3 1.3M7.2 7.2l1.3 1.3" stroke-linecap="round"/>`,
+    'dezinfektsiia-ta-hihiiena': `
+      <path d="M9.4 3.4h5.2v2.4H9.4z" stroke-linejoin="round"/>
+      <path d="M8.6 5.8h6.8l1.4 3.4v9.4a2 2 0 0 1-2 2H9.2a2 2 0 0 1-2-2V9.2l1.4-3.4Z" stroke-linejoin="round"/>
+      <path d="M7.4 11.4h9.2" stroke-linecap="round"/>
+      <path d="M12 13.6v3.4M10.3 15.3h3.4" stroke-linecap="round"/>`,
+  };
+
+  const categoryIcon = (slug) => CATEGORY_ICONS[slug] || CATEGORY_ICON;
 
   const storefrontApiUrl = (path) => {
     const configuredUrl =
@@ -93,6 +149,18 @@
         .catch(() => []);
     }
     return categoriesPromise;
+  }
+
+  let brandsPromise = null;
+  /** Бренди, реально представлені в каталозі (з товарами), кешується так само. */
+  function fetchBrands() {
+    if (!brandsPromise) {
+      brandsPromise = fetch(storefrontApiUrl('/api/storefront/brands'))
+        .then((r) => (r.ok ? r.json() : { data: [] }))
+        .then((json) => json.data || [])
+        .catch(() => []);
+    }
+    return brandsPromise;
   }
 
   async function fetchProducts(params = {}) {
@@ -560,7 +628,7 @@
           (c) => `
         <a href="catalog.html?cat=${encodeURIComponent(c.slug)}" class="group flex items-center gap-3.5 rounded-2xl p-3 transition-colors duration-250 hover:bg-brand-50">
           <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600 transition-colors duration-300 group-hover:bg-brand-600 group-hover:text-white">
-            <svg viewBox="0 0 24 24" class="h-[22px] w-[22px]" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">${CATEGORY_ICON}</svg>
+            <svg viewBox="0 0 24 24" class="h-[22px] w-[22px]" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">${categoryIcon(c.slug)}</svg>
           </span>
           <span class="min-w-0">
             <span class="block truncate text-sm font-medium text-ink-900 transition-colors group-hover:text-brand-700">${escapeHtml(c.name)}</span>
@@ -605,7 +673,7 @@
             <a href="catalog.html?cat=${encodeURIComponent(c.slug)}" class="mobile-link">
               <span class="flex items-center gap-3">
                 <span class="grid h-9 w-9 place-items-center rounded-xl bg-brand-50 text-brand-600">
-                  <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">${CATEGORY_ICON}</svg>
+                  <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">${categoryIcon(c.slug)}</svg>
                 </span>
                 <span class="text-[15px]">${escapeHtml(c.name)}</span>
               </span>
@@ -737,7 +805,7 @@
             (c) => `
           <a href="catalog.html?cat=${encodeURIComponent(c.slug)}" class="flex items-center gap-3 rounded-2xl p-3 ring-1 ring-ink-200 transition-all duration-250 hover:ring-brand-300 hover:bg-brand-50">
             <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-50 text-brand-600">
-              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">${CATEGORY_ICON}</svg>
+              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">${categoryIcon(c.slug)}</svg>
             </span>
             <span class="min-w-0">
               <span class="block truncate text-sm font-medium text-ink-900">${escapeHtml(c.name)}</span>
@@ -1075,9 +1143,11 @@
     updateCounters,
     storefrontApiUrl,
     fetchCategories,
+    fetchBrands,
     fetchProducts,
     fetchProduct,
     CATEGORY_ICON,
+    categoryIcon,
     rendered: () => document.dispatchEvent(new CustomEvent('soco:rendered')),
   };
 

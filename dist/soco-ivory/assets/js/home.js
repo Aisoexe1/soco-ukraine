@@ -137,6 +137,27 @@
   })();
 
   /* ======================================================================
+     Стрічка брендів (реальні марки з товарів у каталозі)
+     ====================================================================== */
+  (function brandsMarquee() {
+    const track = $('[data-brand-track]');
+    if (!track) return;
+
+    S.fetchBrands().then((brands) => {
+      const top = brands.slice(0, 24);
+      if (!top.length) return;
+
+      const word = (b, hidden) =>
+        `<a href="catalog.html?brand=${encodeURIComponent(b.name)}" class="brand-word"${
+          hidden ? ' aria-hidden="true" tabindex="-1"' : ''
+        }>${S.escapeHtml(b.name)}</a>`;
+
+      // Дублюємо рівно один раз — CSS-анімація marquee розрахована на 2 копії (translateX(-50%)).
+      track.innerHTML = top.map((b) => word(b, false)).join('') + top.map((b) => word(b, true)).join('');
+    });
+  })();
+
+  /* ======================================================================
      Категорії на головній (реальне дерево з CRM)
      ====================================================================== */
   (function homeCategories() {
@@ -161,7 +182,7 @@
           return `
         <article class="group cat-card reveal${delay}">
           <span class="cat-icon">
-            <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">${S.CATEGORY_ICON}</svg>
+            <svg viewBox="0 0 24 24" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">${S.categoryIcon(c.slug)}</svg>
           </span>
           <h3 class="cat-title">${S.escapeHtml(c.name)}</h3>
           <p class="cat-desc">${S.escapeHtml(desc)}</p>
