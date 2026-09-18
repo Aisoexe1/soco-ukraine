@@ -481,15 +481,21 @@
           <div class="mt-4 grid gap-4 sm:grid-cols-2">
             <div>
               <label for="c-region" class="field-label">Область <span class="text-rose-500">*</span></label>
-              <input id="c-region" name="region" required class="field" placeholder="Київська область" />
+              <select id="c-region" name="region" required class="field" data-np-region>
+                <option value="">Завантаження…</option>
+              </select>
             </div>
             <div>
               <label for="c-city" class="field-label">Місто <span class="text-rose-500">*</span></label>
-              <input id="c-city" name="city" required class="field" placeholder="Київ" />
+              <select id="c-city" name="city" required class="field" data-np-city disabled>
+                <option value="">Спочатку виберіть область</option>
+              </select>
             </div>
             <div class="sm:col-span-2">
               <label for="c-warehouse" class="field-label">Відділення Нової Пошти <span class="text-rose-500">*</span></label>
-              <input id="c-warehouse" name="warehouse" required class="field" placeholder="Відділення №12" />
+              <select id="c-warehouse" name="warehouse" required class="field" data-np-warehouse disabled>
+                <option value="">Спочатку виберіть місто</option>
+              </select>
             </div>
           </div>
         </fieldset>

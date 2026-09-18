@@ -163,6 +163,47 @@
     return brandsPromise;
   }
 
+  let npAreasPromise = null;
+  const npCitiesCache = new Map();
+  const npWarehousesCache = new Map();
+
+  /** Каскадні списки Нової Пошти для чекауту (область → місто → відділення). */
+  function fetchNpAreas() {
+    if (!npAreasPromise) {
+      npAreasPromise = fetch(storefrontApiUrl('/api/storefront/nova-poshta?type=areas'))
+        .then((r) => (r.ok ? r.json() : { data: [] }))
+        .then((json) => json.data || [])
+        .catch(() => []);
+    }
+    return npAreasPromise;
+  }
+
+  function fetchNpCities(areaRef) {
+    if (!npCitiesCache.has(areaRef)) {
+      npCitiesCache.set(
+        areaRef,
+        fetch(storefrontApiUrl(`/api/storefront/nova-poshta?type=cities&areaRef=${encodeURIComponent(areaRef)}`))
+          .then((r) => (r.ok ? r.json() : { data: [] }))
+          .then((json) => json.data || [])
+          .catch(() => []),
+      );
+    }
+    return npCitiesCache.get(areaRef);
+  }
+
+  function fetchNpWarehouses(cityRef) {
+    if (!npWarehousesCache.has(cityRef)) {
+      npWarehousesCache.set(
+        cityRef,
+        fetch(storefrontApiUrl(`/api/storefront/nova-poshta?type=warehouses&cityRef=${encodeURIComponent(cityRef)}`))
+          .then((r) => (r.ok ? r.json() : { data: [] }))
+          .then((json) => json.data || [])
+          .catch(() => []),
+      );
+    }
+    return npWarehousesCache.get(cityRef);
+  }
+
   async function fetchProducts(params = {}) {
     const search = new URLSearchParams();
     Object.entries(params).forEach(([key, value]) => {
@@ -1146,6 +1187,9 @@
     fetchBrands,
     fetchProducts,
     fetchProduct,
+    fetchNpAreas,
+    fetchNpCities,
+    fetchNpWarehouses,
     CATEGORY_ICON,
     categoryIcon,
     rendered: () => document.dispatchEvent(new CustomEvent('soco:rendered')),

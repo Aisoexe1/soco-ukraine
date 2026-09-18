@@ -157,6 +157,87 @@
 
   $$('[data-delivery]').forEach((r) => r.addEventListener('change', render));
 
+  /* --- Нова Пошта: каскадні область → місто → відділення --- */
+  (function novaPoshta() {
+    const regionEl = $('[data-np-region]');
+    if (!regionEl) return;
+    const cityEl = $('[data-np-city]');
+    const warehouseEl = $('[data-np-warehouse]');
+
+    const fillOptions = (select, items, placeholder) => {
+      select.innerHTML =
+        `<option value="">${placeholder}</option>` +
+        items.map((i) => `<option value="${S.escapeHtml(i.name)}" data-ref="${i.ref}">${S.escapeHtml(i.name)}</option>`).join('');
+    };
+
+    /// На звичайний текстовий інпут — і для деградації (ключ API ще не
+    /// підключено на сервері чи Нова Пошта недоступна), і щоб замовлення
+    /// не блокувалось порожнім обовʼязковим списком.
+    const toPlainInput = (select, placeholder) => {
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.id = select.id;
+      input.name = select.name;
+      input.required = true;
+      input.className = select.className;
+      input.placeholder = placeholder;
+      select.replaceWith(input);
+      return input;
+    };
+
+    S.fetchNpAreas().then((areas) => {
+      if (!areas.length) {
+        toPlainInput(regionEl, 'Київська область');
+        toPlainInput(cityEl, 'Київ').disabled = false;
+        toPlainInput(warehouseEl, 'Відділення №12').disabled = false;
+        return;
+      }
+
+      fillOptions(regionEl, areas, 'Оберіть область');
+
+      // Токени проти перегонів: якщо користувач встиг переключити область/місто
+      // ще раз, поки старий запит летів, застарілий результат не повинен
+      // перезаписати вже актуальний список.
+      let cityToken = 0;
+      let warehouseToken = 0;
+
+      regionEl.addEventListener('change', async () => {
+        const token = ++cityToken;
+        ++warehouseToken;
+        const ref = regionEl.selectedOptions[0]?.dataset.ref;
+        warehouseEl.disabled = true;
+        fillOptions(warehouseEl, [], 'Спочатку виберіть місто');
+        if (!ref) {
+          cityEl.disabled = true;
+          fillOptions(cityEl, [], 'Спочатку виберіть область');
+          return;
+        }
+        cityEl.disabled = true;
+        fillOptions(cityEl, [], 'Завантаження…');
+        const cities = await S.fetchNpCities(ref);
+        if (token !== cityToken) return;
+        fillOptions(cityEl, cities, 'Оберіть місто');
+        cityEl.disabled = false;
+      });
+
+      cityEl.addEventListener('change', async () => {
+        const token = ++warehouseToken;
+        const ref = cityEl.selectedOptions[0]?.dataset.ref;
+        if (!ref) {
+          warehouseEl.disabled = true;
+          fillOptions(warehouseEl, [], 'Спочатку виберіть місто');
+          return;
+        }
+        warehouseEl.disabled = true;
+        fillOptions(warehouseEl, [], 'Завантаження…');
+        const warehouses = await S.fetchNpWarehouses(ref);
+        if (token !== warehouseToken) return;
+        fillOptions(warehouseEl, warehouses, 'Оберіть відділення');
+        warehouseEl.disabled = false;
+      });
+    });
+  })();
+
   /* --- Оформлення --- */
 
   /// Розбиває ПІБ на імʼя/прізвище — CRM веде їх окремими полями.
